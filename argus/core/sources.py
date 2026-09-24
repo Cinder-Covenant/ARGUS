@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 from argus.core import paths
 
-UA = {"User-Agent": "argus/1.0 (+https://github.com/Cinder-Covenant/argus)"}
+UA = {"User-Agent": "argus/1.0 (+https://github.com/Cinder-Covenant/ARGUS)"}
 CACHE = paths.artifact_write_root() / "_argus_cache" / "sources.json"
 CACHE_TTL_S = 900.0
 

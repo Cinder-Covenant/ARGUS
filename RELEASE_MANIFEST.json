@@ -52,7 +52,7 @@
   {
    "path": "argus/adapters/zarr_range_reader.py",
    "bytes": 4757,
-   "sha256": "815d8fb803636ea94cdcf5d2e83b11066a648c80a0067d178e5e04ecf3e48eb9"
+      "sha256": "e6b384700aca254bcb88fbce7a9657f995c11f10a637e257cb82b82dc3cb71b1"
   },
   {
    "path": "argus/capabilities.json",
@@ -937,7 +937,7 @@
   {
    "path": "argus/core/sources.py",
    "bytes": 6830,
-   "sha256": "5d43ce073f23a34989b9cb12e71475fa3a2cdf96893eedcea5b780f9e952acc5"
+      "sha256": "54e3ed88941ba3f38aa3c8ebaa322af08b63f8323c8d7c2aadedd2c31fee010f"
   },
   {
    "path": "argus/core/spiral_fit_controls.py",
@@ -2722,7 +2722,7 @@
   {
    "path": "CONTRIBUTING.md",
    "bytes": 2134,
-   "sha256": "8a8f90fc591fdaaeddbff74c095865d4b0dfbcdb79ab7a281af65e4c1962130a"
+      "sha256": "7d658428a17852a625d7c429ef61aebc80e23016cb58a072de5eb0cb5c6cf3e9"
   },
   {
    "path": "corpus/scrolls/registry.json",
@@ -2802,7 +2802,7 @@
   {
    "path": "docs/SHOW_AND_TELL.md",
    "bytes": 2597,
-   "sha256": "0081a5ce159317d7ea1f8928efdea295f01660cf68ee6ba3e295ca10c216ef90"
+      "sha256": "2fc486c3ff3fd786dd5737961dc0f9ebe7000298721193df6f297060862b8049"
   },
   {
    "path": "docs/TECHNICAL_SUMMARY.md",
@@ -2927,7 +2927,7 @@
   {
    "path": "README.md",
    "bytes": 7199,
-   "sha256": "683e79d3fd1dd37e148d23434f4b08437ac419efa676895c435aa9eda6cb4d24"
+      "sha256": "84cb2a171fcaf0b8b3e05f1e5abadb312c6de5ec7c5efa0d1031fa89ba4e8b3b"
   },
   {
    "path": "runtime/requirements-portable-ci.txt",
@@ -3097,7 +3097,7 @@
   {
    "path": "tests/test_public_release.py",
    "bytes": 9137,
-   "sha256": "e44971f5d10f242b3ded31e9b12e0bff64c828a33451e14713d1b99fa3a67907"
+      "sha256": "8ce3aab251efa3dddcbef69e0ed3a35342fc599bc7da8b11d3fd6990489b9bad"
   },
   {
    "path": "tests/test_public_renderer_parity.py",

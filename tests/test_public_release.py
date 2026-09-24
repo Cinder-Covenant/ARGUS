@@ -204,7 +204,7 @@ def test_the_docs_agree_with_the_dockerfile_and_ci_on_node():
 
 def test_the_docs_name_the_public_repository_and_the_stack_commands():
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    assert "https://github.com/Cinder-Covenant/argus" in readme
+    assert "https://github.com/Cinder-Covenant/ARGUS" in readme
     for needle in ("argus start", "argus status", "argus stop", "Start-ARGUS.cmd"):
         assert needle in readme, needle
     assert "<repository-url>" not in readme

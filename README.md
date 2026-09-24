@@ -6,7 +6,7 @@ and why a step could not run. It works offline and has no cloud component.
 
 Built by **DarthCeltic** and **Daine (clexious)**, under the
 [Cinder Covenant](https://github.com/Cinder-Covenant) organisation. Source:
-<https://github.com/Cinder-Covenant/argus>.
+<https://github.com/Cinder-Covenant/ARGUS>.
 
 > **Claim boundary.** This release ships no detector and makes no scientific claim.
 >
@@ -49,8 +49,8 @@ You need Python 3.11+, Git, and, for the interface, Node 20+ (the Docker image b
 **Windows (PowerShell)**
 
 ```powershell
-git clone https://github.com/Cinder-Covenant/argus.git
-cd argus
+git clone https://github.com/Cinder-Covenant/ARGUS.git
+cd ARGUS
 py -3.11 -m venv .venv
 .venv\Scripts\python -m pip install --upgrade pip
 .venv\Scripts\python -m pip install -e ".[service,test]"
@@ -62,7 +62,7 @@ py -3.11 -m venv .venv
 `docs/LIMITATIONS.md`)
 
 ```bash
-git clone https://github.com/Cinder-Covenant/argus.git && cd argus
+git clone https://github.com/Cinder-Covenant/ARGUS.git && cd ARGUS
 python3.11 -m venv .venv
 .venv/bin/python -m pip install --upgrade pip
 .venv/bin/python -m pip install -e ".[service,test]"

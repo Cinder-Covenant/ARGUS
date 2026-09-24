@@ -1,7 +1,7 @@
 # Contributing to ARGUS
 
 Thank you for looking. ARGUS is maintained by DarthCeltic and Daine (clexious) at
-<https://github.com/Cinder-Covenant/argus>.
+<https://github.com/Cinder-Covenant/ARGUS>.
 
 ## Before you open a pull request
 
