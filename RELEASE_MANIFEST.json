@@ -2,7 +2,7 @@
  "schema": "argus-release-manifest-v1",
  "note": "sha256 of every file in this release except this manifest itself. Verify with: python tools/verify_manifest.py",
  "file_count": 623,
- "tree_sha256": "06541a02101cfcca717a0bc7e06e34da63613512d770c0574d20912cbf55a1ae",
+ "tree_sha256": "fbfabd5c8172a21768aaf685b3da1795b51b08e4826638fbbfcc9c0ac4c26b10",
  "files": [
   {
    "path": ".dockerignore",
@@ -52,7 +52,7 @@
   {
    "path": "argus/adapters/zarr_range_reader.py",
    "bytes": 4757,
-      "sha256": "e6b384700aca254bcb88fbce7a9657f995c11f10a637e257cb82b82dc3cb71b1"
+   "sha256": "e6b384700aca254bcb88fbce7a9657f995c11f10a637e257cb82b82dc3cb71b1"
   },
   {
    "path": "argus/capabilities.json",
@@ -937,7 +937,7 @@
   {
    "path": "argus/core/sources.py",
    "bytes": 6830,
-      "sha256": "54e3ed88941ba3f38aa3c8ebaa322af08b63f8323c8d7c2aadedd2c31fee010f"
+   "sha256": "54e3ed88941ba3f38aa3c8ebaa322af08b63f8323c8d7c2aadedd2c31fee010f"
   },
   {
    "path": "argus/core/spiral_fit_controls.py",
@@ -2722,7 +2722,7 @@
   {
    "path": "CONTRIBUTING.md",
    "bytes": 2134,
-      "sha256": "7d658428a17852a625d7c429ef61aebc80e23016cb58a072de5eb0cb5c6cf3e9"
+   "sha256": "7d658428a17852a625d7c429ef61aebc80e23016cb58a072de5eb0cb5c6cf3e9"
   },
   {
    "path": "corpus/scrolls/registry.json",
@@ -2801,8 +2801,8 @@
   },
   {
    "path": "docs/SHOW_AND_TELL.md",
-   "bytes": 2597,
-      "sha256": "2fc486c3ff3fd786dd5737961dc0f9ebe7000298721193df6f297060862b8049"
+   "bytes": 3374,
+   "sha256": "3f2cd0ea0cc275a655bc894220b74ba6aba7c4e4540c0dbbcc216953d21dc495"
   },
   {
    "path": "docs/TECHNICAL_SUMMARY.md",
@@ -2906,8 +2906,8 @@
   },
   {
    "path": "NOTICE",
-   "bytes": 4484,
-   "sha256": "c9dd27e26cee3f9bdfa86d7678bb2082869d332349e4241bdf010d8e87b03e8c"
+   "bytes": 4649,
+   "sha256": "e516e44019c2a5225b171348938f1ed71a68de4b8c4f549474187992fa4211ad"
   },
   {
    "path": "PUBLIC_CLAIMS_AND_LIMITS.md",
@@ -2927,7 +2927,7 @@
   {
    "path": "README.md",
    "bytes": 7199,
-      "sha256": "84cb2a171fcaf0b8b3e05f1e5abadb312c6de5ec7c5efa0d1031fa89ba4e8b3b"
+   "sha256": "84cb2a171fcaf0b8b3e05f1e5abadb312c6de5ec7c5efa0d1031fa89ba4e8b3b"
   },
   {
    "path": "runtime/requirements-portable-ci.txt",
@@ -3002,7 +3002,7 @@
   {
    "path": "SOURCE_PROVENANCE.json",
    "bytes": 501,
-   "sha256": "cae39916a5a8878b62ce61313e694b937db226812be05073cf7910f0abb1328e"
+   "sha256": "0b969530f20d07d043880e0d00890dda74822fb3a99917c69cd8097ab558108f"
   },
   {
    "path": "src/argus_vesuvius/__init__.py",
@@ -3097,7 +3097,7 @@
   {
    "path": "tests/test_public_release.py",
    "bytes": 9137,
-      "sha256": "8ce3aab251efa3dddcbef69e0ed3a35342fc599bc7da8b11d3fd6990489b9bad"
+   "sha256": "8ce3aab251efa3dddcbef69e0ed3a35342fc599bc7da8b11d3fd6990489b9bad"
   },
   {
    "path": "tests/test_public_renderer_parity.py",

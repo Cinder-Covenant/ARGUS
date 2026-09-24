@@ -37,6 +37,15 @@ Design choices we'd like feedback on:
 - Four licence permissions per component (run, bundle, redistribute, submit). UNDECLARED counts as a
   refusal. No CT data, labels or weights are redistributed.
 
+**Related upstream work: topology.** Villa PR #1884 (CVasilopoulos,
+<https://github.com/ScrollPrize/villa/pull/1884>) adds `vc_tifxyz_topology`, a report-only census of tifxyz
+surfaces that names the islands, holes, tears and folds that downstream tools silently drop or fill. We think
+that is the right first step, and ARGUS does not reimplement it. ARGUS treats a mesh the way it treats any
+input: qualify it, refuse when it is unsafe, and never modify the source. We are preparing a small, separate
+write-up of complementary diagnostics (per-vertex angle defect, crease-network localization and conservative
+clean-chart extraction) with a public, reproducible case study. Until that evidence is published, please read
+this post as a tool release, not as a topology result.
+
 Thanks to the Vesuvius Challenge team and everyone who published scans, tools and methods,
 especially the ScrollPrize/villa tooling. We'd welcome
 feedback on where our refusals are too strict, or not strict enough.

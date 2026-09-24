@@ -50,8 +50,10 @@ volume-cartographer / VC3D                                 GPL-3.0
 Villa (Vesuvius Challenge tooling)                         MIT
     https://github.com/ScrollPrize/villa
 
-    ARGUS uses the villa `vesuvius` package as a dependency. MIT is compatible
-    with Apache-2.0, and MIT requires the copyright notice to travel:
+    No villa source is copied into this repository, and ARGUS does not import the
+    villa `vesuvius` package. It reads villa's public git history for its status
+    view and can run a separately installed villa toolchain as an external program.
+    The villa notice is reproduced here for that interoperability:
 
     Copyright (c) 2024 Vesuvius Challenge. Licensed under the MIT License.
 
