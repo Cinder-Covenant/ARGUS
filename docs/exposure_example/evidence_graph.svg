@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="528" font-family="sans-serif" font-size="11">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<line x1="250" y1="299" x2="310" y2="171" stroke="#1b7f3b" stroke-width="2"/>
+<text x="260" y="232" fill="#1b7f3b">TEACHER</text>
+<line x1="250" y1="107" x2="310" y2="171" stroke="#1b7f3b" stroke-width="2"/>
+<text x="260" y="136" fill="#1b7f3b">PSEUDO_SOURCE</text>
+<line x1="250" y1="107" x2="310" y2="43" stroke="#1b7f3b" stroke-width="2"/>
+<text x="260" y="72" fill="#1b7f3b">INIT</text>
+<line x1="540" y1="107" x2="600" y2="43" stroke="#1b7f3b" stroke-width="2"/>
+<text x="550" y="72" fill="#1b7f3b">INIT</text>
+<line x1="540" y1="107" x2="600" y2="43" stroke="#1b7f3b" stroke-width="2"/>
+<text x="550" y="72" fill="#1b7f3b">TEACHER</text>
+<line x1="540" y1="43" x2="600" y2="43" stroke="#1b7f3b" stroke-width="2"/>
+<text x="550" y="40" fill="#1b7f3b">PSEUDO_SOURCE</text>
+<line x1="250" y1="235" x2="310" y2="107" stroke="#b26a00" stroke-width="2" stroke-dasharray="5 3"/>
+<text x="260" y="168" fill="#b26a00">INIT</text>
+<line x1="830" y1="43" x2="890" y2="43" stroke="#b26a00" stroke-width="2" stroke-dasharray="5 3"/>
+<text x="840" y="40" fill="#b26a00">TEACHER</text>
+<line x1="250" y1="171" x2="890" y2="43" stroke="#1b7f3b" stroke-width="2"/>
+<text x="550" y="104" fill="#1b7f3b">TEACHER</text>
+<rect x="20" y="340" width="230" height="46" rx="6" fill="#f4f6fa" stroke="#334"/>
+<text x="28" y="359">ink_9um</text>
+<text x="28" y="376" fill="#555">ink_detector</text>
+<rect x="20" y="404" width="230" height="46" rx="6" fill="#f4f6fa" stroke="#334"/>
+<text x="28" y="423">ink_canonical_2um</text>
+<text x="28" y="440" fill="#555">ink_detector</text>
+<rect x="310" y="148" width="230" height="46" rx="6" fill="#f4f6fa" stroke="#334"/>
+<text x="318" y="167">ink_3d_dino_guided</text>
+<text x="318" y="184" fill="#555">ink_detector</text>
+<rect x="20" y="276" width="230" height="46" rx="6" fill="#f4f6fa" stroke="#334"/>
+<text x="28" y="295">ink_3d_dino_guided.stage1_teacher</text>
+<text x="28" y="312" fill="#555">teacher</text>
+<rect x="20" y="84" width="230" height="46" rx="6" fill="#f4f6fa" stroke="#334"/>
+<text x="28" y="103">dinovol_v2_ps8_with_paris4_352500</text>
+<text x="28" y="120" fill="#555">backbone</text>
+<rect x="310" y="20" width="230" height="46" rx="6" fill="#f4f6fa" stroke="#334"/>
+<text x="318" y="39">dinovol_v2_ps8_supcon3class_step36</text>
+<text x="318" y="56" fill="#555">backbone</text>
+<rect x="20" y="20" width="230" height="46" rx="6" fill="#f4f6fa" stroke="#334"/>
+<text x="28" y="39">dinovol_v2_ps6_step032350</text>
+<text x="28" y="56" fill="#555">backbone</text>
+<rect x="310" y="84" width="230" height="46" rx="6" fill="#f4f6fa" stroke="#334"/>
+<text x="318" y="103">fiber_selftrain_teacher_epoch30</text>
+<text x="318" y="120" fill="#555">fiber_segmenter</text>
+<rect x="20" y="212" width="230" height="46" rx="6" fill="#f4f6fa" stroke="#334"/>
+<text x="28" y="231">fiber_selftrain_teacher_epoch30.an</text>
+<text x="28" y="248" fill="#555">teacher</text>
+<rect x="600" y="20" width="230" height="46" rx="6" fill="#f4f6fa" stroke="#334"/>
+<text x="608" y="39">fiber_dinoguided_2class_step010000</text>
+<text x="608" y="56" fill="#555">fiber_segmenter</text>
+<rect x="890" y="20" width="230" height="46" rx="6" fill="#f4f6fa" stroke="#334"/>
+<text x="898" y="39">fiber_ink_4class_selfdistill</text>
+<text x="898" y="56" fill="#555">fiber_segmenter</text>
+<rect x="20" y="148" width="230" height="46" rx="6" fill="#f4f6fa" stroke="#334"/>
+<text x="28" y="167">fiber_ink_4class_selfdistill.ink_t</text>
+<text x="28" y="184" fill="#555">teacher</text>
+<text x="20" y="518" fill="#333">solid = VERIFIED edge, dashed = INFERRED edge; edge points from ancestor (left) to descendant (right).</text>
+</svg>
+
