@@ -1,0 +1,4161 @@
+{
+ "findings": [],
+ "graph": {
+  "ancestry_edges": [
+   {
+    "child": "ink_3d_dino_guided",
+    "kind": "TEACHER",
+    "parent": "ink_3d_dino_guided.stage1_teacher",
+    "source": "ink_3d_dino_guided",
+    "status": "VERIFIED"
+   },
+   {
+    "child": "ink_3d_dino_guided",
+    "kind": "PSEUDO_SOURCE",
+    "parent": "dinovol_v2_ps8_with_paris4_352500",
+    "source": "ink_3d_dino_guided",
+    "status": "VERIFIED"
+   },
+   {
+    "child": "dinovol_v2_ps8_supcon3class_step362500",
+    "kind": "INIT",
+    "parent": "dinovol_v2_ps8_with_paris4_352500",
+    "source": "dinovol_v2_ps8_supcon3class_step362500",
+    "status": "VERIFIED"
+   },
+   {
+    "child": "fiber_dinoguided_2class_step010000",
+    "kind": "INIT",
+    "parent": "fiber_selftrain_teacher_epoch30",
+    "source": "fiber_dinoguided_2class_step010000",
+    "status": "VERIFIED"
+   },
+   {
+    "child": "fiber_dinoguided_2class_step010000",
+    "kind": "TEACHER",
+    "parent": "fiber_selftrain_teacher_epoch30",
+    "source": "fiber_dinoguided_2class_step010000",
+    "status": "VERIFIED"
+   },
+   {
+    "child": "fiber_dinoguided_2class_step010000",
+    "kind": "PSEUDO_SOURCE",
+    "parent": "dinovol_v2_ps8_supcon3class_step362500",
+    "source": "fiber_dinoguided_2class_step010000",
+    "status": "VERIFIED"
+   },
+   {
+    "child": "fiber_selftrain_teacher_epoch30",
+    "kind": "INIT",
+    "parent": "fiber_selftrain_teacher_epoch30.ancestor_thr07ep95",
+    "source": "fiber_selftrain_teacher_epoch30",
+    "status": "INFERRED"
+   },
+   {
+    "child": "fiber_ink_4class_selfdistill",
+    "kind": "TEACHER",
+    "parent": "fiber_dinoguided_2class_step010000",
+    "source": "fiber_ink_4class_selfdistill",
+    "status": "INFERRED"
+   },
+   {
+    "child": "fiber_ink_4class_selfdistill",
+    "kind": "TEACHER",
+    "parent": "fiber_ink_4class_selfdistill.ink_teacher",
+    "source": "fiber_ink_4class_selfdistill",
+    "status": "VERIFIED"
+   }
+  ],
+  "nodes": [
+   {
+    "id": "ink_9um",
+    "role": "ink_detector",
+    "type": "model",
+    "url": "https://huggingface.co/scrollprize/ink_9um"
+   },
+   {
+    "id": "ink_canonical_2um",
+    "role": "ink_detector",
+    "type": "model",
+    "url": "https://huggingface.co/scrollprize/ink_canonical_2um"
+   },
+   {
+    "id": "ink_3d_dino_guided",
+    "role": "ink_detector",
+    "type": "model",
+    "url": "https://huggingface.co/scrollprize/ink_3d_dino_guided"
+   },
+   {
+    "id": "ink_3d_dino_guided.stage1_teacher",
+    "role": "teacher",
+    "type": "model",
+    "url": null
+   },
+   {
+    "id": "dinovol_v2_ps8_with_paris4_352500",
+    "role": "backbone",
+    "type": "model",
+    "url": "https://huggingface.co/scrollprize/dinovol_v2_ps8_with_paris4_352500"
+   },
+   {
+    "id": "dinovol_v2_ps8_supcon3class_step362500",
+    "role": "backbone",
+    "type": "model",
+    "url": "https://huggingface.co/scrollprize/dinovol_v2_ps8_supcon3class_step362500"
+   },
+   {
+    "id": "dinovol_v2_ps6_step032350",
+    "role": "backbone",
+    "type": "model",
+    "url": "https://huggingface.co/scrollprize/dinovol_v2_ps6_step032350"
+   },
+   {
+    "id": "fiber_selftrain_teacher_epoch30",
+    "role": "fiber_segmenter",
+    "type": "model",
+    "url": "https://huggingface.co/scrollprize/fiber_selftrain_teacher_epoch30"
+   },
+   {
+    "id": "fiber_selftrain_teacher_epoch30.ancestor_thr07ep95",
+    "role": "teacher",
+    "type": "model",
+    "url": null
+   },
+   {
+    "id": "fiber_dinoguided_2class_step010000",
+    "role": "fiber_segmenter",
+    "type": "model",
+    "url": "https://huggingface.co/scrollprize/fiber_dinoguided_2class_step010000"
+   },
+   {
+    "id": "fiber_ink_4class_selfdistill",
+    "role": "fiber_segmenter",
+    "type": "model",
+    "url": "https://huggingface.co/scrollprize/fiber_ink_4class_selfdistill"
+   },
+   {
+    "id": "fiber_ink_4class_selfdistill.ink_teacher",
+    "role": "teacher",
+    "type": "model",
+    "url": null
+   },
+   {
+    "id": "PHerc0009B",
+    "type": "scroll"
+   },
+   {
+    "id": "PHerc0139",
+    "type": "scroll"
+   },
+   {
+    "id": "PHerc0332",
+    "type": "scroll"
+   },
+   {
+    "id": "PHerc0343P",
+    "type": "scroll"
+   },
+   {
+    "id": "PHerc0500P2",
+    "type": "scroll"
+   },
+   {
+    "id": "PHerc0814",
+    "type": "scroll"
+   },
+   {
+    "id": "PHerc0841",
+    "type": "scroll"
+   },
+   {
+    "id": "PHerc1299",
+    "type": "scroll"
+   },
+   {
+    "id": "PHerc1451",
+    "type": "scroll"
+   },
+   {
+    "id": "PHerc1667",
+    "type": "scroll"
+   },
+   {
+    "id": "PHercMAN5",
+    "type": "scroll"
+   },
+   {
+    "id": "PHercMANB",
+    "type": "scroll"
+   },
+   {
+    "id": "PHercParis4",
+    "type": "scroll"
+   },
+   {
+    "id": "UNRESOLVED:256 expert-clicked reference tokens (source scroll not stated)",
+    "type": "scroll"
+   }
+  ],
+  "scroll_edges": [
+   {
+    "channel": "pseudo_label_lineage",
+    "claim": "c33",
+    "model": "dinovol_v2_ps8_supcon3class_step362500",
+    "scroll": "PHerc0332",
+    "status": "INFERRED"
+   },
+   {
+    "channel": "raw_ct_pretraining",
+    "claim": "c31",
+    "model": "dinovol_v2_ps8_supcon3class_step362500",
+    "scroll": "PHerc0332",
+    "status": "VERIFIED"
+   },
+   {
+    "channel": "pseudo_label_lineage",
+    "claim": "c32",
+    "model": "dinovol_v2_ps8_supcon3class_step362500",
+    "scroll": "PHercParis4",
+    "status": "INFERRED"
+   },
+   {
+    "channel": "raw_ct_pretraining",
+    "claim": "c30",
+    "model": "dinovol_v2_ps8_supcon3class_step362500",
+    "scroll": "PHercParis4",
+    "status": "VERIFIED"
+   },
+   {
+    "channel": "raw_ct_pretraining",
+    "claim": "c20",
+    "model": "dinovol_v2_ps8_with_paris4_352500",
+    "scroll": "PHerc0009B",
+    "status": "VERIFIED"
+   },
+   {
+    "channel": "raw_ct_pretraining",
+    "claim": "c20",
+    "model": "dinovol_v2_ps8_with_paris4_352500",
+    "scroll": "PHerc0139",
+    "status": "VERIFIED"
+   },
+   {
+    "channel": "raw_ct_pretraining",
+    "claim": "c20",
+    "model": "dinovol_v2_ps8_with_paris4_352500",
+    "scroll": "PHerc0332",
+    "status": "VERIFIED"
+   },
+   {
+    "channel": "raw_ct_pretraining",
+    "claim": "c20",
+    "model": "dinovol_v2_ps8_with_paris4_352500",
+    "scroll": "PHerc0343P",
+    "status": "VERIFIED"
+   },
+   {
+    "channel": "raw_ct_pretraining",
+    "claim": "c20",
+    "model": "dinovol_v2_ps8_with_paris4_352500",
+    "scroll": "PHerc0500P2",
+    "status": "VERIFIED"
+   },
+   {
+    "channel": "raw_ct_pretraining",
+    "claim": "c20",
+    "model": "dinovol_v2_ps8_with_paris4_352500",
+    "scroll": "PHerc0814",
+    "status": "VERIFIED"
+   },
+   {
+    "channel": "raw_ct_pretraining",
+    "claim": "c20",
+    "model": "dinovol_v2_ps8_with_paris4_352500",
+    "scroll": "PHerc1299",
+    "status": "VERIFIED"
+   },
+   {
+    "channel": "raw_ct_pretraining",
+    "claim": "c20",
+    "model": "dinovol_v2_ps8_with_paris4_352500",
+    "scroll": "PHerc1451",
+    "status": "VERIFIED"
+   },
+   {
+    "channel": "raw_ct_pretraining",
+    "claim": "c20",
+    "model": "dinovol_v2_ps8_with_paris4_352500",
+    "scroll": "PHercMAN5",
+    "status": "VERIFIED"
+   },
+   {
+    "channel": "raw_ct_pretraining",
+    "claim": "c20",
+    "model": "dinovol_v2_ps8_with_paris4_352500",
+    "scroll": "PHercMANB",
+    "status": "VERIFIED"
+   },
+   {
+    "channel": "raw_ct_pretraining",
+    "claim": "c20",
+    "model": "dinovol_v2_ps8_with_paris4_352500",
+    "scroll": "PHercParis4",
+    "status": "VERIFIED"
+   },
+   {
+    "channel": "pseudo_label_lineage",
+    "claim": "c41",
+    "model": "fiber_dinoguided_2class_step010000",
+    "scroll": "PHercParis4",
+    "status": "VERIFIED"
+   },
+   {
+    "channel": "pseudo_label_lineage",
+    "claim": "c51",
+    "model": "fiber_ink_4class_selfdistill",
+    "scroll": "PHercParis4",
+    "status": "VERIFIED"
+   },
+   {
+    "channel": "direct_labels",
+    "claim": "c11",
+    "model": "ink_3d_dino_guided",
+    "scroll": "PHercParis4",
+    "status": "INFERRED"
+   },
+   {
+    "channel": "pseudo_label_lineage",
+    "claim": "c12",
+    "model": "ink_3d_dino_guided",
+    "scroll": "UNRESOLVED:256 expert-clicked reference tokens (source scroll not stated)",
+    "status": "UNVERIFIED"
+   },
+   {
+    "channel": "direct_labels",
+    "claim": "c10",
+    "model": "ink_3d_dino_guided.stage1_teacher",
+    "scroll": "PHerc0009B",
+    "status": "INFERRED"
+   },
+   {
+    "channel": "direct_labels",
+    "claim": "c10",
+    "model": "ink_3d_dino_guided.stage1_teacher",
+    "scroll": "PHerc0139",
+    "status": "VERIFIED"
+   },
+   {
+    "channel": "direct_labels",
+    "claim": "c10",
+    "model": "ink_3d_dino_guided.stage1_teacher",
+    "scroll": "PHerc0500P2",
+    "status": "VERIFIED"
+   },
+   {
+    "channel": "direct_labels",
+    "claim": "c10",
+    "model": "ink_3d_dino_guided.stage1_teacher",
+    "scroll": "PHerc0814",
+    "status": "VERIFIED"
+   },
+   {
+    "channel": "direct_labels",
+    "claim": "c10",
+    "model": "ink_3d_dino_guided.stage1_teacher",
+    "scroll": "PHerc0841",
+    "status": "VERIFIED"
+   },
+   {
+    "channel": "direct_labels",
+    "claim": "c10",
+    "model": "ink_3d_dino_guided.stage1_teacher",
+    "scroll": "PHerc1667",
+    "status": "VERIFIED"
+   },
+   {
+    "channel": "direct_labels",
+    "claim": "c10",
+    "model": "ink_3d_dino_guided.stage1_teacher",
+    "scroll": "PHercMAN5",
+    "status": "VERIFIED"
+   },
+   {
+    "channel": "direct_labels",
+    "claim": "c10",
+    "model": "ink_3d_dino_guided.stage1_teacher",
+    "scroll": "PHercParis4",
+    "status": "VERIFIED"
+   },
+   {
+    "channel": "direct_labels",
+    "claim": "c01",
+    "model": "ink_9um",
+    "scroll": "PHerc0139",
+    "status": "VERIFIED"
+   },
+   {
+    "channel": "direct_labels",
+    "claim": "c01",
+    "model": "ink_9um",
+    "scroll": "PHerc0814",
+    "status": "VERIFIED"
+   },
+   {
+    "channel": "direct_labels",
+    "claim": "c01",
+    "model": "ink_9um",
+    "scroll": "PHerc1667",
+    "status": "VERIFIED"
+   },
+   {
+    "channel": "direct_labels",
+    "claim": "c01",
+    "model": "ink_9um",
+    "scroll": "PHercParis4",
+    "status": "VERIFIED"
+   }
+  ]
+ },
+ "identity_reference": {
+  "catalogue_sha256": "0eb7df954e66fe07efe7a3552236190baa31a513b02d79799fac0a3f7c2df63f",
+  "checked_at": "2026-09-25T11:34:46Z"
+ },
+ "lineage": {
+  "registered_entries": 9,
+  "rule": "shared_ancestry_v1",
+  "rule_text": "Two registered entries join one lineage component when a chain of recorded ancestry edges (INIT: weights continued from a parent; TEACHER: a parent's predictions used as labels; PSEUDO_SOURCE: a parent's outputs or embeddings steered pseudo-labels) connects them, in either direction. Sharing a training scroll does not join components; it is reported separately. Edges are counted at two strengths: VERIFIED edges only, and VERIFIED plus INFERRED edges. UNVERIFIED edges never join.",
+  "unreleased_ancestor_nodes": [
+   "fiber_ink_4class_selfdistill.ink_teacher",
+   "fiber_selftrain_teacher_epoch30.ancestor_thr07ep95",
+   "ink_3d_dino_guided.stage1_teacher"
+  ],
+  "verified_and_inferred_edges": {
+   "components": [
+    {
+     "members": [
+      "dinovol_v2_ps8_supcon3class_step362500",
+      "dinovol_v2_ps8_with_paris4_352500",
+      "fiber_dinoguided_2class_step010000",
+      "fiber_ink_4class_selfdistill",
+      "fiber_ink_4class_selfdistill.ink_teacher",
+      "fiber_selftrain_teacher_epoch30",
+      "fiber_selftrain_teacher_epoch30.ancestor_thr07ep95",
+      "ink_3d_dino_guided",
+      "ink_3d_dino_guided.stage1_teacher"
+     ],
+     "released_members": [
+      "dinovol_v2_ps8_supcon3class_step362500",
+      "dinovol_v2_ps8_with_paris4_352500",
+      "fiber_dinoguided_2class_step010000",
+      "fiber_ink_4class_selfdistill",
+      "fiber_selftrain_teacher_epoch30",
+      "ink_3d_dino_guided"
+     ],
+     "released_roles": {
+      "backbone": 2,
+      "fiber_segmenter": 3,
+      "ink_detector": 1
+     },
+     "roles": {
+      "backbone": 2,
+      "fiber_segmenter": 3,
+      "ink_detector": 1,
+      "teacher": 3
+     },
+     "size": 9
+    },
+    {
+     "members": [
+      "dinovol_v2_ps6_step032350"
+     ],
+     "released_members": [
+      "dinovol_v2_ps6_step032350"
+     ],
+     "released_roles": {
+      "backbone": 1
+     },
+     "roles": {
+      "backbone": 1
+     },
+     "size": 1
+    },
+    {
+     "members": [
+      "ink_9um"
+     ],
+     "released_members": [
+      "ink_9um"
+     ],
+     "released_roles": {
+      "ink_detector": 1
+     },
+     "roles": {
+      "ink_detector": 1
+     },
+     "size": 1
+    },
+    {
+     "members": [
+      "ink_canonical_2um"
+     ],
+     "released_members": [
+      "ink_canonical_2um"
+     ],
+     "released_roles": {
+      "ink_detector": 1
+     },
+     "roles": {
+      "ink_detector": 1
+     },
+     "size": 1
+    }
+   ],
+   "entries_in_no_recorded_lineage": 3,
+   "joined_entries": 6,
+   "joined_ink_detectors": 1,
+   "joined_other_roles": {
+    "backbone": 2,
+    "fiber_segmenter": 3
+   },
+   "largest_component_size": 9,
+   "sentence": "6 of 9 registered entries joined the same lineage component under rule shared_ancestry_v1 (VERIFIED and INFERRED edges). Ink detectors among them: 1. Entries that are not ink detectors are counted separately by role: 2 backbone, 3 fiber_segmenter. The component also holds 3 unreleased ancestor node(s) recorded from source text. Registered entries with no recorded ancestry sit in singleton components; that is the absence of a record, not evidence of independence.",
+   "unreleased_nodes_in_component": [
+    "fiber_ink_4class_selfdistill.ink_teacher",
+    "fiber_selftrain_teacher_epoch30.ancestor_thr07ep95",
+    "ink_3d_dino_guided.stage1_teacher"
+   ]
+  },
+  "verified_edges": {
+   "components": [
+    {
+     "members": [
+      "dinovol_v2_ps8_supcon3class_step362500",
+      "dinovol_v2_ps8_with_paris4_352500",
+      "fiber_dinoguided_2class_step010000",
+      "fiber_selftrain_teacher_epoch30",
+      "ink_3d_dino_guided",
+      "ink_3d_dino_guided.stage1_teacher"
+     ],
+     "released_members": [
+      "dinovol_v2_ps8_supcon3class_step362500",
+      "dinovol_v2_ps8_with_paris4_352500",
+      "fiber_dinoguided_2class_step010000",
+      "fiber_selftrain_teacher_epoch30",
+      "ink_3d_dino_guided"
+     ],
+     "released_roles": {
+      "backbone": 2,
+      "fiber_segmenter": 2,
+      "ink_detector": 1
+     },
+     "roles": {
+      "backbone": 2,
+      "fiber_segmenter": 2,
+      "ink_detector": 1,
+      "teacher": 1
+     },
+     "size": 6
+    },
+    {
+     "members": [
+      "fiber_ink_4class_selfdistill",
+      "fiber_ink_4class_selfdistill.ink_teacher"
+     ],
+     "released_members": [
+      "fiber_ink_4class_selfdistill"
+     ],
+     "released_roles": {
+      "fiber_segmenter": 1
+     },
+     "roles": {
+      "fiber_segmenter": 1,
+      "teacher": 1
+     },
+     "size": 2
+    },
+    {
+     "members": [
+      "dinovol_v2_ps6_step032350"
+     ],
+     "released_members": [
+      "dinovol_v2_ps6_step032350"
+     ],
+     "released_roles": {
+      "backbone": 1
+     },
+     "roles": {
+      "backbone": 1
+     },
+     "size": 1
+    },
+    {
+     "members": [
+      "fiber_selftrain_teacher_epoch30.ancestor_thr07ep95"
+     ],
+     "released_members": [],
+     "released_roles": {},
+     "roles": {
+      "teacher": 1
+     },
+     "size": 1
+    },
+    {
+     "members": [
+      "ink_9um"
+     ],
+     "released_members": [
+      "ink_9um"
+     ],
+     "released_roles": {
+      "ink_detector": 1
+     },
+     "roles": {
+      "ink_detector": 1
+     },
+     "size": 1
+    },
+    {
+     "members": [
+      "ink_canonical_2um"
+     ],
+     "released_members": [
+      "ink_canonical_2um"
+     ],
+     "released_roles": {
+      "ink_detector": 1
+     },
+     "roles": {
+      "ink_detector": 1
+     },
+     "size": 1
+    }
+   ],
+   "entries_in_no_recorded_lineage": 3,
+   "joined_entries": 5,
+   "joined_ink_detectors": 1,
+   "joined_other_roles": {
+    "backbone": 2,
+    "fiber_segmenter": 2
+   },
+   "largest_component_size": 6,
+   "sentence": "5 of 9 registered entries joined the same lineage component under rule shared_ancestry_v1 (VERIFIED edges only). Ink detectors among them: 1. Entries that are not ink detectors are counted separately by role: 2 backbone, 2 fiber_segmenter. The component also holds 1 unreleased ancestor node(s) recorded from source text. Registered entries with no recorded ancestry sit in singleton components; that is the absence of a record, not evidence of independence.",
+   "unreleased_nodes_in_component": [
+    "ink_3d_dino_guided.stage1_teacher"
+   ]
+  }
+ },
+ "not_shown": [
+  "measured leakage or score inflation",
+  "prize-set scrolls",
+  "anything a cited source is silent about (UNVERIFIED)",
+  "independence: no recorded ancestry is not independence"
+ ],
+ "record_schema": "argus-exposure-record-v1",
+ "record_sha256": "312e9f6c2e1e6ed779fbe294cebe41e7a368d34c6fd76f1549ed7f8784cf9774",
+ "schema": "argus-exposure-report-v1",
+ "shared_training_scrolls": [
+  {
+   "models": [
+    "dinovol_v2_ps8_with_paris4_352500",
+    "ink_3d_dino_guided.stage1_teacher"
+   ],
+   "scroll": "PHerc0009B"
+  },
+  {
+   "models": [
+    "dinovol_v2_ps8_with_paris4_352500",
+    "ink_3d_dino_guided.stage1_teacher",
+    "ink_9um"
+   ],
+   "scroll": "PHerc0139"
+  },
+  {
+   "models": [
+    "dinovol_v2_ps8_supcon3class_step362500",
+    "dinovol_v2_ps8_with_paris4_352500"
+   ],
+   "scroll": "PHerc0332"
+  },
+  {
+   "models": [
+    "dinovol_v2_ps8_with_paris4_352500",
+    "ink_3d_dino_guided.stage1_teacher"
+   ],
+   "scroll": "PHerc0500P2"
+  },
+  {
+   "models": [
+    "dinovol_v2_ps8_with_paris4_352500",
+    "ink_3d_dino_guided.stage1_teacher",
+    "ink_9um"
+   ],
+   "scroll": "PHerc0814"
+  },
+  {
+   "models": [
+    "ink_3d_dino_guided.stage1_teacher",
+    "ink_9um"
+   ],
+   "scroll": "PHerc1667"
+  },
+  {
+   "models": [
+    "dinovol_v2_ps8_with_paris4_352500",
+    "ink_3d_dino_guided.stage1_teacher"
+   ],
+   "scroll": "PHercMAN5"
+  },
+  {
+   "models": [
+    "dinovol_v2_ps8_supcon3class_step362500",
+    "dinovol_v2_ps8_with_paris4_352500",
+    "fiber_dinoguided_2class_step010000",
+    "fiber_ink_4class_selfdistill",
+    "ink_3d_dino_guided",
+    "ink_3d_dino_guided.stage1_teacher",
+    "ink_9um"
+   ],
+   "scroll": "PHercParis4"
+  }
+ ],
+ "verdicts": [
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "dinovol_v2_ps6_step032350",
+   "physical_scroll": "PHerc0139",
+   "query": "PHerc0139",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [
+      {
+       "claim": "c20",
+       "edge": "INIT",
+       "inherited_channel": "raw_ct_pretraining",
+       "path": [
+        "dinovol_v2_ps8_supcon3class_step362500",
+        "dinovol_v2_ps8_with_paris4_352500"
+       ],
+       "segments": null,
+       "source": "dinovol_v2_ps8_with_paris4_352500",
+       "status": "VERIFIED",
+       "via_name": "PHerc0139"
+      }
+     ],
+     "exposure_state": "EXPOSED",
+     "reasons": [
+      "exposed (VERIFIED): dinovol_v2_ps8_supcon3class_step362500 <- dinovol_v2_ps8_with_paris4_352500",
+      "ancestor dinovol_v2_ps8_with_paris4_352500 (INIT edge) is not verified absent on teacher_labels: ABSENT_INFERRED",
+      "ancestor dinovol_v2_ps8_with_paris4_352500 (INIT edge) is not verified absent on pseudo_label_lineage: ABSENT_INFERRED"
+     ],
+     "state": "EXPOSED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "DEVELOPMENT_ONLY",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "dinovol_v2_ps8_supcon3class_step362500",
+   "physical_scroll": "PHerc0139",
+   "query": "PHerc0139",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: EXPOSED -- exposed (VERIFIED): dinovol_v2_ps8_supcon3class_step362500 <- dinovol_v2_ps8_with_paris4_352500; ancestor dinovol_v2_ps8_with_paris4_352500 (INIT edge) is not verified absent on teacher_labels: ABSENT_INFERRED; ancestor dinovol_v2_ps8_with_paris4_352500 (INIT edge) is not verified absent on pseudo_label_lineage: ABSENT_INFERRED"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "CLEAN",
+     "reasons": [],
+     "state": "CLEAN"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c23 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [
+      {
+       "claim": "c20",
+       "edge": null,
+       "inherited_channel": null,
+       "path": [
+        "dinovol_v2_ps8_with_paris4_352500"
+       ],
+       "segments": null,
+       "source": "dinovol_v2_ps8_with_paris4_352500",
+       "status": "VERIFIED",
+       "via_name": "PHerc0139"
+      }
+     ],
+     "exposure_state": "EXPOSED",
+     "reasons": [
+      "exposed (VERIFIED): dinovol_v2_ps8_with_paris4_352500"
+     ],
+     "state": "EXPOSED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c22 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    }
+   },
+   "exposure_eligibility": "DEVELOPMENT_ONLY",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "dinovol_v2_ps8_with_paris4_352500",
+   "physical_scroll": "PHerc0139",
+   "query": "PHerc0139",
+   "reasons": [
+    "teacher_labels: ABSENT_INFERRED -- absence claim c22 is only INFERRED",
+    "pseudo_label_lineage: ABSENT_INFERRED -- absence claim c23 is only INFERRED",
+    "raw_ct_pretraining: EXPOSED -- exposed (VERIFIED): dinovol_v2_ps8_with_paris4_352500"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "CLEAN",
+     "reasons": [],
+     "state": "CLEAN"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [
+      {
+       "claim": "c20",
+       "edge": "PSEUDO_SOURCE",
+       "inherited_channel": "raw_ct_pretraining",
+       "path": [
+        "fiber_dinoguided_2class_step010000",
+        "dinovol_v2_ps8_supcon3class_step362500",
+        "dinovol_v2_ps8_with_paris4_352500"
+       ],
+       "segments": null,
+       "source": "dinovol_v2_ps8_with_paris4_352500",
+       "status": "VERIFIED",
+       "via_name": "PHerc0139"
+      }
+     ],
+     "exposure_state": "EXPOSED",
+     "reasons": [
+      "exposed (VERIFIED): fiber_dinoguided_2class_step010000 <- dinovol_v2_ps8_supcon3class_step362500 <- dinovol_v2_ps8_with_paris4_352500",
+      "ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on pseudo_label_lineage: UNVERIFIED"
+     ],
+     "state": "EXPOSED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)",
+      "ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on raw_ct_pretraining: UNVERIFIED"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)",
+      "ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on raw_ct_pretraining: UNVERIFIED"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "DEVELOPMENT_ONLY",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "fiber_dinoguided_2class_step010000",
+   "physical_scroll": "PHerc0139",
+   "query": "PHerc0139",
+   "reasons": [
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED); ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on direct_labels: UNVERIFIED; ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+    "pseudo_label_lineage: EXPOSED -- exposed (VERIFIED): fiber_dinoguided_2class_step010000 <- dinovol_v2_ps8_supcon3class_step362500 <- dinovol_v2_ps8_with_paris4_352500; ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on direct_labels: UNVERIFIED; ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on teacher_labels: UNVERIFIED",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED); ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on direct_labels: UNVERIFIED; ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on teacher_labels: UNVERIFIED"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "CLEAN",
+     "reasons": [],
+     "state": "CLEAN"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [
+      {
+       "claim": "c20",
+       "edge": "TEACHER",
+       "inherited_channel": "pseudo_label_lineage",
+       "path": [
+        "fiber_ink_4class_selfdistill",
+        "fiber_dinoguided_2class_step010000",
+        "dinovol_v2_ps8_supcon3class_step362500",
+        "dinovol_v2_ps8_with_paris4_352500"
+       ],
+       "segments": null,
+       "source": "dinovol_v2_ps8_with_paris4_352500",
+       "status": "INFERRED",
+       "via_name": "PHerc0139"
+      }
+     ],
+     "exposure_state": "EXPOSED",
+     "reasons": [
+      "exposed (INFERRED): fiber_ink_4class_selfdistill <- fiber_dinoguided_2class_step010000 <- dinovol_v2_ps8_supcon3class_step362500 <- dinovol_v2_ps8_with_paris4_352500",
+      "ancestor fiber_dinoguided_2class_step010000 (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_dinoguided_2class_step010000 (TEACHER edge) is not verified absent on raw_ct_pretraining: UNVERIFIED",
+      "the TEACHER edge to fiber_dinoguided_2class_step010000 is only INFERRED",
+      "ancestor fiber_ink_4class_selfdistill.ink_teacher (TEACHER edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor fiber_ink_4class_selfdistill.ink_teacher (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_ink_4class_selfdistill.ink_teacher (TEACHER edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor fiber_ink_4class_selfdistill.ink_teacher (TEACHER edge) is not verified absent on raw_ct_pretraining: UNVERIFIED"
+     ],
+     "state": "EXPOSED"
+    }
+   },
+   "exposure_eligibility": "DEVELOPMENT_ONLY",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "fiber_ink_4class_selfdistill",
+   "physical_scroll": "PHerc0139",
+   "query": "PHerc0139",
+   "reasons": [
+    "teacher_labels: EXPOSED -- exposed (INFERRED): fiber_ink_4class_selfdistill <- fiber_dinoguided_2class_step010000 <- dinovol_v2_ps8_supcon3class_step362500 <- dinovol_v2_ps8_with_paris4_352500; ancestor fiber_dinoguided_2class_step010000 (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED; ancestor fiber_dinoguided_2class_step010000 (TEACHER edge) is not verified absent on raw_ct_pretraining: UNVERIFIED",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)",
+      "ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on raw_ct_pretraining: UNVERIFIED",
+      "the INIT edge to fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 is only INFERRED"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "fiber_selftrain_teacher_epoch30",
+   "physical_scroll": "PHerc0139",
+   "query": "PHerc0139",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED); ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on direct_labels: UNVERIFIED; ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on teacher_labels: UNVERIFIED"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [
+      {
+       "claim": "c20",
+       "edge": "PSEUDO_SOURCE",
+       "inherited_channel": "raw_ct_pretraining",
+       "path": [
+        "ink_3d_dino_guided",
+        "dinovol_v2_ps8_with_paris4_352500"
+       ],
+       "segments": null,
+       "source": "dinovol_v2_ps8_with_paris4_352500",
+       "status": "VERIFIED",
+       "via_name": "PHerc0139"
+      }
+     ],
+     "exposure_state": "EXPOSED",
+     "reasons": [
+      "exposed (VERIFIED): ink_3d_dino_guided <- dinovol_v2_ps8_with_paris4_352500",
+      "ancestor dinovol_v2_ps8_with_paris4_352500 (PSEUDO_SOURCE edge) is not verified absent on teacher_labels: ABSENT_INFERRED",
+      "ancestor dinovol_v2_ps8_with_paris4_352500 (PSEUDO_SOURCE edge) is not verified absent on pseudo_label_lineage: ABSENT_INFERRED"
+     ],
+     "state": "EXPOSED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [
+      {
+       "claim": "c10",
+       "edge": "TEACHER",
+       "inherited_channel": "direct_labels",
+       "path": [
+        "ink_3d_dino_guided",
+        "ink_3d_dino_guided.stage1_teacher"
+       ],
+       "segments": null,
+       "source": "ink_3d_dino_guided",
+       "status": "VERIFIED",
+       "via_name": "PHerc. 0139"
+      }
+     ],
+     "exposure_state": "EXPOSED",
+     "reasons": [
+      "exposed (VERIFIED): ink_3d_dino_guided <- ink_3d_dino_guided.stage1_teacher",
+      "ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on raw_ct_pretraining: UNVERIFIED"
+     ],
+     "state": "EXPOSED"
+    }
+   },
+   "exposure_eligibility": "DEVELOPMENT_ONLY",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "ink_3d_dino_guided",
+   "physical_scroll": "PHerc0139",
+   "query": "PHerc0139",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: EXPOSED -- exposed (VERIFIED): ink_3d_dino_guided <- ink_3d_dino_guided.stage1_teacher; ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED; ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+    "pseudo_label_lineage: EXPOSED -- exposed (VERIFIED): ink_3d_dino_guided <- dinovol_v2_ps8_with_paris4_352500; ancestor dinovol_v2_ps8_with_paris4_352500 (PSEUDO_SOURCE edge) is not verified absent on teacher_labels: ABSENT_INFERRED; ancestor dinovol_v2_ps8_with_paris4_352500 (PSEUDO_SOURCE edge) is not verified absent on pseudo_label_lineage: ABSENT_INFERRED",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [
+      {
+       "claim": "c01",
+       "edge": null,
+       "inherited_channel": null,
+       "path": [
+        "ink_9um"
+       ],
+       "segments": {
+        "PHerc. 0139": [
+         "0139:w016",
+         "0139:w017",
+         "0139:w028",
+         "0139:w029",
+         "0139:w035",
+         "0139:w039",
+         "0139:w040",
+         "0139:w041",
+         "0139:w043",
+         "0139:w044"
+        ],
+        "PHerc. 0814": [
+         "0814:46527"
+        ],
+        "PHerc. Paris 4": [
+         "Paris4:w00",
+         "Paris4:w01",
+         "Paris4:w02",
+         "Paris4:w03",
+         "Paris4:w05",
+         "Paris4:w06",
+         "Paris4:w07",
+         "Paris4:w09"
+        ],
+        "Scroll 1667": [
+         "1667:w013",
+         "1667:w018",
+         "1667:w023",
+         "1667:w028",
+         "1667:w029",
+         "1667:w031"
+        ]
+       },
+       "source": "ink_9um",
+       "status": "VERIFIED",
+       "via_name": "PHerc. 0139"
+      }
+     ],
+     "exposure_state": "EXPOSED",
+     "reasons": [
+      "exposed (VERIFIED): ink_9um"
+     ],
+     "state": "EXPOSED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c04 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c02 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c03 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    }
+   },
+   "exposure_eligibility": "DEVELOPMENT_ONLY",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "ink_9um",
+   "physical_scroll": "PHerc0139",
+   "query": "PHerc0139",
+   "reasons": [
+    "direct_labels: EXPOSED -- exposed (VERIFIED): ink_9um",
+    "teacher_labels: ABSENT_INFERRED -- absence claim c03 is only INFERRED",
+    "pseudo_label_lineage: ABSENT_INFERRED -- absence claim c04 is only INFERRED",
+    "raw_ct_pretraining: ABSENT_INFERRED -- absence claim c02 is only INFERRED"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "ink_canonical_2um",
+   "physical_scroll": "PHerc0139",
+   "query": "PHerc0139",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "dinovol_v2_ps6_step032350",
+   "physical_scroll": "PHerc0814",
+   "query": "PHerc0814",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [
+      {
+       "claim": "c20",
+       "edge": "INIT",
+       "inherited_channel": "raw_ct_pretraining",
+       "path": [
+        "dinovol_v2_ps8_supcon3class_step362500",
+        "dinovol_v2_ps8_with_paris4_352500"
+       ],
+       "segments": null,
+       "source": "dinovol_v2_ps8_with_paris4_352500",
+       "status": "VERIFIED",
+       "via_name": "PHerc0814"
+      }
+     ],
+     "exposure_state": "EXPOSED",
+     "reasons": [
+      "exposed (VERIFIED): dinovol_v2_ps8_supcon3class_step362500 <- dinovol_v2_ps8_with_paris4_352500",
+      "ancestor dinovol_v2_ps8_with_paris4_352500 (INIT edge) is not verified absent on teacher_labels: ABSENT_INFERRED",
+      "ancestor dinovol_v2_ps8_with_paris4_352500 (INIT edge) is not verified absent on pseudo_label_lineage: ABSENT_INFERRED"
+     ],
+     "state": "EXPOSED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "DEVELOPMENT_ONLY",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "dinovol_v2_ps8_supcon3class_step362500",
+   "physical_scroll": "PHerc0814",
+   "query": "PHerc0814",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: EXPOSED -- exposed (VERIFIED): dinovol_v2_ps8_supcon3class_step362500 <- dinovol_v2_ps8_with_paris4_352500; ancestor dinovol_v2_ps8_with_paris4_352500 (INIT edge) is not verified absent on teacher_labels: ABSENT_INFERRED; ancestor dinovol_v2_ps8_with_paris4_352500 (INIT edge) is not verified absent on pseudo_label_lineage: ABSENT_INFERRED"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "CLEAN",
+     "reasons": [],
+     "state": "CLEAN"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c23 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [
+      {
+       "claim": "c20",
+       "edge": null,
+       "inherited_channel": null,
+       "path": [
+        "dinovol_v2_ps8_with_paris4_352500"
+       ],
+       "segments": null,
+       "source": "dinovol_v2_ps8_with_paris4_352500",
+       "status": "VERIFIED",
+       "via_name": "PHerc0814"
+      }
+     ],
+     "exposure_state": "EXPOSED",
+     "reasons": [
+      "exposed (VERIFIED): dinovol_v2_ps8_with_paris4_352500"
+     ],
+     "state": "EXPOSED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c22 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    }
+   },
+   "exposure_eligibility": "DEVELOPMENT_ONLY",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "dinovol_v2_ps8_with_paris4_352500",
+   "physical_scroll": "PHerc0814",
+   "query": "PHerc0814",
+   "reasons": [
+    "teacher_labels: ABSENT_INFERRED -- absence claim c22 is only INFERRED",
+    "pseudo_label_lineage: ABSENT_INFERRED -- absence claim c23 is only INFERRED",
+    "raw_ct_pretraining: EXPOSED -- exposed (VERIFIED): dinovol_v2_ps8_with_paris4_352500"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "CLEAN",
+     "reasons": [],
+     "state": "CLEAN"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [
+      {
+       "claim": "c20",
+       "edge": "PSEUDO_SOURCE",
+       "inherited_channel": "raw_ct_pretraining",
+       "path": [
+        "fiber_dinoguided_2class_step010000",
+        "dinovol_v2_ps8_supcon3class_step362500",
+        "dinovol_v2_ps8_with_paris4_352500"
+       ],
+       "segments": null,
+       "source": "dinovol_v2_ps8_with_paris4_352500",
+       "status": "VERIFIED",
+       "via_name": "PHerc0814"
+      }
+     ],
+     "exposure_state": "EXPOSED",
+     "reasons": [
+      "exposed (VERIFIED): fiber_dinoguided_2class_step010000 <- dinovol_v2_ps8_supcon3class_step362500 <- dinovol_v2_ps8_with_paris4_352500",
+      "ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on pseudo_label_lineage: UNVERIFIED"
+     ],
+     "state": "EXPOSED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)",
+      "ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on raw_ct_pretraining: UNVERIFIED"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)",
+      "ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on raw_ct_pretraining: UNVERIFIED"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "DEVELOPMENT_ONLY",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "fiber_dinoguided_2class_step010000",
+   "physical_scroll": "PHerc0814",
+   "query": "PHerc0814",
+   "reasons": [
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED); ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on direct_labels: UNVERIFIED; ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+    "pseudo_label_lineage: EXPOSED -- exposed (VERIFIED): fiber_dinoguided_2class_step010000 <- dinovol_v2_ps8_supcon3class_step362500 <- dinovol_v2_ps8_with_paris4_352500; ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on direct_labels: UNVERIFIED; ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on teacher_labels: UNVERIFIED",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED); ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on direct_labels: UNVERIFIED; ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on teacher_labels: UNVERIFIED"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "CLEAN",
+     "reasons": [],
+     "state": "CLEAN"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [
+      {
+       "claim": "c20",
+       "edge": "TEACHER",
+       "inherited_channel": "pseudo_label_lineage",
+       "path": [
+        "fiber_ink_4class_selfdistill",
+        "fiber_dinoguided_2class_step010000",
+        "dinovol_v2_ps8_supcon3class_step362500",
+        "dinovol_v2_ps8_with_paris4_352500"
+       ],
+       "segments": null,
+       "source": "dinovol_v2_ps8_with_paris4_352500",
+       "status": "INFERRED",
+       "via_name": "PHerc0814"
+      }
+     ],
+     "exposure_state": "EXPOSED",
+     "reasons": [
+      "exposed (INFERRED): fiber_ink_4class_selfdistill <- fiber_dinoguided_2class_step010000 <- dinovol_v2_ps8_supcon3class_step362500 <- dinovol_v2_ps8_with_paris4_352500",
+      "ancestor fiber_dinoguided_2class_step010000 (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_dinoguided_2class_step010000 (TEACHER edge) is not verified absent on raw_ct_pretraining: UNVERIFIED",
+      "the TEACHER edge to fiber_dinoguided_2class_step010000 is only INFERRED",
+      "ancestor fiber_ink_4class_selfdistill.ink_teacher (TEACHER edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor fiber_ink_4class_selfdistill.ink_teacher (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_ink_4class_selfdistill.ink_teacher (TEACHER edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor fiber_ink_4class_selfdistill.ink_teacher (TEACHER edge) is not verified absent on raw_ct_pretraining: UNVERIFIED"
+     ],
+     "state": "EXPOSED"
+    }
+   },
+   "exposure_eligibility": "DEVELOPMENT_ONLY",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "fiber_ink_4class_selfdistill",
+   "physical_scroll": "PHerc0814",
+   "query": "PHerc0814",
+   "reasons": [
+    "teacher_labels: EXPOSED -- exposed (INFERRED): fiber_ink_4class_selfdistill <- fiber_dinoguided_2class_step010000 <- dinovol_v2_ps8_supcon3class_step362500 <- dinovol_v2_ps8_with_paris4_352500; ancestor fiber_dinoguided_2class_step010000 (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED; ancestor fiber_dinoguided_2class_step010000 (TEACHER edge) is not verified absent on raw_ct_pretraining: UNVERIFIED",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)",
+      "ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on raw_ct_pretraining: UNVERIFIED",
+      "the INIT edge to fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 is only INFERRED"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "fiber_selftrain_teacher_epoch30",
+   "physical_scroll": "PHerc0814",
+   "query": "PHerc0814",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED); ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on direct_labels: UNVERIFIED; ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on teacher_labels: UNVERIFIED"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [
+      {
+       "claim": "c20",
+       "edge": "PSEUDO_SOURCE",
+       "inherited_channel": "raw_ct_pretraining",
+       "path": [
+        "ink_3d_dino_guided",
+        "dinovol_v2_ps8_with_paris4_352500"
+       ],
+       "segments": null,
+       "source": "dinovol_v2_ps8_with_paris4_352500",
+       "status": "VERIFIED",
+       "via_name": "PHerc0814"
+      }
+     ],
+     "exposure_state": "EXPOSED",
+     "reasons": [
+      "exposed (VERIFIED): ink_3d_dino_guided <- dinovol_v2_ps8_with_paris4_352500",
+      "ancestor dinovol_v2_ps8_with_paris4_352500 (PSEUDO_SOURCE edge) is not verified absent on teacher_labels: ABSENT_INFERRED",
+      "ancestor dinovol_v2_ps8_with_paris4_352500 (PSEUDO_SOURCE edge) is not verified absent on pseudo_label_lineage: ABSENT_INFERRED"
+     ],
+     "state": "EXPOSED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [
+      {
+       "claim": "c10",
+       "edge": "TEACHER",
+       "inherited_channel": "direct_labels",
+       "path": [
+        "ink_3d_dino_guided",
+        "ink_3d_dino_guided.stage1_teacher"
+       ],
+       "segments": null,
+       "source": "ink_3d_dino_guided",
+       "status": "VERIFIED",
+       "via_name": "PHerc. 0814"
+      }
+     ],
+     "exposure_state": "EXPOSED",
+     "reasons": [
+      "exposed (VERIFIED): ink_3d_dino_guided <- ink_3d_dino_guided.stage1_teacher",
+      "ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on raw_ct_pretraining: UNVERIFIED"
+     ],
+     "state": "EXPOSED"
+    }
+   },
+   "exposure_eligibility": "DEVELOPMENT_ONLY",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "ink_3d_dino_guided",
+   "physical_scroll": "PHerc0814",
+   "query": "PHerc0814",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: EXPOSED -- exposed (VERIFIED): ink_3d_dino_guided <- ink_3d_dino_guided.stage1_teacher; ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED; ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+    "pseudo_label_lineage: EXPOSED -- exposed (VERIFIED): ink_3d_dino_guided <- dinovol_v2_ps8_with_paris4_352500; ancestor dinovol_v2_ps8_with_paris4_352500 (PSEUDO_SOURCE edge) is not verified absent on teacher_labels: ABSENT_INFERRED; ancestor dinovol_v2_ps8_with_paris4_352500 (PSEUDO_SOURCE edge) is not verified absent on pseudo_label_lineage: ABSENT_INFERRED",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [
+      {
+       "claim": "c01",
+       "edge": null,
+       "inherited_channel": null,
+       "path": [
+        "ink_9um"
+       ],
+       "segments": {
+        "PHerc. 0139": [
+         "0139:w016",
+         "0139:w017",
+         "0139:w028",
+         "0139:w029",
+         "0139:w035",
+         "0139:w039",
+         "0139:w040",
+         "0139:w041",
+         "0139:w043",
+         "0139:w044"
+        ],
+        "PHerc. 0814": [
+         "0814:46527"
+        ],
+        "PHerc. Paris 4": [
+         "Paris4:w00",
+         "Paris4:w01",
+         "Paris4:w02",
+         "Paris4:w03",
+         "Paris4:w05",
+         "Paris4:w06",
+         "Paris4:w07",
+         "Paris4:w09"
+        ],
+        "Scroll 1667": [
+         "1667:w013",
+         "1667:w018",
+         "1667:w023",
+         "1667:w028",
+         "1667:w029",
+         "1667:w031"
+        ]
+       },
+       "source": "ink_9um",
+       "status": "VERIFIED",
+       "via_name": "PHerc. 0814"
+      }
+     ],
+     "exposure_state": "EXPOSED",
+     "reasons": [
+      "exposed (VERIFIED): ink_9um"
+     ],
+     "state": "EXPOSED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c04 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c02 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c03 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    }
+   },
+   "exposure_eligibility": "DEVELOPMENT_ONLY",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "ink_9um",
+   "physical_scroll": "PHerc0814",
+   "query": "PHerc0814",
+   "reasons": [
+    "direct_labels: EXPOSED -- exposed (VERIFIED): ink_9um",
+    "teacher_labels: ABSENT_INFERRED -- absence claim c03 is only INFERRED",
+    "pseudo_label_lineage: ABSENT_INFERRED -- absence claim c04 is only INFERRED",
+    "raw_ct_pretraining: ABSENT_INFERRED -- absence claim c02 is only INFERRED"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "ink_canonical_2um",
+   "physical_scroll": "PHerc0814",
+   "query": "PHerc0814",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "dinovol_v2_ps6_step032350",
+   "physical_scroll": "PHerc0009B",
+   "query": "PHerc0009B",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [
+      {
+       "claim": "c20",
+       "edge": "INIT",
+       "inherited_channel": "raw_ct_pretraining",
+       "path": [
+        "dinovol_v2_ps8_supcon3class_step362500",
+        "dinovol_v2_ps8_with_paris4_352500"
+       ],
+       "segments": null,
+       "source": "dinovol_v2_ps8_with_paris4_352500",
+       "status": "VERIFIED",
+       "via_name": "PHerc0009B"
+      }
+     ],
+     "exposure_state": "EXPOSED",
+     "reasons": [
+      "exposed (VERIFIED): dinovol_v2_ps8_supcon3class_step362500 <- dinovol_v2_ps8_with_paris4_352500",
+      "ancestor dinovol_v2_ps8_with_paris4_352500 (INIT edge) is not verified absent on teacher_labels: ABSENT_INFERRED",
+      "ancestor dinovol_v2_ps8_with_paris4_352500 (INIT edge) is not verified absent on pseudo_label_lineage: ABSENT_INFERRED"
+     ],
+     "state": "EXPOSED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "DEVELOPMENT_ONLY",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "dinovol_v2_ps8_supcon3class_step362500",
+   "physical_scroll": "PHerc0009B",
+   "query": "PHerc0009B",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: EXPOSED -- exposed (VERIFIED): dinovol_v2_ps8_supcon3class_step362500 <- dinovol_v2_ps8_with_paris4_352500; ancestor dinovol_v2_ps8_with_paris4_352500 (INIT edge) is not verified absent on teacher_labels: ABSENT_INFERRED; ancestor dinovol_v2_ps8_with_paris4_352500 (INIT edge) is not verified absent on pseudo_label_lineage: ABSENT_INFERRED"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "CLEAN",
+     "reasons": [],
+     "state": "CLEAN"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c23 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [
+      {
+       "claim": "c20",
+       "edge": null,
+       "inherited_channel": null,
+       "path": [
+        "dinovol_v2_ps8_with_paris4_352500"
+       ],
+       "segments": null,
+       "source": "dinovol_v2_ps8_with_paris4_352500",
+       "status": "VERIFIED",
+       "via_name": "PHerc0009B"
+      }
+     ],
+     "exposure_state": "EXPOSED",
+     "reasons": [
+      "exposed (VERIFIED): dinovol_v2_ps8_with_paris4_352500"
+     ],
+     "state": "EXPOSED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c22 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    }
+   },
+   "exposure_eligibility": "DEVELOPMENT_ONLY",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "dinovol_v2_ps8_with_paris4_352500",
+   "physical_scroll": "PHerc0009B",
+   "query": "PHerc0009B",
+   "reasons": [
+    "teacher_labels: ABSENT_INFERRED -- absence claim c22 is only INFERRED",
+    "pseudo_label_lineage: ABSENT_INFERRED -- absence claim c23 is only INFERRED",
+    "raw_ct_pretraining: EXPOSED -- exposed (VERIFIED): dinovol_v2_ps8_with_paris4_352500"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "CLEAN",
+     "reasons": [],
+     "state": "CLEAN"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [
+      {
+       "claim": "c20",
+       "edge": "PSEUDO_SOURCE",
+       "inherited_channel": "raw_ct_pretraining",
+       "path": [
+        "fiber_dinoguided_2class_step010000",
+        "dinovol_v2_ps8_supcon3class_step362500",
+        "dinovol_v2_ps8_with_paris4_352500"
+       ],
+       "segments": null,
+       "source": "dinovol_v2_ps8_with_paris4_352500",
+       "status": "VERIFIED",
+       "via_name": "PHerc0009B"
+      }
+     ],
+     "exposure_state": "EXPOSED",
+     "reasons": [
+      "exposed (VERIFIED): fiber_dinoguided_2class_step010000 <- dinovol_v2_ps8_supcon3class_step362500 <- dinovol_v2_ps8_with_paris4_352500",
+      "ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on pseudo_label_lineage: UNVERIFIED"
+     ],
+     "state": "EXPOSED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)",
+      "ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on raw_ct_pretraining: UNVERIFIED"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)",
+      "ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on raw_ct_pretraining: UNVERIFIED"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "DEVELOPMENT_ONLY",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "fiber_dinoguided_2class_step010000",
+   "physical_scroll": "PHerc0009B",
+   "query": "PHerc0009B",
+   "reasons": [
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED); ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on direct_labels: UNVERIFIED; ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+    "pseudo_label_lineage: EXPOSED -- exposed (VERIFIED): fiber_dinoguided_2class_step010000 <- dinovol_v2_ps8_supcon3class_step362500 <- dinovol_v2_ps8_with_paris4_352500; ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on direct_labels: UNVERIFIED; ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on teacher_labels: UNVERIFIED",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED); ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on direct_labels: UNVERIFIED; ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on teacher_labels: UNVERIFIED"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "CLEAN",
+     "reasons": [],
+     "state": "CLEAN"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [
+      {
+       "claim": "c20",
+       "edge": "TEACHER",
+       "inherited_channel": "pseudo_label_lineage",
+       "path": [
+        "fiber_ink_4class_selfdistill",
+        "fiber_dinoguided_2class_step010000",
+        "dinovol_v2_ps8_supcon3class_step362500",
+        "dinovol_v2_ps8_with_paris4_352500"
+       ],
+       "segments": null,
+       "source": "dinovol_v2_ps8_with_paris4_352500",
+       "status": "INFERRED",
+       "via_name": "PHerc0009B"
+      }
+     ],
+     "exposure_state": "EXPOSED",
+     "reasons": [
+      "exposed (INFERRED): fiber_ink_4class_selfdistill <- fiber_dinoguided_2class_step010000 <- dinovol_v2_ps8_supcon3class_step362500 <- dinovol_v2_ps8_with_paris4_352500",
+      "ancestor fiber_dinoguided_2class_step010000 (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_dinoguided_2class_step010000 (TEACHER edge) is not verified absent on raw_ct_pretraining: UNVERIFIED",
+      "the TEACHER edge to fiber_dinoguided_2class_step010000 is only INFERRED",
+      "ancestor fiber_ink_4class_selfdistill.ink_teacher (TEACHER edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor fiber_ink_4class_selfdistill.ink_teacher (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_ink_4class_selfdistill.ink_teacher (TEACHER edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor fiber_ink_4class_selfdistill.ink_teacher (TEACHER edge) is not verified absent on raw_ct_pretraining: UNVERIFIED"
+     ],
+     "state": "EXPOSED"
+    }
+   },
+   "exposure_eligibility": "DEVELOPMENT_ONLY",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "fiber_ink_4class_selfdistill",
+   "physical_scroll": "PHerc0009B",
+   "query": "PHerc0009B",
+   "reasons": [
+    "teacher_labels: EXPOSED -- exposed (INFERRED): fiber_ink_4class_selfdistill <- fiber_dinoguided_2class_step010000 <- dinovol_v2_ps8_supcon3class_step362500 <- dinovol_v2_ps8_with_paris4_352500; ancestor fiber_dinoguided_2class_step010000 (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED; ancestor fiber_dinoguided_2class_step010000 (TEACHER edge) is not verified absent on raw_ct_pretraining: UNVERIFIED",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)",
+      "ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on raw_ct_pretraining: UNVERIFIED",
+      "the INIT edge to fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 is only INFERRED"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "fiber_selftrain_teacher_epoch30",
+   "physical_scroll": "PHerc0009B",
+   "query": "PHerc0009B",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED); ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on direct_labels: UNVERIFIED; ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on teacher_labels: UNVERIFIED"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [
+      {
+       "claim": "c20",
+       "edge": "PSEUDO_SOURCE",
+       "inherited_channel": "raw_ct_pretraining",
+       "path": [
+        "ink_3d_dino_guided",
+        "dinovol_v2_ps8_with_paris4_352500"
+       ],
+       "segments": null,
+       "source": "dinovol_v2_ps8_with_paris4_352500",
+       "status": "VERIFIED",
+       "via_name": "PHerc0009B"
+      }
+     ],
+     "exposure_state": "EXPOSED",
+     "reasons": [
+      "exposed (VERIFIED): ink_3d_dino_guided <- dinovol_v2_ps8_with_paris4_352500",
+      "ancestor dinovol_v2_ps8_with_paris4_352500 (PSEUDO_SOURCE edge) is not verified absent on teacher_labels: ABSENT_INFERRED",
+      "ancestor dinovol_v2_ps8_with_paris4_352500 (PSEUDO_SOURCE edge) is not verified absent on pseudo_label_lineage: ABSENT_INFERRED"
+     ],
+     "state": "EXPOSED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [
+      {
+       "claim": "c10",
+       "edge": "TEACHER",
+       "inherited_channel": "direct_labels",
+       "path": [
+        "ink_3d_dino_guided",
+        "ink_3d_dino_guided.stage1_teacher"
+       ],
+       "segments": null,
+       "source": "ink_3d_dino_guided",
+       "status": "INFERRED",
+       "via_name": "PHerc. 9B"
+      }
+     ],
+     "exposure_state": "EXPOSED",
+     "reasons": [
+      "exposed (INFERRED): ink_3d_dino_guided <- ink_3d_dino_guided.stage1_teacher",
+      "ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on raw_ct_pretraining: UNVERIFIED"
+     ],
+     "state": "EXPOSED"
+    }
+   },
+   "exposure_eligibility": "DEVELOPMENT_ONLY",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "ink_3d_dino_guided",
+   "physical_scroll": "PHerc0009B",
+   "query": "PHerc0009B",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: EXPOSED -- exposed (INFERRED): ink_3d_dino_guided <- ink_3d_dino_guided.stage1_teacher; ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED; ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+    "pseudo_label_lineage: EXPOSED -- exposed (VERIFIED): ink_3d_dino_guided <- dinovol_v2_ps8_with_paris4_352500; ancestor dinovol_v2_ps8_with_paris4_352500 (PSEUDO_SOURCE edge) is not verified absent on teacher_labels: ABSENT_INFERRED; ancestor dinovol_v2_ps8_with_paris4_352500 (PSEUDO_SOURCE edge) is not verified absent on pseudo_label_lineage: ABSENT_INFERRED",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "CLEAN",
+     "reasons": [],
+     "state": "CLEAN"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c04 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c02 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c03 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "ink_9um",
+   "physical_scroll": "PHerc0009B",
+   "query": "PHerc0009B",
+   "reasons": [
+    "teacher_labels: ABSENT_INFERRED -- absence claim c03 is only INFERRED",
+    "pseudo_label_lineage: ABSENT_INFERRED -- absence claim c04 is only INFERRED",
+    "raw_ct_pretraining: ABSENT_INFERRED -- absence claim c02 is only INFERRED"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "ink_canonical_2um",
+   "physical_scroll": "PHerc0009B",
+   "query": "PHerc0009B",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "dinovol_v2_ps6_step032350",
+   "physical_scroll": "PHerc0841",
+   "query": "PHerc0841",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)",
+      "ancestor dinovol_v2_ps8_with_paris4_352500 (INIT edge) is not verified absent on teacher_labels: ABSENT_INFERRED",
+      "ancestor dinovol_v2_ps8_with_paris4_352500 (INIT edge) is not verified absent on pseudo_label_lineage: ABSENT_INFERRED"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "dinovol_v2_ps8_supcon3class_step362500",
+   "physical_scroll": "PHerc0841",
+   "query": "PHerc0841",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED); ancestor dinovol_v2_ps8_with_paris4_352500 (INIT edge) is not verified absent on teacher_labels: ABSENT_INFERRED; ancestor dinovol_v2_ps8_with_paris4_352500 (INIT edge) is not verified absent on pseudo_label_lineage: ABSENT_INFERRED"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "CLEAN",
+     "reasons": [],
+     "state": "CLEAN"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c23 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "CLEAN",
+     "reasons": [],
+     "state": "CLEAN"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c22 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "dinovol_v2_ps8_with_paris4_352500",
+   "physical_scroll": "PHerc0841",
+   "query": "PHerc0841",
+   "reasons": [
+    "teacher_labels: ABSENT_INFERRED -- absence claim c22 is only INFERRED",
+    "pseudo_label_lineage: ABSENT_INFERRED -- absence claim c23 is only INFERRED"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "CLEAN",
+     "reasons": [],
+     "state": "CLEAN"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)",
+      "ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on raw_ct_pretraining: UNVERIFIED"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)",
+      "ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on raw_ct_pretraining: UNVERIFIED"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)",
+      "ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on raw_ct_pretraining: UNVERIFIED"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "fiber_dinoguided_2class_step010000",
+   "physical_scroll": "PHerc0841",
+   "query": "PHerc0841",
+   "reasons": [
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED); ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on direct_labels: UNVERIFIED; ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED); ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on direct_labels: UNVERIFIED; ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on teacher_labels: UNVERIFIED",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED); ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on direct_labels: UNVERIFIED; ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on teacher_labels: UNVERIFIED"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "CLEAN",
+     "reasons": [],
+     "state": "CLEAN"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)",
+      "ancestor fiber_dinoguided_2class_step010000 (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_dinoguided_2class_step010000 (TEACHER edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor fiber_dinoguided_2class_step010000 (TEACHER edge) is not verified absent on raw_ct_pretraining: UNVERIFIED",
+      "the TEACHER edge to fiber_dinoguided_2class_step010000 is only INFERRED",
+      "ancestor fiber_ink_4class_selfdistill.ink_teacher (TEACHER edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor fiber_ink_4class_selfdistill.ink_teacher (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_ink_4class_selfdistill.ink_teacher (TEACHER edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor fiber_ink_4class_selfdistill.ink_teacher (TEACHER edge) is not verified absent on raw_ct_pretraining: UNVERIFIED"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "fiber_ink_4class_selfdistill",
+   "physical_scroll": "PHerc0841",
+   "query": "PHerc0841",
+   "reasons": [
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED); ancestor fiber_dinoguided_2class_step010000 (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED; ancestor fiber_dinoguided_2class_step010000 (TEACHER edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)",
+      "ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on raw_ct_pretraining: UNVERIFIED",
+      "the INIT edge to fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 is only INFERRED"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "fiber_selftrain_teacher_epoch30",
+   "physical_scroll": "PHerc0841",
+   "query": "PHerc0841",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED); ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on direct_labels: UNVERIFIED; ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on teacher_labels: UNVERIFIED"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "claim c12 names 256 expert-clicked reference tokens (source scroll not stated), which resolves to no physical scroll, so it cannot be shown to differ from PHerc0841",
+      "ancestor dinovol_v2_ps8_with_paris4_352500 (PSEUDO_SOURCE edge) is not verified absent on teacher_labels: ABSENT_INFERRED",
+      "ancestor dinovol_v2_ps8_with_paris4_352500 (PSEUDO_SOURCE edge) is not verified absent on pseudo_label_lineage: ABSENT_INFERRED"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [
+      {
+       "claim": "c10",
+       "edge": "TEACHER",
+       "inherited_channel": "direct_labels",
+       "path": [
+        "ink_3d_dino_guided",
+        "ink_3d_dino_guided.stage1_teacher"
+       ],
+       "segments": null,
+       "source": "ink_3d_dino_guided",
+       "status": "VERIFIED",
+       "via_name": "PHerc. 0841"
+      }
+     ],
+     "exposure_state": "EXPOSED",
+     "reasons": [
+      "exposed (VERIFIED): ink_3d_dino_guided <- ink_3d_dino_guided.stage1_teacher",
+      "ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on raw_ct_pretraining: UNVERIFIED"
+     ],
+     "state": "EXPOSED"
+    }
+   },
+   "exposure_eligibility": "DEVELOPMENT_ONLY",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "ink_3d_dino_guided",
+   "physical_scroll": "PHerc0841",
+   "query": "PHerc0841",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: EXPOSED -- exposed (VERIFIED): ink_3d_dino_guided <- ink_3d_dino_guided.stage1_teacher; ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED; ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+    "pseudo_label_lineage: UNVERIFIED -- claim c12 names 256 expert-clicked reference tokens (source scroll not stated), which resolves to no physical scroll, so it cannot be shown to differ from PHerc0841; ancestor dinovol_v2_ps8_with_paris4_352500 (PSEUDO_SOURCE edge) is not verified absent on teacher_labels: ABSENT_INFERRED; ancestor dinovol_v2_ps8_with_paris4_352500 (PSEUDO_SOURCE edge) is not verified absent on pseudo_label_lineage: ABSENT_INFERRED",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "CLEAN",
+     "reasons": [],
+     "state": "CLEAN"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c04 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c02 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c03 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "ink_9um",
+   "physical_scroll": "PHerc0841",
+   "query": "PHerc0841",
+   "reasons": [
+    "teacher_labels: ABSENT_INFERRED -- absence claim c03 is only INFERRED",
+    "pseudo_label_lineage: ABSENT_INFERRED -- absence claim c04 is only INFERRED",
+    "raw_ct_pretraining: ABSENT_INFERRED -- absence claim c02 is only INFERRED"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "ink_canonical_2um",
+   "physical_scroll": "PHerc0841",
+   "query": "PHerc0841",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "dinovol_v2_ps6_step032350",
+   "physical_scroll": "PHerc0332",
+   "query": "PHerc0332",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [
+      {
+       "claim": "c33",
+       "edge": null,
+       "inherited_channel": null,
+       "path": [
+        "dinovol_v2_ps8_supcon3class_step362500"
+       ],
+       "segments": null,
+       "source": "dinovol_v2_ps8_supcon3class_step362500",
+       "status": "INFERRED",
+       "via_name": "PHerc0332"
+      }
+     ],
+     "exposure_state": "EXPOSED",
+     "reasons": [
+      "exposed (INFERRED): dinovol_v2_ps8_supcon3class_step362500"
+     ],
+     "state": "EXPOSED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [
+      {
+       "claim": "c31",
+       "edge": null,
+       "inherited_channel": null,
+       "path": [
+        "dinovol_v2_ps8_supcon3class_step362500"
+       ],
+       "segments": null,
+       "source": "dinovol_v2_ps8_supcon3class_step362500",
+       "status": "VERIFIED",
+       "via_name": "PHerc0332"
+      },
+      {
+       "claim": "c20",
+       "edge": "INIT",
+       "inherited_channel": "raw_ct_pretraining",
+       "path": [
+        "dinovol_v2_ps8_supcon3class_step362500",
+        "dinovol_v2_ps8_with_paris4_352500"
+       ],
+       "segments": null,
+       "source": "dinovol_v2_ps8_with_paris4_352500",
+       "status": "VERIFIED",
+       "via_name": "PHerc0332"
+      }
+     ],
+     "exposure_state": "EXPOSED",
+     "reasons": [
+      "exposed (VERIFIED): dinovol_v2_ps8_supcon3class_step362500; dinovol_v2_ps8_supcon3class_step362500 <- dinovol_v2_ps8_with_paris4_352500",
+      "ancestor dinovol_v2_ps8_with_paris4_352500 (INIT edge) is not verified absent on teacher_labels: ABSENT_INFERRED",
+      "ancestor dinovol_v2_ps8_with_paris4_352500 (INIT edge) is not verified absent on pseudo_label_lineage: ABSENT_INFERRED"
+     ],
+     "state": "EXPOSED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "DEVELOPMENT_ONLY",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "dinovol_v2_ps8_supcon3class_step362500",
+   "physical_scroll": "PHerc0332",
+   "query": "PHerc0332",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "pseudo_label_lineage: EXPOSED -- exposed (INFERRED): dinovol_v2_ps8_supcon3class_step362500",
+    "raw_ct_pretraining: EXPOSED -- exposed (VERIFIED): dinovol_v2_ps8_supcon3class_step362500; dinovol_v2_ps8_supcon3class_step362500 <- dinovol_v2_ps8_with_paris4_352500; ancestor dinovol_v2_ps8_with_paris4_352500 (INIT edge) is not verified absent on teacher_labels: ABSENT_INFERRED; ancestor dinovol_v2_ps8_with_paris4_352500 (INIT edge) is not verified absent on pseudo_label_lineage: ABSENT_INFERRED"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "CLEAN",
+     "reasons": [],
+     "state": "CLEAN"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c23 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [
+      {
+       "claim": "c20",
+       "edge": null,
+       "inherited_channel": null,
+       "path": [
+        "dinovol_v2_ps8_with_paris4_352500"
+       ],
+       "segments": null,
+       "source": "dinovol_v2_ps8_with_paris4_352500",
+       "status": "VERIFIED",
+       "via_name": "PHerc0332"
+      }
+     ],
+     "exposure_state": "EXPOSED",
+     "reasons": [
+      "exposed (VERIFIED): dinovol_v2_ps8_with_paris4_352500"
+     ],
+     "state": "EXPOSED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c22 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    }
+   },
+   "exposure_eligibility": "DEVELOPMENT_ONLY",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "dinovol_v2_ps8_with_paris4_352500",
+   "physical_scroll": "PHerc0332",
+   "query": "PHerc0332",
+   "reasons": [
+    "teacher_labels: ABSENT_INFERRED -- absence claim c22 is only INFERRED",
+    "pseudo_label_lineage: ABSENT_INFERRED -- absence claim c23 is only INFERRED",
+    "raw_ct_pretraining: EXPOSED -- exposed (VERIFIED): dinovol_v2_ps8_with_paris4_352500"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "CLEAN",
+     "reasons": [],
+     "state": "CLEAN"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [
+      {
+       "claim": "c33",
+       "edge": "PSEUDO_SOURCE",
+       "inherited_channel": "pseudo_label_lineage",
+       "path": [
+        "fiber_dinoguided_2class_step010000",
+        "dinovol_v2_ps8_supcon3class_step362500"
+       ],
+       "segments": null,
+       "source": "dinovol_v2_ps8_supcon3class_step362500",
+       "status": "INFERRED",
+       "via_name": "PHerc0332"
+      },
+      {
+       "claim": "c31",
+       "edge": "PSEUDO_SOURCE",
+       "inherited_channel": "raw_ct_pretraining",
+       "path": [
+        "fiber_dinoguided_2class_step010000",
+        "dinovol_v2_ps8_supcon3class_step362500"
+       ],
+       "segments": null,
+       "source": "dinovol_v2_ps8_supcon3class_step362500",
+       "status": "VERIFIED",
+       "via_name": "PHerc0332"
+      },
+      {
+       "claim": "c20",
+       "edge": "PSEUDO_SOURCE",
+       "inherited_channel": "raw_ct_pretraining",
+       "path": [
+        "fiber_dinoguided_2class_step010000",
+        "dinovol_v2_ps8_supcon3class_step362500",
+        "dinovol_v2_ps8_with_paris4_352500"
+       ],
+       "segments": null,
+       "source": "dinovol_v2_ps8_with_paris4_352500",
+       "status": "VERIFIED",
+       "via_name": "PHerc0332"
+      }
+     ],
+     "exposure_state": "EXPOSED",
+     "reasons": [
+      "exposed (INFERRED): fiber_dinoguided_2class_step010000 <- dinovol_v2_ps8_supcon3class_step362500; fiber_dinoguided_2class_step010000 <- dinovol_v2_ps8_supcon3class_step362500 <- dinovol_v2_ps8_with_paris4_352500",
+      "ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on teacher_labels: UNVERIFIED"
+     ],
+     "state": "EXPOSED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)",
+      "ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on raw_ct_pretraining: UNVERIFIED"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)",
+      "ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on raw_ct_pretraining: UNVERIFIED"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "DEVELOPMENT_ONLY",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "fiber_dinoguided_2class_step010000",
+   "physical_scroll": "PHerc0332",
+   "query": "PHerc0332",
+   "reasons": [
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED); ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on direct_labels: UNVERIFIED; ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+    "pseudo_label_lineage: EXPOSED -- exposed (INFERRED): fiber_dinoguided_2class_step010000 <- dinovol_v2_ps8_supcon3class_step362500; fiber_dinoguided_2class_step010000 <- dinovol_v2_ps8_supcon3class_step362500 <- dinovol_v2_ps8_with_paris4_352500; ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on direct_labels: UNVERIFIED; ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on teacher_labels: UNVERIFIED",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED); ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on direct_labels: UNVERIFIED; ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on teacher_labels: UNVERIFIED"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "CLEAN",
+     "reasons": [],
+     "state": "CLEAN"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [
+      {
+       "claim": "c33",
+       "edge": "TEACHER",
+       "inherited_channel": "pseudo_label_lineage",
+       "path": [
+        "fiber_ink_4class_selfdistill",
+        "fiber_dinoguided_2class_step010000",
+        "dinovol_v2_ps8_supcon3class_step362500"
+       ],
+       "segments": null,
+       "source": "dinovol_v2_ps8_supcon3class_step362500",
+       "status": "INFERRED",
+       "via_name": "PHerc0332"
+      },
+      {
+       "claim": "c31",
+       "edge": "TEACHER",
+       "inherited_channel": "pseudo_label_lineage",
+       "path": [
+        "fiber_ink_4class_selfdistill",
+        "fiber_dinoguided_2class_step010000",
+        "dinovol_v2_ps8_supcon3class_step362500"
+       ],
+       "segments": null,
+       "source": "dinovol_v2_ps8_supcon3class_step362500",
+       "status": "INFERRED",
+       "via_name": "PHerc0332"
+      },
+      {
+       "claim": "c20",
+       "edge": "TEACHER",
+       "inherited_channel": "pseudo_label_lineage",
+       "path": [
+        "fiber_ink_4class_selfdistill",
+        "fiber_dinoguided_2class_step010000",
+        "dinovol_v2_ps8_supcon3class_step362500",
+        "dinovol_v2_ps8_with_paris4_352500"
+       ],
+       "segments": null,
+       "source": "dinovol_v2_ps8_with_paris4_352500",
+       "status": "INFERRED",
+       "via_name": "PHerc0332"
+      }
+     ],
+     "exposure_state": "EXPOSED",
+     "reasons": [
+      "exposed (INFERRED): fiber_ink_4class_selfdistill <- fiber_dinoguided_2class_step010000 <- dinovol_v2_ps8_supcon3class_step362500; fiber_ink_4class_selfdistill <- fiber_dinoguided_2class_step010000 <- dinovol_v2_ps8_supcon3class_step362500 <- dinovol_v2_ps8_with_paris4_352500",
+      "ancestor fiber_dinoguided_2class_step010000 (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_dinoguided_2class_step010000 (TEACHER edge) is not verified absent on raw_ct_pretraining: UNVERIFIED",
+      "the TEACHER edge to fiber_dinoguided_2class_step010000 is only INFERRED",
+      "ancestor fiber_ink_4class_selfdistill.ink_teacher (TEACHER edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor fiber_ink_4class_selfdistill.ink_teacher (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_ink_4class_selfdistill.ink_teacher (TEACHER edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor fiber_ink_4class_selfdistill.ink_teacher (TEACHER edge) is not verified absent on raw_ct_pretraining: UNVERIFIED"
+     ],
+     "state": "EXPOSED"
+    }
+   },
+   "exposure_eligibility": "DEVELOPMENT_ONLY",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "fiber_ink_4class_selfdistill",
+   "physical_scroll": "PHerc0332",
+   "query": "PHerc0332",
+   "reasons": [
+    "teacher_labels: EXPOSED -- exposed (INFERRED): fiber_ink_4class_selfdistill <- fiber_dinoguided_2class_step010000 <- dinovol_v2_ps8_supcon3class_step362500; fiber_ink_4class_selfdistill <- fiber_dinoguided_2class_step010000 <- dinovol_v2_ps8_supcon3class_step362500 <- dinovol_v2_ps8_with_paris4_352500; ancestor fiber_dinoguided_2class_step010000 (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED; ancestor fiber_dinoguided_2class_step010000 (TEACHER edge) is not verified absent on raw_ct_pretraining: UNVERIFIED",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)",
+      "ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on raw_ct_pretraining: UNVERIFIED",
+      "the INIT edge to fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 is only INFERRED"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "fiber_selftrain_teacher_epoch30",
+   "physical_scroll": "PHerc0332",
+   "query": "PHerc0332",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED); ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on direct_labels: UNVERIFIED; ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on teacher_labels: UNVERIFIED"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [
+      {
+       "claim": "c20",
+       "edge": "PSEUDO_SOURCE",
+       "inherited_channel": "raw_ct_pretraining",
+       "path": [
+        "ink_3d_dino_guided",
+        "dinovol_v2_ps8_with_paris4_352500"
+       ],
+       "segments": null,
+       "source": "dinovol_v2_ps8_with_paris4_352500",
+       "status": "VERIFIED",
+       "via_name": "PHerc0332"
+      }
+     ],
+     "exposure_state": "EXPOSED",
+     "reasons": [
+      "exposed (VERIFIED): ink_3d_dino_guided <- dinovol_v2_ps8_with_paris4_352500",
+      "ancestor dinovol_v2_ps8_with_paris4_352500 (PSEUDO_SOURCE edge) is not verified absent on teacher_labels: ABSENT_INFERRED",
+      "ancestor dinovol_v2_ps8_with_paris4_352500 (PSEUDO_SOURCE edge) is not verified absent on pseudo_label_lineage: ABSENT_INFERRED"
+     ],
+     "state": "EXPOSED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)",
+      "ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on direct_labels: ABSENT_INFERRED",
+      "ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on raw_ct_pretraining: UNVERIFIED"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "DEVELOPMENT_ONLY",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "ink_3d_dino_guided",
+   "physical_scroll": "PHerc0332",
+   "query": "PHerc0332",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED); ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on direct_labels: ABSENT_INFERRED; ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+    "pseudo_label_lineage: EXPOSED -- exposed (VERIFIED): ink_3d_dino_guided <- dinovol_v2_ps8_with_paris4_352500; ancestor dinovol_v2_ps8_with_paris4_352500 (PSEUDO_SOURCE edge) is not verified absent on teacher_labels: ABSENT_INFERRED; ancestor dinovol_v2_ps8_with_paris4_352500 (PSEUDO_SOURCE edge) is not verified absent on pseudo_label_lineage: ABSENT_INFERRED",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "CLEAN",
+     "reasons": [],
+     "state": "CLEAN"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c04 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c02 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c03 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "ink_9um",
+   "physical_scroll": "PHerc0332",
+   "query": "PHerc0332",
+   "reasons": [
+    "teacher_labels: ABSENT_INFERRED -- absence claim c03 is only INFERRED",
+    "pseudo_label_lineage: ABSENT_INFERRED -- absence claim c04 is only INFERRED",
+    "raw_ct_pretraining: ABSENT_INFERRED -- absence claim c02 is only INFERRED"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "ink_canonical_2um",
+   "physical_scroll": "PHerc0332",
+   "query": "PHerc0332",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "dinovol_v2_ps6_step032350",
+   "physical_scroll": "PHerc0172",
+   "query": "PHerc0172",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)",
+      "ancestor dinovol_v2_ps8_with_paris4_352500 (INIT edge) is not verified absent on teacher_labels: ABSENT_INFERRED",
+      "ancestor dinovol_v2_ps8_with_paris4_352500 (INIT edge) is not verified absent on pseudo_label_lineage: ABSENT_INFERRED"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "dinovol_v2_ps8_supcon3class_step362500",
+   "physical_scroll": "PHerc0172",
+   "query": "PHerc0172",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED); ancestor dinovol_v2_ps8_with_paris4_352500 (INIT edge) is not verified absent on teacher_labels: ABSENT_INFERRED; ancestor dinovol_v2_ps8_with_paris4_352500 (INIT edge) is not verified absent on pseudo_label_lineage: ABSENT_INFERRED"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "CLEAN",
+     "reasons": [],
+     "state": "CLEAN"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c23 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "CLEAN",
+     "reasons": [],
+     "state": "CLEAN"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c22 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "dinovol_v2_ps8_with_paris4_352500",
+   "physical_scroll": "PHerc0172",
+   "query": "PHerc0172",
+   "reasons": [
+    "teacher_labels: ABSENT_INFERRED -- absence claim c22 is only INFERRED",
+    "pseudo_label_lineage: ABSENT_INFERRED -- absence claim c23 is only INFERRED"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "CLEAN",
+     "reasons": [],
+     "state": "CLEAN"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)",
+      "ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on raw_ct_pretraining: UNVERIFIED"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)",
+      "ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on raw_ct_pretraining: UNVERIFIED"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)",
+      "ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on raw_ct_pretraining: UNVERIFIED"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "fiber_dinoguided_2class_step010000",
+   "physical_scroll": "PHerc0172",
+   "query": "PHerc0172",
+   "reasons": [
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED); ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on direct_labels: UNVERIFIED; ancestor fiber_selftrain_teacher_epoch30 (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED); ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on direct_labels: UNVERIFIED; ancestor dinovol_v2_ps8_supcon3class_step362500 (PSEUDO_SOURCE edge) is not verified absent on teacher_labels: UNVERIFIED",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED); ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on direct_labels: UNVERIFIED; ancestor fiber_selftrain_teacher_epoch30 (INIT edge) is not verified absent on teacher_labels: UNVERIFIED"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "CLEAN",
+     "reasons": [],
+     "state": "CLEAN"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)",
+      "ancestor fiber_dinoguided_2class_step010000 (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_dinoguided_2class_step010000 (TEACHER edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor fiber_dinoguided_2class_step010000 (TEACHER edge) is not verified absent on raw_ct_pretraining: UNVERIFIED",
+      "the TEACHER edge to fiber_dinoguided_2class_step010000 is only INFERRED",
+      "ancestor fiber_ink_4class_selfdistill.ink_teacher (TEACHER edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor fiber_ink_4class_selfdistill.ink_teacher (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_ink_4class_selfdistill.ink_teacher (TEACHER edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor fiber_ink_4class_selfdistill.ink_teacher (TEACHER edge) is not verified absent on raw_ct_pretraining: UNVERIFIED"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "fiber_ink_4class_selfdistill",
+   "physical_scroll": "PHerc0172",
+   "query": "PHerc0172",
+   "reasons": [
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED); ancestor fiber_dinoguided_2class_step010000 (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED; ancestor fiber_dinoguided_2class_step010000 (TEACHER edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)",
+      "ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on direct_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on raw_ct_pretraining: UNVERIFIED",
+      "the INIT edge to fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 is only INFERRED"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "fiber_selftrain_teacher_epoch30",
+   "physical_scroll": "PHerc0172",
+   "query": "PHerc0172",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED); ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on direct_labels: UNVERIFIED; ancestor fiber_selftrain_teacher_epoch30.ancestor_thr07ep95 (INIT edge) is not verified absent on teacher_labels: UNVERIFIED"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "claim c12 names 256 expert-clicked reference tokens (source scroll not stated), which resolves to no physical scroll, so it cannot be shown to differ from PHerc0172",
+      "ancestor dinovol_v2_ps8_with_paris4_352500 (PSEUDO_SOURCE edge) is not verified absent on teacher_labels: ABSENT_INFERRED",
+      "ancestor dinovol_v2_ps8_with_paris4_352500 (PSEUDO_SOURCE edge) is not verified absent on pseudo_label_lineage: ABSENT_INFERRED"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)",
+      "ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on direct_labels: ABSENT_INFERRED",
+      "ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+      "ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on pseudo_label_lineage: UNVERIFIED",
+      "ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on raw_ct_pretraining: UNVERIFIED"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "ink_3d_dino_guided",
+   "physical_scroll": "PHerc0172",
+   "query": "PHerc0172",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED); ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on direct_labels: ABSENT_INFERRED; ancestor ink_3d_dino_guided.stage1_teacher (TEACHER edge) is not verified absent on teacher_labels: UNVERIFIED",
+    "pseudo_label_lineage: UNVERIFIED -- claim c12 names 256 expert-clicked reference tokens (source scroll not stated), which resolves to no physical scroll, so it cannot be shown to differ from PHerc0172; ancestor dinovol_v2_ps8_with_paris4_352500 (PSEUDO_SOURCE edge) is not verified absent on teacher_labels: ABSENT_INFERRED; ancestor dinovol_v2_ps8_with_paris4_352500 (PSEUDO_SOURCE edge) is not verified absent on pseudo_label_lineage: ABSENT_INFERRED",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "CLEAN",
+     "reasons": [],
+     "state": "CLEAN"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c04 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c02 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "absence claim c03 is only INFERRED"
+     ],
+     "state": "ABSENT_INFERRED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "ink_9um",
+   "physical_scroll": "PHerc0172",
+   "query": "PHerc0172",
+   "reasons": [
+    "teacher_labels: ABSENT_INFERRED -- absence claim c03 is only INFERRED",
+    "pseudo_label_lineage: ABSENT_INFERRED -- absence claim c04 is only INFERRED",
+    "raw_ct_pretraining: ABSENT_INFERRED -- absence claim c02 is only INFERRED"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  },
+  {
+   "channels": {
+    "direct_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "pseudo_label_lineage": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "raw_ct_pretraining": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    },
+    "teacher_labels": {
+     "exposed_by": [],
+     "exposure_state": "UNKNOWN",
+     "reasons": [
+      "no source states this channel for this model (default UNVERIFIED)"
+     ],
+     "state": "UNVERIFIED"
+    }
+   },
+   "exposure_eligibility": "INDETERMINATE",
+   "identity": {
+    "reasons": [],
+    "status": "VERIFIED",
+    "via": "survey_key_or_alias"
+   },
+   "model": "ink_canonical_2um",
+   "physical_scroll": "PHerc0172",
+   "query": "PHerc0172",
+   "reasons": [
+    "direct_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "teacher_labels: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "pseudo_label_lineage: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)",
+    "raw_ct_pretraining: UNVERIFIED -- no source states this channel for this model (default UNVERIFIED)"
+   ],
+   "verdict": "NOT_ELIGIBLE"
+  }
+ ]
+}

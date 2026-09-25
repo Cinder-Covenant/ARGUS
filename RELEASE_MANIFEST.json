@@ -3,8 +3,8 @@
  "note": "sha256 of every file in this release except this manifest itself. Verify with: python tools/verify_manifest.py (run from this directory, wherever it sits)",
  "layout": "standalone",
  "tree_sha256_recipe": "sha256 of the UTF-8 text made of one line per row of `files`, rows ordered by path string: <path> NUL <sha256> newline. tools/verify_manifest.py recomputes it.",
- "file_count": 639,
- "tree_sha256": "e061bc7d0c18abd9f14563807633ec985586dbeb705c5afc2e6a77b6b69af74a",
+ "file_count": 649,
+ "tree_sha256": "76077c37b0222aa7ea443110c157b5d2557bb0e67ffd0e22c039eb96c7490a27",
  "files": [
   {
    "path": ".dockerignore",
@@ -89,7 +89,7 @@
   {
    "path": "SOURCE_PROVENANCE.json",
    "bytes": 501,
-   "sha256": "0e4dcf3bd895c5c9d5d1f193e7384467d485dc2fd2f99bd7dc5ac16833ae53b9"
+   "sha256": "926f8822a91eaa2fcbd1f1255022fee864f6b52fced385c87b621438bf15c17d"
   },
   {
    "path": "Start-ARGUS.cmd",
@@ -162,6 +162,11 @@
    "sha256": "fc44d407bc8b6e87bed9eea251d724e00243531200b3a649dde500fba1b4f1ed"
   },
   {
+   "path": "argus/cli/cmd_exposure.py",
+   "bytes": 4101,
+   "sha256": "3b42d4fba6086b4693031acd2f08f62af31f57fc438eeaf87d0f2615b99b2501"
+  },
+  {
    "path": "argus/cli/cmd_identify.py",
    "bytes": 4752,
    "sha256": "3a4836ef59f0aa31d96daee3ed5380307e5e8a472f87b247fdcc6c5b3381b424"
@@ -193,8 +198,8 @@
   },
   {
    "path": "argus/cli/main.py",
-   "bytes": 3766,
-   "sha256": "5a1efd2b1fe320353983022ed9f66f992945dfb95c3de05aec78cb64a507fc6c"
+   "bytes": 4124,
+   "sha256": "5aadba41bd549f6dd59ca278dcb676021c18918512e9e862e9dbd57a3c517a52"
   },
   {
    "path": "argus/cli/manifest.py",
@@ -450,6 +455,11 @@
    "path": "argus/core/exposure.py",
    "bytes": 9986,
    "sha256": "b80a49b18b1e210da04a07ddbb89350684692f6cb6f7cb8c3e560bba0d03c1aa"
+  },
+  {
+   "path": "argus/core/exposure_accounting.py",
+   "bytes": 33498,
+   "sha256": "1c58d82d422521ceffe0e3fa299da5933845f36e18af8f6c0676237880545f01"
   },
   {
    "path": "argus/core/external_evidence.py",
@@ -1390,6 +1400,11 @@
    "path": "argus/tests/test_exposure.py",
    "bytes": 6651,
    "sha256": "9098bef7e733bf70f29ff59adb0276dd676aab1d8739bcfbeae3d307a704e1cc"
+  },
+  {
+   "path": "argus/tests/test_exposure_accounting.py",
+   "bytes": 13089,
+   "sha256": "e4e6c243257ec85490d23d88aec0a007ba3b235428630ab92915ded643007392"
   },
   {
    "path": "argus/tests/test_input_boundaries.py",
@@ -2887,6 +2902,11 @@
    "sha256": "d7b46a89141b6214925421942fe4a5446021c33f97ed562d934d31607bb7540c"
   },
   {
+   "path": "docs/EXPOSURE_ACCOUNTING.md",
+   "bytes": 6003,
+   "sha256": "ffa0d1994ca8af7bffaef8a20c413474af42ab01c6191f83175f9bc1b936b1cf"
+  },
+  {
    "path": "docs/LIMITATIONS.md",
    "bytes": 2713,
    "sha256": "fb430320a51c0fc72feb1c902d5abd205ce1093546344cf382081d6d291a5cf2"
@@ -2935,6 +2955,36 @@
    "path": "docs/WORKFLOW.md",
    "bytes": 3626,
    "sha256": "0062db55dab3d4645abbe948ef97f4e7a25e85929710a9f70f0d3c8d5790e047"
+  },
+  {
+   "path": "docs/exposure_example/EXAMPLE_EXPOSURE.json",
+   "bytes": 149108,
+   "sha256": "92cdb0c70f08d7019fa885d1d970aaf5382b209a1c958897a4e7f7cfbef593e7"
+  },
+  {
+   "path": "docs/exposure_example/EXAMPLE_RECORD.json",
+   "bytes": 18101,
+   "sha256": "5effd679f5f140b0fdbc6c3d68092a431ec4547340dcff643673148066455151"
+  },
+  {
+   "path": "docs/exposure_example/EXAMPLE_REPORT.md",
+   "bytes": 37231,
+   "sha256": "6476328648583d6aa402be40d7fea63ad224eb9b54f7a4b756558e0da8180247"
+  },
+  {
+   "path": "docs/exposure_example/README.md",
+   "bytes": 3532,
+   "sha256": "6a22356ac2f13b826028b3f1cdd37cb8b41ad7bf3252f98b07370d4464543d4a"
+  },
+  {
+   "path": "docs/exposure_example/SOURCES.md",
+   "bytes": 5158,
+   "sha256": "1cdbbdf4645a5312e2c7cdbe1b872950eefd016fd65dc5de78098e19585315dc"
+  },
+  {
+   "path": "docs/exposure_example/evidence_graph.svg",
+   "bytes": 3805,
+   "sha256": "cceb69e22b9c55b718e9d6e83fe368adea56eedcb897475e6bcb7f24cafcac3f"
   },
   {
    "path": "docs/media/README.md",

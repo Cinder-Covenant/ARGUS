@@ -1,0 +1,577 @@
+{
+ "claims": [
+  {
+   "channel": "direct_labels",
+   "id": "c01",
+   "kind": "exposed_set_complete",
+   "model": "ink_9um",
+   "reasons": [
+    "the card states the training scrolls and segment counts; the segment keys are from the Villa prior file (source villa_prior); the dataset README (source ink_9um_dataset) lists the same four scrolls and the 24 + 5 labelled segments"
+   ],
+   "scrolls": [
+    "PHerc. 0139",
+    "Scroll 1667",
+    "PHerc. Paris 4",
+    "PHerc. 0814"
+   ],
+   "segments": {
+    "PHerc. 0139": [
+     "0139:w016",
+     "0139:w017",
+     "0139:w028",
+     "0139:w029",
+     "0139:w035",
+     "0139:w039",
+     "0139:w040",
+     "0139:w041",
+     "0139:w043",
+     "0139:w044"
+    ],
+    "PHerc. 0814": [
+     "0814:46527"
+    ],
+    "PHerc. Paris 4": [
+     "Paris4:w00",
+     "Paris4:w01",
+     "Paris4:w02",
+     "Paris4:w03",
+     "Paris4:w05",
+     "Paris4:w06",
+     "Paris4:w07",
+     "Paris4:w09"
+    ],
+    "Scroll 1667": [
+     "1667:w013",
+     "1667:w018",
+     "1667:w023",
+     "1667:w028",
+     "1667:w029",
+     "1667:w031"
+    ]
+   },
+   "source": "ink_9um",
+   "status": "VERIFIED"
+  },
+  {
+   "channel": "raw_ct_pretraining",
+   "id": "c02",
+   "kind": "absent",
+   "model": "ink_9um",
+   "reasons": [
+    "the published recipe names no initial or pretrained checkpoint; the file is a template with placeholder paths, so this is silence, not a statement"
+   ],
+   "scroll": "*",
+   "source": "villa_hybrid",
+   "status": "INFERRED"
+  },
+  {
+   "channel": "teacher_labels",
+   "id": "c03",
+   "kind": "absent",
+   "model": "ink_9um",
+   "reasons": [
+    "the published recipe names no teacher; the dataset README describes the labels as annotations from the Vesuvius Challenge ink annotation dataset transferred onto public surface volumes by geometric label-transfer scripts, and does not state that no model output entered them"
+   ],
+   "scroll": "*",
+   "source": "villa_hybrid",
+   "status": "INFERRED"
+  },
+  {
+   "channel": "pseudo_label_lineage",
+   "id": "c04",
+   "kind": "absent",
+   "model": "ink_9um",
+   "reasons": [
+    "same dataset README sentence as c03; silence on model-derived labels, not a statement that there are none"
+   ],
+   "scroll": "*",
+   "source": "ink_9um_dataset",
+   "status": "INFERRED"
+  },
+  {
+   "channel": "direct_labels",
+   "id": "c10",
+   "kind": "exposed_set_complete",
+   "model": "ink_3d_dino_guided.stage1_teacher",
+   "reasons": [
+    "stage (1) of the card: teacher on 8-scroll surface-conditioned ink labels"
+   ],
+   "scrolls": [
+    "PHerc. Paris 4",
+    "PHerc. 0139",
+    "PHerc. 0500P2",
+    "PHerc. 0814",
+    "PHerc. 0841",
+    "PHerc. 1667",
+    "PHerc. MAN5",
+    "PHerc. 9B"
+   ],
+   "source": "ink_3d_dino_guided",
+   "status": "VERIFIED"
+  },
+  {
+   "channel": "direct_labels",
+   "id": "c11",
+   "kind": "exposed",
+   "model": "ink_3d_dino_guided",
+   "reasons": [
+    "the card title and run name (..._dinoguided_paris4_v3_fullsup) say the model is trained on Paris 4; it does not say which labels the student saw"
+   ],
+   "scroll": "PHercParis4",
+   "source": "ink_3d_dino_guided",
+   "status": "INFERRED"
+  },
+  {
+   "channel": "pseudo_label_lineage",
+   "id": "c12",
+   "kind": "exposed",
+   "model": "ink_3d_dino_guided",
+   "reasons": [
+    "the card names 256 clicked tokens averaged into the guidance embedding but not the scroll they come from"
+   ],
+   "scroll": "256 expert-clicked reference tokens (source scroll not stated)",
+   "source": "ink_3d_dino_guided",
+   "status": "UNVERIFIED"
+  },
+  {
+   "channel": "raw_ct_pretraining",
+   "id": "c20",
+   "kind": "exposed_set_complete",
+   "model": "dinovol_v2_ps8_with_paris4_352500",
+   "reasons": [
+    "'Self-supervised on 11 open-data Herculaneum volumes' with the list"
+   ],
+   "scrolls": [
+    "PHerc0009B",
+    "PHerc0500P2",
+    "PHerc0814",
+    "PHerc1299",
+    "PHerc0343P",
+    "PHerc0332",
+    "PHerc0139",
+    "PHercMAN5",
+    "PHerc1451",
+    "PHercMANB",
+    "PHercParis4"
+   ],
+   "source": "dinovol_v2_ps8_with_paris4_352500",
+   "status": "VERIFIED"
+  },
+  {
+   "channel": "direct_labels",
+   "id": "c21",
+   "kind": "absent",
+   "model": "dinovol_v2_ps8_with_paris4_352500",
+   "reasons": [
+    "'Pretraining only - no finetuning / segmentation head is included.'"
+   ],
+   "scroll": "*",
+   "source": "dinovol_v2_ps8_with_paris4_352500",
+   "status": "VERIFIED"
+  },
+  {
+   "channel": "teacher_labels",
+   "id": "c22",
+   "kind": "absent",
+   "model": "dinovol_v2_ps8_with_paris4_352500",
+   "reasons": [
+    "the objective (DINO, iBOT, KoLeo, Gram anchoring) is described and names no external teacher; the card does not state that none was used"
+   ],
+   "scroll": "*",
+   "source": "dinovol_v2_ps8_with_paris4_352500",
+   "status": "INFERRED"
+  },
+  {
+   "channel": "pseudo_label_lineage",
+   "id": "c23",
+   "kind": "absent",
+   "model": "dinovol_v2_ps8_with_paris4_352500",
+   "reasons": [
+    "no pseudo-label source is named; the card does not state that none was used"
+   ],
+   "scroll": "*",
+   "source": "dinovol_v2_ps8_with_paris4_352500",
+   "status": "INFERRED"
+  },
+  {
+   "channel": "raw_ct_pretraining",
+   "id": "c30",
+   "kind": "exposed",
+   "model": "dinovol_v2_ps8_supcon3class_step362500",
+   "reasons": [
+    "'Training data for this stage: crops from PHercParis4 and PHerc0332 (2.399 um scan)'"
+   ],
+   "scroll": "PHercParis4",
+   "source": "dinovol_v2_ps8_supcon3class_step362500",
+   "status": "VERIFIED"
+  },
+  {
+   "channel": "raw_ct_pretraining",
+   "id": "c31",
+   "kind": "exposed",
+   "model": "dinovol_v2_ps8_supcon3class_step362500",
+   "reasons": [
+    "same sentence as c30"
+   ],
+   "scroll": "PHerc0332",
+   "source": "dinovol_v2_ps8_supcon3class_step362500",
+   "status": "VERIFIED"
+  },
+  {
+   "channel": "pseudo_label_lineage",
+   "id": "c32",
+   "kind": "exposed",
+   "model": "dinovol_v2_ps8_supcon3class_step362500",
+   "reasons": [
+    "a supervised-contrastive loss over per-patch labels is stated; the card says the label source is heuristic-threshold based and calls that 'a well-supported inference', not a confirmed fact"
+   ],
+   "scroll": "PHercParis4",
+   "source": "dinovol_v2_ps8_supcon3class_step362500",
+   "status": "INFERRED"
+  },
+  {
+   "channel": "pseudo_label_lineage",
+   "id": "c33",
+   "kind": "exposed",
+   "model": "dinovol_v2_ps8_supcon3class_step362500",
+   "reasons": [
+    "same as c32"
+   ],
+   "scroll": "PHerc0332",
+   "source": "dinovol_v2_ps8_supcon3class_step362500",
+   "status": "INFERRED"
+  },
+  {
+   "channel": "direct_labels",
+   "id": "c40",
+   "kind": "absent",
+   "model": "fiber_dinoguided_2class_step010000",
+   "reasons": [
+    "'trained with no fixed ground truth'; 'the entire pipeline is label-free self-training'"
+   ],
+   "scroll": "*",
+   "source": "fiber_dinoguided_2class_step010000",
+   "status": "VERIFIED"
+  },
+  {
+   "channel": "pseudo_label_lineage",
+   "id": "c41",
+   "kind": "exposed",
+   "model": "fiber_dinoguided_2class_step010000",
+   "reasons": [
+    "'Trained on: PHerc. Paris 4, 2.4 um scan' with per-step dynamic pseudo-labels"
+   ],
+   "scroll": "PHercParis4",
+   "source": "fiber_dinoguided_2class_step010000",
+   "status": "VERIFIED"
+  },
+  {
+   "channel": "direct_labels",
+   "id": "c50",
+   "kind": "absent",
+   "model": "fiber_ink_4class_selfdistill",
+   "reasons": [
+    "'trained with no fixed ground truth via self-distillation from two frozen teacher UNets'"
+   ],
+   "scroll": "*",
+   "source": "fiber_ink_4class_selfdistill",
+   "status": "VERIFIED"
+  },
+  {
+   "channel": "pseudo_label_lineage",
+   "id": "c51",
+   "kind": "exposed",
+   "model": "fiber_ink_4class_selfdistill",
+   "reasons": [
+    "'Trained on: PHerc. Paris 4, 2.4 um scan'; a fresh pseudo-label is generated from the two teachers every step"
+   ],
+   "scroll": "PHercParis4",
+   "source": "fiber_ink_4class_selfdistill",
+   "status": "VERIFIED"
+  }
+ ],
+ "edges": [
+  {
+   "child": "ink_3d_dino_guided",
+   "kind": "TEACHER",
+   "parent": "ink_3d_dino_guided.stage1_teacher",
+   "reasons": [
+    "card: staged training, (1) teacher, (2) DINO-guided student, (4) self-distillation"
+   ],
+   "source": "ink_3d_dino_guided",
+   "status": "VERIFIED"
+  },
+  {
+   "child": "ink_3d_dino_guided",
+   "kind": "PSEUDO_SOURCE",
+   "parent": "dinovol_v2_ps8_with_paris4_352500",
+   "reasons": [
+    "card: student uses dense ink-likeness from this representation model"
+   ],
+   "source": "ink_3d_dino_guided",
+   "status": "VERIFIED"
+  },
+  {
+   "child": "dinovol_v2_ps8_supcon3class_step362500",
+   "kind": "INIT",
+   "parent": "dinovol_v2_ps8_with_paris4_352500",
+   "reasons": [
+    "card: continues training from step 352500 of the base backbone"
+   ],
+   "source": "dinovol_v2_ps8_supcon3class_step362500",
+   "status": "VERIFIED"
+  },
+  {
+   "child": "fiber_dinoguided_2class_step010000",
+   "kind": "INIT",
+   "parent": "fiber_selftrain_teacher_epoch30",
+   "reasons": [
+    "card: student_init_ckpt warm-start"
+   ],
+   "source": "fiber_dinoguided_2class_step010000",
+   "status": "VERIFIED"
+  },
+  {
+   "child": "fiber_dinoguided_2class_step010000",
+   "kind": "TEACHER",
+   "parent": "fiber_selftrain_teacher_epoch30",
+   "reasons": [
+    "card: its probability map feeds per-step dynamic pseudo-labels"
+   ],
+   "source": "fiber_dinoguided_2class_step010000",
+   "status": "VERIFIED"
+  },
+  {
+   "child": "fiber_dinoguided_2class_step010000",
+   "kind": "PSEUDO_SOURCE",
+   "parent": "dinovol_v2_ps8_supcon3class_step362500",
+   "reasons": [
+    "card: DINO-embedding similarity map from this backbone steers the pseudo-label"
+   ],
+   "source": "fiber_dinoguided_2class_step010000",
+   "status": "VERIFIED"
+  },
+  {
+   "child": "fiber_selftrain_teacher_epoch30",
+   "kind": "INIT",
+   "parent": "fiber_selftrain_teacher_epoch30.ancestor_thr07ep95",
+   "reasons": [
+    "only the checkpoint file name ('from-thr07ep95') suggests the ancestor; the publisher did not trace it"
+   ],
+   "source": "fiber_selftrain_teacher_epoch30",
+   "status": "INFERRED"
+  },
+  {
+   "child": "fiber_ink_4class_selfdistill",
+   "kind": "TEACHER",
+   "parent": "fiber_dinoguided_2class_step010000",
+   "reasons": [
+    "card: 'very likely' the fiber teacher, 'not proven byte-identical - copied/renamed on the training box'"
+   ],
+   "source": "fiber_ink_4class_selfdistill",
+   "status": "INFERRED"
+  },
+  {
+   "child": "fiber_ink_4class_selfdistill",
+   "kind": "TEACHER",
+   "parent": "fiber_ink_4class_selfdistill.ink_teacher",
+   "reasons": [
+    "card: a separate frozen ink teacher overrides fiber labels; reported unrecoverable"
+   ],
+   "source": "fiber_ink_4class_selfdistill",
+   "status": "VERIFIED"
+  }
+ ],
+ "identity_aliases": [
+  {
+   "name": "Scroll 1667",
+   "reasons": [
+    "the dataset README lists the scroll as 'Scroll 1667' in the segment table and as PHerc1667 in the layout line and in every source-volume URL (PHerc1667/segments/...)"
+   ],
+   "scroll": "PHerc1667",
+   "source": "ink_9um_dataset",
+   "status": "VERIFIED"
+  },
+  {
+   "name": "PHerc. 1667",
+   "reasons": [
+    "punctuation only"
+   ],
+   "scroll": "PHerc1667",
+   "source": "ink_3d_dino_guided",
+   "status": "VERIFIED"
+  },
+  {
+   "name": "PHerc. MAN5",
+   "reasons": [
+    "punctuation only"
+   ],
+   "scroll": "PHercMAN5",
+   "source": "ink_3d_dino_guided",
+   "status": "VERIFIED"
+  },
+  {
+   "name": "PHerc. 9B",
+   "reasons": [
+    "the card writes '9B' after the other ids are given as four-digit numbers; PHerc0009B is the only survey scroll ending 9B"
+   ],
+   "scroll": "PHerc0009B",
+   "source": "ink_3d_dino_guided",
+   "status": "INFERRED"
+  }
+ ],
+ "models": [
+  {
+   "id": "ink_9um",
+   "note": "hybrid_3d2d seed42 and seed43 checkpoint families (14 files) share one record: same recipe, seed differs",
+   "role": "ink_detector",
+   "url": "https://huggingface.co/scrollprize/ink_9um"
+  },
+  {
+   "id": "ink_canonical_2um",
+   "note": "card states architecture and recipe name only; no training data",
+   "role": "ink_detector",
+   "url": "https://huggingface.co/scrollprize/ink_canonical_2um"
+  },
+  {
+   "id": "ink_3d_dino_guided",
+   "role": "ink_detector",
+   "url": "https://huggingface.co/scrollprize/ink_3d_dino_guided"
+  },
+  {
+   "id": "ink_3d_dino_guided.stage1_teacher",
+   "note": "stage (1) teacher named in the ink_3d_dino_guided card; no weights published under this name",
+   "released": false,
+   "role": "teacher"
+  },
+  {
+   "id": "dinovol_v2_ps8_with_paris4_352500",
+   "role": "backbone",
+   "url": "https://huggingface.co/scrollprize/dinovol_v2_ps8_with_paris4_352500"
+  },
+  {
+   "id": "dinovol_v2_ps8_supcon3class_step362500",
+   "role": "backbone",
+   "url": "https://huggingface.co/scrollprize/dinovol_v2_ps8_supcon3class_step362500"
+  },
+  {
+   "id": "dinovol_v2_ps6_step032350",
+   "note": "the card says it is not used in the paper; it lists no training scrolls",
+   "role": "backbone",
+   "url": "https://huggingface.co/scrollprize/dinovol_v2_ps6_step032350"
+  },
+  {
+   "id": "fiber_selftrain_teacher_epoch30",
+   "note": "no ink head (the card verifies a single fibers head)",
+   "role": "fiber_segmenter",
+   "url": "https://huggingface.co/scrollprize/fiber_selftrain_teacher_epoch30"
+  },
+  {
+   "id": "fiber_selftrain_teacher_epoch30.ancestor_thr07ep95",
+   "note": "an earlier checkpoint that the file name of fiber_selftrain_teacher_epoch30 suggests; never traced by its publisher",
+   "released": false,
+   "role": "teacher"
+  },
+  {
+   "id": "fiber_dinoguided_2class_step010000",
+   "note": "2-class fiber vs background; no ink head",
+   "role": "fiber_segmenter",
+   "url": "https://huggingface.co/scrollprize/fiber_dinoguided_2class_step010000"
+  },
+  {
+   "id": "fiber_ink_4class_selfdistill",
+   "note": "4-class model whose fourth class is ink, obtained by override from an ink teacher; classified here as a fiber/ink segmenter, not counted as an ink detector",
+   "role": "fiber_segmenter",
+   "url": "https://huggingface.co/scrollprize/fiber_ink_4class_selfdistill"
+  },
+  {
+   "id": "fiber_ink_4class_selfdistill.ink_teacher",
+   "note": "frozen ink teacher of the 4-class run; its publisher reports it unrecoverable",
+   "released": false,
+   "role": "teacher"
+  }
+ ],
+ "rule": "shared_ancestry_v1",
+ "schema": "argus-exposure-record-v1",
+ "sources": {
+  "dinovol_v2_ps6_step032350": {
+   "retrieved": "2026-09-25",
+   "revision": "2ad412b7bc4ae8f742b811f8d8017381802a1788",
+   "url": "https://huggingface.co/scrollprize/dinovol_v2_ps6_step032350",
+   "what": "Hugging Face model card (README.md) at this revision"
+  },
+  "dinovol_v2_ps8_supcon3class_step362500": {
+   "retrieved": "2026-09-25",
+   "revision": "983bf00da2a9a9179078e705f96ae79d28af113d",
+   "url": "https://huggingface.co/scrollprize/dinovol_v2_ps8_supcon3class_step362500",
+   "what": "Hugging Face model card (README.md) at this revision"
+  },
+  "dinovol_v2_ps8_with_paris4_352500": {
+   "retrieved": "2026-09-25",
+   "revision": "6a8cccbafef191a966da815e22ff5c6eae075aae",
+   "url": "https://huggingface.co/scrollprize/dinovol_v2_ps8_with_paris4_352500",
+   "what": "Hugging Face model card (README.md) at this revision"
+  },
+  "fiber_dinoguided_2class_step010000": {
+   "retrieved": "2026-09-25",
+   "revision": "65e72d37a61170ed5b46494c55da09b5025bd6a4",
+   "url": "https://huggingface.co/scrollprize/fiber_dinoguided_2class_step010000",
+   "what": "Hugging Face model card (README.md) at this revision"
+  },
+  "fiber_ink_4class_selfdistill": {
+   "retrieved": "2026-09-25",
+   "revision": "ec9bbc4dbc65a052fc4d78429f7ce5eff080aafe",
+   "url": "https://huggingface.co/scrollprize/fiber_ink_4class_selfdistill",
+   "what": "Hugging Face model card (README.md) at this revision"
+  },
+  "fiber_selftrain_teacher_epoch30": {
+   "retrieved": "2026-09-25",
+   "revision": "08ef7a88ab710770c5b961ee39df1879333a2aa9",
+   "url": "https://huggingface.co/scrollprize/fiber_selftrain_teacher_epoch30",
+   "what": "Hugging Face model card (README.md) at this revision"
+  },
+  "ink_3d_dino_guided": {
+   "retrieved": "2026-09-25",
+   "revision": "73a79525466037432191284dfa237baf830c49ec",
+   "url": "https://huggingface.co/scrollprize/ink_3d_dino_guided",
+   "what": "Hugging Face model card (README.md) at this revision"
+  },
+  "ink_9um": {
+   "retrieved": "2026-09-25",
+   "revision": "7109667e2607db1b90c37c8b09cb876ea7fe7bb1",
+   "url": "https://huggingface.co/scrollprize/ink_9um",
+   "what": "Hugging Face model card (README.md) at this revision"
+  },
+  "ink_9um_dataset": {
+   "retrieved": "2026-09-25",
+   "revision": "README.md of the bucket path ink_9um (uploadedAt 2026-08-14T01:04:39Z)",
+   "url": "https://huggingface.co/buckets/scrollprize/datasets/tree/ink_9um",
+   "what": "Hugging Face bucket scrollprize/datasets, ink_9um/README.md: label layout, per-segment source-volume tables and label origin"
+  },
+  "ink_canonical_2um": {
+   "retrieved": "2026-09-25",
+   "revision": "075855bc69317ef6febf39a0d9d687b27d2b7c29",
+   "url": "https://huggingface.co/scrollprize/ink_canonical_2um",
+   "what": "Hugging Face model card (README.md) at this revision"
+  },
+  "villa_hybrid": {
+   "retrieved": "2026-09-25",
+   "revision": "3ea17f54a9b3d5fd1aaf73e1d2c8386dbaa9f30e",
+   "url": "https://github.com/ScrollPrize/villa/blob/3ea17f54a9b3d5fd1aaf73e1d2c8386dbaa9f30e/ink-detection/configs/aligned21_hybrid_3d2d.json",
+   "what": "Villa branch merge-ink-pipelines: the ink_9um training recipe (template with placeholder paths)"
+  },
+  "villa_prior": {
+   "retrieved": "2026-09-25",
+   "revision": "3ea17f54a9b3d5fd1aaf73e1d2c8386dbaa9f30e",
+   "url": "https://github.com/ScrollPrize/villa/blob/3ea17f54a9b3d5fd1aaf73e1d2c8386dbaa9f30e/ink-detection/configs/aligned21_fixed_scroll_prior.json",
+   "what": "Villa branch merge-ink-pipelines: the 29 training representations with physical segment keys"
+  },
+  "villa_readme": {
+   "retrieved": "2026-09-25",
+   "revision": "3ea17f54a9b3d5fd1aaf73e1d2c8386dbaa9f30e",
+   "url": "https://github.com/ScrollPrize/villa/blob/3ea17f54a9b3d5fd1aaf73e1d2c8386dbaa9f30e/ink-detection/configs/README.md",
+   "what": "Villa branch merge-ink-pipelines: ink-detection/configs/README.md"
+  }
+ },
+ "title": "Public Villa ink-related checkpoints: exposure record from public sources only"
+}
