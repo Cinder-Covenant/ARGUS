@@ -5,6 +5,7 @@ import { Chip } from "./Status";
 import { parseTaskParam, pickStoreForTask, scrollMatches, type Refusal, type TaskBinding } from "../lib/taskBinding";
 import { useWorkbenchMode } from "../lib/workbenchMode";
 import { VolumeRaycastViewer } from "./VolumeRaycastViewer";
+import { crosshairOnLevel, startingView } from "../lib/volumeBrick";
 
 type LevelInfo = {
   level: string;
@@ -21,6 +22,7 @@ type VolumeMeta = {
   scroll?: string | null;
   axes: string[] | null;
   levels: LevelInfo[];
+  identity_roi?: { array_path: string; centre_zyx: [number, number, number] } | null;
 };
 
 type VolumeStore = {
@@ -36,6 +38,34 @@ const PLANES: { key: "xy" | "xz" | "yz"; label: string }[] = [
   { key: "yz", label: "YZ" },
 ];
 const TILE = 320;
+
+export function StorePicker({ stores, store, onStore }: { stores: VolumeStore[]; store: string; onStore: (s: string) => void }) {
+  if (!stores.length) return null;
+  return (
+    <label className="ag-filter-label">
+      Store
+      <select className="ag-filter-select" value={store} data-control="wb.volume.store" onChange={(e) => onStore(e.target.value)}>
+        {!store ? <option value="">Choose a store…</option> : null}
+        {stores.map((s) => (
+          <option key={s.store} value={s.store}>{s.store}</option>
+        ))}
+      </select>
+    </label>
+  );
+}
+
+export function VolumePending({ stores, store, onStore }: { stores: VolumeStore[]; store: string; onStore: (s: string) => void }) {
+  return (
+    <div className="ag-panel" data-testid="raw-volume-pending">
+      {!store && stores.length > 1 ? (
+        <p className="ag-prose">{stores.length} stores hold this scroll and none is selected. Choose one; a store is never picked for you.</p>
+      ) : (
+        <p className="ag-prose">Reading this store's pyramid…</p>
+      )}
+      <StorePicker stores={stores} store={store} onStore={onStore} />
+    </div>
+  );
+}
 
 export function RawVolumeViewer({ selectedScroll }: { selectedScroll: string | null }) {
   const [stores, setStores] = useState<VolumeStore[] | null>(null);
@@ -90,11 +120,10 @@ export function RawVolumeViewer({ selectedScroll }: { selectedScroll: string | n
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))))
       .then((d: VolumeMeta) => {
         setMeta(d);
-        const first = d.levels.find((l) => l.openable);
-        if (first) {
-          setLevel(first.level);
-          const [z, y, x] = first.shape!;
-          setCrosshair([Math.floor(z / 2), Math.floor(y / 2), Math.floor(x / 2)]);
+        const start = startingView(d.levels, d.identity_roi);
+        if (start) {
+          setLevel(start.level);
+          setCrosshair(start.crosshair);
         }
       })
       .catch((e) => setErr(String(e)));
@@ -222,18 +251,11 @@ export function RawVolumeViewer({ selectedScroll }: { selectedScroll: string | n
       setLevel(nextLevel);
       return;
     }
-    const [z, y, x] = crosshair;
-    const curPitch = curLevel.pitch_um_yx;
-    const nextPitch = next.pitch_um_yx;
-    if (curPitch && nextPitch) {
-      const physY = y * curPitch[0];
-      const physX = x * curPitch[1];
-      setCrosshair([z, Math.round(physY / nextPitch[0]), Math.round(physX / nextPitch[1])]);
-    } else {
-      setCrosshair([z, y, x]);
-    }
+    setCrosshair(crosshairOnLevel(curLevel, next, crosshair));
     setLevel(nextLevel);
   };
+
+  const storePicker = <StorePicker stores={stores ?? []} store={store} onStore={setStore} />;
 
   const taskRefusalPanel = taskRefusal ? (
     <div className="ag-panel" role="alert" data-control="wb.task.refused" data-code={taskRefusal.code}>
@@ -262,7 +284,7 @@ export function RawVolumeViewer({ selectedScroll }: { selectedScroll: string | n
       </div>
     );
   if (!meta || !curLevel || !crosshair)
-    return <div className="ag-panel"><p className="ag-prose">Reading this store's pyramid…</p></div>;
+    return <VolumePending stores={stores} store={store} onStore={setStore} />;
 
   const shape = curLevel.shape!;
   const pitch = curLevel.pitch_um_yx;
@@ -301,19 +323,7 @@ export function RawVolumeViewer({ selectedScroll }: { selectedScroll: string | n
     >
       <div className="ag-viewbar" role="group" aria-label="Volume controls">
         <div className="ag-viewbar-group">
-          <label className="ag-filter-label">
-            Store
-            <select
-              className="ag-filter-select"
-              value={store}
-              data-control="wb.volume.store"
-              onChange={(e) => setStore(e.target.value)}
-            >
-              {stores.map((s) => (
-                <option key={s.store} value={s.store}>{s.store}</option>
-              ))}
-            </select>
-          </label>
+          {storePicker}
         </div>
         <div className="ag-viewbar-group">
           <label className="ag-filter-label">

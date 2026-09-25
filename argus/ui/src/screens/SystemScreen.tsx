@@ -931,7 +931,7 @@ function About() {
       </div>
       <dl className="about-facts">
         <dt>Built by</dt>
-        <dd>DarthCeltic and Daine (clexious).</dd>
+        <dd>DarthCeltic and clexious.</dd>
         <dt>Licence</dt><dd>Apache-2.0 (see LICENSE and NOTICE in the repository)</dd>
         <dt>Upstream</dt>
         <dd>

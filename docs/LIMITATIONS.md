@@ -34,8 +34,9 @@ repository root states what ARGUS claims and does not claim in one place.
 - The Docker stack was built and run from a clean checkout by the maintainers on Windows with Docker
   Desktop. The test kit checks its files (`tests/test_docker_runtime_contract.py`) but does not build
   the image.
-- `argus run` on real data is not exercised by this release's tests. It needs accepted components,
-  data, and a supported GPU.
+- `argus run <manifest>` is tested offline here. The one real run over public data was made by the
+  maintainers on one machine (a GTX 1660 Ti, fp32); it needs Villa's runtime, network access and a GPU, and
+  it is a control (`docs/PUBLIC_RUN.md`). The governed `argus run --target` driver is not shipped.
 - The renderer-parity test compares this release's sampling, tiling and resampling with plain-loop
   references on synthetic data. No external renderer is compared here.
 

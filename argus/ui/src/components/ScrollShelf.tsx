@@ -117,7 +117,7 @@ export function ScrollShelf({
             <b>{u.counts.firstLetters.value}</b> First Letters targets
           </span>
           <span>
-            <b>{u.counts.grandPrize.value}</b> Grand Prize targets, a subset of those{" "}
+            <b>{u.counts.grandPrize.value}</b> Grand Prize targets, overlapping those{" "}
             {u.counts.firstLetters.value}
           </span>
           <span>

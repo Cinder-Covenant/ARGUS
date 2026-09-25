@@ -456,8 +456,8 @@ export function buildUniverse(
         "of a whole scroll, column-ordered -- a different requirement from First Letters, not " +
         "a harder version of it.",
       note:
-        `Every one of these ${counts.grandPrize.value} is ALSO one of the ` +
-        `${counts.firstLetters.value} First Letters targets above: this is a subset, not a ` +
+        `Most of these ${counts.grandPrize.value} are ALSO among the ` +
+        `${counts.firstLetters.value} First Letters targets above (that list excludes scrolls where letters were found): this is an overlap, not a ` +
         `second cohort, so the registered total stays ${counts.registered.value}. ` +
         `${counts.grandPrizeWithCertifiedInk.value} of ${counts.grandPrize.value} carry a ` +
         "certified ink result on any run that declares them.",

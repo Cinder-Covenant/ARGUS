@@ -42,7 +42,28 @@ python -m evidence_gate measure --manifest manifest.json --receipt receipt.json
 
 # Measured, with an explicit, bounded, read-only remote volume check
 python -m evidence_gate measure --manifest manifest.json --allow-network
+
+# Volume only (no mesh): is this voxel box held, and does it carry signal?
+python -m evidence_gate measure --manifest manifest.json --volume-only --probe-box 0:64:0:64:0:64
 ```
+
+`--volume-only` needs only `volume_url` (and optionally `level`) in the manifest. It checks
+that every chunk the half-open box touches was written (a never-written chunk reads back as
+fill, which looks like dark papyrus) and that a seeded sample of voxels is not fill. It
+reports one `chunk_identity` gate: `PASS` (all held, signal present), `FAIL` (nothing held or
+no signal) or `REFUSE_TO_INTERPRET` (partly held, or the box lies outside the level). It says
+nothing about geometry, orientation or which scan the volume is.
+
+When a mesh run is refused by a later gate (topology, orientation) and a volume was given,
+the `chunk_identity` verdict is still reported next to that refusal.
+
+## What a PASS is, and is not
+
+A `PASS` means the gates that ran found nothing wrong with the inputs you supplied. On a
+synthetic mesh with a declared orientation it is expected, by design: the gate checks
+consistency between a mesh, a volume and a declaration, not whether the mesh is a real
+surface. Do not cite a PASS on a synthetic or hand-made mesh as a result; the measured
+fixtures in this package exist to show that the gates can fail, not to certify anything.
 
 A `measure` manifest is a small JSON file:
 

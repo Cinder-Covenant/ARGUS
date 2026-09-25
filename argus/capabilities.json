@@ -2129,6 +2129,59 @@
    "state": "DISCOVERED",
    "blocker": "Not implemented as a structured field anywhere. Distinguishing scan-signal-absent / surface-misplaced / label-mismatch / wrong-architecture / chemistry-differs / below-pipeline-capability as causes of ink non-detection exists only as prose: the six-cause list itself (quoted verbatim from upstream ScrollPrize, not an Argus original) in project notes that are not shipped, and a related but NOT identical five-step ARGUS-internal elimination chain (plumbing/coordinate handling, compositing/display, normalisation, representation/resolution, depth/orientation) applied to one specific investigation in docs/public/INK_9UM_ROOT_CAUSE.md. Neither is a field on any detector run's receipt; no code classifies a non-detection into one of these causes automatically.",
    "notes": "A deliberately thinner entry than the two diagnostics above. This is a documented REASONING FRAMEWORK applied ad hoc in side documents, not a structured field on any receipt, and this entry must not be read as claiming otherwise -- hence state DISCOVERED, the weakest rung, with every field above it left empty because none of it exists. Two distinct documents are in play and should not be conflated: (1) project notes that are not shipped quote upstream ScrollPrize's own six-item causal list for cross-scroll ink non-generalization verbatim; (2) docs/public/INK_9UM_ROOT_CAUSE.md documents a related but DIFFERENT five-step ARGUS-internal elimination chain (plumbing, compositing, normalisation, representation/resolution, depth/orientation) applied to one internal investigation. Not the same taxonomy; both are cited so a reader can tell them apart."
+  },
+  {
+   "capability_id": "vesuvius.ink_detection.prepare_9um_input",
+   "upstream_path": "vesuvius/src/vesuvius/ink_detection/preprocessing/prepare_9um_isotropic_input.py",
+   "input_formats": [
+    "ome-zarr surface volume, level 2 of a 2.399 um render (or a bare 3D uint8 array)"
+   ],
+   "output_formats": [
+    "ome-zarr (21,Y,X) uint8, tagged level2-zmean4-21slice-v1"
+   ],
+   "hardware": "cpu",
+   "entrypoint": "vesuvius.ink_detection.preprocessing.prepare_9um_isotropic_input:main",
+   "stage": "ink",
+   "upstream_repo": "ScrollPrize/villa",
+   "upstream_commit": "739eefd",
+   "licence": "MIT (villa root LICENSE, Copyright (c) 2024 Vesuvius Challenge; vesuvius/pyproject.toml's own classifier agrees)",
+   "runtime": "<ARGUS_RUNTIME_ROOT>/villa-vesuvius (python 3.14.3)",
+   "invocation_receipt": "artifacts/argus_pipeline_run_20260925/PIPELINE_RUN_RECEIPT.json (stages[].state == 'RAN' for prepare and infer)",
+   "argus_adapter": "argus.cli.public_pipeline",
+   "ui_route": null,
+   "real_data_fixture": null,
+   "parity_evidence": null,
+   "regression_test": null,
+   "state": "CALLABLE",
+   "blocker": null,
+   "notes": "CALLABLE per the public pipeline run receipt: `argus run` pooled a chunk-aligned public crop of PHerc0139 w016 (level 2, 9.596 um) into the 21-slice input and its own contract check accepted it. Not REAL_DATA_PROVEN: no upstream parity output was compared. Reached through argus.cli.public_pipeline, a sequencer that adds no science."
+  },
+  {
+   "capability_id": "vesuvius.ink_detection.infer",
+   "upstream_path": "vesuvius/src/vesuvius/ink_detection/inference/infer.py",
+   "input_formats": [
+    "ome-zarr (21,Y,X) uint8 flat surface volume",
+    "checkpoint with an embedded flat config"
+   ],
+   "output_formats": [
+    "tiled uint8 probability TIFF"
+   ],
+   "hardware": "CUDA GPU; fp32 only on a GTX 1660 Ti (no fp16 tensor cores)",
+   "entrypoint": "vesuvius.ink_detection.inference.infer:main",
+   "stage": "ink",
+   "upstream_repo": "ScrollPrize/villa",
+   "upstream_commit": "739eefd",
+   "licence": "MIT (villa root LICENSE, Copyright (c) 2024 Vesuvius Challenge; vesuvius/pyproject.toml's own classifier agrees)",
+   "runtime": "<ARGUS_RUNTIME_ROOT>/villa-vesuvius (python 3.14.3)",
+   "invocation_receipt": "artifacts/argus_pipeline_run_20260925/PIPELINE_RUN_RECEIPT.json (stages[].state == 'RAN' for prepare and infer)",
+   "argus_adapter": "argus.cli.public_pipeline",
+   "ui_route": null,
+   "real_data_fixture": null,
+   "parity_evidence": null,
+   "regression_test": null,
+   "state": "CALLABLE",
+   "blocker": null,
+   "notes": "CALLABLE per the public pipeline run receipt. TRAP RECORDED: `--amp-dtype default` is not fp32 on CUDA (it passes dtype=None to torch.autocast, which runs float16); on a card without fp16 tensor cores every probability is NaN and the uint8 write turns NaN into zero, giving a constant-zero map and AUC 0.5. `argus run` replaces torch.autocast with a null context before the module runs and refuses a run whose fp32 start-up does not report itself. The result it produced is a control (a checkpoint's reserved validation region), not a detector qualification."
   }
  ]
 }

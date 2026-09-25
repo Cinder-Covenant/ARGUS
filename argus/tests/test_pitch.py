@@ -54,6 +54,33 @@ def t_unit_scale_is_absence_not_one_micron():
     assert "absence of a declaration" in e.detail["why"]
 
 
+def _relative_pyramid():
+    """Level 0 scale [1,1,1]; level 5 scale 32: relative factors, not microns."""
+    return {"multiscales": [{"axes": [], "datasets": [
+        {"path": "0", "coordinateTransformations": [{"scale": [1, 1, 1]}]},
+        {"path": "5", "coordinateTransformations": [{"scale": [32, 32, 32]}]}]}]}
+
+
+def t_relative_multiscale_factor_is_not_a_pitch():
+    e = from_ome(_relative_pyramid(), "5")
+    assert e.status == UNKNOWN and e.pitch_um_yx is None, e
+    assert e.detail["relative_factor_yx"] == [32.0, 32.0]
+
+
+def t_level_pitch_is_level0_pitch_times_relative_factor():
+    e = from_ome(_relative_pyramid(), "5", level0_pitch_um=8.64)
+    assert e.status == INFERRED, e
+    assert abs(e.pitch_um_yx[0] - 8.64 * 32) < 1e-9 and abs(e.pitch_um_yx[1] - 8.64 * 32) < 1e-9
+
+
+def t_physical_level0_scale_keeps_levels_physical():
+    z = {"multiscales": [{"axes": [], "datasets": [
+        {"path": "0", "coordinateTransformations": [{"scale": [2.4, 2.4, 2.4]}]},
+        {"path": "2", "coordinateTransformations": [{"scale": [9.6, 9.6, 9.6]}]}]}]}
+    e = from_ome(z, "2", level0_pitch_um=99.0)
+    assert e.status == VERIFIED and abs(e.pitch_um_yx[0] - 9.6) < 1e-9, e
+
+
 def t_meta_scale_is_not_microns():
     e = from_segment_meta({"format": "tifxyz", "scale": [0.05, 0.05]}, (1280, 960))
     assert e.status == UNKNOWN, "a tifxyz sampling density was reported as a pitch"

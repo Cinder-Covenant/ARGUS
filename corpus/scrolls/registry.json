@@ -1,6 +1,6 @@
 {
   "schema_version": "argus.scroll_registry.v1",
-  "captured_at": "2026-08-03T12:00:00Z",
+  "captured_at": "2026-09-25T11:34:46Z",
   "classification_policy": {
     "released_object_count": 45,
     "explicit_fragment_rule": "Only identifiers containing an explicit Fr<number> suffix are classified as fragments. The other 39 entries remain scan_object; this registry does not assert that every one is an intact scroll.",
@@ -13,14 +13,14 @@
       "title": "Vesuvius Challenge open-data S3 root index",
       "url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/?list-type=2&delimiter=%2F",
       "authority": "official",
-      "checked_at": "2026-08-03T12:00:00Z"
+      "checked_at": "2026-09-25T11:34:46Z"
     },
     {
       "source_id": "official_prizes_2027",
       "title": "Vesuvius Challenge Open Prizes - 2027 Grand Prize",
       "url": "https://scrollprize.org/prizes",
       "authority": "official",
-      "checked_at": "2026-08-03T12:00:00Z"
+      "checked_at": "2026-09-25T11:34:46Z"
     },
     {
       "source_id": "official_homepage",
@@ -66,9 +66,9 @@
       ],
       "grand_prize_2027": {
         "eligible": true,
-        "volume_id": "20250720091415-9.362um-1.2m-113keV",
+        "volume_id": "20250821151825-9.362um-1.2m-113keV",
         "voxel_um": 9.362,
-        "energy_kev": 113
+        "energy_kev": 113.0
       },
       "known_facts": [
         "Exact eligible volume fixed by the 2027 Grand Prize rules."
@@ -119,7 +119,8 @@
       "s3_prefix": "PHerc0175A/",
       "object_class": "scan_object",
       "roles": [
-        "released_open_data"
+        "released_open_data",
+        "first_letters_2027_target"
       ],
       "grand_prize_2027": {
         "eligible": false
@@ -136,7 +137,8 @@
       "s3_prefix": "PHerc0175B/",
       "object_class": "scan_object",
       "roles": [
-        "released_open_data"
+        "released_open_data",
+        "first_letters_2027_target"
       ],
       "grand_prize_2027": {
         "eligible": false
@@ -159,9 +161,9 @@
       ],
       "grand_prize_2027": {
         "eligible": true,
-        "volume_id": "20250720024445-9.362um-1.2m-113keV",
+        "volume_id": "20250821151635-9.362um-1.2m-113keV",
         "voxel_um": 9.362,
-        "energy_kev": 113
+        "energy_kev": 113.0
       },
       "known_facts": [
         "Exact eligible volume fixed by the 2027 Grand Prize rules."
@@ -184,9 +186,9 @@
       ],
       "grand_prize_2027": {
         "eligible": true,
-        "volume_id": "20250720140115-9.362um-1.2m-113keV",
+        "volume_id": "20250821151803-9.362um-1.2m-113keV",
         "voxel_um": 9.362,
-        "energy_kev": 113
+        "energy_kev": 113.0
       },
       "known_facts": [
         "Exact eligible volume fixed by the 2027 Grand Prize rules."
@@ -209,9 +211,9 @@
       ],
       "grand_prize_2027": {
         "eligible": true,
-        "volume_id": "20250720113058-9.362um-1.2m-113keV",
+        "volume_id": "20250821151750-9.362um-1.2m-113keV",
         "voxel_um": 9.362,
-        "energy_kev": 113
+        "energy_kev": 113.0
       },
       "known_facts": [
         "Exact eligible volume fixed by the 2027 Grand Prize rules."
@@ -234,9 +236,9 @@
       ],
       "grand_prize_2027": {
         "eligible": true,
-        "volume_id": "20250511054932-8.640um-1.2m-116keV",
+        "volume_id": "20251110183117-8.640um-1.2m-116keV",
         "voxel_um": 8.64,
-        "energy_kev": 116
+        "energy_kev": 116.0
       },
       "known_facts": [
         "Exact eligible volume fixed by the 2027 Grand Prize rules."
@@ -253,7 +255,8 @@
       "s3_prefix": "PHerc0306B/",
       "object_class": "scan_object",
       "roles": [
-        "released_open_data"
+        "released_open_data",
+        "first_letters_2027_target"
       ],
       "grand_prize_2027": {
         "eligible": false
@@ -287,7 +290,8 @@
       "s3_prefix": "PHerc0343/",
       "object_class": "scan_object",
       "roles": [
-        "released_open_data"
+        "released_open_data",
+        "first_letters_2027_target"
       ],
       "grand_prize_2027": {
         "eligible": false
@@ -327,9 +331,9 @@
       ],
       "grand_prize_2027": {
         "eligible": true,
-        "volume_id": "20250719150703-9.362um-1.2m-113keV",
+        "volume_id": "20250821151737-9.362um-1.2m-113keV",
         "voxel_um": 9.362,
-        "energy_kev": 113
+        "energy_kev": 113.0
       },
       "known_facts": [
         "Exact eligible volume fixed by the 2027 Grand Prize rules."
@@ -346,7 +350,8 @@
       "s3_prefix": "PHerc0483A/",
       "object_class": "scan_object",
       "roles": [
-        "released_open_data"
+        "released_open_data",
+        "first_letters_2027_target"
       ],
       "grand_prize_2027": {
         "eligible": false
@@ -363,7 +368,8 @@
       "s3_prefix": "PHerc0483B/",
       "object_class": "scan_object",
       "roles": [
-        "released_open_data"
+        "released_open_data",
+        "first_letters_2027_target"
       ],
       "grand_prize_2027": {
         "eligible": false
@@ -380,7 +386,8 @@
       "s3_prefix": "PHerc0490A/",
       "object_class": "scan_object",
       "roles": [
-        "released_open_data"
+        "released_open_data",
+        "first_letters_2027_target"
       ],
       "grand_prize_2027": {
         "eligible": false
@@ -397,7 +404,8 @@
       "s3_prefix": "PHerc0490B/",
       "object_class": "scan_object",
       "roles": [
-        "released_open_data"
+        "released_open_data",
+        "first_letters_2027_target"
       ],
       "grand_prize_2027": {
         "eligible": false
@@ -437,9 +445,9 @@
       ],
       "grand_prize_2027": {
         "eligible": true,
-        "volume_id": "20250510225703-8.640um-1.2m-116keV",
+        "volume_id": "20250521135224-8.640um-1.2m-116keV",
         "voxel_um": 8.64,
-        "energy_kev": 116
+        "energy_kev": 116.0
       },
       "known_facts": [
         "Exact eligible volume fixed by the 2027 Grand Prize rules."
@@ -462,9 +470,9 @@
       ],
       "grand_prize_2027": {
         "eligible": true,
-        "volume_id": "20250720160015-9.362um-1.2m-113keV",
+        "volume_id": "20250821151723-9.362um-1.2m-113keV",
         "voxel_um": 9.362,
-        "energy_kev": 113
+        "energy_kev": 113.0
       },
       "known_facts": [
         "Exact eligible volume fixed by the 2027 Grand Prize rules."
@@ -504,9 +512,9 @@
       ],
       "grand_prize_2027": {
         "eligible": true,
-        "volume_id": "20250720174915-9.362um-1.2m-113keV",
+        "volume_id": "20250821151701-9.362um-1.2m-113keV",
         "voxel_um": 9.362,
-        "energy_kev": 113
+        "energy_kev": 113.0
       },
       "known_facts": [
         "Exact eligible volume fixed by the 2027 Grand Prize rules."
@@ -540,7 +548,8 @@
       "s3_prefix": "PHerc0846A/",
       "object_class": "scan_object",
       "roles": [
-        "released_open_data"
+        "released_open_data",
+        "first_letters_2027_target"
       ],
       "grand_prize_2027": {
         "eligible": false
@@ -557,7 +566,8 @@
       "s3_prefix": "PHerc0846B/",
       "object_class": "scan_object",
       "roles": [
-        "released_open_data"
+        "released_open_data",
+        "first_letters_2027_target"
       ],
       "grand_prize_2027": {
         "eligible": false
@@ -582,7 +592,7 @@
         "eligible": true,
         "volume_id": "20250820131727-9.362um-1.2m-113keV",
         "voxel_um": 9.362,
-        "energy_kev": 113
+        "energy_kev": 113.0
       },
       "known_facts": [
         "Exact eligible volume fixed by the 2027 Grand Prize rules.",
@@ -606,9 +616,9 @@
       ],
       "grand_prize_2027": {
         "eligible": true,
-        "volume_id": "20250510170249-8.640um-1.2m-116keV",
+        "volume_id": "20250521120456-8.640um-1.2m-116keV",
         "voxel_um": 8.64,
-        "energy_kev": 116
+        "energy_kev": 116.0
       },
       "known_facts": [
         "Exact eligible volume fixed by the 2027 Grand Prize rules."
@@ -643,14 +653,13 @@
       "object_class": "scan_object",
       "roles": [
         "released_open_data",
-        "grand_prize_2027_target",
-        "first_letters_2027_target"
+        "grand_prize_2027_target"
       ],
       "grand_prize_2027": {
         "eligible": true,
-        "volume_id": "20250509011039-8.640um-1.2m-116keV",
+        "volume_id": "20250521151220-8.640um-1.2m-116keV",
         "voxel_um": 8.64,
-        "energy_kev": 116
+        "energy_kev": 116.0
       },
       "known_facts": [
         "Exact eligible volume fixed by the 2027 Grand Prize rules."
@@ -690,9 +699,9 @@
       ],
       "grand_prize_2027": {
         "eligible": true,
-        "volume_id": "20250720045926-9.362um-1.2m-113keV",
+        "volume_id": "20250821151648-9.362um-1.2m-113keV",
         "voxel_um": 9.362,
-        "energy_kev": 113
+        "energy_kev": 113.0
       },
       "known_facts": [
         "Exact eligible volume fixed by the 2027 Grand Prize rules."

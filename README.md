@@ -4,7 +4,7 @@ ARGUS is a local instrument for working with Herculaneum scroll CT data. It walk
 CT volume to a surface to a detector output, and at each step it records where the result came from
 and why a step could not run. It works offline and has no cloud component.
 
-Built by **DarthCeltic** and **Daine (clexious)**, under the
+Built by **DarthCeltic** and **clexious**, under the
 [Cinder Covenant](https://github.com/Cinder-Covenant) organisation. Source:
 <https://github.com/Cinder-Covenant/ARGUS>.
 

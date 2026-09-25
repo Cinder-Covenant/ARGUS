@@ -23,6 +23,39 @@ def target_paths() -> list:
     return sorted(d.glob("*.json")) if d.is_dir() else []
 
 
+DRIVER = ("scripts", "pipeline_driver.py")
+
+
+def missing_pipeline_inputs() -> list:
+    """What `argus run` needs that this checkout does not have, each with what the operator supplies."""
+    out = []
+    if not target_paths():
+        out.append({"missing": "target manifest",
+                    "where": "%s/*.json" % "/".join(TARGET_DIR),
+                    "operator_supplies": "a JSON file per target with `target` (<scroll>/<segment>), "
+                                         "`zarr_base` (the volume URL), `level`, `volume_shape`, "
+                                         "`acquisition` and, for a mesh route, `mesh_dir`"})
+    if not pathlib.Path(paths.repo(*DRIVER)).is_file():
+        out.append({"missing": "pipeline driver",
+                    "where": "/".join(DRIVER),
+                    "operator_supplies": "the governed driver script (private research tooling, "
+                                         "not part of the public build), the ink-detection stages "
+                                         "it composes, a detector checkpoint, and a consumed "
+                                         "launch authorisation (--authorization-id and "
+                                         "--launch-packet)"})
+    return out
+
+
+def _print_public_targets(out) -> None:
+    """The bounded public-data runs this build can perform, if any (`argus run <id>`)."""
+    from argus.cli import public_pipeline as PP
+    found = PP.public_target_paths()
+    if found:
+        print("public target manifests (argus run <id> --dry-run explains each stage):", file=out)
+        for p in found:
+            print("  %s" % p.stem, file=out)
+
+
 def resolve_target(name: str):
     """A target manifest, by file stem or by its declared target string."""
     for p in target_paths():
@@ -120,6 +153,12 @@ def _refuse(out, code: str, detail: str, fix: str) -> int:
 def run(argv, out=sys.stdout) -> int:
     import argparse
     ap = argparse.ArgumentParser(prog="argus run", description=__doc__.splitlines()[0])
+    ap.add_argument("pipeline", nargs="?", default=None,
+                    help="a public target manifest (path or id under argus/public_targets): the "
+                         "end-to-end run over public data")
+    ap.add_argument("--authorize", metavar="ID", default=None,
+                    help="with a public target: stage its pinned checkpoint and issue single-use "
+                         "authorisation ID for exactly this run")
     ap.add_argument("--target", default=None,
                     help="a target manifest stem, or the target string it declares")
     ap.add_argument("--list", action="store_true", help="the targets this checkout knows")
@@ -139,7 +178,27 @@ def run(argv, out=sys.stdout) -> int:
                     help="where refusal receipts are written (default: artifacts/route_refusals)")
     ns, passthrough = ap.parse_known_args(argv)
 
+    if ns.pipeline:
+        from argus.cli import public_pipeline as PP
+        return PP.run_manifest(ns.pipeline, authorization_id=ns.authorization_id,
+                               authorize_as=ns.authorize, dry_run=ns.dry_run, out=out)
+
+    lacking = missing_pipeline_inputs()
+    if lacking and not ns.list and ns.target:
+        print("REFUSED: PIPELINE_NOT_INSTALLED", file=out)
+        print("  argus run cannot launch a pipeline in this checkout. Missing:", file=out)
+        for m in lacking:
+            print("  - %s at %s" % (m["missing"], m["where"]), file=out)
+            print("      you supply: %s" % m["operator_supplies"], file=out)
+        print("  nothing was checked or started, and nothing here is a result. "
+              "argus doctor shows what this machine can do; argus demo shows the pipeline's "
+              "shape.", file=out)
+        _print_public_targets(out)
+        return 1
     if ns.list or not ns.target:
+        for m in lacking:
+            print("note: no %s at %s. %s" % (m["missing"], m["where"], m["operator_supplies"]),
+                  file=out)
         print("targets known to this checkout:", file=out)
         for p in target_paths():
             try:
@@ -151,6 +210,7 @@ def run(argv, out=sys.stdout) -> int:
             print("  %-40s %s" % (p.stem, seg.public_name() if seg
                                   else "IDENTITY INCOMPLETE -- cannot be named publicly"),
                   file=out)
+        _print_public_targets(out)
         if not ns.target:
             print("\nchoose one: argus run --target <stem>", file=out)
         return 0

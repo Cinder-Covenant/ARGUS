@@ -40,29 +40,57 @@ class PitchEvidence:
         return d
 
 
-def from_ome(zattrs: dict, level: str = "0") -> PitchEvidence:
-    """The store's own coordinateTransformations."""
-    ms = (zattrs or {}).get("multiscales")
-    if not ms:
-        return PitchEvidence("OME_TRANSFORM", UNKNOWN, detail={"why": "no multiscales key"})
-    for ds in ms[0].get("datasets", []):
+def _ome_scale(ms0: dict, level: str):
+    """The first 3+-element `scale` transform of one level, or None if the level/scale is absent."""
+    for ds in ms0.get("datasets", []):
         if str(ds.get("path")) != str(level):
             continue
         for t in ds.get("coordinateTransformations", []):
             s = t.get("scale")
-            if not s or len(s) < 3:
-                continue
-            if all(float(v) == 1.0 for v in s):
-                return PitchEvidence(
-                    "OME_TRANSFORM", UNKNOWN, detail={
-                        "scale": s,
-                        "why": ("a scale of exactly [1,1,1] is the absence of a declaration, "
-                                "not a pitch of one micron")})
-            units = [a.get("unit") for a in ms[0].get("axes", [])]
-            return PitchEvidence("OME_TRANSFORM", VERIFIED,
-                                 pitch_um_yx=(float(s[-2]), float(s[-1])),
-                                 detail={"scale": s, "axes_units": units, "level": level})
-    return PitchEvidence("OME_TRANSFORM", UNKNOWN, detail={"why": "level %s absent" % level})
+            if s and len(s) >= 3:
+                return s
+    return None
+
+
+def from_ome(zattrs: dict, level: str = "0", level0_pitch_um=None) -> PitchEvidence:
+    """The store's own coordinateTransformations."""
+    ms = (zattrs or {}).get("multiscales")
+    if not ms:
+        return PitchEvidence("OME_TRANSFORM", UNKNOWN, detail={"why": "no multiscales key"})
+    s = _ome_scale(ms[0], level)
+    if s is None:
+        return PitchEvidence("OME_TRANSFORM", UNKNOWN, detail={"why": "level %s absent" % level})
+    s0 = _ome_scale(ms[0], "0")
+    relative = s0 is not None and all(float(v) == 1.0 for v in s0)
+    if all(float(v) == 1.0 for v in s) and not (relative and level0_pitch_um):
+        return PitchEvidence(
+            "OME_TRANSFORM", UNKNOWN, detail={
+                "scale": s,
+                "why": ("a scale of exactly [1,1,1] is the absence of a declaration, "
+                        "not a pitch of one micron")})
+    if not relative:
+        units = [a.get("unit") for a in ms[0].get("axes", [])]
+        return PitchEvidence("OME_TRANSFORM", VERIFIED,
+                             pitch_um_yx=(float(s[-2]), float(s[-1])),
+                             detail={"scale": s, "axes_units": units, "level": level})
+    factor = (float(s[-2]), float(s[-1]))
+    base = level0_pitch_um
+    if base is not None and not isinstance(base, (tuple, list)):
+        base = (float(base), float(base))
+    if not base:
+        return PitchEvidence(
+            "OME_TRANSFORM", UNKNOWN, detail={
+                "scale": s, "relative_factor_yx": list(factor), "level": level,
+                "why": ("level 0 declares scale [1,1,1], so every level's scale is a relative "
+                        "multiscale factor, not a pitch; the level pitch is level-0 pitch times "
+                        "that factor and no level-0 pitch was supplied")})
+    return PitchEvidence(
+        "OME_TRANSFORM", INFERRED,
+        pitch_um_yx=(float(base[0]) * factor[0], float(base[1]) * factor[1]),
+        detail={"scale": s, "relative_factor_yx": list(factor), "level": level,
+                "level0_pitch_um_yx": list(base),
+                "why": ("level-0 pitch came from an outside attested/PROVEN source; the OME "
+                        "block supplied only the relative factor")})
 
 
 def from_segment_meta(meta: dict, render_shape_yx=None) -> PitchEvidence:

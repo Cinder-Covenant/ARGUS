@@ -432,7 +432,7 @@ function PrizeRouteFacts() {
   return (
     <>
       <ScrollFactsTable universe={universe} lane="FIRST_LETTERS"
-        caption="First Letters targets (Grand Prize targets are a subset)" control="review.facts.first_letters" />
+        caption="First Letters targets (Grand Prize targets overlap them)" control="review.facts.first_letters" />
       <ScrollFactsTable universe={universe} lane="PARIS4_TITLE"
         caption="Paris 4 title" control="review.facts.title" />
     </>

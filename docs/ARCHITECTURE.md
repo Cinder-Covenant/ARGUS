@@ -43,7 +43,7 @@ flowchart LR
 | `argus doctor` | Checks RAM, disk, CPU, Python dependencies, each external component, and the upstream pin. A check that cannot run is reported as `UNKNOWN`, not as a pass. |
 | `argus setup` | Measures the machine, shows each component's licence, asks, fetches only what you accepted, and verifies every byte. It is safe to interrupt and re-run. |
 | `argus start`, `argus stop`, `argus status` | Start, stop and inspect the Docker stack, with bounded waits and plain errors. `stop` never removes a named volume. |
-| `argus run` | Runs the real pipeline on a named target. It refuses an ambiguous target, a machine that cannot finish the run, unverified inputs, and volumes the model's provenance policy does not cover. |
+| `argus run` | Runs the public bounded pipeline from a target manifest (`argus/cli/public_pipeline.py`), or the governed pipeline on a named target where that driver is installed. It refuses an ambiguous target, a machine that cannot finish the run, unverified inputs, and volumes the model's provenance policy does not cover. |
 
 ## Core (`argus/core`)
 

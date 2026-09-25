@@ -33,6 +33,7 @@ MAX_ARRAY_PATH_BYTES = 256
 FREE_SPACE_RESERVE_BYTES = 1 << 30
 HTTP_READ_CHUNK = 64 << 10
 METADATA_KEYS = (".zarray", ".zattrs")
+CANONICAL_IDENTITY_NAME = "STORE_IDENTITY.json"
 ROI_KEYS = ("z0", "z1", "y0", "y1", "x0", "x1")
 
 
@@ -387,8 +388,14 @@ def acquire(the_plan: dict, *, fetcher, root, volume_registry=None, target_autho
         auth = G.verify_target_acquisition_authority(the_plan.get("scroll"), target_authority,
                                                      stage="acquire", plan=the_plan)
         if not auth["verified"]:
-            raise AcquisitionRefusal("%s is a prize target and target authority does not verify: %s"
-                                     % (the_plan.get("scroll"), "; ".join(auth["reasons"])))
+            raise AcquisitionRefusal(
+                "%s is a prize target (%s) and target authority does not verify: %s. A prize-target "
+                "acquisition needs a consumed target-acquisition packet whose phase matches this "
+                "plan; a scroll that is not a prize target needs none, and its volume identity is "
+                "checked against the public official survey instead."
+                % (the_plan.get("scroll"), ", ".join((fz["targets"] if isinstance(fz["targets"], dict) else {}).get(
+                    next(t for t in fz["targets"] if G._key(t) == G._key(the_plan.get("scroll"))), [])),
+                   "; ".join(auth["reasons"])))
     _configure_fetcher_budget(fetcher, int(the_plan["byte_ceiling"]))
     dst = pathlib.Path(root) / the_plan["store_id"]
     dst.mkdir(parents=True, exist_ok=True)
@@ -447,6 +454,8 @@ def acquire(the_plan: dict, *, fetcher, root, volume_registry=None, target_autho
       "official_identity_sha256": (official or {}).get("identity_sha256"),
       "generator": CONTRACT}, assessment=assessment)
     receipts.write_json(identity, dst / ("STORE_IDENTITY_%s.json" % the_plan["phase"]))
+    if the_plan["phase"] != "A0":
+        receipts.write_json(identity, dst / CANONICAL_IDENTITY_NAME)
     body = {"contract": CONTRACT, "plan": {k: v for k, v in the_plan.items() if k != "keys"},
             "store_identity": identity,
             "objects": manifest, "fetched_bytes": fetched_bytes, "absent_404": absent,

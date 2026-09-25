@@ -82,15 +82,17 @@ def _furthest(rec: dict) -> str:
     return "NONE"
 
 
-def _held_locally(scroll: str) -> bool:
-    """Is anything for this scroll ACTUALLY on this machine?"""
+def _local_stores(scroll: str) -> dict:
+    """{\"sealed\": [dir, ...], \"attested\": [{\"store\", \"attested_by\"}, ...]} for this scroll."""
     import json as _json
     try:
         from argus.core import acquisition_identity as _ai
         roots = [r for r in (_ai.store_roots() or []) if r and r.is_dir()]
     except Exception:
-        return False
+        return {"sealed": [], "attested": []}
+    from argus.core import store_identity as _si
     want = scroll.strip().lower()
+    out = {"sealed": [], "attested": []}
     for root in roots:
         try:
             children = list(root.iterdir())
@@ -105,8 +107,22 @@ def _held_locally(scroll: str) -> bool:
             except (OSError, ValueError):
                 continue
             if str(rec.get("physical_scroll") or "").strip().lower() == want:
-                return True
-    return False
+                if _si.holding_state(rec) == _si.ATTESTED:
+                    out["attested"].append({"store": str(child), "attested_by": rec.get("attested_by")})
+                else:
+                    out["sealed"].append(str(child))
+    return out
+
+
+def _held_locally(scroll: str) -> bool:
+    """Only a SEALED store is a holding."""
+    return bool(_local_stores(scroll)["sealed"])
+
+
+def _surveyed_scrolls() -> frozenset:
+    """Scrolls the public official survey lists at least one published volume for."""
+    from argus.core import official_identity as OI
+    return frozenset(name for name, _v, _r in OI.survey_volumes())
 
 
 def compose(base: str = "http://127.0.0.1:8787") -> dict:
@@ -208,8 +224,10 @@ def compose_records(ids: dict, targets: dict, scrolls: dict, *,
         p = prize.get(s, set())
         rec = by_scroll.get(s, {})
         acq = acquisitions.get(s, [])
-        published_upstream = any(a.get("store_state") == "FOUND" for a in acq)
-        held = _held_locally(s)
+        published_upstream = any(a.get("store_state") == "FOUND" for a in acq)             or s in _surveyed_scrolls()
+        stores = _local_stores(s)
+        held = bool(stores["sealed"])
+        attested = stores["attested"]
         inv = label_inventory.get(s) or {}
         inv_labels = len(inv.get("segments") or []) if isinstance(inv.get("segments"), list) else int(inv.get("segments") or 0)
         labelled = int(rec.get("labelled") or 0) > 0 or bool(inv) or inv_labels > 0
@@ -236,6 +254,9 @@ def compose_records(ids: dict, targets: dict, scrolls: dict, *,
           "local_data": ("HELD" if held else
                          "PARTIAL" if furthest != "NONE" else "NONE"),
           "published_upstream": published_upstream,
+          "attested_store": ({"count": len(attested),
+                              "attested_by": sorted({str(a.get("attested_by")) for a in attested}),
+                              "state": "ATTESTED_NOT_SEALED"} if attested else None),
           "furthest_stage": furthest,
           "labelled": labelled,
           "label_representations": int(rec.get("label_representations") or 0) or inv_labels,
@@ -342,7 +363,7 @@ def selftest() -> bool:
                                  "has_work_in_progress"} for r in rows))
 
     ck("every prize-eligible scroll reaches the shelf, not just the canonical ids",
-       len([r for r in rows if "FIRST_LETTERS" in r["prizes"]]) == 23)
+       len([r for r in rows if "FIRST_LETTERS" in r["prizes"]]) == 22)
     ck("held means held HERE, never the publisher's bucket listing",
        "not `store_state`" in s["held_means"]
        and all(("published_upstream" in r) for r in rows))

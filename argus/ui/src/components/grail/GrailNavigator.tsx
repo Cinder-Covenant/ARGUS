@@ -447,7 +447,7 @@ function ProjectBrief({ universe, activeRuns, stacks }: {
         <h3>Prize routes</h3>
         <dl className="gn-kv">
           <dt>First Letters</dt><dd>{c.firstLetters.value} targets · {c.firstLettersWithLocalMaterial.value} with material indexed here</dd>
-          <dt>Grand Prize</dt><dd>{c.grandPrize.value} targets, a subset of First Letters</dd>
+          <dt>Grand Prize</dt><dd>{c.grandPrize.value} targets, overlapping First Letters</dd>
           <dt>Controls</dt><dd>{c.controlsAndDev.value} development and control scrolls, never prize-eligible</dd>
         </dl>
         <PrizeRouteBoard compact />

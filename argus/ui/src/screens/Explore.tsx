@@ -407,7 +407,7 @@ function ScrollGrid(_props: { feed: FeedState }) {
           ) : (
             <p className="ag-prose">
               {registered.text} registered identities. They are not one cohort: {fl.text} are First
-              Letters targets, {gp.text} of those are also Grand Prize targets — a subset, never an
+              Letters targets, {gp.text} of those are also Grand Prize targets — an overlap, never an
               addition — and {rest.text} are controls or development scrolls with no prize
               eligibility at all. The collection counts are what EXISTS and do not move when a
               filter does.
@@ -701,7 +701,7 @@ function ExploreCollection({
         </span>
         {parent ? (
           <span className="ex-subset" title={c.note ?? undefined}>
-            a subset of the {parent.state === "OK" ? `${parent.text} ` : ""}First Letters
+            overlapping the {parent.state === "OK" ? `${parent.text} ` : ""}First Letters
             targets, not an addition
           </span>
         ) : null}

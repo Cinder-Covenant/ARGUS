@@ -32,7 +32,8 @@ unread scrolls. A rendered candidate is not a reading. Every export packet is `n
 | UI production build | yes | `npm ci && npm run build`, `npm run test:unit` (continuous integration) | not applicable |
 | Public demo mode (non-public surfaces removed from the page) | yes, always on in this build | reviewed by hand; not covered by the Python test kit | not applicable |
 | Acquisition planning (dry run, no fetch) | yes | not tested in this release | not applicable |
-| Real pipeline run (`argus run`) | code present | **not verified here**; needs accepted components, data and a GPU | no; this release makes no scientific claim |
+| Governed research pipeline (`argus run --target`) | **not shipped**: its driver and target manifests stay private | not applicable | not applicable |
+| Public bounded pipeline run (`argus run <manifest>`) | yes, one non-prize target | offline tests `argus/tests/test_public_pipeline.py`; run once on the maintainers' machine over public data (see `docs/PUBLIC_RUN.md`); needs Villa's runtime and a GPU | no; a control proves the pipeline, not a discovery |
 | Ink detection on any scroll | **no detector ships** | not applicable | **no** |
 | Reading unread scrolls | **not in this release** | not applicable | **no** |
 | Prize submission packaging | not in this release | not applicable | no |

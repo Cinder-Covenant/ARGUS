@@ -4,7 +4,7 @@ Generated from `argus/core/licence_registry.py` in this release. Edit the regist
 
 ## Built by
 
-DarthCeltic and Daine (clexious).
+DarthCeltic and clexious.
 
 ## Thanks
 

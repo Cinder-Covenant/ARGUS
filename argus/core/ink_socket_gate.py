@@ -82,6 +82,21 @@ def _is_target_prize(p) -> bool:
     return p == FIRST_LETTERS or p.startswith(GRAND_PRIZE_PREFIX)
 
 
+def _public_registry_targets() -> dict:
+    """{title: sorted target prizes} from the packaged public registry, or {} if unreadable."""
+    p = pathlib.Path(__file__).resolve().parent.parent / "public_target_registry.json"
+    try:
+        rows = json.loads(p.read_text(encoding="utf-8")).get("targets") or []
+    except (OSError, ValueError, AttributeError):
+        return {}
+    out = {}
+    for r in rows:
+        prizes = [x for x in ((r or {}).get("prizes") or []) if _is_target_prize(x)]
+        if _norm((r or {}).get("scroll")) and prizes:
+            out[_norm(r["scroll"])] = sorted(prizes)
+    return out
+
+
 def frozen_targets(source=None) -> dict:
     """Prize targets from the frozen acquisition survey."""
     p = pathlib.Path(source) if source is not None else paths.find_artifact(*TARGET_SOURCE_PARTS)
@@ -89,6 +104,13 @@ def frozen_targets(source=None) -> dict:
     try:
         raw = p.read_bytes()
     except OSError as e:
+        if source is None:
+            pub = _public_registry_targets()
+            if pub:
+                out.update(state="READ", targets=pub, source="argus/public_target_registry.json",
+                           source_kind="PUBLIC_TARGET_REGISTRY",
+                           why="frozen survey unreadable (%s); using the packaged public registry" % e)
+                return out
         out["why"] = "frozen target source unreadable: %s" % e
         return out
     out["sha256"] = hashlib.sha256(raw).hexdigest()

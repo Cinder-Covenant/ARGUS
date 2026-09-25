@@ -170,6 +170,33 @@ def geometry_warnings(geometry: dict) -> list[str]:
 
 
 
+def _plausible_bbox(bb) -> bool:
+    """A stored bbox that is inverted or negative is reported by the geometry check as untrusted and is not evidence of which volume the segment lies in."""
+    try:
+        lo, hi = bb
+        return all(float(a) >= 0 and float(b) >= float(a) for a, b in zip(lo, hi)) and len(lo) == len(hi) == 3
+    except (TypeError, ValueError):
+        return False
+
+
+def gather_evidence(d: Path, declared=None) -> dict:
+    """What the segment says about itself, in the order the identity gate trusts it: the volume_source.txt line, then the `<id>-on-<volume id>-<pitch>um` name Villa gives a segment, then the extent in..."""
+    ev = {"names": [], "scroll_hints": []}
+    if declared:
+        ev["names"].append({"kind": "volume_source_file", "text": declared})
+    ev["names"].append({"kind": "segment_name", "text": d.name})
+    if d.parent.name:
+        ev["scroll_hints"].append({"kind": "the folder holding the segment", "text": d.parent.name})
+    try:
+        meta = json.loads((d / N3P.TIFXYZ_META_FILE).read_text(encoding="utf-8"))
+        bb = meta.get("bbox")
+        if isinstance(bb, list) and len(bb) == 2 and _plausible_bbox(bb):
+            ev["bbox"] = bb
+    except (OSError, ValueError, AttributeError):
+        pass
+    return ev
+
+
 def read_identity(d: Path, attach, attested_by, reason) -> dict:
     declared = None
     src = d / N3P.VOLUME_SOURCE_FILE
@@ -179,34 +206,59 @@ def read_identity(d: Path, attach, attested_by, reason) -> dict:
         except (OSError, ValueError) as e:
             raise SegmentRefusal("UNKNOWN_IDENTITY", "volume_source.txt is unreadable: %s"
                                  % e) from None
-    attach = str(attach).rstrip("\r\n") if attach else None
+    attach = str(attach).rstrip(chr(13) + chr(10)) if attach else None
     if declared and attach and declared != attach:
         raise SegmentRefusal("IDENTITY_CONFLICT",
                              "the attached volume source differs from the segment's own "
                              "volume_source.txt; an attachment never overrides the file",
                              volume_source_txt=declared, attached=attach)
+    auto = OI.identify_volume(gather_evidence(d, declared))
+    summary = {k: auto[k] for k in ("state", "confidence", "evidence_used", "contradictions",
+                                    "reasons", "survey")}
+    if auto["contradictions"]:
+        raise SegmentRefusal("IDENTITY_CONFLICT",
+                             "the evidence in the segment disagrees with itself or with the "
+                             "official survey: %s. Nothing is guessed and an attestation cannot "
+                             "outvote the data." % "; ".join(auto["contradictions"]),
+                             auto_identification=summary)
     if declared:
         basis, source = "VOLUME_SOURCE_FILE", declared
+    elif auto["state"] == "IDENTIFIED":
+        source = (auto["identity"]["source_url"] or "").rstrip("/")
+        if attach and OI.parse_volume_store_token(attach) != auto["identity"]["volume_id"]:
+            raise SegmentRefusal("IDENTITY_CONFLICT",
+                                 "the attached volume source names a different volume than the "
+                                 "one the segment's own evidence identifies (%s)"
+                                 % auto["identity"]["volume_id"], attached=attach,
+                                 auto_identification=summary)
+        basis = "AUTO_IDENTIFIED"
     elif attach:
         if not (isinstance(attested_by, str) and attested_by.strip()
                 and isinstance(reason, str) and len(reason.strip()) >= 8):
             raise SegmentRefusal("UNKNOWN_IDENTITY",
                                  "an attached identity needs attested_by (who vouches for it) "
                                  "and attestation_reason (at least 8 characters); it is never "
-                                 "accepted anonymously")
+                                 "accepted anonymously", auto_identification=summary)
         basis, source = "OPERATOR_ATTESTED", attach
     else:
         raise SegmentRefusal("UNKNOWN_IDENTITY",
-                             "no volume_source.txt, so the segment does not say which volume "
-                             "it was traced on. It can be attached manually with attested_by "
-                             "and attestation_reason, but never silently")
+                             "no volume_source.txt, so the segment does not say which volume it was "
+                             "traced on, and the automatic identification could not settle it: %s. It can be "
+                             "attached manually with attested_by and attestation_reason, but "
+                             "never silently" % ("; ".join(auto["reasons"]) or "no evidence"),
+                             auto_identification=summary)
     return {"basis": basis, "volume_source": source,
             "attested_by": attested_by.strip() if basis == "OPERATOR_ATTESTED" else None,
-            "attestation_reason": reason.strip() if basis == "OPERATOR_ATTESTED" else None}
+            "attestation_reason": reason.strip() if basis == "OPERATOR_ATTESTED" else None,
+            "auto_identification": summary,
+            "confidence": auto["confidence"] if basis == "AUTO_IDENTIFIED" else None}
 
 
 def _pitch_from_records(canon: str, token: str) -> dict:
     """Pitch from official records only, never from a directory or store name."""
+    for scroll, vid, row in OI.survey_volumes():
+        if vid == token and row.get("pixel_size_um"):
+            return {"pitch_um": row["pixel_size_um"], "basis": "public official survey"}
     try:
         p = paths.find_artifact("acquisition_survey", "ACQUISITION_SURVEY.json")
         for r in json.loads(Path(p).read_text(encoding="utf-8")).get("rows") or []:
@@ -327,6 +379,11 @@ def segment_key(files: dict, volume_source: str) -> str:
                          "volume_source": volume_source})[:20]
 
 
+def _verified(ident: dict) -> bool:
+    return ident["basis"] == "VOLUME_SOURCE_FILE" or (
+        ident["basis"] == "AUTO_IDENTIFIED" and ident.get("confidence") == "HIGH")
+
+
 def plan(params: dict) -> dict:
     unknown = sorted(set(params) - PLAN_FIELDS)
     if unknown:
@@ -358,8 +415,7 @@ def plan(params: dict) -> dict:
     already = U.imported_segment_path(compat["scroll"], key).is_file()
     body.update(
         ready=True, segment_key=key, already_registered=already,
-        directory=str(d), geometry=geo, identity=dict(ident, verified=ident["basis"] ==
-                                                      "VOLUME_SOURCE_FILE"),
+        directory=str(d), geometry=geo, identity=dict(ident, verified=_verified(ident)),
         compatibility=compat, claim_ceiling=compat["claim_ceiling"],
         warnings=geometry_warnings(geo),
         registers_under=U.IMPORTED_SEGMENTS_DIR + " in the user-data store")
@@ -370,6 +426,8 @@ def plan(params: dict) -> dict:
             "shapes not checked"),
         "identity %s: %s, volume %s (official volume %s); %s" % (
             "VERIFIED from volume_source.txt" if ident["basis"] == "VOLUME_SOURCE_FILE"
+            else "AUTO-IDENTIFIED (%s confidence) from the segment's own evidence" % ident["confidence"]
+            if ident["basis"] == "AUTO_IDENTIFIED"
             else "ATTESTED by %s, not verified" % ident["attested_by"],
             compat["scroll"], compat["volume_id"], compat["official_volume"]["state"],
             "pitch %s um (%s)" % (compat["pitch"]["pitch_um"], compat["pitch"]["basis"])

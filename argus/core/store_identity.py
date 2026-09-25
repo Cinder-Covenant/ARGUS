@@ -157,9 +157,25 @@ def assert_identity(**kw) -> dict:
     return r
 
 
-def identity_record(*, base: dict, assessment: dict) -> dict:
+OPERATOR_ATTESTED = "OPERATOR_ATTESTED"
+ATTESTED, SEALED = "ATTESTED", "SEALED"
+
+
+def holding_state(record) -> str:
+    """ATTESTED when a person vouched for the store's identity by hand (the record says `identity_basis: OPERATOR_ATTESTED`), otherwise SEALED."""
+    if str((record or {}).get("identity_basis") or "").strip().upper() == OPERATOR_ATTESTED:
+        return ATTESTED
+    return SEALED
+
+
+def identity_record(*, base: dict, assessment: dict, attestation: dict | None = None) -> dict:
     """A STORE_IDENTITY body: proven values under `asserted`, declarations under `declared`."""
     f = assessment["fields"]
+    if attestation is not None:
+        who, why = str(attestation.get("attested_by") or "").strip(), str(attestation.get("reason") or "").strip()
+        if not who or not why:
+            raise ValueError("an attested identity needs attested_by and a reason")
+        base = dict(base, identity_basis=OPERATOR_ATTESTED, attested_by=who, attestation_reason=why)
     return dict(base, contract=CONTRACT, supersedes=SUPERSEDES,
                 asserted={k: f[k]["value"] for k in FIELDS if f[k]["state"] == PROVEN},
                 declared={k: f[k].get("declared") for k in FIELDS},

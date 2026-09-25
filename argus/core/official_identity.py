@@ -103,6 +103,11 @@ def parse_surface_volume_token(path) -> str | None:
     return None
 
 
+def parse_any_volume_token(url) -> str | None:
+    """The token of a `volumes/<id>-....zarr` store, else of a `surface-volumes/...-volume-<id>.zarr` render published beside a segment."""
+    return parse_volume_store_token(url) or parse_surface_volume_token(url)
+
+
 def https_url(path: str) -> str:
     return S3_HTTPS_ROOT + str(path).lstrip("/")
 
@@ -612,3 +617,242 @@ def registry_from_resolutions(resolutions) -> dict:
 
 
 REGISTRY_SOURCE = "%s: PROVEN_BY_OFFICIAL_CATALOG_RESOLUTION only" % CONTRACT
+
+
+
+SURVEY_FILE = "public_official_survey.json"
+SURVEY_SCHEMA = "argus-public-official-survey-v1"
+IDENTIFY_CONTRACT = "argus-identify-v1"
+_SEGMENT_ON_VOLUME = re.compile(r"-on-(\d{14})-(\d+(?:\.\d+)?)um(?:\.tifxyz)?$")
+_STORE_SCROLL = re.compile(r"(?:^|/)([^/]+)/volumes/[^/]+\.zarr/?(?:\?.*)?$")
+_NAME_PITCH = re.compile(r"(?<![\d.])(\d+\.\d+)um")
+_SURVEY_MEMO: dict = {}
+
+
+def survey_path() -> pathlib.Path:
+    return pathlib.Path(__file__).resolve().parents[1] / SURVEY_FILE
+
+
+def load_survey(path=None) -> dict | None:
+    """The public survey document, or None when it is absent or malformed."""
+    p = pathlib.Path(path) if path is not None else survey_path()
+    try:
+        st = p.stat()
+        key = (str(p), st.st_mtime_ns, st.st_size)
+        if key not in _SURVEY_MEMO:
+            doc = json.loads(p.read_text(encoding="utf-8"))
+            ok = isinstance(doc, dict) and doc.get("schema") == SURVEY_SCHEMA \
+                and isinstance(doc.get("samples"), dict)
+            _SURVEY_MEMO.clear()
+            _SURVEY_MEMO[key] = doc if ok else None
+        return _SURVEY_MEMO[key]
+    except (OSError, ValueError):
+        return None
+
+
+def survey_volumes(survey=None) -> list:
+    """Every official volume as (scroll, volume_id, row), in a stable order."""
+    s = survey if survey is not None else load_survey()
+    out = []
+    for scroll in sorted((s or {}).get("samples") or {}):
+        for vid, row in sorted(s["samples"][scroll].get("volumes", {}).items()):
+            out.append((scroll, vid, row))
+    return out
+
+
+def parse_segment_on_volume(name):
+    """(volume_token, pitch_um) from a Villa `<segment>-on-<volume id>-<pitch>um[.tifxyz]` name."""
+    leaf = str(name or "").strip().replace("\\", "/").rstrip("/").rsplit("/", 1)[-1]
+    m = _SEGMENT_ON_VOLUME.search(leaf)
+    return (m.group(1), float(m.group(2))) if m else (None, None)
+
+
+def _shape_fit(bbox, shape):
+    """Does a tifxyz bbox [[x0,y0,z0],[x1,y1,z1]] sit inside an array of shape (z, y, x)?"""
+    try:
+        lo, hi = bbox
+        ext = (shape[2], shape[1], shape[0])
+        return all(float(a) >= -0.5 and float(b) <= e + 0.5 for a, b, e in zip(lo, hi, ext))
+    except (TypeError, ValueError, IndexError):
+        return None
+
+
+def _volume_ref(scroll, vid, row):
+    return {"scroll": scroll, "volume_id": vid, "scan_id": row.get("scan_id"),
+            "long_id": row.get("long_id"), "store": row.get("store"),
+            "source_url": row.get("source_url"), "pixel_size_um": row.get("pixel_size_um"),
+            "energy_kev": row.get("energy_kev"), "array": row.get("array"),
+            "prizes": row.get("prizes") or [], "checked_at": row.get("checked_at")}
+
+
+def _scroll_key(s):
+    """Canonical scroll id for a hint; raises KeyError for a string that is not a scroll."""
+    from argus.core import scroll_ids
+    return scroll_ids.resolve(s)
+
+
+def identify_volume(evidence: dict, *, survey=None) -> dict:
+    """Infer WHICH official volume a piece of data is, from the evidence in the data itself."""
+    surv = survey if survey is not None else load_survey()
+    used, contradictions, reasons = [], [], []
+    res = {"contract": IDENTIFY_CONTRACT, "state": "REFUSED", "confidence": None, "identity": None,
+           "evidence_used": used, "contradictions": contradictions, "reasons": reasons,
+           "survey": None}
+    if not surv:
+        reasons.append("the public official survey is not installed, so nothing can be identified "
+                       "(run scripts/refresh_official_survey.py)")
+        return res
+    res["survey"] = {"checked_at": surv.get("checked_at"),
+                     "catalogue_sha256": ((surv.get("sources") or {}).get("catalogue") or {}).get("sha256")}
+    vols = survey_volumes(surv)
+    by_vid = {}
+    for scroll, vid, row in vols:
+        by_vid.setdefault(vid, []).append((scroll, row))
+    scans = {}
+    for scroll, s in (surv.get("samples") or {}).items():
+        for sid in s.get("scans") or {}:
+            scans.setdefault(sid, []).append(scroll)
+
+    tokens, name_pitches = {}, []
+    hints = list(evidence.get("scroll_hints") or [])
+    for n in evidence.get("names") or []:
+        text, kind = str(n.get("text") or ""), n.get("kind") or "name"
+        tok = parse_volume_store_token(text)
+        pitch = None
+        if tok is None:
+            tok, pitch = parse_segment_on_volume(text)
+        if tok is None and kind == "url":
+            tok = parse_surface_volume_token(text)
+        m_scroll = _STORE_SCROLL.search(text.replace("\\", "/"))
+        if m_scroll and tok:
+            hints.append({"kind": "the scroll in the %s path" % kind, "text": m_scroll.group(1)})
+        if tok:
+            tokens.setdefault(tok, []).append(kind)
+            used.append({"evidence": "volume token in %s" % kind, "value": tok, "text": text[-160:]})
+        m = _NAME_PITCH.search(text.replace("\\", "/").rstrip("/").rsplit("/", 1)[-1])
+        if pitch is None and m:
+            pitch = float(m.group(1))
+        if pitch is not None:
+            name_pitches.append((kind, pitch))
+    if len(tokens) > 1:
+        contradictions.append("the data names more than one volume: %s" % sorted(tokens))
+        reasons.append("CONTRADICTORY: the names carried by the data disagree about which volume "
+                       "it is (%s)" % ", ".join("%s in %s" % (t, "/".join(k))
+                                                for t, k in sorted(tokens.items())))
+        return res
+
+    arr = evidence.get("array") or {}
+    if not tokens:
+        if arr.get("shape"):
+            hits = [(s, v, r) for s, v, r in vols
+                    if (r.get("array") or {}).get("shape") == list(arr["shape"])
+                    and (not arr.get("chunks") or (r.get("array") or {}).get("chunks") == list(arr["chunks"]))
+                    and (not arr.get("dtype") or (r.get("array") or {}).get("dtype") == arr["dtype"])]
+            for key, want in (("pitch_um", "pixel_size_um"), ("energy_kev", "energy_kev")):
+                if evidence.get(key) is not None:
+                    tol = PITCH_TOL_UM if key == "pitch_um" else ENERGY_TOL_KEV
+                    hits = [h for h in hits if h[2].get(want) is not None
+                            and abs(float(h[2][want]) - float(evidence[key])) <= tol]
+            if len(hits) == 1:
+                s, v, r = hits[0]
+                used.append({"evidence": "array shape/chunks/dtype match exactly one official volume",
+                             "value": list(arr["shape"])})
+                res.update(state="IDENTIFIED", confidence="MEDIUM", identity=_volume_ref(s, v, r),
+                           basis="ARRAY_HEADER_ONLY")
+                return res
+            reasons.append("AMBIGUOUS: the array header %s fits %d official volumes%s; a shape that "
+                           "does not single out one volume is not an identity"
+                           % (list(arr["shape"]), len(hits),
+                              " (%s)" % ", ".join("%s/%s" % (h[0], h[1]) for h in hits[:6]) if hits else ""))
+            return res
+        if evidence.get("bbox"):
+            reasons.append("NO_VOLUME_NAMED: a segment extent alone fits many volumes and names none. "
+                           "Supply volume_source.txt, or a segment name of the form "
+                           "<id>-on-<volume id>-<pitch>um, or attest the volume with attested_by.")
+        else:
+            reasons.append("NO_EVIDENCE: no volume id, array header or extent was found in the data")
+        return res
+
+    (token, kinds), = tokens.items()
+    matches = by_vid.get(token, [])
+    if not matches:
+        if token in scans:
+            reasons.append("NOT_A_VOLUME_ID: %s is an acquisition (scan) id of %s, not a volume id; "
+                           "its volumes are %s" % (token, "/".join(scans[token]),
+                                                    sorted(v for s, v, r in vols if r.get("scan_id") == token)))
+        else:
+            reasons.append("UNKNOWN_VOLUME: %s is not an official volume id in the public survey "
+                           "(checked %s); it may be new upstream (re-run scripts/refresh_official_survey.py) "
+                           "or wrong" % (token, surv.get("checked_at")))
+        return res
+    if len(matches) > 1:
+        reasons.append("AMBIGUOUS: %s is listed for several scrolls: %s"
+                       % (token, ", ".join(s for s, _ in matches)))
+        return res
+    scroll, row = matches[0]
+    corroboration = []
+
+    def ok(what, value):
+        corroboration.append(what)
+        used.append({"evidence": what, "value": value})
+
+    def bad(msg):
+        contradictions.append(msg)
+        reasons.append("CONTRADICTORY: " + msg)
+
+    for kind, p in name_pitches:
+        if row.get("pixel_size_um") is None:
+            continue
+        if abs(float(row["pixel_size_um"]) - p) <= PITCH_TOL_UM:
+            ok("pitch in the %s matches the official volume" % kind, p)
+        else:
+            bad("the %s says %.3f um but official volume %s is %s um" % (kind, p, token, row["pixel_size_um"]))
+    if evidence.get("pitch_um") is not None and row.get("pixel_size_um") is not None:
+        if abs(float(row["pixel_size_um"]) - float(evidence["pitch_um"])) <= PITCH_TOL_UM:
+            ok("declared voxel size matches the official volume", evidence["pitch_um"])
+        else:
+            bad("declared voxel size %s um but official volume %s is %s um"
+                % (evidence["pitch_um"], token, row["pixel_size_um"]))
+    if evidence.get("energy_kev") is not None and row.get("energy_kev") is not None:
+        if abs(float(row["energy_kev"]) - float(evidence["energy_kev"])) <= ENERGY_TOL_KEV:
+            ok("declared energy matches the official volume", evidence["energy_kev"])
+        else:
+            bad("declared energy %s keV but official volume %s is %s keV"
+                % (evidence["energy_kev"], token, row["energy_kev"]))
+    off = row.get("array") or {}
+    if arr.get("shape") and off.get("shape"):
+        if list(arr["shape"]) == list(off["shape"]):
+            ok("array shape equals the official level-0 shape", list(arr["shape"]))
+        else:
+            bad("array shape %s differs from the official %s" % (list(arr["shape"]), off["shape"]))
+    if evidence.get("bbox") and off.get("shape"):
+        fit = _shape_fit(evidence["bbox"], off["shape"])
+        if fit:
+            ok("segment extent lies inside the official volume", evidence["bbox"])
+        elif fit is False:
+            bad("the segment extent %s does not fit inside official volume %s (shape z,y,x %s)"
+                % (evidence["bbox"], token, off["shape"]))
+    for h in hints:
+        txt = str(h.get("text") or "")
+        try:
+            hinted = _scroll_key(txt)
+        except KeyError:
+            continue
+        if hinted == _scroll_key(scroll):
+            ok("%s names the same scroll as the volume" % h.get("kind"), txt)
+        else:
+            bad("%s names %s but volume %s belongs to %s" % (h.get("kind"), txt, token, scroll))
+    if contradictions:
+        return res
+    declared_by_file = any(k in ("volume_source_file", "url") for k in kinds)
+    if not corroboration and not declared_by_file:
+        reasons.append("UNCORROBORATED: the name says %s but nothing else in the data agrees (no "
+                       "pitch, array header or extent to compare)" % token)
+        return res
+    independent = [c for c in corroboration if "extent" in c or "array shape" in c or "energy" in c]
+    strong = len(corroboration) >= 2 and (declared_by_file or bool(independent))
+    res.update(state="IDENTIFIED", confidence="HIGH" if strong else "MEDIUM",
+               identity=_volume_ref(scroll, token, row),
+               basis="DECLARED_" + "_".join(sorted(set(k.upper() for k in kinds))),
+               corroboration=corroboration)
+    return res

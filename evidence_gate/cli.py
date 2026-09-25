@@ -36,6 +36,12 @@ def main(argv: list[str] | None = None) -> int:
                          help="permit bounded, byte-range reads against a remote volume_url "
                               "(a local file:// volume is always read; without this flag a "
                               "remote volume_url is declared but not fetched)")
+    measure.add_argument("--volume-only", action="store_true",
+                         help="chunk-identity probe of a CT volume alone (no mesh, no orientation): "
+                              "takes volume_url from the manifest and needs --probe-box")
+    measure.add_argument("--probe-box", metavar="z0:z1:y0:y1:x0:x1",
+                         help='half-open voxel box on the manifest "level" (default 0); '
+                              "required with --volume-only")
     measure.add_argument("--receipt", type=Path)
 
     args = parser.parse_args(argv)
@@ -49,8 +55,20 @@ def main(argv: list[str] | None = None) -> int:
         return _print_and_exit(report)
 
     if args.command == "measure":
-        from .measure import measure_mesh
+        from .measure import measure_mesh, parse_probe_box, probe_volume
         spec = json.loads(args.manifest.read_text(encoding="utf-8"))
+        if args.volume_only:
+            if not args.probe_box or not spec.get("volume_url"):
+                parser.error("--volume-only needs --probe-box and a volume_url in the manifest")
+            try:
+                box = parse_probe_box(args.probe_box)
+            except ValueError as exc:
+                parser.error(str(exc))
+            report = probe_volume(spec["volume_url"], box, allow_network=args.allow_network,
+                                  level=int(spec.get("level", 0)), argv=full_argv)
+            if args.receipt:
+                write_receipt(report, args.receipt)
+            return _print_and_exit(report)
         mesh_dir = Path(spec["mesh_dir"])
         if not mesh_dir.is_absolute():
             mesh_dir = (args.manifest.parent / mesh_dir).resolve()

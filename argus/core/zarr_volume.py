@@ -42,13 +42,30 @@ def _zattrs(store_path: Path) -> dict:
         raise ZarrVolumeRefusal("%s is malformed JSON, not a usable OME-Zarr store: %s" % (p, exc))
 
 
-def probe_store(store_path: Path) -> dict:
+def _identity_level0_pitch(store_path: Path):
+    """Level-0 pitch (um) from the store's own STORE_IDENTITY `asserted.pitch_um` (only ever a PROVEN value), when that identity names level 0."""
+    try:
+        body = json.loads((Path(store_path) / "STORE_IDENTITY.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+    if str(body.get("array_path") or "0") != "0":
+        return None
+    try:
+        v = float((body.get("asserted") or {}).get("pitch_um"))
+    except (TypeError, ValueError):
+        return None
+    return v if v > 0 else None
+
+
+def probe_store(store_path: Path, level0_pitch_um=None) -> dict:
     """Every level the store DECLARES, whether each is actually OPENABLE, and its real shape/chunks/dtype/pitch when it is."""
     store_path = Path(store_path)
     zattrs = _zattrs(store_path)
     ms = zattrs.get("multiscales")
     if not ms:
         raise ZarrVolumeRefusal("%s declares no multiscales -- not a pyramid" % store_path)
+    if level0_pitch_um is None:
+        level0_pitch_um = _identity_level0_pitch(store_path)
     axes = [a.get("name") for a in ms[0].get("axes", [])] or None
     levels = []
     for ds in ms[0].get("datasets", []):
@@ -74,7 +91,7 @@ def probe_store(store_path: Path) -> dict:
             else:
                 entry.update(openable=True, shape=shape, chunks=chunks, dtype=dtype,
                              compressor=za.get("compressor"))
-        ev = PITCH.from_ome(zattrs, level=level)
+        ev = PITCH.from_ome(zattrs, level=level, level0_pitch_um=level0_pitch_um)
         entry["pitch_um_yx"] = list(ev.pitch_um_yx) if ev.pitch_um_yx else None
         entry["pitch_status"] = ev.status
         levels.append(entry)

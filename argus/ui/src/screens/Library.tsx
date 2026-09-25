@@ -24,6 +24,7 @@ import { Holdings } from "./Holdings";
 import { buildHoldingsView, fetchScrollIds, type ScrollIds } from "../lib/holdings";
 import { fetchReceipts, type ReceiptsState } from "../lib/receipts";
 import { useFocusTrap } from "../lib/useFocusTrap";
+import { PublicRuns } from "../components/evidence/PublicRunReceipt";
 
 export type Mode = "archive" | "texts" | "holdings";
 type SortKey = "newest" | "target" | "status" | "certification";
@@ -200,6 +201,11 @@ export function Library({
           <Holdings view={holdings} settled={rec.settled} />
         ) : (
           <div style={{ overflow: "auto", padding: "22px 22px 48px" }}>
+            {
+}
+            <div style={{ marginBottom: 26 }}>
+              <PublicRuns control="archive.public-runs" expanded />
+            </div>
             {bookcases.length === 0 ? (
               <div className="panel" style={{ padding: 22 }}>
                 <div className="muted">

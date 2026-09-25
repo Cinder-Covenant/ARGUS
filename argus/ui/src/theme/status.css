@@ -138,3 +138,21 @@
   .ssb-work-item { grid-template-columns: 1fr; }
   .ssb-work-link { justify-self: stretch; text-align: center; white-space: normal; }
 }
+
+.pub-runs { display: grid; gap: var(--s-2); min-width: 0; }
+.pub-run {
+  min-width: 0; padding: var(--s-3); border: 1px solid var(--line); border-radius: 8px;
+  background: var(--bg-sunken, transparent); display: grid; gap: var(--s-2);
+}
+.pub-run-banner {
+  margin: 0; padding: var(--s-2) var(--s-3); border-left: 4px solid var(--warn, var(--line-strong));
+  font-weight: 600; line-height: 1.4; overflow-wrap: anywhere;
+}
+.pub-run-head, .pub-run-dim { margin: 0; overflow-wrap: anywhere; }
+.pub-run-dim { color: var(--ink-dim); font-size: var(--t-small); }
+.pub-run-dl { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: var(--s-1) var(--s-3); margin: 0; }
+.pub-run-dl dt { color: var(--ink-dim); }
+.pub-run-dl dd { margin: 0; overflow-wrap: anywhere; min-width: 0; }
+.pub-run-stages { margin: 0; padding-left: 1.4em; columns: 2 18ch; }
+.pub-run-terms { margin: 0; padding-left: 1.2em; overflow-wrap: anywhere; }
+@media (max-width: 520px) { .pub-run-dl { grid-template-columns: 1fr; } .pub-run-dl dt { margin-top: var(--s-1); } }

@@ -302,8 +302,8 @@ export function ScrollArchive({
               <span className="arc-collection-name" aria-label={c.title}>{SHORT_TITLE[c.lane]}</span>
               <span className="arc-collection-count">{c.count.value ?? "unknown"}</span>
               {c.lane === "GRAND_PRIZE" && (
-                <span className="arc-subset" aria-label="a subset of First Letters">
-                  within First Letters
+                <span className="arc-subset" aria-label="overlaps First Letters">
+                  overlaps First Letters
                 </span>
               )}
             </button>

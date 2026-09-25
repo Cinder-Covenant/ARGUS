@@ -68,14 +68,10 @@ def _canon(obj) -> str:
 
 
 def _git(*args) -> str:
-    try:
-        repo = paths.repo()
-        r = subprocess.run(["git", "-c", "safe.directory=%s" % repo, *args],
-                           cwd=str(repo), capture_output=True, text=True, timeout=60,
-                           stdin=subprocess.DEVNULL)
-        return r.stdout if r.returncode == 0 else ""
-    except Exception:
-        return ""
+    """Bare git at ARGUS_ROOT."""
+    from argus.core import git_state
+    rc, out, _ = git_state.git(paths.repo(), *args)
+    return out if rc == 0 else ""
 
 
 
@@ -159,23 +155,26 @@ def input_manifest(bindings) -> dict:
 
 def dirty_patch(relevant) -> dict:
     """A canonical hash of the uncommitted diff, and a REFUSAL if a relevant file is dirty."""
-    porcelain = _git("status", "--porcelain")
-    if porcelain == "" and _git("rev-parse", "HEAD") == "":
+    from argus.core import git_state
+    porcelain = git_state.status_porcelain(paths.repo()) or ""
+    if porcelain == "" and git_state.head(paths.repo()) == "":
         raise AuthorizationRefusal(
           "git could not be read, so whether the source is committed is UNKNOWN. Unknown "
           "refuses: the alternative is binding a tree nobody could describe.")
-    dirty = []
-    for line in porcelain.splitlines():
-        if len(line) > 3:
-            dirty.append(line[3:].strip().strip('"').replace("\\", "/"))
+    dirty = git_state.dirty_paths(paths.repo())
     rel = sorted(set(relevant))
     offending = sorted(d for d in dirty if d in rel)
     diff = _git("diff", "HEAD", "--", *rel) if rel else ""
+    binding = git_state.binding(paths.repo())
+    tree_hash = binding.get("tree_hash")
+    patch_sha = _sha_text(diff) if tree_hash is None else _sha_text(diff + "\n#tree:" + tree_hash)
+    extra = {} if tree_hash is None else {"subdir": binding["subdir"], "source_tree_hash": tree_hash}
     return {
+      **extra,
       "dirty_path_count": len(dirty),
       "relevant_paths": rel,
       "relevant_dirty": offending,
-      "dirty_patch_sha256": _sha_text(diff),
+      "dirty_patch_sha256": patch_sha,
       "patch_bytes": len(diff),
       "refuses_when": "a file the run imports is dirty. Its bytes exist in no commit, so the "
                       "run is unreproducible from any recorded state.",
@@ -202,6 +201,7 @@ def science_env() -> dict:
 def measure(*, runner_rel: str, modules, contract_sha256: str, plan_sha256: str,
             bindings, argv=None) -> dict:
     """Everything, measured live."""
+    from argus.core import git_state
     mods = module_manifest(modules)
     relevant = [runner_rel] + [m["path"] for m in mods["modules"]]
     dep = dependency_identity()
@@ -227,7 +227,7 @@ def measure(*, runner_rel: str, modules, contract_sha256: str, plan_sha256: str,
       "command_sha256": cmd["command_sha256"],
       "science_env": env,
       "science_env_sha256": env["science_env_sha256"],
-      "commit": (_git("rev-parse", "HEAD") or "UNKNOWN").strip(),
+      "commit": git_state.head(paths.repo()) or "UNKNOWN",
     }
 
 

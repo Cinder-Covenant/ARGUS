@@ -110,6 +110,7 @@ interface ScrollRow {
   results_complete: number;
   results_partial: number;
   cached_ct_regions: number;
+  attested_stores?: number;
   blocked_by: string[];
 }
 
@@ -602,15 +603,16 @@ function assetCatalogue(rec: ReceiptsState): CatalogueRead {
   return { state: "read", cat, mtime: env.mtime_utc ?? null, sha: env.sha256_16 ?? null };
 }
 
-interface FirstLettersView {
+export interface FirstLettersView {
   all: string[];
   inHoldingsIndex: string[];
   withLocalBytes: { scroll: string; bytes: number | null; records: number | null }[];
+  attestedNotSealed: string[];
   withContentHash: string[];
   ready: boolean;
 }
 
-function firstLetters(
+export function firstLetters(
   targets: TargetsPayload | null,
   scrolls: ScrollsPayload | null,
   ds: { registry: DatasetRegistry | null },
@@ -621,7 +623,9 @@ function firstLetters(
     typeof set === "object" && set !== null && Array.isArray(set.scrolls) ? set.scrolls : [];
   if (all.length === 0) return null;
 
-  const held = new Set((scrolls?.scrolls ?? []).map((s) => s.scroll));
+  const attestedOnly = (r: ScrollRow) =>
+    (r.attested_stores ?? 0) > 0 && !r.cached_ct_regions && !r.physical_segments && !r.labelled;
+  const held = new Set((scrolls?.scrolls ?? []).filter((r) => !attestedOnly(r)).map((r) => r.scroll));
   const reg = ds.registry;
 
   const withLocalBytes: FirstLettersView["withLocalBytes"] = [];
@@ -639,8 +643,12 @@ function firstLetters(
     if (row?.hashes?.value) withContentHash.push(s);
   }
 
+  const attestedSet = new Set(
+    (scrolls?.scrolls ?? []).filter((s) => (s.attested_stores ?? 0) > 0).map((s) => s.scroll),
+  );
   return {
     all,
+    attestedNotSealed: all.filter((s) => attestedSet.has(s)),
     inHoldingsIndex: all.filter((s) => held.has(s)),
     withLocalBytes,
     withContentHash,
@@ -692,6 +700,15 @@ function BlockerHeadline({
           tone="bad"
           word={fl.inHoldingsIndex.length === 0 ? "none sealed" : "partially sealed"}
         />
+        {fl.attestedNotSealed.length > 0 ? (
+          <Tile
+            control="sources.headline.attested"
+            value={`${fl.attestedNotSealed.length} / ${n}`}
+            label="attested by hand, not sealed"
+            tone="warn"
+            word={fl.attestedNotSealed.join(" · ")}
+          />
+        ) : null}
         <Tile
           control="sources.headline.bytes"
           value={`${fl.withLocalBytes.length} / ${n}`}

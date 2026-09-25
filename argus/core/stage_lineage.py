@@ -161,7 +161,8 @@ def coverage(scroll: str, *, root: Path | None = None) -> dict:
         cell["attempts"] += 1
         cell["latest"] = {"seq": rec["seq"], "utc": rec["utc"], "outcome": rec["outcome"],
                           "capability_id": rec["capability_id"],
-                          "receipt_path": rec["receipt_path"], "detail": rec["detail"]}
+                          "receipt_path": rec["receipt_path"], "detail": rec["detail"],
+                          "recorded_by": rec.get("recorded_by") or {}}
         order.append({"seq": rec["seq"], "utc": rec["utc"], "stage_id": sid,
                       "outcome": rec["outcome"], "receipt_path": rec["receipt_path"]})
     attempted_n = sum(1 for c in per_stage.values() if c["attempted"])

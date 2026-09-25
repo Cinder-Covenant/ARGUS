@@ -1323,16 +1323,20 @@ async def monitor():
 
     def _git():
         try:
-            repo = str(Path(__file__).resolve().parents[2])
+            from argus.core import git_state as _gs
+            repo = str(ROOT)
             def g(*a):
-                return _sp.run(["git", "-C", repo, *a], capture_output=True, text=True,
-                               timeout=30).stdout.strip()
+                return _gs.git(repo, *a, timeout=30)[1].strip()
             head = g("rev-parse", "--short", "HEAD")
             branch = g("rev-parse", "--abbrev-ref", "HEAD")
             sb = g("status", "-sb").splitlines()[:1]
-            dirty = len([ln for ln in g("status", "--porcelain").splitlines() if ln.strip()])
+            porcelain = _gs.status_porcelain(repo) or ""
+            dirty = len([ln for ln in porcelain.splitlines() if ln.strip()])
+            sub = _gs.describe(repo)
             return {"head": head, "branch": branch, "tracking": sb[0] if sb else "",
                     "dirty_paths": dirty,
+                    **({"subdir": sub["subdir"], "tree_hash": sub["tree"]}
+                       if sub["layout"] == "subdir" else {}),
                     "in_sync": ("ahead" not in (sb[0] if sb else "")
                                 and "behind" not in (sb[0] if sb else ""))}
         except Exception:
@@ -1776,6 +1780,21 @@ def _registered_store_volume(store: Path) -> str | None:
     return str(body.get("volume_id") or "").strip() or None
 
 
+def _identity_roi(store: Path) -> dict | None:
+    """The region the store's own identity says it holds, with its centre, for viewers of a sparse store (its level middle can be a hole)."""
+    try:
+        body = json.loads((store / "STORE_IDENTITY.json").read_text(encoding="utf-8"))
+        roi = body.get("roi")
+        v = {k: int(roi[k]) for k in ("z0", "z1", "y0", "y1", "x0", "x1")}
+    except (OSError, ValueError, TypeError, KeyError):
+        return None
+    if v["z1"] <= v["z0"] or v["y1"] <= v["y0"] or v["x1"] <= v["x0"]:
+        return None
+    return {"array_path": str(body.get("array_path") or "0"), "roi": v,
+            "centre_zyx": [(v["z0"] + v["z1"]) // 2, (v["y0"] + v["y1"]) // 2,
+                           (v["x0"] + v["x1"]) // 2]}
+
+
 def _looks_like_raw_ct_store(store: Path, metadata: dict) -> bool:
     """Keep label and derived surface stores out of the raw-CT inventory."""
     identity = store / "STORE_IDENTITY.json"
@@ -1902,6 +1921,7 @@ async def volume_meta(store: str, scroll: str | None = None):
         probe = await asyncio.to_thread(probe_store, p)
     except ZarrVolumeRefusal as exc:
         raise HTTPException(422, exc.reason)
+    probe["identity_roi"] = _identity_roi(p)
     if scroll:
         from argus.core import scroll_dataset_metadata as SDM
         try:
@@ -2224,13 +2244,9 @@ async def runtime():
         except Exception as exc:
             torch_error = f"{type(exc).__name__}: {exc}"[:500]
 
-        provenance = {}
-        prov_path = ROOT / "SOURCE_PROVENANCE.json"
-        if prov_path.is_file():
-            try:
-                provenance = json.loads(prov_path.read_text(encoding="utf-8"))
-            except ValueError:
-                provenance = {}
+        from argus.core import git_state as _gs
+        provenance = _gs.source_provenance(ROOT)
+        _layout = _gs.describe(ROOT)
 
         def answers(port: int) -> bool:
             try:
@@ -2288,6 +2304,8 @@ async def runtime():
                                       else "this tree is the source checkout"),
                 "truth_package": os.environ.get("ARGUS_TRUTH_PACKAGE", "runtime-state"),
                 "artifact_roots": [str(p) for p in ARTIFACT_ROOTS],
+                **({"source_subdir": _layout["subdir"], "source_subtree_hash": _layout["tree"]}
+                   if _layout["layout"] == "subdir" else {}),
             },
             "interpreter": {"running": sys.version.split()[0],
                             "declared": (want.get("python") or {}).get("version"),

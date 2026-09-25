@@ -8,6 +8,8 @@ import { useCapabilityGraph, useGates, type CapabilityRow } from "../lib/argusTr
 import { useIntegrity, certificationIsSuppressed } from "../lib/systemTruth";
 import { runCertification } from "../lib/certification";
 import { fetchReceipts, type ReceiptEnvelope, type ReceiptsState } from "../lib/receipts";
+import { PublicRuns } from "../components/evidence/PublicRunReceipt";
+import type { PublicRun } from "../lib/publicRuns";
 import { contextIsCoherent, requireScroll, useArgusContext } from "../lib/context";
 import { scrollOfTarget } from "../lib/unrollScroll";
 import { useEffect } from "react";
@@ -198,6 +200,9 @@ export function Evidence({
       {activeRun ? <RunEvidence run={activeRun} suppressed={suppressed} /> : null}
 
       <ReceiptBrowser rec={rec} release={release} />
+
+      <PublicRuns control="evidence.public-runs" />
+      <IndexedRuns />
 
       <PacketPanel scroll={scroll} />
 
@@ -583,6 +588,81 @@ function Claims({ cg }: { cg: ReturnType<typeof useCapabilityGraph>["data"] }) {
       <OpsSource route="/api/capability_graph" field="capabilities[]" />
     </OpsSection>
   );
+}
+
+
+
+export interface EvidenceIndexRun {
+  run_id: string;
+  collection?: string | null;
+  schema?: string | null;
+  category?: string | null;
+  terminal?: string | null;
+  sealed?: boolean;
+  public_run?: PublicRun | null;
+}
+
+export interface EvidenceIndexPayload {
+  root_present?: boolean;
+  total?: number;
+  returned?: number;
+  truncated?: boolean;
+  runs?: EvidenceIndexRun[];
+}
+
+export function IndexedRunsView({ data, failure }: { data: EvidenceIndexPayload | null; failure: string | null }) {
+  const runs = data?.runs ?? [];
+  return (
+    <OpsSection
+      control="evidence.indexedRuns"
+      title="Indexed evidence runs"
+      hint="Run folders found under the declared evidence roots, from /api/evidence-index. A listing says a folder with a receipt exists and which schema it declares. It is not a verdict and not an endorsement."
+      aside={data ? <OpsBadge tone="idle" control="evidence.indexedRuns.count">{data.total ?? runs.length} listed</OpsBadge> : null}
+    >
+      {failure ? (
+        <div className="ops-note" data-control="evidence.indexedRuns.failed">
+          The evidence index could not be read ({failure}). That is a failed read, not an empty archive.
+        </div>
+      ) : !data ? (
+        <div className="ops-note">Reading the evidence index…</div>
+      ) : runs.length === 0 ? (
+        <div className="ops-note" data-control="evidence.indexedRuns.empty">
+          No run folder is indexed under the evidence roots
+          {data.root_present === false ? " (no evidence root exists on this machine)" : ""}. Nothing here is a claim that no run has happened elsewhere.
+        </div>
+      ) : (
+        <>
+          <ul className="ops-list" data-control="evidence.indexedRuns.list">
+            {runs.map((r) => (
+              <li key={`${r.collection ?? ""}/${r.run_id}`} data-run-id={r.run_id}>
+                <span className="ops-mono">{r.run_id}</span>{" "}
+                {r.sealed ? (
+                  <OpsBadge tone="warn">sealed, contents withheld</OpsBadge>
+                ) : (
+                  <>
+                    <OpsBadge tone="idle">{r.category ?? "UNCLASSIFIED"}</OpsBadge>{" "}
+                    <span className="ops-mono">{r.schema ?? "no schema declared"}</span>
+                    {r.terminal ? <> · terminal {r.terminal}</> : null}
+                    {r.public_run?.result_class.banner ? (
+                      <div className="ops-note" data-control="evidence.indexedRuns.banner">{r.public_run.result_class.banner}</div>
+                    ) : null}
+                  </>
+                )}
+              </li>
+            ))}
+          </ul>
+          {data.truncated || (data.total ?? 0) > runs.length ? (
+            <div className="ops-note">Showing {runs.length} of {data.total ?? runs.length}.</div>
+          ) : null}
+        </>
+      )}
+    </OpsSection>
+  );
+}
+
+function IndexedRuns() {
+  const idx = usePoll<EvidenceIndexPayload>("/api/evidence-index?limit=25", { intervalMs: 120000 });
+  return <IndexedRunsView data={idx.data ?? null} failure={idx.failure ? failureLine(idx.failure) : null} />;
 }
 
 

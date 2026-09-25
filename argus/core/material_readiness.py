@@ -236,6 +236,7 @@ def build(scroll: str, *, shelf: dict | None = None) -> dict:
                      "label_authority": material.get("label_authority"),
                      "physical_segments": material.get("physical_segments") or 0,
                      "operator_fence": material.get("operator_fence"),
+                     "attested_store": material.get("attested_store"),
                      "display": material.get("display") or canonical},
         "route": route,
         "products": products,

@@ -394,12 +394,15 @@ _ASSEMBLERS = {
 
 
 def _git_head() -> str:
-    try:
-        r = subprocess.run(["git", "-C", str(paths.repo()), "rev-parse", "HEAD"],
-                            capture_output=True, text=True, timeout=10)
-        return r.stdout.strip() if r.returncode == 0 else MISSING
-    except (OSError, subprocess.SubprocessError):
-        return MISSING
+    from argus.core import git_state
+    return git_state.head(paths.repo()) or MISSING
+
+
+def _subtree_binding() -> dict:
+    """Only when ARGUS is a subdirectory of a larger repository: the commit then names the enclosing repo, so the ARGUS subtree hash is what the packet is bound to."""
+    from argus.core import git_state
+    b = git_state.binding(paths.repo())
+    return {"repo_subdir": b["subdir"], "repo_subtree_hash": b["tree_hash"]} if "tree_hash" in b else {}
 
 
 def _count_missing(fields: dict) -> int:
@@ -439,6 +442,7 @@ def assemble(receipt_path, *, out_path=None) -> dict:
         "generated_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "root_receipt": {"path": str(p), "sha256": sha_file(p)},
         "repo_head": _git_head(),
+        **_subtree_binding(),
         "provenance_chain": chain["citations"],
         "chain_receipts": [src for src, _ in docs],
         "fields": fields,

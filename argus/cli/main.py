@@ -34,7 +34,10 @@ usage: argus <command> [options]
 
 new here?  argus demo     then   argus doctor     then   argus start
 
-operator:  argus acquire --dry-run --url ... --scroll ... --volume-id ... --phase A0
+operator:  argus identify PATH_OR_URL
+           says which official scroll/volume a tifxyz segment, zarr store or volume URL is, from
+           its own evidence, with a confidence level, or refuses and says why; then its route.
+           argus acquire --dry-run --url ... --scroll ... --volume-id ... --phase A0
            plans an acquisition from local metadata and fetches nothing.
 """
 
@@ -59,6 +62,9 @@ def _dispatch(verb: str):
     if verb == "acquire":
         from argus.cli import cmd_acquire
         return cmd_acquire.run
+    if verb == "identify":
+        from argus.cli import cmd_identify
+        return cmd_identify.run
     if verb == "userdata":
         try:
             return import_module("argus.cli.cmd_userdata").run

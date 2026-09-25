@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { Disclosure } from "./Disclosure";
 import { getJson } from "../lib/http";
 import { useSharedUniverse } from "../lib/sharedUniverse";
 import { plainReason, useArgusContext, type ArgusMode } from "../lib/context";
 import { usePublicDemo } from "../lib/publicDemo";
+import { PublicRuns } from "./evidence/PublicRunReceipt";
 import {
   STATE_GLYPH, STATE_TONE, STATE_WORD, blockerLine, noStatusLine, positionLine, stepWord,
   type ScrollStatus, type StatusStep, type CapabilityLane, type WorkQueueItem,
@@ -142,13 +143,14 @@ function HumanWorkQueue({ items, control, raw = false }: { items: WorkQueueItem[
 }
 
 export function ScrollStatusView({
-  status, mode, control = "scroll.status", publicDemo = false, note,
+  status, mode, control = "scroll.status", publicDemo = false, note, extra,
 }: {
   status: ScrollStatus | null;
   mode: ArgusMode;
   control?: string;
   publicDemo?: boolean;
   note?: string;
+  extra?: ReactNode;
 }) {
   if (!status) {
     return (
@@ -239,6 +241,7 @@ export function ScrollStatusView({
           <div className="ssb-detail">{detail}</div>
         </Disclosure>
       )}
+      {extra}
       <p className="ssb-legend" aria-hidden="true">
         {(["DONE", "AVAILABLE", "HUMAN_GATED", "BLOCKED", "NOT_REACHED"] as const)
           .map((k) => `${STATE_GLYPH[k]} ${STATE_WORD[k]}`).join("  ")}
@@ -256,5 +259,12 @@ export function ScrollStatusBar({ control = "scroll.status", quietWithoutScroll 
   const { status, loading } = useScrollStatus(ctx.scroll);
   const note = !ctx.scroll || loading || !status ? noStatusLine(ctx.scroll, loading) : undefined;
   if (quietWithoutScroll && !ctx.scroll) return null;
-  return <ScrollStatusView status={status} mode={mode} control={control} publicDemo={demo} note={note} />;
+  return (
+    <ScrollStatusView
+      status={status} mode={mode} control={control} publicDemo={demo} note={note}
+      extra={ctx.scroll && status && status.status !== "REFUSED"
+        ? <PublicRuns scroll={ctx.scroll} quiet control={`${control}.public-runs`} />
+        : null}
+    />
+  );
 }

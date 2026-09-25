@@ -33,6 +33,12 @@ def _zattrs(store: Path) -> dict:
 
 
 def declared_scale_zyx(zattrs: dict, level: str) -> list[float] | None:
+    ds0 = next((d for d in (zattrs.get("multiscales") or [{}])[0].get("datasets", [])
+                if str(d.get("path")) == "0"), None)
+    for t in (ds0 or {}).get("coordinateTransformations", []):
+        s0 = t.get("scale")
+        if s0 and len(s0) >= 3 and all(float(a) == 1.0 for a in s0[-3:]):
+            return None
     for ds in (zattrs.get("multiscales") or [{}])[0].get("datasets", []):
         if str(ds.get("path")) != str(level):
             continue

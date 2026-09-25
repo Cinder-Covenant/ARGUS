@@ -66,7 +66,7 @@ Open `http://127.0.0.1:5173`. Then:
 .venv\Scripts\python -m argus run --help
 ```
 
-`run` refuses a target it cannot name unambiguously, a machine that cannot finish the job, an input
+`argus run pherc0139-w016-ink9um-control --dry-run` explains, stage by stage, the bounded public control this release ships; `docs/PUBLIC_RUN.md` has the commands and the limits. `run` refuses a target it cannot name unambiguously, a machine that cannot finish the job, an input
 it has not verified, and a volume outside the model's declared provenance policy. A refusal names
 its reason and the smallest action that would clear it.
 

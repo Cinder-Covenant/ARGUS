@@ -106,7 +106,7 @@ export function Holdings({ view, settled }: { view: HoldingsView; settled: boole
           {universe.counts.firstLetters.value === null
             ? <>Prize eligibility is unknown here: the official target registry is not installed, so no First Letters or Grand Prize count is claimed, across {universe.counts.registered.value} known identities</>
             : <>The prize registry declares {universe.counts.firstLetters.value} First Letters targets and{" "}
-              {universe.counts.grandPrize.value} Grand Prize targets — the second a subset of the
+              {universe.counts.grandPrize.value} Grand Prize targets — the second overlapping the
               first — across {universe.counts.registered.value} registered identities</>}
           {universe.missingFromCanonicalIds.length
             ? `, ${universe.missingFromCanonicalIds.length} of which are absent from the canonical identity list (${universe.missingFromCanonicalIds.join(", ")})`

@@ -457,6 +457,98 @@ class TestBuildIndexCollectionScopedIdentity(unittest.TestCase):
                          "canonical is walked first and must win")
 
 
+DRIVE = "C" + ":"
+
+
+class TestPublicPipelineRunReceipt(Base):
+    """An `argus run` receipt (schema argus-public-pipeline-run-v1) is listed by the evidence index -- and therefore by the run archive and the scroll panel -- with its result class banner, target,..."""
+
+    BANNER = ("KNOWN-DOMAIN HELD-OUT CONTROL — a labelled fragment or labelled-scroll region "
+              "read out-of-sample. This proves the pipeline, not a discovery.")
+
+    def _receipt(self, scroll="PHerc0139", name="pherc0139-w016-ink9um-control-20260925T134612Z"):
+        d = self.arts / "public_pipeline_runs" / name
+        d.mkdir(parents=True)
+        rec = {
+            "schema": "argus-public-pipeline-run-v1", "run_id": "20260925T134612Z",
+            "target": "pherc0139-w016-ink9um-control", "manifest_sha256": "b" * 64,
+            "started_utc": "2026-09-25T13:46:12Z", "finished_utc": "2026-09-25T13:48:41Z",
+            "outcome": "COMPLETED",
+            "terms": {"ct_data": "CC BY-NC 4.0, Vesuvius Challenge open data (https://scrollprize.org/data).",
+                      "model": "scrollprize/ink_9um, MIT per its Hugging Face card."},
+            "stages": [{"stage": "identify", "uses": "argus.core.official_identity", "state": "RAN",
+                        "seconds": 0.0, "detail": {"scroll": scroll, "volume_id": "20260102150214"}},
+                       {"stage": "infer", "uses": "villa", "state": "RAN", "seconds": 11.5}],
+            "launch": {"authorization_id": "FINAL-20260925", "consumed": True, "ceiling": "DEVELOPMENT_ONLY"},
+            "environment": {"source_commit": "d5c87c0bce0d87e6ef53d0edf558f5c12ce3dc12"},
+            "outputs": {"prediction.tif": {"bytes": 287892, "sha256": "4" * 64},
+                        "prepared_input": {"path": "prepared.zarr", "note": "regenerable"}},
+            "sealed_crop": {"store": DRIVE + r"\scratch\argus_pipeline_home\cache\stores\535f",
+                            "acquire_manifest_sha256": "1" * 64},
+            "result_class": {"target": "PHerc0139 / w016", "target_class": "LABELLED_SCROLL",
+                             "exposure_basis": "HELD_OUT_BY_FOLD", "metric": "AUC (argus-metric-v1)",
+                             "score": 0.7722, "presentation": "KNOWN_DOMAIN_HELD_OUT_CONTROL",
+                             "banner": self.BANNER, "may_claim_discovery": False,
+                             "may_claim_ink_found": False,
+                             "detector_cross_scroll_qualified": False,
+                             "not_established": ["nothing about an unread scroll"]},
+            "limits": ["a control proves the pipeline, not a discovery"]}
+        (d / "PIPELINE_RUN_RECEIPT.json").write_text(json.dumps(rec), encoding="utf-8")
+        return d
+
+    def _rows(self, **params):
+        R.reset_caches()
+        return self.c.get("/api/evidence-index", params=params).json()
+
+    def test_the_run_is_listed_with_its_banner_target_stages_hashes_and_terms(self):
+        self._receipt()
+        rows = self._rows(category="PUBLIC_PIPELINE_RUN")["runs"]
+        self.assertEqual(len(rows), 1)
+        row = rows[0]
+        self.assertEqual(row["category"], "PUBLIC_PIPELINE_RUN")
+        pr = row["public_run"]
+        self.assertEqual(pr["result_class"]["banner"], self.BANNER)
+        self.assertEqual(pr["result_class"]["presentation"], "KNOWN_DOMAIN_HELD_OUT_CONTROL")
+        self.assertIs(pr["result_class"]["may_claim_discovery"], False)
+        self.assertEqual((pr["target"], pr["scroll"]), ("pherc0139-w016-ink9um-control", "PHerc0139"))
+        self.assertEqual([s["stage"] for s in pr["stages"]], ["identify", "infer"])
+        self.assertEqual(pr["manifest_sha256"], "b" * 64)
+        self.assertEqual(pr["outputs"]["prediction.tif"]["sha256"], "4" * 64)
+        self.assertNotIn("prepared_input", pr["outputs"], "an entry with no hash is not a hash")
+        self.assertEqual(pr["crop_manifest_sha256"], "1" * 64)
+        self.assertIn("https://scrollprize.org/data", pr["terms"]["ct_data"],
+                      "a URL is not a drive path and must survive")
+        self.assertEqual(row["terminal"], "COMPLETED")
+
+    def test_the_scratch_home_never_leaves(self):
+        self._receipt()
+        text = json.dumps(self._rows())
+        self.assertNotIn("argus_pipeline_home", text)
+        self.assertNotIn("authorization_id", text)
+        self.assertNotIn("FINAL-20260925", text)
+
+    def test_filtering_by_scroll_uses_the_scroll_the_receipt_names(self):
+        self._receipt()
+        self.assertEqual(len(self._rows(scroll="PHerc0139")["runs"]), 1)
+        self.assertEqual(len(self._rows(scroll="pherc0139")["runs"]), 1)
+        self.assertEqual(self._rows(scroll="PHerc0343P")["runs"], [])
+        self.assertEqual(self.c.get("/api/evidence-index", params={"scroll": "../x"}).status_code, 422)
+        self.assertEqual(self.c.get("/api/evidence-index", params={"category": "nope"}).status_code, 422)
+
+    def test_a_receipt_that_names_no_scroll_is_never_matched_to_one(self):
+        d = self._receipt()
+        rec = json.loads((d / "PIPELINE_RUN_RECEIPT.json").read_text(encoding="utf-8"))
+        rec["stages"][0].pop("detail")
+        (d / "PIPELINE_RUN_RECEIPT.json").write_text(json.dumps(rec), encoding="utf-8")
+        self.assertEqual(self._rows(scroll="PHerc0139")["runs"], [])
+        self.assertEqual(len(self._rows(category="PUBLIC_PIPELINE_RUN")["runs"]), 1)
+
+    def test_a_drive_letter_is_still_a_path_but_a_url_scheme_is_not(self):
+        self.assertEqual(R.sanitize_value("https://scrollprize.org/data"), "https://scrollprize.org/data")
+        self.assertEqual(R.sanitize_value("see (" + DRIVE + "/x)"), R._WITHHELD)
+        self.assertEqual(R.sanitize_value(DRIVE + "\\x"), R._WITHHELD)
+
+
 if __name__ == "__main__":
     loader = unittest.TestLoader()
     suite = loader.loadTestsFromModule(__import__(__name__))

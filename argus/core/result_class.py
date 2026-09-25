@@ -29,7 +29,7 @@ PRESENTATION = (
 
 BANNERS = {
   "KNOWN_DOMAIN_HELD_OUT_CONTROL":
-      "KNOWN-DOMAIN HELD-OUT CONTROL — a labelled fragment read out-of-sample. This proves the "
+      "KNOWN-DOMAIN HELD-OUT CONTROL — a labelled fragment or labelled-scroll region read out-of-sample. This proves the "
       "pipeline, not a discovery.",
   "CALIBRATION_ONLY":
       "CALIBRATION ONLY — the detector was trained on this target. The number is a check on "
@@ -77,7 +77,7 @@ class ResultClass:
             return "DEMONSTRATION_ONLY"
         if self.exposure_basis == "TRAINED_ON":
             return "CALIBRATION_ONLY"
-        if self.target_class == "LABELLED_FRAGMENT" \
+        if self.target_class in ("LABELLED_FRAGMENT", "LABELLED_SCROLL") \
                 and self.exposure_basis == "HELD_OUT_BY_FOLD":
             return "KNOWN_DOMAIN_HELD_OUT_CONTROL"
         if (self.target_class == "UNREAD_SCROLL"
@@ -135,6 +135,8 @@ class ResultClass:
 
     def not_established(self) -> list:
         out = []
+        if self.target_class == "LABELLED_SCROLL":
+            out.append("nothing about an unread scroll: this region has published labels")
         if self.target_class == "LABELLED_FRAGMENT":
             out.append("nothing about an unread scroll: this fragment has published labels")
             out.append("nothing about the 9.362um or 8.640um eligible acquisitions")

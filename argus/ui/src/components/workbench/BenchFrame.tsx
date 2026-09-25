@@ -225,7 +225,7 @@ export function BenchFrame({ universe, children, rail, title, compact = false }:
             value={c.registered.value}
             sub={c.firstLetters.value === null
               ? <>known identities · prize eligibility unknown (target registry not installed)</>
-              : <>registered · {c.firstLetters.value} First Letters · {c.grandPrize.value} Grand Prize (subset)</>}
+              : <>registered · {c.firstLetters.value} First Letters · {c.grandPrize.value} Grand Prize (overlapping)</>}
             failed={universe.failures.length && !c.registered.value ? universe.failures[0] : null} />
       {
 }

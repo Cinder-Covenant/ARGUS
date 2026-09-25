@@ -274,6 +274,7 @@ class _Facts:
         self.published = bool(m.get("published_upstream"))
         self.labelled = bool(m.get("labelled"))
         self.held = self.local_data == "HELD"
+        self.attested = m.get("attested_store") or None
         idx = index_row or {}
         self.indexed_material = bool(int(idx.get("cached_ct_regions") or 0)
                                      or int(idx.get("physical_segments") or 0))
@@ -322,6 +323,15 @@ def _steps(f: _Facts) -> list[dict]:
         out["acquisition"] = _step(S["acquisition"], "DONE",
                                    "identity-bound bytes are held in a sealed local store",
                                    ["argus.core.scroll_shelf local_data=HELD"])
+    elif f.attested and not f.material_here:
+        out["acquisition"] = _step(
+            S["acquisition"], "AVAILABLE",
+            "an operator-ATTESTED store for this scroll is on this machine (attested by %s). It is "
+            "not sealed and not verified, so it is not counted as a sealed holding: seal it "
+            "through a receipted acquisition, or verify its identity, before anything downstream "
+            "relies on it" % ", ".join(f.attested.get("attested_by") or ["an unnamed operator"]),
+            ["argus.core.scroll_shelf attested_store", "argus.core.store_identity holding_state"],
+            label="Seal or verify the attested store")
     elif f.material_here:
         out["acquisition"] = _step(
             S["acquisition"], "DONE",
@@ -484,11 +494,14 @@ def _steps(f: _Facts) -> list[dict]:
             code="CODE_MISSING" if fibers_state == "MISSING_PROVIDER" else "DATA_UNAVAILABLE")
 
     ink_lin = f.lin("ink_2d") or f.lin("ink_3d")
-    if not f.has_render:
+    ink_done = bool(ink_lin and ink_lin.get("outcome") == "COMPLETED")
+    has_result = f.has_result or ink_done
+    run_scored = ink_done and (ink_lin.get("recorded_by") or {}).get("tool") == "argus run"
+    if not f.has_render and not ink_done:
         out["ink_inference"] = _step(S["ink_inference"], "NOT_REACHED",
                                      "ink inference needs a rendered surface",
                                      ["argus.core.scroll_shelf filters.has_render"])
-    elif f.has_result or (ink_lin and ink_lin.get("outcome") == "COMPLETED"):
+    elif f.has_result or ink_done:
         out["ink_inference"] = _step(
             S["ink_inference"], "DONE",
             "a result exists; it is operational evidence from an unqualified detector, not a reading",
@@ -505,7 +518,7 @@ def _steps(f: _Facts) -> list[dict]:
             "not a reading", ["argus.core.material_readiness detectors"])
 
     kinds = sorted({k for k in (_kind_for(r) for r in f.roles) if k})
-    if not f.has_result:
+    if not has_result:
         held_bits = [b for b in (("control role %s" % ", ".join(f.roles)) if f.roles else "",
                                  "ink labels" if f.labelled else "") if b]
         out["evidence_comparison"] = _step(
@@ -513,11 +526,12 @@ def _steps(f: _Facts) -> list[dict]:
             "there is no inference result to compare yet" +
             ("; held for comparison: %s" % ", ".join(held_bits) if held_bits else ""),
             ["argus.core.control_evidence_kinds", "argus.core.control_matrix"])
-    elif kinds or f.labelled:
+    elif kinds or f.labelled or run_scored:
         out["evidence_comparison"] = _step(
             S["evidence_comparison"], "AVAILABLE",
             "comparison evidence: %s. None is independent physical ground truth."
-            % ", ".join(kinds + (["ink labels"] if f.labelled else [])),
+            % ", ".join(kinds + (["ink labels"] if f.labelled else [])
+                        + (["the published labels the run scored against (see its receipt)"] if run_scored and not f.labelled else [])),
             ["argus.core.control_evidence_kinds"])
     else:
         out["evidence_comparison"] = _step(
@@ -529,7 +543,7 @@ def _steps(f: _Facts) -> list[dict]:
     if rev and rev.get("outcome") == "COMPLETED":
         out["candidate_review"] = _step(S["candidate_review"], "DONE", rev.get("detail") or "review completed",
                                         ["argus.core.stage_lineage review"], receipt=rev.get("receipt_path"))
-    elif f.has_result:
+    elif has_result:
         out["candidate_review"] = _step(S["candidate_review"], "HUMAN_GATED",
                                         "candidates from a result await independent human review",
                                         ["argus.core.scroll_shelf furthest_stage"])
@@ -653,6 +667,11 @@ def _questions(f: _Facts, steps: list[dict], nxt: dict) -> dict:
     if f.held:
         local = _answer("held, sealed store", ["argus.core.scroll_shelf local_data=HELD"], tone="ok",
                         detail="A sealed store on this machine binds this scroll's identity.")
+    elif f.attested and not f.material_here:
+        local = _answer("attested store held, not sealed",
+                        ["argus.core.scroll_shelf attested_store"], tone="warn",
+                        detail="A store an operator attested by hand is on this machine. It is "
+                               "not sealed and its identity is not verified.")
     elif f.material_here:
         local = _answer("partial: cached regions or segments indexed",
                         ["argus.core.scroll_index", "argus.core.scroll_shelf"], tone="ok",

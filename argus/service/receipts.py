@@ -85,7 +85,7 @@ RECEIPT_FIELDS = ("run_id", "collection", "schema", "category", "terminal",
                   "highest_certified_stage", "created_at", "updated_at",
                   "receipt_bytes", "receipt_sha256", "sealed", "marker", "why",
                   "progress", "artifacts", "artifact_count", "truncated", "foreign",
-                  "note")
+                  "note", "public_run")
 
 PROGRESS_FIELDS = ("present", "state", "done", "total", "unit", "fraction", "age_s",
                    "stale", "why")
@@ -97,7 +97,7 @@ _TOKEN = re.compile(
     r"\b(sk|hf|ghp|gho|ghs|ghu|glpat|xox[baprs]|AKIA|ya29)[-_][A-Za-z0-9_\-]{8,}", re.I)
 
 _ABSOLUTE = re.compile(
-    r"(?:[A-Za-z]:[\\/])|(?:^\\\\)|(?:^//)|(?:^/(?!api/)[A-Za-z])"
+    r"(?<![A-Za-z])(?:[A-Za-z]:[\\/])|(?:^\\\\)|(?:^//)|(?:^/(?!api/)[A-Za-z])"
     r"|(?:^\\[A-Za-z][^\\/:*?\"<>|]{0,60}\\)")
 
 _WITHHELD = "<withheld: absolute path>"
@@ -319,7 +319,8 @@ def _progress(d: Path) -> dict:
 
 
 
-RECEIPT_FILENAMES = ("run.json", "RUN_RECEIPT.json", "RECEIPT.json", "OFFLINE_SUITE_RUN.json")
+RECEIPT_FILENAMES = ("run.json", "RUN_RECEIPT.json", "RECEIPT.json", "OFFLINE_SUITE_RUN.json",
+                     "PIPELINE_RUN_RECEIPT.json")
 
 SCHEMA_SCAN_MAX_FILES = 20
 SCHEMA_SCAN_MAX_BYTES = 64 * 1024
@@ -332,13 +333,16 @@ SCHEMA_CATEGORIES: tuple = (
     ("argus-surface-status", "SURFACE_STATUS"),
     ("argus-qualification-decision", "QUALIFICATION_PREFLIGHT"),
     ("argus-run-receipt", "QUALIFICATION_PREFLIGHT"),
+    ("argus-evidence-gate", "EVIDENCE_GATE"),
+    ("argus-public-pipeline-run", "PUBLIC_PIPELINE_RUN"),
     ("argus-run", "SCIENTIFIC_RUN"),
 )
 
 FILENAME_CATEGORIES: dict = {"OFFLINE_SUITE_RUN.json": "TEST_STATUS"}
 
 CATEGORIES = ("SCIENTIFIC_RUN", "SCIENTIFIC_CONTROL", "RUNTIME_VALIDATION", "TEST_STATUS",
-              "UI_VERIFICATION", "QUALIFICATION_PREFLIGHT", "SURFACE_STATUS", "UNCLASSIFIED")
+              "UI_VERIFICATION", "QUALIFICATION_PREFLIGHT", "SURFACE_STATUS", "EVIDENCE_GATE",
+              "PUBLIC_PIPELINE_RUN", "UNCLASSIFIED")
 
 
 def classify_schema(schema: str | None) -> str:
@@ -441,7 +445,68 @@ def _receipt_fields(d: Path) -> dict:
               "operational_state", "highest_certified_stage", "created_at"):
         if k in r:
             out[k] = sanitize_value(r[k])
+    if out["category"] == "PUBLIC_PIPELINE_RUN":
+        out["public_run"] = _public_run_fields(r)
+        out["terminal"] = out["terminal"] or out["public_run"]["outcome"]
+        out["created_at"] = out["created_at"] or out["public_run"]["finished_utc"]
     return out
+
+
+def _public_run_fields(r: dict) -> dict:
+    """The publishable face of an `argus run` receipt (schema `argus-public-pipeline-run-v1`)."""
+    def _s(v, n=600):
+        return sanitize_value(v)[:n] if isinstance(v, str) else None
+
+    def _b(v):
+        return v if isinstance(v, bool) else None
+
+    rc = r.get("result_class") if isinstance(r.get("result_class"), dict) else {}
+    stages = []
+    scroll = None
+    for st in r.get("stages") or []:
+        if not isinstance(st, dict):
+            continue
+        sec = st.get("seconds")
+        stages.append({"stage": _s(st.get("stage"), 40), "state": _s(st.get("state"), 40),
+                       "seconds": sec if isinstance(sec, (int, float)) else None,
+                       "uses": _s(st.get("uses"), 200)})
+        d = st.get("detail")
+        if scroll is None and st.get("stage") == "identify" and isinstance(d, dict):
+            scroll = _s(d.get("scroll"), 40)
+    outs = {}
+    for name, o in (r.get("outputs") or {}).items():
+        if isinstance(o, dict) and isinstance(o.get("sha256"), str):
+            outs[str(name)[:80]] = {"bytes": o.get("bytes") if isinstance(o.get("bytes"), int) else None,
+                                    "sha256": o["sha256"][:64]}
+    crop = r.get("sealed_crop") if isinstance(r.get("sealed_crop"), dict) else {}
+    launch = r.get("launch") if isinstance(r.get("launch"), dict) else {}
+    env = r.get("environment") if isinstance(r.get("environment"), dict) else {}
+    terms = r.get("terms") if isinstance(r.get("terms"), dict) else {}
+    score = rc.get("score")
+    return {
+        "target": _s(r.get("target"), 120), "scroll": scroll, "run_id": _s(r.get("run_id"), 40),
+        "outcome": _s(r.get("outcome"), 40),
+        "started_utc": _s(r.get("started_utc"), 40), "finished_utc": _s(r.get("finished_utc"), 40),
+        "manifest_sha256": _s(r.get("manifest_sha256"), 64),
+        "source_commit": _s(env.get("source_commit"), 40),
+        "crop_manifest_sha256": _s(crop.get("acquire_manifest_sha256"), 64),
+        "launch_ceiling": _s(launch.get("ceiling"), 60),
+        "result_class": {
+            "presentation": _s(rc.get("presentation"), 80), "banner": _s(rc.get("banner"), 400),
+            "public_name": _s(rc.get("target"), 200), "target_class": _s(rc.get("target_class"), 60),
+            "exposure_basis": _s(rc.get("exposure_basis"), 60), "detector": _s(rc.get("detector"), 200),
+            "detector_cross_scroll_qualified": _b(rc.get("detector_cross_scroll_qualified")),
+            "acquisition": _s(rc.get("acquisition"), 200), "metric": _s(rc.get("metric"), 80),
+            "score": score if isinstance(score, (int, float)) and not isinstance(score, bool) else None,
+            "may_claim_discovery": _b(rc.get("may_claim_discovery")),
+            "may_claim_ink_found": _b(rc.get("may_claim_ink_found")),
+            "not_established": [_s(x, 300) for x in (rc.get("not_established") or [])[:12]
+                                if isinstance(x, str)],
+        },
+        "stages": stages[:24], "outputs": outs,
+        "terms": {str(k)[:40]: _s(v, 500) for k, v in list(terms.items())[:12] if isinstance(v, str)},
+        "limits": [_s(x, 400) for x in (r.get("limits") or [])[:12] if isinstance(x, str)],
+    }
 
 
 def _artifact_names(d: Path) -> tuple:
@@ -636,7 +701,8 @@ def scroll_ids(refresh: bool = False):
 
 @router.get("/api/evidence-index")
 def evidence_index(limit: int = 200, offset: int = 0, collection: str = "",
-                   sealed: str = "all", refresh: bool = False):
+                   sealed: str = "all", refresh: bool = False, category: str = "",
+                   scroll: str = ""):
     """The run tree under every declared evidence root (canonical, then legacy), sanitized, merged and paged."""
     limit = _bounded(limit, 200, 1000, field="limit")
     offset = _bounded(offset, 0, 10 ** 6, field="offset")
@@ -651,6 +717,17 @@ def evidence_index(limit: int = 200, offset: int = 0, collection: str = "",
     rows = idx["entries"]
     if collection:
         rows = [r for r in rows if r.get("collection") == collection]
+    if category:
+        if category not in CATEGORIES:
+            raise HTTPException(422, "category must be one of: %s" % ", ".join(CATEGORIES))
+        rows = [r for r in rows if r.get("category") == category]
+    if scroll:
+        try:
+            scroll = J.ident(scroll, field="scroll")
+        except J.JobRefusal as e:
+            raise HTTPException(422, e.detail)
+        rows = [r for r in rows
+                if str((r.get("public_run") or {}).get("scroll") or "").lower() == scroll.lower()]
     if sealed == "only":
         rows = [r for r in rows if r["sealed"]]
     elif sealed == "exclude":

@@ -38,6 +38,7 @@ COPY pyproject.toml LICENSE ./
 COPY docker/requirements.lock.txt ./docker/requirements.lock.txt
 COPY src/ ./src/
 COPY argus/ ./argus/
+COPY evidence_gate/ ./evidence_gate/
 # Runtime policy and provider-source declarations are application inputs, not
 # mutable state.  Keep them in the image so observe/command/UI-transport behave
 # the same in Docker as they do from a checkout (notably GET /api/updates).

@@ -57,8 +57,8 @@ def checkpoint_identity(checkpoint_path) -> dict:
 
 
 def git_commit() -> str:
-    c = (V2._git("rev-parse", "HEAD") or "").strip()
-    return c or "UNKNOWN"
+    from argus.core import git_state
+    return git_state.head(V2.paths.repo()) or "UNKNOWN"
 
 
 def measure(*, runner_rel: str, modules, contract_sha256: str, plan_sha256: str,

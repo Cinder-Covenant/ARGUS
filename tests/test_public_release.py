@@ -131,7 +131,7 @@ def test_fresh_install_routes_are_usable_without_operator_artifacts(tmp_path, mo
     assert targets.json()["sets"]["GRAND_PRIZE_2027"]["count"] == 13
     boards = c.get("/api/prize-boards")
     assert boards.status_code == 200
-    assert boards.json()["boards"]["FIRST_LETTERS"]["count"] == 23
+    assert boards.json()["boards"]["FIRST_LETTERS"]["count"] == 22
     assert boards.json()["boards"]["GRAND_PRIZE"]["count"] == 13
     assert boards.json()["boards"]["PARIS4_TITLE"]["count"] == 1
 
@@ -208,3 +208,47 @@ def test_the_docs_name_the_public_repository_and_the_stack_commands():
     for needle in ("argus start", "argus status", "argus stop", "Start-ARGUS.cmd"):
         assert needle in readme, needle
     assert "<repository-url>" not in readme
+
+
+def _pins(name):
+    import re
+    return dict((k.lower().replace("_", "-"), v) for k, v in re.findall(
+        r"^([A-Za-z0-9_.\-]+)==([^\s;#]+)", (ROOT / name).read_text(encoding="utf-8"), re.M))
+
+
+def test_uv_lock_uses_the_same_pins_as_the_portable_ci_requirements():
+    import tomllib
+    meta = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
+    constraints = meta["tool"]["uv"]["constraint-dependencies"]
+    pins = _pins("runtime/requirements-portable-ci.txt")
+    assert {c.split("==")[0].lower().replace("_", "-"): c.split("==")[1] for c in constraints} == pins
+    lock = tomllib.loads((ROOT / "uv.lock").read_text(encoding="utf-8"))
+    locked = {p["name"].lower().replace("_", "-"): p.get("version") for p in lock["package"]}
+    assert [n for n, v in pins.items() if n in locked and locked[n] != v] == []
+    root = [p for p in lock["package"] if p["name"] == meta["project"]["name"]]
+    assert root and root[0]["version"] == meta["project"]["version"]
+    assert lock["requires-python"] == meta["project"]["requires-python"]
+
+
+def test_docker_files_are_relative_to_this_directory_so_they_work_from_a_monorepo_subdirectory():
+    import re
+    compose = (ROOT / "docker-compose.yml").read_text(encoding="utf-8")
+    contexts = [ln.split(":", 1)[1].strip() for ln in compose.splitlines() if ln.strip().startswith("context:")]
+    assert contexts and all(not c.startswith(("..", "/")) for c in contexts), contexts
+    dockerfile = (ROOT / "Dockerfile").read_text(encoding="utf-8")
+    for line in dockerfile.splitlines():
+        m = re.match(r"COPY\s+(?:--\S+\s+)*(.+?)\s+\S+\s*$", line)
+        if m and "--from=" not in line:      # a copy out of another build stage is not a file in this tree
+            for src in m.group(1).split():
+                if "*" in src or src.startswith("--"):
+                    continue
+                assert (ROOT / src).exists(), "COPY source %s is not under this directory" % src
+    assert (ROOT / "docs" / "VILLA_SUBPROJECT.md").is_file()
+
+
+def test_tests_locate_the_tree_from_their_own_path_not_the_working_directory():
+    import re
+    for rel in ("tests/conftest.py", "conftest.py", "scripts/run_portable_ci.py"):
+        text = (ROOT / rel).read_text(encoding="utf-8")
+        assert re.search(r"Path\(__file__\)\.resolve\(\)", text), rel
+        assert "getcwd" not in text and "Path.cwd" not in text and "Path('.')" not in text, rel

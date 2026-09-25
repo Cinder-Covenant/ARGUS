@@ -237,3 +237,40 @@ export function applyMask(data: Uint8Array, mask: Uint8Array): { data: Uint8Arra
   }
   return { data: out, hidden };
 }
+
+
+export interface LevelGeometry {
+  shape?: Vec3 | null;
+  pitch_um_yx?: [number, number] | null;
+}
+
+export function crosshairOnLevel(cur: LevelGeometry, next: LevelGeometry, at: Vec3): Vec3 {
+  const ratio = (axis: 0 | 1 | 2): number =>
+    cur.shape && next.shape && cur.shape[axis] > 0 ? next.shape[axis] / cur.shape[axis] : 1;
+  const [z, y, x] = at;
+  const cp = cur.pitch_um_yx;
+  const np = next.pitch_um_yx;
+  const ry = cp && np && np[0] > 0 ? cp[0] / np[0] : ratio(1);
+  const rx = cp && np && np[1] > 0 ? cp[1] / np[1] : ratio(2);
+  const clamp = (v: number, n: number | undefined) => (n ? Math.max(0, Math.min(n - 1, v)) : v);
+  return [
+    clamp(Math.round(z * ratio(0)), next.shape?.[0]),
+    clamp(Math.round(y * ry), next.shape?.[1]),
+    clamp(Math.round(x * rx), next.shape?.[2]),
+  ];
+}
+
+export function startingView(
+  levels: { level: string; openable: boolean; shape?: Vec3 | null }[],
+  identityRoi?: { array_path: string; centre_zyx: Vec3 } | null,
+): { level: string; crosshair: Vec3 } | null {
+  const first = levels.find((l) => l.openable && l.shape);
+  if (!first) return null;
+  const roiLevel = identityRoi ? levels.find((l) => l.level === identityRoi.array_path && l.openable && l.shape) : undefined;
+  if (identityRoi && roiLevel && roiLevel.shape) {
+    const c = identityRoi.centre_zyx;
+    if (c.every((v, i) => v >= 0 && v < (roiLevel.shape![i] ?? 0))) return { level: roiLevel.level, crosshair: [c[0], c[1], c[2]] };
+  }
+  const [z, y, x] = first.shape!;
+  return { level: first.level, crosshair: [Math.floor(z / 2), Math.floor(y / 2), Math.floor(x / 2)] };
+}

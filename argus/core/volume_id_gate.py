@@ -27,7 +27,7 @@ def _key(s) -> str:
     return str(s or "").strip().upper().replace("_", "").replace("-", "")
 
 
-parse_volume_id_from_url = OI.parse_volume_store_token
+parse_volume_id_from_url = OI.parse_any_volume_token
 
 
 def official_registry(resolutions) -> tuple:
@@ -41,7 +41,16 @@ def default_registry() -> dict:
 
     def row(scroll):
         return reg.setdefault(_key(scroll), {"scroll": scroll, "official": set(),
-                                             "superseded": set(), "sources": []})
+                                             "superseded": set(), "sources": [], "scans": set()})
+    survey = OI.load_survey()
+    for scroll_name, s in ((survey or {}).get("samples") or {}).items():
+        for sid in s.get("scans") or {}:
+            row(scroll_name)["scans"].add(sid)
+        for vid in s.get("volumes") or {}:
+            e = row(scroll_name)
+            e["official"].add(vid)
+        if s.get("volumes"):
+            row(scroll_name)["sources"].append("public survey %s" % survey.get("checked_at"))
     p = paths.find_artifact("acquisition_survey", "ACQUISITION_SURVEY.json")
     try:
         doc = json.loads(pathlib.Path(p).read_text(encoding="utf-8"))
@@ -52,7 +61,7 @@ def default_registry() -> dict:
                 continue
             e = row(title)
             e["official"].add(str(si["scan_id"]))
-            if si.get("v1_scan_id") and si.get("v1_still_listed") is False:
+            if si.get("v1_scan_id") and si.get("v1_still_listed") is False                     and str(si["v1_scan_id"]) not in e["scans"]:
                 e["superseded"].add(str(si["v1_scan_id"]))
             e["sources"].append("acquisition survey %s" % p)
     except (OSError, ValueError):
@@ -77,7 +86,7 @@ def verify(checkpoint: str, *, scroll, declared_volume_id, observed_volume_id,
     if checkpoint not in CHECKPOINTS:
         reasons.append("unknown checkpoint %r" % checkpoint)
     reg = registry if registry is not None else default_registry()
-    src = registry_source or ("default: acquisition survey + volume standings" if registry is None else "CALLER_SUPPLIED")
+    src = registry_source or ("default: public survey + volume standings" if registry is None else "CALLER_SUPPLIED")
     entry = reg.get(_key(scroll)) if scroll else None
     d, o = (str(declared_volume_id or "").strip(), str(observed_volume_id or "").strip())
     state = VERIFIED
@@ -98,6 +107,10 @@ def verify(checkpoint: str, *, scroll, declared_volume_id, observed_volume_id,
             reasons.append("SUPERSEDED: %s is a v1 id no longer listed for %s; official is %s"
                            % (d, scroll, sorted(entry["official"])))
             state = SUPERSEDED
+        elif d not in entry["official"] and d in entry.get("scans", ()):
+            reasons.append("UNKNOWN: %s is an acquisition (scan) id of %s, not a volume id; its "
+                           "official volumes are %s" % (d, scroll, sorted(entry["official"])))
+            state = UNKNOWN
         elif d not in entry["official"]:
             reasons.append("UNKNOWN: %s is not an official volume id for %s (official: %s)"
                            % (d, scroll, sorted(entry["official"])))
