@@ -10,6 +10,7 @@ Team Cinder Covenant — Ryan Gurganious and Daine Ball.
 - **Hecate:** [upstream PR #1](https://huggingface.co/scrollprize/hecate/discussions/1), [proposal and reproduction](hecate/PUBLIC_REVIEW_DRAFT.md), [numeric measurement](hecate/PUBLIC_MEASURED_RESULT_20260930.json), [source/test package](hecate/HECATE_SEPTEMBER_2026_CONTRIBUTION.zip). The PR is open for review; publication is not upstream acceptance.
 - **Public Hecate control route:** [configuration, physical preparation and browser receipt](HECATE_CONTROL_ROUTE_20260930.md). This is an exposed PHerc0139 software control with paired 2D/3D output, not an unread-scroll reading.
 - **Supporting controls:** [larger known-title mask preservation, real label-refinement invocation and measured hardware](SUPPORTING_CONTROLS_20260930.md), including the [512-square actual-CLI result and thermal limits](hecate/ACTUAL_CLI_512_RESULT_20260930.json).
+- **Evaluation geometry diagnostic:** [PHerc0139 w016 frozen mask-distance and spatial-null analysis](geometry/README.md). The known-domain model association is not explained solely by the tested mask-distance score, but other spatial confounds and transfer remain unresolved.
 - Supporting Villa work: [ARGUS listing #1896](https://github.com/ScrollPrize/villa/pull/1896), [fiber-parser assertion/documentation #1902](https://github.com/ScrollPrize/villa/pull/1902), both merged. ARGUS [exposure-accounting PR #1](https://github.com/Cinder-Covenant/ARGUS/pull/1) is part of the ARGUS contribution.
 
 ## Measured outcomes

@@ -1,0 +1,93 @@
+{
+  "boundary_strata": [
+    {
+      "auc": null,
+      "distance_hi_exclusive": 2,
+      "distance_lo": 1,
+      "negatives": 1372,
+      "pixels": 1426,
+      "positives": 54,
+      "refusal": "below 2000 pixels or single class"
+    },
+    {
+      "auc": 0.995735929631142,
+      "distance_hi_exclusive": 4,
+      "distance_lo": 2,
+      "geometry_only_auc": 0.5013610997686131,
+      "negatives": 2449,
+      "pixels": 2545,
+      "positives": 96
+    },
+    {
+      "auc": 0.9905650556163853,
+      "distance_hi_exclusive": 8,
+      "distance_lo": 4,
+      "geometry_only_auc": 0.503299505441612,
+      "negatives": 4587,
+      "pixels": 4765,
+      "positives": 178
+    },
+    {
+      "auc": 0.957316842467324,
+      "distance_hi_exclusive": 16,
+      "distance_lo": 8,
+      "geometry_only_auc": 0.5576920431093786,
+      "negatives": 8722,
+      "pixels": 9122,
+      "positives": 400
+    },
+    {
+      "auc": 0.7449270554522731,
+      "distance_hi_exclusive": null,
+      "distance_lo": 16,
+      "geometry_only_auc": 0.6085063723503447,
+      "negatives": 50472,
+      "pixels": 72509,
+      "positives": 22037
+    }
+  ],
+  "claim_ceiling": "Diagnostic of one known-domain exposed validation. Evaluation-mask distance and local label shuffle cannot prove CT-specific ink signal or cross-scroll transfer. A statistically surprising association is not a discovery.",
+  "evaluation_mask_distance_auc": 0.6894217312524131,
+  "method_sha256": "90887d0836807be48c46309c25ced1692d7439418bb0d2aba6cccca58b33f040",
+  "model_auc": 0.7722380370197259,
+  "model_average_precision": 0.5788753796123365,
+  "population": {
+    "pixels": 90367,
+    "positive_pixels": 22765,
+    "spatial_blocks": 33,
+    "validation_supervision_overlap": 0
+  },
+  "preflight_sha256": "473bce1fc5e2b457fd2111b3b00e20f2afd5bcbff3a9103efbc6ab906109b30a",
+  "recorded_utc": "2026-09-30T23:12:24.711620+00:00",
+  "source_sha256": "b2e41dfbb9dc1e948a6b077d32e55f6fbeecfbba2e873354e1d6a9b12f0defb0",
+  "spatial_block_bootstrap": {
+    "auc_q025_q50_q975": [
+      0.6518401863010431,
+      0.7747333066012004,
+      0.8691047161578003
+    ],
+    "degenerate_replicates": 0,
+    "replicates": 512,
+    "seed": 20260930,
+    "valid_replicates": 512
+  },
+  "state": "KNOWN_DOMAIN_DIAGNOSTIC_COMPLETE",
+  "within_block_shuffle_null": {
+    "min_max": [
+      0.6394065047311543,
+      0.6460458323423228
+    ],
+    "q025_q50_q975": [
+      0.6403550820306496,
+      0.6425730974225163,
+      0.6454060655350696
+    ],
+    "replicates": 199,
+    "seed": 20260930,
+    "upper_tail_p_monte_carlo": 0.005
+  },
+  "within_strata_included_pixels": 88941,
+  "within_strata_included_positive_negative_pairs": 1116791854,
+  "within_strata_model_auc_pair_weighted": 0.7458229355960184,
+  "within_strata_omitted_pixels": 1426
+}

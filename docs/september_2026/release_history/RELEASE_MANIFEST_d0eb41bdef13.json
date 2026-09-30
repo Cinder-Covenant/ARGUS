@@ -3,8 +3,8 @@
   "note": "sha256 of every file in this release except this manifest itself. Verify with: python tools/verify_manifest.py (run from this directory, wherever it sits)",
   "layout": "standalone",
   "tree_sha256_recipe": "sha256 of the UTF-8 text made of one line per row of `files`, rows ordered by path string: <path> NUL <sha256> newline. tools/verify_manifest.py recomputes it.",
-  "file_count": 712,
-  "tree_sha256": "98dbd215709fac2ec940c402cbbb871a7e7e9f841d215b2f76e384a1b36927a6",
+  "file_count": 705,
+  "tree_sha256": "7f11a0bea81f42f59dbc9dd8eb51aa6ba3d77cb194b385d78044b9501fc30a41",
   "files": [
     {
       "path": ".dockerignore",
@@ -3033,13 +3033,13 @@
     },
     {
       "path": "docs/september_2026/COMBINED_FORM_RESPONSE.txt",
-      "bytes": 7902,
-      "sha256": "065a98f03a2247ed091da939293dec877793bab68cdb5916dad6be12484d9ad1"
+      "bytes": 7299,
+      "sha256": "6c2981507939f40463fc33ad1825f0dff08b9bf9107f2aaa9fbb7e2f53551361"
     },
     {
       "path": "docs/september_2026/CONTRIBUTION_URLS.txt",
-      "bytes": 873,
-      "sha256": "3be77f88226c4f79bf9331c95bdce24bff831e5ff86ec998eeccd20b9c5f4cee"
+      "bytes": 783,
+      "sha256": "594ed8e98838785e676ffb98a3cb864094aff8613d75882232cd8e52c15328a9"
     },
     {
       "path": "docs/september_2026/HECATE_CONTROL_ROUTE_20260930.md",
@@ -3053,8 +3053,8 @@
     },
     {
       "path": "docs/september_2026/README.md",
-      "bytes": 5066,
-      "sha256": "1232c4b113ca674c1bfc1ece9a3e726fc1ab2194cc8cdfff63822b20e30c2d6b"
+      "bytes": 4789,
+      "sha256": "ae5b3d68f6c8971cfd29eda3d3f7a1cceb494346c05d3a7b855adcad1f6891b1"
     },
     {
       "path": "docs/september_2026/SUPPORTING_CONTROLS_20260930.md",
@@ -3212,36 +3212,6 @@
       "sha256": "61081f486e65ebee13fd0a653057f054432ed520bd92744fac5f2ef749381ebe"
     },
     {
-      "path": "docs/september_2026/geometry/METHOD_FROZEN_BEFORE_RUN.json",
-      "bytes": 2282,
-      "sha256": "90887d0836807be48c46309c25ced1692d7439418bb0d2aba6cccca58b33f040"
-    },
-    {
-      "path": "docs/september_2026/geometry/PREFLIGHT.json",
-      "bytes": 11324,
-      "sha256": "473bce1fc5e2b457fd2111b3b00e20f2afd5bcbff3a9103efbc6ab906109b30a"
-    },
-    {
-      "path": "docs/september_2026/geometry/README.md",
-      "bytes": 3590,
-      "sha256": "723fd903fc67b44b01dc5f0ebbf456750dbd46430657d0c26350dd94deafc05a"
-    },
-    {
-      "path": "docs/september_2026/geometry/REFERENCE_INPUTS.json",
-      "bytes": 11324,
-      "sha256": "0f1b4c90e58fe7a123b01b3c629bbf5251f5fe2d44b2d3f1183de44b874c6ce1"
-    },
-    {
-      "path": "docs/september_2026/geometry/RESULT.json",
-      "bytes": 2782,
-      "sha256": "45b244f791707c3510878aab2dc229b425ef15cd805cfb245c2b0cf9f2690365"
-    },
-    {
-      "path": "docs/september_2026/geometry/pherc0139_geometry_diagnostic.py",
-      "bytes": 11633,
-      "sha256": "b2e41dfbb9dc1e948a6b077d32e55f6fbeecfbba2e873354e1d6a9b12f0defb0"
-    },
-    {
       "path": "docs/september_2026/hecate/ACTUAL_CLI_512_RESULT_20260930.json",
       "bytes": 2318,
       "sha256": "5d09e0ec36ecb530c3b2dd94acc6913c15b8568360f6cb3bb38909d7f6041275"
@@ -3290,11 +3260,6 @@
       "path": "docs/september_2026/release_history/RELEASE_MANIFEST_44886642107b.json",
       "bytes": 100818,
       "sha256": "f7c90f2931137760111ca568cfa908edfc258d0f36df3a43943f8c55f61d288f"
-    },
-    {
-      "path": "docs/september_2026/release_history/RELEASE_MANIFEST_d0eb41bdef13.json",
-      "bytes": 120150,
-      "sha256": "12b9d5d9c393461242412e925ce651b8f74f0804e034c7a6d4a1f83c2fb8163d"
     },
     {
       "path": "docs/villa/CODEOWNERS.snippet",
@@ -3567,10 +3532,10 @@
       "sha256": "a5845ad0cc495925e79784b21a08764025d76b96f48a21d93ce1f686eb16e927"
     }
   ],
-  "created_utc": "2026-09-30T23:14:02.763873+00:00",
+  "created_utc": "2026-09-30T23:03:16.562793+00:00",
   "supersedes": {
-    "public_commit": "d0eb41bdef13ffb02081f84abde34bf9ac09a88f",
-    "sha256": "12b9d5d9c393461242412e925ce651b8f74f0804e034c7a6d4a1f83c2fb8163d",
-    "preserved_copy": "docs/september_2026/release_history/RELEASE_MANIFEST_d0eb41bdef13.json"
+    "public_commit": "04dbe8297218993a5dbadd87e024455a1d944090",
+    "sha256": "c28e82191b36d488c47c1c28d0e3c53e9ea5a5c90d478bf5226d24f8f130ecf7",
+    "preserved_copy": "docs/september_2026/release_history/RELEASE_MANIFEST_04dbe8297218.json"
   }
 }

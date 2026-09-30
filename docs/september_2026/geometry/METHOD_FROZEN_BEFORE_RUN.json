@@ -1,0 +1,16 @@
+{
+  "scope": "PHerc0139 w016 exposed known-domain validation diagnostic; retained prediction and public ink/supervision/validation mask crop; no inference or target work",
+  "input_root": "T:/Argus/artifacts/argus_pipeline_run_20260925/retained",
+  "prediction_expected_sha256": "4e24125200a8ef8981566eb1f43568fc4b1a001ce30dd696c3c85b366e35288c",
+  "crop": {"z": 10, "y_start": 4736, "y_end": 5632, "x_start": 1664, "x_end": 2304},
+  "evaluation_population": "validation > 0 only; require no overlap with supervision; truth = ink > 0",
+  "expected_population": {"pixels": 90367, "positives": 22765, "roc_auc": 0.7722380370197259},
+  "geometry_only_score": "Euclidean distance in pixels from each validation pixel to the nearest pixel outside the validation mask (scipy.ndimage.distance_transform_edt); this is annotation/evaluation-mask geometry, not CT or physical papyrus geometry",
+  "boundary_distance_strata_pixels": [[1, 2], [2, 4], [4, 8], [8, 16], [16, null]],
+  "stratum_refusal": "Report every stratum. Refuse AUC if fewer than 2000 pixels or either label class absent. Pool evaluable within-stratum AUC by positive-negative pair count; report omitted pixels and pairs.",
+  "model_metric": "Tie-aware ROC AUC of uint8 scores, and average precision on the exact original validation population; do not add or subtract AUCs as components.",
+  "null": "199 random within-spatial-block label permutations; blocks are fixed 64x64 crop pixels anchored at crop origin, seed 20260930; preserve each block's label count and scored support; report full null quantiles and Monte Carlo upper-tail p=(1+null>=observed)/(200)",
+  "uncertainty": "512 spatial-block bootstrap replicates, sampling occupied 64x64 blocks with replacement using seed 20260930; sum per-block positive/negative score histograms; percentile 2.5-97.5 ROC AUC; report degenerate replicates.",
+  "source_selection": "No score, bin, block-size or transformation selected using validation labels. Stop on prediction, chunk, shape, crop or label-identity mismatch.",
+  "interpretation_limit": "Diagnostic of one known-domain exposed validation. Evaluation-mask distance and local label shuffle cannot prove CT-specific ink signal or cross-scroll transfer. A statistically surprising association is not a discovery."
+}
