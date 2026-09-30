@@ -1,0 +1,69 @@
+{
+  "state": "PASS_FIXED_METADATA_AND_IDENTICAL_PIXELS",
+  "utc": "2026-09-30T19:59:01.065155+00:00",
+  "script_sha256": "a88e3396ed62b425eef534f43ac140f8edce50434087e2c63e2e721ecb2e5a56",
+  "base_commit": "d816158d257a4e2420321e0635ab8d98e2dacd22",
+  "patch_sha256": "d219abf85b4da09c7649acf248947a38da26d96972adfe878ae8fea39852843f",
+  "files": [
+    {
+      "path": "volume-cartographer/apps/src/vc_render_tifxyz.cpp",
+      "sha256": "bb707f5212ebb9d1f45093b22e94a4c066d6a5574cbb9df4fc01e5bfd723b3f4"
+    },
+    {
+      "path": "volume-cartographer/core/include/vc/core/util/Zarr.hpp",
+      "sha256": "5790ce5714e8ade018db1a92f05ba0688275345f1b723c996aee625f8e931d7e"
+    },
+    {
+      "path": "volume-cartographer/core/src/Zarr.cpp",
+      "sha256": "4b2c97323abbb1139be7209a5e7d93f07f58274ded151d4b2ca1fb855938a45b"
+    },
+    {
+      "path": "volume-cartographer/core/test/test_render_fetch_failure.py",
+      "sha256": "acfd89accac2adde6a9355a13f8d845052e9c85d881257f49401e79ca365c972"
+    },
+    {
+      "path": "volume-cartographer/core/test/test_zarr.cpp",
+      "sha256": "3dff86e4aa7afa8077c90ecc01cbdf9dedebed29e916a43df5bed0a606e35673"
+    }
+  ],
+  "equal_pixels": 12288,
+  "different_pixels": 0,
+  "array_sha256": "da3bbe2971d8233eb43b0645ae5a783078902ad6af4135cab39add08796360d7",
+  "declared_datasets_before": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+  ],
+  "declared_datasets_after": [
+    "0"
+  ],
+  "level0_scale_and_axes_unchanged": true,
+  "cpp_test_targets_passed": 3,
+  "renderer_tests_passed": 9,
+  "new_cli_subcases": {
+    "pyramid_false": [
+      "render",
+      "pre"
+    ],
+    "pyramid_true": [
+      "render",
+      "pre"
+    ]
+  },
+  "baseline_failure": "Two false-pyramid subcases fail before fix; enabled cases pass",
+  "minimum_available_ram_gib": 11.705020904541016,
+  "maximum_gpu_temperature_c": 52,
+  "all_owned_workers_stopped": true,
+  "new_binary_sha256": "eaad510b32c9e5818f816a7e798d5857e264094750003fd6a06411adc77cef0c",
+  "limits": [
+    "One retained Paris4 crop, no ink inference",
+    "Local changes; no push or hosted CI",
+    "Does not repair previously published malformed stores"
+  ],
+  "source_receipt_sha256": "8a12eef13252a471d154bb375107035377824feb170aceaf509148a6545051f6",
+  "candidate_commit": "d7524301f7efe0fbf5a7e761b75fab498f68d5d3",
+  "publication_status": "Local tested candidate; not pushed or covered by hosted CI yet."
+}

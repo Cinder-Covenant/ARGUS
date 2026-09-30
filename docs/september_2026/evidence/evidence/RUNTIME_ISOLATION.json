@@ -1,0 +1,47 @@
+{
+  "before": {
+    "completed_route_steps": 6,
+    "evidence": "images/runtime_before.png",
+    "observation": "Isolated preview borrowed another observer process inventory."
+  },
+  "after": {
+    "completed_route_steps": 2,
+    "step_counts": {
+      "DONE": 2,
+      "AVAILABLE": 1,
+      "HUMAN_GATED": 0,
+      "BLOCKED": 0,
+      "NOT_REACHED": 13,
+      "UNKNOWN": 0
+    },
+    "next_action": {
+      "step": "acquisition",
+      "n": 3,
+      "label": "Acquire or stream the CT",
+      "kind": "ACT",
+      "to": "/sources?tab=ingest&scroll=PHerc0139#sources.retrieval",
+      "why": "an official acquisition is published; a bounded, zero-fetch acquisition plan can be opened",
+      "operator_only": false,
+      "action_ids": [
+        "acquire.dry_run",
+        "identity.resolve",
+        "acquire.execute",
+        "preflight"
+      ],
+      "basis": [
+        "argus.core.scroll_shelf published_upstream"
+      ]
+    },
+    "evidence": "images/runtime_after.png"
+  },
+  "retained_receipt_sha256": "c51f5e63dd4f9479c218626f3a4c02baf59a63f7fb19f0f7672d15d206edab9f",
+  "retained_score": 0.7722380370197259,
+  "patch_sha256": "754edece38183d85a73c71b54847157967515a6f12b56ea8690839bb1d6ae853",
+  "module_sha256": "c33a3633f03b4fab30eebff3895bf20efae3f1ab07365c975933578926313b24",
+  "source_receipt_sha256": "dc76e93e5c76fd822d1d826a0c8b7f7bcae8a196fcfec1a96c60d861cb135c0d",
+  "status": "Local verified correction; not in public main at packaging time.",
+  "limits": [
+    "Operational runtime identity correction; not improved ink detection.",
+    "Screenshots are retained captures, not a newly recorded live session."
+  ]
+}

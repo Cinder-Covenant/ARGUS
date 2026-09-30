@@ -1,0 +1,27 @@
+{
+  "scroll": "PHerc1667",
+  "segment": "w029",
+  "hardware": "GTX 1660 Ti",
+  "historical_fp16_zero_fraction": 0.9979338842975206,
+  "input_contract_excerpt": [
+    "ERROR [DEPTH_NOT_TRAINED_FORM] input has 17 slices; this recipe trained on 21 (a 17-slice window cut from it). A 17-slice CT is not that representation (e.g. an unpooled level-2 crop). Prepare the input with prepare_9um_isotropic_input: centred 84 planes, mean-pooled by 4",
+    "CONTRACT FAIL"
+  ],
+  "guard_exception": [
+    "FloatingPointError: model produced non-finite probabilities; the output would be written as zeros. Half precision overflows on some GPUs: rerun with --amp-dtype (full precision where the GPU supports it)"
+  ],
+  "source_sha256": {
+    "before_fp16_outputs.json": "03bf411e849d181408887cf00c9a99ff783af69ce21d887c69f233a059eca326",
+    "ink17_forward.txt": "e844b700c6fcec892644d59acc6ebcdbf4295277641bb19df608b99648fb5825",
+    "p1890_fp16_guard_al21.log": "6c239133ad204c092f6083de67fac478f66dfc108f680399d568b4ed60b196e9",
+    "RUN_LOG.md": "e549d9b7b2dd275a459c384805ac52fa1dd0fb506018553d74a671192255e9c2"
+  },
+  "full_precision_parity_basis": "Historical RUN_LOG.md reports six full-precision outputs identical to unmodified-main no-autocast references (max absolute difference 0); not rerun for packaging.",
+  "claim_limits": [
+    "The 17/21-slice examples have different crops and labels; no causal depth/accuracy comparison.",
+    "PHerc1667 is model-exposed.",
+    "Precision control is credited to Villa #1890.",
+    "Warnings are default; strict input refusal is opt-in. Numerical refusal always applies.",
+    "A successful finite prediction does not establish true negative ink."
+  ]
+}

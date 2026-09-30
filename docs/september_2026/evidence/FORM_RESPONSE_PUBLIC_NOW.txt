@@ -1,0 +1,25 @@
+ARGUS: a reproducible scroll-processing workbench, with upstream fixes for silent inference failures and renderer reproducibility.
+
+We are Ryan Gurganious and Daine Ball, Team Cinder Covenant. Our September contribution combines the public ARGUS software with concrete Villa improvements identified while operating real scroll workflows. ARGUS connects existing community tools; we credit their original authors and do not claim a new detector.
+
+1. Scroll data used
+
+Our completed public control route uses PHerc0139 segment w016: a 640-by-896 crop, published ink/supervision/validation masks, and the pinned ink_9um checkpoint. We also investigated inference failures on PHerc1667 w029; used PHerc0009B surface geometry for metadata-only renderer checks; and used a retained PHercParis4 CT crop for renderer repeatability. Exploratory PHerc1203 work has not established a reading and is not submitted as an ink discovery.
+
+2. How this helps researchers read scrolls
+
+ARGUS makes a bounded real-data workflow repeatable: identify the scroll and volume, acquire the specified crop and labels, verify the checkpoint, prepare its input, execute inference, score the declared validation region, and record the result. The public release provides that executable control route, a local interface, installation diagnostics and reusable checks for common processing and evaluation failures.
+
+The practical value is illustrated by a failure we encountered: FP16 inference on our GTX 1660 Ti generated non-finite predictions that were converted into a 99.8%-zero TIFF while the process reported success. Such output can be mistaken for a negative ink result. Villa PR #1897 makes this failure explicit and adds checkpoint-aware input-form warnings with an optional strict refusal mode. We credit the separate upstream precision-control work in #1890. Our full-precision guarded output matched the corresponding unmodified full-precision output exactly.
+
+3. What the contribution adds
+
+Researchers get a documented executable control workflow, explicit failures for the numerical problem above, and a way to check whether prepared inputs match the checkpoint's expected form. Villa PR #1901 records the effective surface geometry and rendering settings alongside output so a render can be traced and reproduced. ARGUS also checks physical-scroll identity and model exposure, helping distinguish known-domain controls from evidence on an independently unseen scroll. The contribution reduces specific opportunities for misleading results; we have not measured a percentage increase in discovery probability.
+
+4. Evidence and current status
+
+The PHerc0139 control completed locally. Independent rescoring reproduced ROC AUC 0.772238 and average precision 0.578875 on 90,367 validation pixels, including 22,765 ink-positive pixels. Validation and supervision masks were disjoint. This is a known-domain control, not evidence of cross-scroll generalization or an improvement over the detector's authors.
+
+Public evidence includes the ARGUS source, target manifest, execution instructions, synthetic regression tests and source-backed exposure example, plus the Villa PR implementations and regression tests. Retained local receipts additionally document the real-data scoring and exact repeatability across 12,288 Paris4 rendered pixels. That renderer result compares repeated executions of the same candidate, not a reading-quality improvement.
+
+Villa #1896 and #1902 are merged; #1897 and #1901 remain open. #1896 lists ARGUS, while #1902 corrects a fiber-parser test assertion and documentation. Those supporting changes are not presented as equivalent in impact to the inference and rendering work. We claim a reusable workflow and demonstrated reliability improvements, not confirmed new text.

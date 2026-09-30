@@ -1,0 +1,17 @@
+{
+  "created_utc": "2026-09-30T20:26:11.262380+00:00",
+  "publication": "NOT_PUBLISHED",
+  "submitted": false,
+  "scientific_result": "No confirmed unread-scroll reading",
+  "exporter_sha256": "3244a708060523e488663dddbbbb35dc932d82c56e7aa95c2a28e4ded5342c36",
+  "excludes": [
+    "Target pixels/predictions",
+    "CT arrays",
+    "labels",
+    "checkpoints",
+    "private campaign documents",
+    "mixed-source video awaiting media review",
+    "secrets and absolute workstation paths"
+  ],
+  "verification": "See the separately generated packaging check receipt; no new detector inference."
+}

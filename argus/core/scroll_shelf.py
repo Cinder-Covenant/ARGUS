@@ -157,8 +157,14 @@ def compose_local(*, refresh: bool = False) -> dict:
         raise ShelfError("could not compose from in-process authorities: %s" % exc) from exc
 
 
-def compose_available(base: str = "http://127.0.0.1:8787") -> dict:
-    """Use the live service when available, otherwise explicit local authorities."""
+def compose_available(base: str | None = None) -> dict:
+    """Use this runtime's authorities unless a remote service is explicitly selected.
+
+    A fixed default port can belong to a different checkout or ARGUS_HOME. Its
+    holdings must never become this runtime's holdings just because it is live.
+    """
+    if base is None:
+        return compose_local()
     now = time.monotonic()
     retry_after = float(_SERVICE_RETRY_AFTER.get(base) or 0)
     if now >= retry_after:

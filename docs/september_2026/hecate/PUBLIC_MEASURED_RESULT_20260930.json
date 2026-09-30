@@ -1,0 +1,183 @@
+{
+  "state": "PASS_ACTUAL_CLI_BITWISE_EQUAL",
+  "created_utc": "2026-09-30T19:15:12Z",
+  "finished_utc": "2026-09-30T19:20:29Z",
+  "scope": "Two actual CLI mains and their own tilers/file writers; resource-only load/features hooks; fresh processes, cached OS files possible",
+  "input_shape": [
+    16,
+    256,
+    256
+  ],
+  "target_inference": false,
+  "prelaunch_temperature_rule": "10 continuous seconds at <=54 C, maximum wait 300 s per run",
+  "pairs": [
+    {
+      "repeat": 1,
+      "equal_2d_pixels": 65536,
+      "equal_3d_voxels": 1048576,
+      "array_2d_sha256": "7494ed767591367e453efec4d89563926da4262a7d52836863c11e0b0c227ec5",
+      "array_3d_sha256": "b5a52d0bce49ac74cbac3428032694bc975c84e4a7b23d6b70ae8af7255f89d6"
+    },
+    {
+      "repeat": 2,
+      "equal_2d_pixels": 65536,
+      "equal_3d_voxels": 1048576,
+      "array_2d_sha256": "7494ed767591367e453efec4d89563926da4262a7d52836863c11e0b0c227ec5",
+      "array_3d_sha256": "b5a52d0bce49ac74cbac3428032694bc975c84e4a7b23d6b70ae8af7255f89d6"
+    },
+    {
+      "repeat": 3,
+      "equal_2d_pixels": 65536,
+      "equal_3d_voxels": 1048576,
+      "array_2d_sha256": "7494ed767591367e453efec4d89563926da4262a7d52836863c11e0b0c227ec5",
+      "array_3d_sha256": "b5a52d0bce49ac74cbac3428032694bc975c84e4a7b23d6b70ae8af7255f89d6"
+    }
+  ],
+  "median_process_seconds": {
+    "baseline": 17.835672499990324,
+    "candidate": 11.591307499998948
+  },
+  "elapsed_reduction_percent": 35.010538570916026,
+  "owned_workers_stopped": true,
+  "resource_monitor_errors": [],
+  "resource_sample_count": 571,
+  "resources": {
+    "min_ram_available_gib": 13.925949096679688,
+    "min_gpu_free_mib": 4003,
+    "max_temperature_c": 68,
+    "peak_tree_rss_gib": 1.5405311584472656,
+    "max_scratch_bytes": 6474492
+  },
+  "source_receipt_sha256": "3fc2bbbdfe65a8c7f3b304ef9146b9c4165a920ed6b948c5e79e1fd878521426",
+  "source_harness_sha256": "f6fb3a1cd63571d407e379d7acd147199c21f3fcceb91682c06cae29eb1152bb",
+  "export_script_sha256": "a30445fb4654114313d12ed1690de21a3b27c30b413291ea4ba6b1b729d17fbb",
+  "exported_utc": "2026-09-30T19:45:00.433120+00:00",
+  "identities": [
+    {
+      "role": "prepared_input_npy",
+      "sha256": "3bdfab85fed733757ed3a0021f6240e02afb9bda9af9a12a7ef67c5ae156eb86"
+    },
+    {
+      "role": "checkpoint",
+      "sha256": "809f4f10f7cb7afa19b4bee0f7d2ab31edd7e11b664f9f210cc9c17f22fcfe5d"
+    },
+    {
+      "role": "baseline_provider",
+      "sha256": "c232c18a1a86cfb91257a00db13288202bb8ae33732ba26f7291a9b8adb8da59"
+    },
+    {
+      "role": "candidate_provider",
+      "sha256": "d02029db394ab4a912ecd9433dbd76e86a812cfc65eb28890f979bc381310ca2"
+    },
+    {
+      "role": "shared_helper",
+      "sha256": "b01468876bf3c528a6c633dc358379130bb8a9686a1044084339a2a6c4d2f4ad"
+    }
+  ],
+  "runs": [
+    {
+      "mode": "baseline",
+      "repeat": 1,
+      "elapsed_process_seconds": 17.72764310002094,
+      "exit_code": 0,
+      "owned_worker_stopped": true,
+      "start_temperature_c": 52,
+      "worker": {
+        "state": "COMPLETE",
+        "features_logits_calls": 98,
+        "exact_hook_pause_seconds": 0.0,
+        "cli_main_seconds": 14.546097700018436,
+        "cuda_peak_allocated_mib": 720.47314453125,
+        "cuda_peak_reserved_mib": 856.0
+      }
+    },
+    {
+      "mode": "candidate",
+      "repeat": 1,
+      "elapsed_process_seconds": 11.808153999998467,
+      "exit_code": 0,
+      "owned_worker_stopped": true,
+      "start_temperature_c": 54,
+      "worker": {
+        "state": "COMPLETE",
+        "features_logits_calls": 49,
+        "exact_hook_pause_seconds": 0.0,
+        "cli_main_seconds": 8.450403599999845,
+        "cuda_peak_allocated_mib": 720.44189453125,
+        "cuda_peak_reserved_mib": 856.0
+      }
+    },
+    {
+      "mode": "candidate",
+      "repeat": 2,
+      "elapsed_process_seconds": 11.591307499998948,
+      "exit_code": 0,
+      "owned_worker_stopped": true,
+      "start_temperature_c": 54,
+      "worker": {
+        "state": "COMPLETE",
+        "features_logits_calls": 49,
+        "exact_hook_pause_seconds": 0.0,
+        "cli_main_seconds": 8.379917699989164,
+        "cuda_peak_allocated_mib": 720.44189453125,
+        "cuda_peak_reserved_mib": 856.0
+      }
+    },
+    {
+      "mode": "baseline",
+      "repeat": 2,
+      "elapsed_process_seconds": 17.83977240000968,
+      "exit_code": 0,
+      "owned_worker_stopped": true,
+      "start_temperature_c": 54,
+      "worker": {
+        "state": "COMPLETE",
+        "features_logits_calls": 98,
+        "exact_hook_pause_seconds": 0.0,
+        "cli_main_seconds": 14.581979100010358,
+        "cuda_peak_allocated_mib": 720.47314453125,
+        "cuda_peak_reserved_mib": 856.0
+      }
+    },
+    {
+      "mode": "baseline",
+      "repeat": 3,
+      "elapsed_process_seconds": 17.835672499990324,
+      "exit_code": 0,
+      "owned_worker_stopped": true,
+      "start_temperature_c": 54,
+      "worker": {
+        "state": "COMPLETE",
+        "features_logits_calls": 98,
+        "exact_hook_pause_seconds": 0.0,
+        "cli_main_seconds": 14.613394399988465,
+        "cuda_peak_allocated_mib": 720.47314453125,
+        "cuda_peak_reserved_mib": 856.0
+      }
+    },
+    {
+      "mode": "candidate",
+      "repeat": 3,
+      "elapsed_process_seconds": 11.588198799989186,
+      "exit_code": 0,
+      "owned_worker_stopped": true,
+      "start_temperature_c": 54,
+      "worker": {
+        "state": "COMPLETE",
+        "features_logits_calls": 49,
+        "exact_hook_pause_seconds": 0.0,
+        "cli_main_seconds": 8.395568299980368,
+        "cuda_peak_allocated_mib": 720.44189453125,
+        "cuda_peak_reserved_mib": 856.0
+      }
+    }
+  ],
+  "export_policy": "Numeric allowlist; removes local paths, PIDs and per-file output manifests. Original receipt preserved. No raw arrays or target data.",
+  "claim_limits": [
+    "One exposed PHerc0139 field and one GPU",
+    "Paired 2D+3D implementation equality, not ink accuracy",
+    "Resource hooks and identity checks included; raw resampling and UI transport excluded",
+    "Fresh process does not imply cold file cache",
+    "No whole-scroll or 2D-only speed claim"
+  ]
+}

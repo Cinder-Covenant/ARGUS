@@ -1,0 +1,308 @@
+{
+  "captured_utc": "2026-09-30T20:26:11.262380+00:00",
+  "villa_september_created": [
+    {
+      "createdAt": "2026-09-26T02:02:25Z",
+      "headRefOid": "6ff88c277d9f892e1dec116e906d6f607fb9ddac",
+      "mergedAt": "2026-09-28T21:54:19Z",
+      "number": 1902,
+      "state": "MERGED",
+      "title": "fiber: match the version 4 message in the parse test and doc",
+      "url": "https://github.com/ScrollPrize/villa/pull/1902",
+      "mergeable": null,
+      "mergeable_state": "unknown"
+    },
+    {
+      "createdAt": "2026-09-26T02:02:22Z",
+      "headRefOid": "25a61ac7be5c04c3d6953b941279a9af0e28cd4e",
+      "mergedAt": null,
+      "number": 1901,
+      "state": "OPEN",
+      "title": "vc_render_tifxyz: record reproducible render provenance in Zarr outputs",
+      "url": "https://github.com/ScrollPrize/villa/pull/1901",
+      "mergeable": false,
+      "mergeable_state": "dirty",
+      "checks": [
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36211027669/job/108319282556",
+          "name": "CI",
+          "state": "SUCCESS"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36211026994/job/108318876463",
+          "name": "Attach Windows package to release",
+          "state": "SKIPPED"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36211026948/job/108318470153",
+          "name": "analyze_fast",
+          "state": "SUCCESS"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/runs/108317949506",
+          "name": "CodeQL",
+          "state": "NEUTRAL"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36211027669/job/108317436617",
+          "name": "macOS compile (macos-15, Homebrew LLVM)",
+          "state": "SUCCESS"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36211027669/job/108317436539",
+          "name": "Linux base tests (Clang QuickBuild)",
+          "state": "SUCCESS"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36211027669/job/108317436509",
+          "name": "Synthetic rendering regression (GCC Release / Valgrind replay)",
+          "state": "SUCCESS"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36211027669/job/108317436649",
+          "name": "Linux Lasagna/fiber/GUI tests (Clang QuickBuild)",
+          "state": "SUCCESS"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36211027669/job/108317436634",
+          "name": "Linux CLI compile coverage (Clang QuickBuild)",
+          "state": "SUCCESS"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36211027669/job/108317436504",
+          "name": "Linux VC3D compile and smoke (Clang QuickBuild)",
+          "state": "SUCCESS"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36211027669/job/108317437090",
+          "name": "MCP unit tests",
+          "state": "SKIPPED"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36211027669/job/108317437310",
+          "name": "Skip (no volume-cartographer changes)",
+          "state": "SKIPPED"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36211027669/job/108317437600",
+          "name": "Linux Flatboi/PaStiX compile coverage (Clang QuickBuild)",
+          "state": "SKIPPED"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36211026948/job/108317421917",
+          "name": "PR scan (VC3D controllers)",
+          "state": "SUCCESS"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36211026948/job/108317421862",
+          "name": "PR scan (VC3D components)",
+          "state": "SUCCESS"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36211026948/job/108317421848",
+          "name": "PR scan (tools and libraries)",
+          "state": "SUCCESS"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36211026948/job/108317421923",
+          "name": "PR scan (core)",
+          "state": "SUCCESS"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36211026948/job/108317422573",
+          "name": "analyze_deep",
+          "state": "SKIPPED"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36211027669/job/108317406524",
+          "name": "Detect changes",
+          "state": "SUCCESS"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36211026948/job/108317403773",
+          "name": "Detect changes",
+          "state": "SUCCESS"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36211027004/job/108317403826",
+          "name": "Build + package (Homebrew LLVM, arm64)",
+          "state": "SUCCESS"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36211026994/job/108317403683",
+          "name": "Compile (MSYS2 UCRT64)",
+          "state": "SUCCESS"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36211026991/job/108317403984",
+          "name": "Build + package (AppImage)",
+          "state": "SUCCESS"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36211026998/job/108317403883",
+          "name": "Gate",
+          "state": "SUCCESS"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36211027004/job/108317404552",
+          "name": "Attach macOS package to release",
+          "state": "SKIPPED"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36211026991/job/108317404971",
+          "name": "Attach Linux AppImage to release",
+          "state": "SKIPPED"
+        },
+        {
+          "link": "https://vercel.com/",
+          "name": "Vercel",
+          "state": "FAILURE",
+          "qualification": "Team deployment authorization; not a code-test failure."
+        }
+      ]
+    },
+    {
+      "createdAt": "2026-09-25T21:31:52Z",
+      "headRefOid": "1be30608207beeb950cf2c10a220cf74fe0f888f",
+      "mergedAt": null,
+      "number": 1897,
+      "state": "OPEN",
+      "title": "ink_detection: check input against the checkpoint's trained form",
+      "url": "https://github.com/ScrollPrize/villa/pull/1897",
+      "mergeable": true,
+      "mergeable_state": "unstable",
+      "checks": [
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36650490531/job/109683300823",
+          "name": "CI",
+          "state": "SUCCESS"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36650490531/job/109683279127",
+          "name": "Skip (no volume-cartographer changes)",
+          "state": "SUCCESS"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36650490531/job/109683281075",
+          "name": "Linux VC3D compile and smoke (Clang QuickBuild)",
+          "state": "SKIPPED"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36650490531/job/109683280731",
+          "name": "MCP unit tests",
+          "state": "SKIPPED"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36650490531/job/109683280471",
+          "name": "macOS compile (${{ matrix.os }}, Homebrew LLVM)",
+          "state": "SKIPPED"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36650490531/job/109683280913",
+          "name": "Linux Flatboi/PaStiX compile coverage (Clang QuickBuild)",
+          "state": "SKIPPED"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36650490531/job/109683280772",
+          "name": "Linux CLI compile coverage (Clang QuickBuild)",
+          "state": "SKIPPED"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36650490531/job/109683280505",
+          "name": "Synthetic rendering regression (GCC Release / Valgrind replay)",
+          "state": "SKIPPED"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36650490531/job/109683280524",
+          "name": "Linux base tests (Clang QuickBuild)",
+          "state": "SKIPPED"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36650490531/job/109683280891",
+          "name": "Linux Lasagna/fiber/GUI tests (Clang QuickBuild)",
+          "state": "SKIPPED"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36650490448/job/109683258143",
+          "name": "analyze_fast",
+          "state": "SUCCESS"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36650490448/job/109683258676",
+          "name": "analyze_deep",
+          "state": "SKIPPED"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36650490448/job/109683259010",
+          "name": "PR scan (${{ matrix.name }})",
+          "state": "SKIPPED"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36650490448/job/109683232005",
+          "name": "Detect changes",
+          "state": "SUCCESS"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36650490266/job/109683231173",
+          "name": "Gate",
+          "state": "SUCCESS"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36650490319/job/109683231122",
+          "name": "test-vesuvius-python (ubuntu-latest, 2.18.7)",
+          "state": "SUCCESS"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36650490319/job/109683230940",
+          "name": "test-vesuvius-python (ubuntu-latest, 3.2.1)",
+          "state": "SUCCESS"
+        },
+        {
+          "link": "https://github.com/ScrollPrize/villa/actions/runs/36650490531/job/109683232183",
+          "name": "Detect changes",
+          "state": "SUCCESS"
+        },
+        {
+          "link": "https://vercel.com/",
+          "name": "Vercel",
+          "state": "FAILURE",
+          "qualification": "Team deployment authorization; not a code-test failure."
+        }
+      ]
+    },
+    {
+      "createdAt": "2026-09-25T21:31:42Z",
+      "headRefOid": "bc0a171f05f1f60a580f8a99b79e4e727df6bbff",
+      "mergedAt": "2026-09-25T21:35:59Z",
+      "number": 1896,
+      "state": "MERGED",
+      "title": "community projects: add ARGUS",
+      "url": "https://github.com/ScrollPrize/villa/pull/1896",
+      "mergeable": null,
+      "mergeable_state": "unknown"
+    }
+  ],
+  "argus_public_exposure_update": {
+    "mergeCommit": {
+      "oid": "44886642107bf82506126595551e96d4fb44efa9"
+    },
+    "mergedAt": "2026-09-25T23:36:00Z",
+    "number": 1,
+    "state": "MERGED",
+    "title": "Add public exposure accounting: four channels, identity normalization\u2026",
+    "url": "https://github.com/Cinder-Covenant/ARGUS/pull/1"
+  },
+  "argus_public_main": "44886642107bf82506126595551e96d4fb44efa9",
+  "villa_main_at_packaging": "3a4754ffc0478f6c888b6e45c3711872298dd5b1",
+  "renderer_tested_upstream_base": "1f6f87b984b502ad992af2b6f10b0f07896aea4a",
+  "later_upstream_changed_files": [
+    "lasagna/tifxyz_format.md"
+  ],
+  "renderer_local_candidate": "d7524301f7efe0fbf5a7e761b75fab498f68d5d3",
+  "renderer_candidate_published": false,
+  "scope": "Four September-created Villa PRs; ARGUS public PR #1 is part of the ARGUS contribution, not an additional independent claim.",
+  "exclusions": [
+    "Villa #1440 was credited in August; do not claim it again.",
+    "Private ARGUS integration PRs are not additional public Villa contributions."
+  ]
+}

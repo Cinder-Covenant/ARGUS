@@ -4,8 +4,7 @@ This is the one page to read before quoting anything ARGUS shows. It is written 
 from it cannot be turned into a bigger claim than the evidence supports.
 
 ARGUS is a local instrument. It records where a result came from, why a step could not run, and what class
-of claim a result supports. It is a working tool and a demonstration on synthetic data. It is not a reading
-of any scroll.
+of claim a result supports. It provides synthetic verification tools and a bounded public-data control route on PHerc0139 w016 using Villa and a separately obtained checkpoint. That known-domain control is not a new reading or proof of cross-scroll transfer.
 
 ## The claim boundary
 
@@ -14,7 +13,7 @@ This holds for everything this repository can show you, whatever a test or a scr
 1. **This release ships no detector and makes no scientific claim.** An ink-family provider row may only
    carry a claim ceiling that refuses a detector claim, and no provider row can hold the role of independent
    evidence or ground truth.
-2. **It does not read unread scrolls.** Nothing in this release searches a scroll for ink or claims text.
+2. **It does not read unread scrolls.** The public control route can execute released inference on its declared known-domain crop; it does not search unread prize targets or claim text.
 3. **A rendered candidate is not a reading.** An image that looks like it contains letters is not evidence of
    text. A result class (`argus/core/result_class.py`) travels with every score so a caption cannot be
    cropped away from what the score is.
@@ -64,8 +63,7 @@ group does not cover.
 ## What this release is built from
 
 The release is built from an explicit allowlist: a file reaches this repository only if it was named and
-justified (`RELEASE_MANIFEST.json` records the sha256 of every file that did). It contains no scientific
-results, and nothing in it depends on material outside it.
+justified (`RELEASE_MANIFEST.json` records the sha256 of every file that did). The software ships no CT arrays, labels or model weights. The September evidence supplement contains qualified numerical measurements and interface captures, with original-receipt hashes and external data/tool dependencies explicitly recorded.
 
 ## Model and data package boundary, in brief
 

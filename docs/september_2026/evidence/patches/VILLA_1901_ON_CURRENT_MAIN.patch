@@ -1,0 +1,432 @@
+diff --git a/volume-cartographer/apps/src/vc_render_tifxyz.cpp b/volume-cartographer/apps/src/vc_render_tifxyz.cpp
+index a6b6ada9e..bacc26747 100644
+--- a/volume-cartographer/apps/src/vc_render_tifxyz.cpp
++++ b/volume-cartographer/apps/src/vc_render_tifxyz.cpp
+@@ -11,6 +11,7 @@
+ 
+ #include "vc/core/types/Volume.hpp"
+ #include "vc/core/types/VcDataset.hpp"
++#include "vc/core/Version.hpp"
+ #include "vc/core/util/VoxelSizeMetadata.hpp"
+ #include "utils/Json.hpp"
+ #include "utils/http_fetch.hpp"
+@@ -21,6 +22,7 @@
+ #include <sstream>
+ #include <algorithm>
+ #include <atomic>
++#include <boost/uuid/detail/sha1.hpp>
+ #include <boost/program_options.hpp>
+ #include <limits>
+ #include <mutex>
+@@ -134,6 +136,49 @@ static bool invertAffineInPlace(AffineTransform& T)
+     return true;
+ }
+ 
++static std::string effectiveSurfaceSha1(const cv::Mat_<cv::Vec3f>& points,
++                                        const cv::Vec2f& scale)
++{
++    // Hash the geometry that the renderer actually consumes rather than
++    // rereading the tifxyz files. This includes mask/sentinel handling and an
++    // optional in-process flatten, while avoiding another pass over very large
++    // source files.
++    boost::uuids::detail::sha1 hash;
++    const int shape[] = {points.rows, points.cols, points.type()};
++    hash.process_bytes(shape, sizeof(shape));
++    hash.process_bytes(scale.val, sizeof(scale.val));
++    for (int row = 0; row < points.rows; ++row)
++        hash.process_bytes(points.ptr(row), size_t(points.cols) * points.elemSize());
++
++    boost::uuids::detail::sha1::digest_type digest{};
++    hash.get_digest(digest);
++    std::ostringstream out;
++    out << std::hex << std::setfill('0');
++    for (const auto value : digest)
++        out << std::setw(int(sizeof(value) * 2))
++            << static_cast<unsigned long long>(value);
++    return out.str();
++}
++
++static std::string provenanceSafeUrl(std::string url)
++{
++    // A remote Zarr locator can be a presigned URL. Preserve enough to identify
++    // the public source without copying credentials, signatures, or fragments
++    // into an output that may itself be published.
++    const auto scheme = url.find("://");
++    if (scheme != std::string::npos) {
++        const auto authority = scheme + 3;
++        const auto authorityEnd = url.find_first_of("/?#", authority);
++        const auto userInfoEnd = url.find('@', authority);
++        if (userInfoEnd != std::string::npos &&
++            (authorityEnd == std::string::npos || userInfoEnd < authorityEnd))
++            url.erase(authority, userInfoEnd - authority + 1);
++    }
++    if (const auto privatePart = url.find_first_of("?#"); privatePart != std::string::npos)
++        url.erase(privatePart);
++    return url;
++}
++
+ static AffineTransform loadAffineTransform(const std::string& filename)
+ {
+     AffineTransform transform;
+@@ -1425,7 +1470,8 @@ int main(int argc, char *argv[])
+         return mergeTiffParts(tifOutputArg, numParts) ? EXIT_SUCCESS : EXIT_FAILURE;
+     }
+ 
+-    std::filesystem::path vol_path = parsed["volume"].as<std::string>();
++    const std::string volumeInput = parsed["volume"].as<std::string>();
++    std::filesystem::path vol_path = volumeInput;
+     const bool prefetchRemote = parsed["prefetch-remote"].as<bool>();
+     std::string remoteUrl = parsed.count("remote-url") ? parsed["remote-url"].as<std::string>() : "";
+     if (remoteUrl.empty()) {
+@@ -1816,6 +1862,8 @@ int main(int argc, char *argv[])
+             for (int i = 0; i < raw_points->cols; i++)
+                 if ((*raw_points)(j,i)[0] == -1) (*raw_points)(j,i) = {NAN,NAN,NAN};
+ 
++        const std::string surfaceSha1 = effectiveSurfaceSha1(*raw_points, surf->_scale);
++
+         // Bounding box of valid points
+         int col_min = raw_points->cols, col_max = -1, row_min = raw_points->rows, row_max = -1;
+         for (int j = 0; j < raw_points->rows; j++)
+@@ -1876,6 +1924,101 @@ int main(int argc, char *argv[])
+ 
+         const int rotQuad = rotQuadGlobal;
+ 
++        Json provenance = Json::object();
++        provenance["schema_version"] = 1;
++        provenance["tool"] = "vc_render_tifxyz";
++        provenance["tool_git_commit"] = ProjectInfo::RepositoryHash();
++
++        Json source = Json::object();
++        const bool volumeInputIsUrl = volumeInput.find("://") != std::string::npos;
++        const auto safeVolumeInput = volumeInputIsUrl ? provenanceSafeUrl(volumeInput) : volumeInput;
++        if (volumeInputIsUrl) {
++            source["input_url"] = safeVolumeInput;
++            source["input_url_redacted"] = safeVolumeInput != volumeInput;
++        } else {
++            source["local_path"] = safeVolumeInput;
++        }
++        source["group_index"] = group_idx;
++        if (!remoteUrl.empty()) {
++            const auto safeRemoteUrl = provenanceSafeUrl(remoteUrl);
++            source["remote_url"] = safeRemoteUrl;
++            source["remote_url_redacted"] = safeRemoteUrl != remoteUrl;
++        }
++        provenance["source_volume"] = std::move(source);
++
++        Json surface = Json::object();
++        surface["path"] = seg_folder.generic_string();
++        surface["effective_geometry_sha1"] = surfaceSha1;
++        surface["grid_width"] = raw_points->cols;
++        surface["grid_height"] = raw_points->rows;
++        Json surfaceScale = Json::array();
++        surfaceScale.push_back(double(surf->_scale[0]));
++        surfaceScale.push_back(double(surf->_scale[1]));
++        surface["grid_scale"] = std::move(surfaceScale);
++        provenance["surface"] = std::move(surface);
++
++        Json affine = Json::object();
++        affine["applied"] = hasAffine;
++        Json affineInputs = Json::array();
++        for (const auto& [path, inverted] : affineSpecs) {
++            Json input = Json::object();
++            input["path"] = path;
++            input["inverted"] = inverted;
++            affineInputs.push_back(std::move(input));
++        }
++        affine["inputs"] = std::move(affineInputs);
++        Json matrix = Json::array();
++        for (int row = 0; row < 4; ++row) {
++            Json values = Json::array();
++            for (int col = 0; col < 4; ++col)
++                values.push_back(double(affineTransform.matrix(row, col)));
++            matrix.push_back(std::move(values));
++        }
++        affine["composed_matrix"] = std::move(matrix);
++        provenance["affine"] = std::move(affine);
++
++        Json render = Json::object();
++        render["surface_interpolation"] = genInterp == GenInterpolation::Linear ? "linear" : "smooth";
++        render["pixels_per_level_voxel"] = double(tgt_scale);
++        render["segmentation_scale"] = double(scale_seg);
++        render["effective_render_scale"] = render_scale;
++        render["num_slices"] = num_slices;
++        render["slice_step"] = slice_step;
++        render["accumulation_step"] = accum_step;
++        render["accumulation_type"] = accum_type_str;
++        render["accumulation_samples"] = int(accumOffsets.size());
++        render["composite"] = isCompositeMode;
++        render["composite_start"] = compositeStart;
++        render["composite_end"] = compositeEnd;
++        render["alpha_min"] = double(compositeParams.alphaMin);
++        render["alpha_max"] = double(compositeParams.alphaMax);
++        render["alpha_opacity"] = double(compositeParams.alphaOpacity);
++        render["alpha_cutoff"] = double(compositeParams.alphaCutoff);
++        render["beer_lambert_extinction"] = double(compositeParams.blExtinction);
++        render["beer_lambert_emission"] = double(compositeParams.blEmission);
++        render["beer_lambert_ambient"] = double(compositeParams.blAmbient);
++        render["isovalue_cutoff"] = int(compositeParams.isoCutoff);
++        render["rotation_degrees"] = rotate_angle;
++        render["flip_axis"] = flip_axis;
++        render["flip_normals"] = g_flipNormals;
++        render["flatten"] = parsed["flatten"].as<bool>();
++        render["flatten_iterations"] = parsed["flatten-iterations"].as<int>();
++        render["flatten_downsample"] = parsed["flatten-downsample"].as<int>();
++        render["auto_crop"] = autoCrop;
++        Json cropJson = Json::array();
++        cropJson.push_back(crop.x); cropJson.push_back(crop.y);
++        cropJson.push_back(crop.width); cropJson.push_back(crop.height);
++        render["crop_xywh"] = std::move(cropJson);
++        Json fullCanvas = Json::array();
++        fullCanvas.push_back(full_size.width); fullCanvas.push_back(full_size.height);
++        render["full_canvas_size"] = std::move(fullCanvas);
++        render["output_dtype"] = output_is_u16 && !isCompositeMode ? "uint16" : "uint8";
++        provenance["render"] = std::move(render);
++
++        Json extraAttributes = Json::object();
++        extraAttributes["render_provenance"] = std::move(provenance);
++        const std::filesystem::path attrsVolumePath(safeVolumeInput);
++
+         // Determine output dtype
+         const bool useU16 = output_is_u16 && !isCompositeMode;
+         const int cvType = useU16 ? CV_16UC1 : CV_8UC1;
+@@ -1910,9 +2053,10 @@ int main(int argc, char *argv[])
+ 
+                 cv::Size attrXY = tgt_size;
+                 if (rotQuad >= 0 && (rotQuad % 2) == 1) std::swap(attrXY.width, attrXY.height);
+-                writeZarrAttrs(outFilePath, vol_path, group_idx, baseZ, slice_step, accum_step,
++                writeZarrAttrs(outFilePath, attrsVolumePath, group_idx, baseZ, slice_step, accum_step,
+                                accum_type_str, accumOffsets.size(), attrXY, baseZ, CH, CW,
+-                               render_level_voxel_size, zarr_voxel_unit, tgt_scale);
++                               render_level_voxel_size, zarr_voxel_unit, tgt_scale,
++                               &extraAttributes, wantPyramid);
+                 return true;
+             } else if (numParts > 1) {
+                 if (!std::filesystem::exists(std::filesystem::path(zarrOutputArg) / "0" / ".zarray")) {
+@@ -2131,9 +2275,10 @@ int main(int argc, char *argv[])
+             if (numParts <= 1) {
+                 cv::Size attrXY = tgt_size;
+                 if (rotQuad >= 0 && (rotQuad % 2) == 1) std::swap(attrXY.width, attrXY.height);
+-                writeZarrAttrs(outFilePath, vol_path, group_idx, baseZ, slice_step, accum_step,
++                writeZarrAttrs(outFilePath, attrsVolumePath, group_idx, baseZ, slice_step, accum_step,
+                                accum_type_str, accumOffsets.size(), attrXY, baseZ, CH, CW,
+-                               render_level_voxel_size, zarr_voxel_unit, tgt_scale);
++                               render_level_voxel_size, zarr_voxel_unit, tgt_scale,
++                               &extraAttributes, wantPyramid);
+             }
+         }
+         return true;
+diff --git a/volume-cartographer/core/include/vc/core/util/Zarr.hpp b/volume-cartographer/core/include/vc/core/util/Zarr.hpp
+index 0624a4c81..c96ef316b 100644
+--- a/volume-cartographer/core/include/vc/core/util/Zarr.hpp
++++ b/volume-cartographer/core/include/vc/core/util/Zarr.hpp
+@@ -94,10 +94,12 @@ void createPyramidDatasets(const std::filesystem::path& outFile,
+ // Split out of writeZarrAttrs so the representation can be tested without a
+ // filesystem or a Volume: the rules about units and relative scaling described
+ // below are the part that went wrong, and they are pure JSON construction.
++// With includePyramid=false, advertise only level 0; levels 1-5 are not created.
+ [[nodiscard]] utils::Json buildMultiscales(double baseVoxelSize,
+                                            const std::string& voxelUnit,
+                                            double sliceStep,
+-                                           double pixelsPerVoxel);
++                                           double pixelsPerVoxel,
++                                           bool includePyramid = true);
+ 
+ // Write OME-Zarr .zattrs multiscales JSON.
+ //
+@@ -120,6 +122,7 @@ void createPyramidDatasets(const std::filesystem::path& outFile,
+ //     Nothing in the document is a physical length, so a reader cannot mistake
+ //     the numbers for one -- which is what a bare scale of 1.0 with no unit
+ //     allowed.
++// `includePyramid` must match the dataset creation choice, including --pre.
+ void writeZarrAttrs(const std::filesystem::path& outFile,
+                     const std::filesystem::path& volPath, int groupIdx,
+                     size_t baseZ, double sliceStep, double accumStep,
+@@ -127,7 +130,9 @@ void writeZarrAttrs(const std::filesystem::path& outFile,
+                     const cv::Size& canvasSize, size_t CZ, size_t CH, size_t CW,
+                     double baseVoxelSize = 1.0,
+                     const std::string& voxelUnit = "",
+-                    double pixelsPerVoxel = 1.0);
++                    double pixelsPerVoxel = 1.0,
++                    const utils::Json* extraAttributes = nullptr,
++                    bool includePyramid = true);
+ 
+ // Write a dense uint8 ZYX subregion into a freshly created dataset via
+ // writeChunk(). Chunks overlapping the region are materialized; untouched
+diff --git a/volume-cartographer/core/src/Zarr.cpp b/volume-cartographer/core/src/Zarr.cpp
+index 1d742a531..bccdec65e 100644
+--- a/volume-cartographer/core/src/Zarr.cpp
++++ b/volume-cartographer/core/src/Zarr.cpp
+@@ -367,7 +367,7 @@ void createPyramidDatasets(const std::filesystem::path& outDir,
+ //     anywhere in the document. A reader can still place the levels relative to
+ //     each other, and cannot mistake the numbers for micrometres.
+ Json buildMultiscales(double baseVoxelSize, const std::string& voxelUnit,
+-                      double sliceStep, double pixelsPerVoxel)
++                      double sliceStep, double pixelsPerVoxel, bool includePyramid)
+ {
+     const bool physicalSizeKnown = std::isfinite(baseVoxelSize) && baseVoxelSize > 0.0;
+ 
+@@ -393,7 +393,7 @@ Json buildMultiscales(double baseVoxelSize, const std::string& voxelUnit,
+         ? pixelsPerVoxel : 1.0;
+     const double step = (std::isfinite(sliceStep) && sliceStep > 0.0)
+         ? sliceStep : 1.0;
+-    for (int l = 0; l <= 5; l++) {
++    for (int l = 0; l <= (includePyramid ? 5 : 0); l++) {
+         // Relative pyramid factor: levels are built by halving Y/X each step and
+         // keeping Z unchanged, so Y/X double relative to level 0 while Z stays at
+         // its level-0 spacing.
+@@ -432,7 +432,8 @@ void writeZarrAttrs(const std::filesystem::path& outDir,
+                     const std::string& accumTypeStr, size_t accumSamples,
+                     const cv::Size& canvasSize, size_t CZ, size_t CH, size_t CW,
+                     double baseVoxelSize, const std::string& voxelUnit,
+-                    double pixelsPerVoxel)
++                    double pixelsPerVoxel,
++                    const utils::Json* extraAttributes, bool includePyramid)
+ {
+     Json attrs;
+     attrs["source_zarr"] = volPath.string();
+@@ -455,8 +456,15 @@ void writeZarrAttrs(const std::filesystem::path& outDir,
+     attrs["note_axes_order"] = "ZYX (slice, row, col)";
+ 
+     Json multiscales = Json::array();
+-    multiscales.push_back(buildMultiscales(baseVoxelSize, voxelUnit, sliceStep, pixelsPerVoxel));
++    multiscales.push_back(buildMultiscales(baseVoxelSize, voxelUnit, sliceStep,
++                                         pixelsPerVoxel, includePyramid));
+     attrs["multiscales"] = std::move(multiscales);
+ 
++    if (extraAttributes) {
++        if (!extraAttributes->is_object())
++            throw std::invalid_argument("writeZarrAttrs extra attributes must be a JSON object");
++        attrs.update(*extraAttributes);
++    }
++
+     vc::writeZarrAttributes(outDir, attrs);
+ }
+diff --git a/volume-cartographer/core/test/test_render_fetch_failure.py b/volume-cartographer/core/test/test_render_fetch_failure.py
+index fb1b372cd..355cc2f99 100644
+--- a/volume-cartographer/core/test/test_render_fetch_failure.py
++++ b/volume-cartographer/core/test/test_render_fetch_failure.py
+@@ -352,6 +352,68 @@ class FetchFailureTests(unittest.TestCase):
+                            "every pixel of the reference render is the same value, so the surface "
+                            "is probably outside the volume and nothing was sampled")
+ 
++    def test_zarr_metadata_lists_only_requested_pyramid_levels(self):
++        url = self.serving(0, NEVER_FAIL)
++        for pyramid in (False, True):
++            for pre in (False, True):
++                with self.subTest(pyramid=pyramid, pre=pre):
++                    out = self.root / ("levels_%s_%s.zarr" % (pyramid, pre))
++                    options = ("--pyramid", str(pyramid).lower()) + (("--pre",) if pre else ())
++                    r = self.render(url, "--zarr-output", out, extra=options)
++                    self.assertEqual(r.returncode, 0, r.stderr[-400:])
++                    attrs = json.loads((out / ".zattrs").read_text())
++                    paths = [d["path"] for d in attrs["multiscales"][0]["datasets"]]
++                    self.assertEqual(paths, [str(i) for i in range(6 if pyramid else 1)])
++                    self.assertTrue(all((out / p / ".zarray").is_file() for p in paths))
++
++    def test_zarr_output_records_render_provenance(self):
++        url = self.serving(0, NEVER_FAIL)
++        out = self.root / "provenance.zarr"
++        r = self.render(url, "--zarr-output", out, extra=("--pyramid", "false"))
++        self.assertEqual(r.returncode, 0, "the provenance render failed: %s" % r.stderr[-400:])
++        attrs = json.loads((out / ".zattrs").read_text())
++        p = attrs["render_provenance"]
++        self.assertEqual(attrs["source_zarr"], url)
++        self.assertEqual(p["schema_version"], 1)
++        self.assertEqual(p["tool"], "vc_render_tifxyz")
++        # A build without git history records "Untracked" instead of a commit.
++        self.assertRegex(p["tool_git_commit"], r"^([0-9a-f]{40}|Untracked)$")
++        self.assertEqual(p["source_volume"]["input_url"], url)
++        self.assertFalse(p["source_volume"]["input_url_redacted"])
++        self.assertNotIn("local_path", p["source_volume"])
++        self.assertEqual(p["source_volume"]["remote_url"], url)
++        self.assertFalse(p["source_volume"]["remote_url_redacted"])
++        self.assertEqual(p["source_volume"]["group_index"], 0)
++        self.assertEqual(p["surface"]["path"], str(self.surface))
++        self.assertRegex(p["surface"]["effective_geometry_sha1"], r"^[0-9a-f]{40}$")
++        self.assertEqual(p["surface"]["grid_width"], SURF_N)
++        self.assertEqual(p["surface"]["grid_height"], SURF_N)
++        self.assertEqual(p["render"]["surface_interpolation"], "linear")
++        self.assertEqual(p["render"]["pixels_per_level_voxel"], 1.0)
++        self.assertEqual(p["render"]["num_slices"], 3)
++        self.assertFalse(p["render"]["composite"])
++        self.assertFalse(p["render"]["flip_normals"])
++        self.assertFalse(p["render"]["flatten"])
++        self.assertEqual(p["render"]["output_dtype"], "uint8")
++        self.assertEqual(p["affine"]["composed_matrix"], [
++            [1.0, 0.0, 0.0, 0.0],
++            [0.0, 1.0, 0.0, 0.0],
++            [0.0, 0.0, 1.0, 0.0],
++            [0.0, 0.0, 0.0, 1.0],
++        ])
++
++    def test_zarr_provenance_records_effective_surface_interpolation(self):
++        url = self.serving(0, NEVER_FAIL)
++        for spelling in ("smooth", "bicubic"):
++            with self.subTest(surface_interpolation=spelling):
++                out = self.root / ("provenance_" + spelling + ".zarr")
++                r = self.render(url, "--zarr-output", out,
++                                extra=("--pyramid", "false", "--surface-interpolation", spelling))
++                self.assertEqual(r.returncode, 0, r.stderr[-400:])
++                attrs = json.loads((out / ".zattrs").read_text())
++                self.assertEqual(attrs["render_provenance"]["render"]["surface_interpolation"],
++                                 "smooth")
++
+     def test_transient_failures_still_recover(self):
+         url = self.serving(2)
+         out = self.root / "recovered"
+diff --git a/volume-cartographer/core/test/test_zarr.cpp b/volume-cartographer/core/test/test_zarr.cpp
+index 6db99da78..c256293a5 100644
+--- a/volume-cartographer/core/test/test_zarr.cpp
++++ b/volume-cartographer/core/test/test_zarr.cpp
+@@ -163,6 +163,32 @@ TEST_CASE("writeZarrAttrs derives per-axis scale from slice step and pixel densi
+     fs::remove_all(d);
+ }
+ 
++TEST_CASE("writeZarrAttrs preserves caller-supplied provenance")
++{
++    auto d = tmpDir("attrs_provenance");
++    utils::Json provenance = utils::Json::object();
++    provenance["render_provenance"] = utils::Json{
++        {"schema_version", 1},
++        {"tool", "vc_render_tifxyz"},
++        {"surface", utils::Json{{"effective_geometry_sha1", "abc123"}}},
++    };
++    writeZarrAttrs(/*outDir=*/d, /*volPath=*/d,
++                   /*groupIdx=*/0, /*baseZ=*/1,
++                   /*sliceStep=*/1.0, /*accumStep=*/0.0,
++                   /*accumTypeStr=*/"max", /*accumSamples=*/0,
++                   /*canvasSize=*/cv::Size(16, 16),
++                   /*CZ=*/1, /*CH=*/16, /*CW=*/16,
++                   /*baseVoxelSize=*/1.0, /*voxelUnit=*/"um",
++                   /*pixelsPerVoxel=*/1.0, /*extraAttributes=*/&provenance);
++    auto j = utils::Json::parse_file(d / ".zattrs");
++    REQUIRE(j.contains("render_provenance"));
++    CHECK(j["render_provenance"]["schema_version"].get_int() == 1);
++    CHECK(j["render_provenance"]["tool"].get_string() == "vc_render_tifxyz");
++    CHECK(j["render_provenance"]["surface"]["effective_geometry_sha1"].get_string()
++          == "abc123");
++    fs::remove_all(d);
++}
++
+ TEST_CASE("buildMultiscales keeps the multiscales structure when the physical size is unknown")
+ {
+     // The review finding: omitting the whole block traded a dubious scale for a
+@@ -248,6 +274,18 @@ TEST_CASE("buildMultiscales writes relative pyramid scaling when the size is unk
+     CHECK(ms["datasets"][size_t(0)]["coordinateTransformations"][size_t(1)]["type"] == "translation");
+ }
+ 
++TEST_CASE("buildMultiscales omits disabled pyramid levels without changing level zero")
++{
++    for (const double size : {0.0, 8.0}) {
++        const auto full = buildMultiscales(size, "micrometer", 3.0, 2.0);
++        const auto base = buildMultiscales(size, "micrometer", 3.0, 2.0, false);
++        REQUIRE(full["datasets"].size() == 6);
++        REQUIRE(base["datasets"].size() == 1);
++        CHECK(base["datasets"][size_t(0)].dump() == full["datasets"][size_t(0)].dump());
++        CHECK(base["axes"].dump() == full["axes"].dump());
++    }
++}
++
+ TEST_CASE("buildMultiscales keeps the physical scale and unit when the size is known")
+ {
+     // The known-size path must be untouched by the unknown-size fix: same

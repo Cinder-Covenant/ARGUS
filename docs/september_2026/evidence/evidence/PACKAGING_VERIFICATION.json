@@ -1,0 +1,25 @@
+{
+  "created_utc": "2026-09-30T20:30:24.615593+00:00",
+  "state": "PASS_PACKAGING_CHECKS",
+  "sealer_sha256": "82a39602a5cefd56d7d7a157a95bdf9c2f654cfad46459d2aea9eb230ba92f19",
+  "score_reproduction": {
+    "auc": 0.7722380370197259,
+    "ap": 0.5788753796123365,
+    "validation_pixels": 90367,
+    "exact_original_input_hashes": true,
+    "supervision_overlap_pixels": 0
+  },
+  "packaged_runtime_fixtures_passed": 3,
+  "runtime_patch_forward_and_reverse_check": "PASS",
+  "renderer_patch_reverse_check": "PASS",
+  "scientific_compute": "No detector inference or renderer computation repeated.",
+  "removed_owned_bytecode": [
+    "reproduction/__pycache__/test_runtime_isolation.cpython-311-pytest-9.1.1.pyc"
+  ],
+  "limits": [
+    "Scoped packaging checks, not the full ARGUS test suite.",
+    "Renderer compile/replay results are the preserved earlier results.",
+    "Media walkthrough remains outside distribution candidate.",
+    "Publication, hosted CI on local renderer head and form submission are still pending."
+  ]
+}

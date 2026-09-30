@@ -15,8 +15,14 @@ Built by **DarthCeltic** and **clexious**, under the
 > - Every export packet is `never_published`: ARGUS prepares evidence for a human to review and never
 >   publishes anything itself.
 >
-> This release is a working instrument and a demonstration on synthetic data.
+> This release provides synthetic verification tools and one executable public-data control workflow on PHerc0139 w016. The latter uses Villa and a separately obtained released checkpoint; it does not establish unread-scroll reading.
 > `PUBLIC_CLAIMS_AND_LIMITS.md` says exactly what is and is not claimed.
+
+## September 2026 evidence and fixes
+
+[Contribution evidence and reproduction](docs/september_2026/README.md) includes the completed PHerc0139 control, actual inference-failure evidence, renderer parity/metadata results, and the runtime-isolation correction. It also links the separately measured Hecate paired-output optimization. Source hashes, scope limits and before/after evidence are included.
+
+The [public run instructions](docs/PUBLIC_RUN.md) describe the executable control route. It starts from a published surface volume; the private research driver and a whole-scroll reading system are not part of this public release.
 
 ## Start ARGUS
 

@@ -1,0 +1,18 @@
+test_failure_after_the_render_has_started (__main__.FetchFailureTests.test_failure_after_the_render_has_started)
+#1809 is a fetch that fails partway, not one that fails before any data arrives. ... ok
+test_the_error_names_the_chunk_that_failed (__main__.FetchFailureTests.test_the_error_names_the_chunk_that_failed)
+The PR's user-facing promise: one line naming the chunk and the transport error. ... ok
+test_the_harness_actually_renders_data (__main__.FetchFailureTests.test_the_harness_actually_renders_data)
+Guard against every other case passing vacuously. ... ok
+test_tif_output_fails_cleanly (__main__.FetchFailureTests.test_tif_output_fails_cleanly) ... ok
+test_transient_failures_still_recover (__main__.FetchFailureTests.test_transient_failures_still_recover) ... ok
+test_zarr_metadata_lists_only_requested_pyramid_levels (__main__.FetchFailureTests.test_zarr_metadata_lists_only_requested_pyramid_levels) ... ok
+test_zarr_output_leftover_is_silent (__main__.FetchFailureTests.test_zarr_output_leftover_is_silent)
+The leftover store is metadata with no chunks, so a reader sees fill_value, not an error. ... ok
+test_zarr_output_records_render_provenance (__main__.FetchFailureTests.test_zarr_output_records_render_provenance) ... ok
+test_zarr_provenance_records_effective_surface_interpolation (__main__.FetchFailureTests.test_zarr_provenance_records_effective_surface_interpolation) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 20.200s
+
+OK

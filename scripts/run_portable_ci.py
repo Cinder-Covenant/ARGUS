@@ -94,7 +94,7 @@ GROUPS = {
          "argus/tests/test_licence_resolver.py", "tests/test_docker_runtime_contract.py",
          "tests/test_windows_consumer_launcher.py", "argus/tests/test_ui_governed_hash.py",
          "argus/tests/test_ui_scroll_status.py", "argus/tests/test_wb_responsive_contract.py",
-         "argus/tests/test_install_tiers_ui.py"),
+         "argus/tests/test_install_tiers_ui.py", "tests/test_runtime_isolation.py"),
     ),
 }
 

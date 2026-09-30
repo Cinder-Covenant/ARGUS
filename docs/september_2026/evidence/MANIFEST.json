@@ -1,0 +1,153 @@
+{
+  "schema": "argus-september-delivery-manifest-v1",
+  "created_utc": "2026-09-30T20:30:24.615593+00:00",
+  "files": [
+    {
+      "path": "CONTRIBUTION_SELECTION.md",
+      "bytes": 1592,
+      "sha256": "ebdb98ff62654633c9757d8f5d7904211a68057f7389edec64156503ca43f432"
+    },
+    {
+      "path": "CONTRIBUTION_URLS.txt",
+      "bytes": 335,
+      "sha256": "df604c94a2a53ff9986237e745ec358593033d7892f68771b978d848fbbd8d3b"
+    },
+    {
+      "path": "evidence/INFERENCE_FAILURE.json",
+      "bytes": 1695,
+      "sha256": "28c24db3ac9b386a2bcd8c1cb8e3ba616e8acb2501fe427eec6e018ead1e08c9"
+    },
+    {
+      "path": "evidence/packaged_runtime_tests.txt",
+      "bytes": 100,
+      "sha256": "603b1a324e6a4775c6100fc0f449b04382e3c38abd43b6e0e0619ed154b34463"
+    },
+    {
+      "path": "evidence/PACKAGED_SCORE_CHECK.json",
+      "bytes": 11513,
+      "sha256": "ce232b88da282bbb1b8b9c46ee93f84767fb7d60c82a9c21ba4afc4fb5e7f3b1"
+    },
+    {
+      "path": "evidence/PACKAGING_VERIFICATION.json",
+      "bytes": 1054,
+      "sha256": "a38c57a70bdbcb0b142eca7b50b155d78f78f6513f3cf94bbfd911e968555665"
+    },
+    {
+      "path": "evidence/PHERC0139_CONTROL_SCORE.json",
+      "bytes": 11766,
+      "sha256": "53af26f2ab44ccb284970436a445e1420553a56830b6721f8bc7d3df72669d7d"
+    },
+    {
+      "path": "evidence/PUBLIC_STATUS.json",
+      "bytes": 12048,
+      "sha256": "261f5ab47ec2f98872a5b401cee52a5124a5606834b222ecddb4c579b66ad5a4"
+    },
+    {
+      "path": "evidence/renderer_cli_tests.txt",
+      "bytes": 1499,
+      "sha256": "98501ddf4ff43ac3f96a6e35dbf1573948f006cddd78715535d08327b3f36dd6"
+    },
+    {
+      "path": "evidence/RENDERER_CORRECTION.json",
+      "bytes": 2409,
+      "sha256": "a0484cf52234a46e3ef1a0980abeb5b3fbf6dc5fc5daa7337056254c5196fdcd"
+    },
+    {
+      "path": "evidence/renderer_cpp_tests.txt",
+      "bytes": 521,
+      "sha256": "0b7453de65cea4199da27c8e3848e5118d9d3895062dc50e6ecd55feaffc87e6"
+    },
+    {
+      "path": "evidence/RUNTIME_ISOLATION.json",
+      "bytes": 1639,
+      "sha256": "4f3f29ed56236d17105911f35d5b8dbde531866744dc65b81dbeae13e5725997"
+    },
+    {
+      "path": "evidence/RUNTIME_PATCH_TRANSPORT_ERRATUM.json",
+      "bytes": 1056,
+      "sha256": "492eb4025d54e2357ecdc4e97e1ef39999844d1c60806a31eddc4df87604f8d3"
+    },
+    {
+      "path": "FORM_RESPONSE_PUBLIC_NOW.txt",
+      "bytes": 3785,
+      "sha256": "47861b339ba718829e3ca14ea4b3634d3cddb3a7de4d9d2c7fecf93971be2aaf"
+    },
+    {
+      "path": "FORM_RESPONSE_WITH_PACKAGE.txt",
+      "bytes": 4407,
+      "sha256": "bd52eb2455b1fed3cf172e396a83f6015c05512b1f41b0314586b79ee835bc8b"
+    },
+    {
+      "path": "images/runtime_after.png",
+      "bytes": 99626,
+      "sha256": "8a387b9522717efe1d98a93b722252b51c9b73c56085c0cb957b453eb0da139e"
+    },
+    {
+      "path": "images/runtime_before.png",
+      "bytes": 114293,
+      "sha256": "485fcac0dd1d673d3e9552a349dfc6eb89483c333f328e18b482ad44532d1a45"
+    },
+    {
+      "path": "PACKAGE_SCOPE.json",
+      "bytes": 595,
+      "sha256": "ea8c6107644d095d95ebbf113a010171f0a7d4c2b3c86176221541140fd6098c"
+    },
+    {
+      "path": "patches/ARGUS_RUNTIME_ISOLATION.patch",
+      "bytes": 980,
+      "sha256": "edf4c4c36e12050f1dc312692e0905d276ac83624de3c4d565d27232775b000f"
+    },
+    {
+      "path": "patches/PYRAMID_METADATA_FIX.patch",
+      "bytes": 8703,
+      "sha256": "d219abf85b4da09c7649acf248947a38da26d96972adfe878ae8fea39852843f"
+    },
+    {
+      "path": "patches/VILLA_1901_ON_CURRENT_MAIN.patch",
+      "bytes": 22714,
+      "sha256": "54f278de9af07225d6b1bad94b895a39fe955bd3bba5c4a43000d44e91ea5baf"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4600,
+      "sha256": "6f9a247cc47831446eb9905e58e72da541a6f8377d889959b5b1a5dc1d409d9a"
+    },
+    {
+      "path": "REPRODUCE.md",
+      "bytes": 4600,
+      "sha256": "b6c893acae4957115cd579bb514b089dcb984b89790ba07119398c00c5f1a8e0"
+    },
+    {
+      "path": "reproduction/pherc0139-w016-ink9um-control.json",
+      "bytes": 4060,
+      "sha256": "b257337418d5e10a162d571dc08da0db8f8b18b3bd24df2abfe6f0b9d7d09aff"
+    },
+    {
+      "path": "reproduction/test_runtime_isolation.py",
+      "bytes": 1461,
+      "sha256": "e302b59f1ef6f28edb0826cdde5d81614fc6326031dc47cde9de209f0e10041f"
+    },
+    {
+      "path": "reproduction/verify_control_score.py",
+      "bytes": 4214,
+      "sha256": "abe78d135fa1d13760a3a891b11ac674c27462b6b0bf7fd95be8449be1565145"
+    },
+    {
+      "path": "review/VILLA_1901_BODY.md",
+      "bytes": 3615,
+      "sha256": "958d7e6427363832bcb7534d67473b3ce3e4bc62d5560f4dad07f5222b347894"
+    },
+    {
+      "path": "TEAM_FIELD.txt",
+      "bytes": 151,
+      "sha256": "4700c26c1212f409c14344ad7ad3760fa44ca59518ce5b2311f6223ff98cf53e"
+    },
+    {
+      "path": "verify_package.py",
+      "bytes": 704,
+      "sha256": "61081f486e65ebee13fd0a653057f054432ed520bd92744fac5f2ef749381ebe"
+    }
+  ],
+  "publication": "Not published at assembly time",
+  "notes": "Manifest does not hash itself. Original receipts preserved outside package."
+}

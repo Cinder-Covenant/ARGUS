@@ -1,0 +1,15 @@
+{
+  "created_utc": "2026-09-30T20:30:24.615593+00:00",
+  "state": "PASS",
+  "supersedes": "RUNTIME_ISOLATION.json patch_sha256 for transport-file identity only",
+  "old_patch_sha256": "754edece38183d85a73c71b54847157967515a6f12b56ea8690839bb1d6ae853",
+  "new_patch_sha256": "edf4c4c36e12050f1dc312692e0905d276ac83624de3c4d565d27232775b000f",
+  "module_sha256": "c33a3633f03b4fab30eebff3895bf20efae3f1ab07365c975933578926313b24",
+  "correction": "The saved historical patch had CRLF line endings and failed git apply. The distribution patch uses LF; all patch content is otherwise identical. Windows core.autocrlf=true converts the applied module to equivalent CRLF; the byte-hash check explicitly uses core.autocrlf=false.",
+  "verification": [
+    "Forward git apply against exact baseline blob passed",
+    "Result bytes match the tested current module",
+    "Reverse application check against current export passed"
+  ],
+  "source_evidence": "Original CRLF artifact preserved locally; original science/verification receipts unchanged."
+}
