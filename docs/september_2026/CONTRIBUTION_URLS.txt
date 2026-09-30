@@ -1,0 +1,8 @@
+https://github.com/Cinder-Covenant/ARGUS/tree/main/docs/september_2026
+https://github.com/Cinder-Covenant/ARGUS
+https://github.com/Cinder-Covenant/ARGUS/blob/18cbbd3e079cf6cfb6278c8c9afdc7a5b773d37a/docs/PUBLIC_RUN.md
+https://github.com/ScrollPrize/villa/pull/1896
+https://github.com/ScrollPrize/villa/pull/1897
+https://github.com/ScrollPrize/villa/pull/1901
+https://github.com/ScrollPrize/villa/pull/1902
+https://huggingface.co/scrollprize/hecate/discussions/1

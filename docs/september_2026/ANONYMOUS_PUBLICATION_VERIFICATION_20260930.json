@@ -1,0 +1,48 @@
+{
+  "checked_utc": "2026-09-30T20:49:15.832490+00:00",
+  "access": "Anonymous HTTPS; no credentials",
+  "files": [
+    {
+      "url": "https://huggingface.co/scrollprize/hecate/resolve/24a28567c71ef9dd954a3367779c5f8a3481ad78/hecate.py",
+      "bytes": 24819,
+      "sha256": "d02029db394ab4a912ecd9433dbd76e86a812cfc65eb28890f979bc381310ca2",
+      "matches_local": true
+    },
+    {
+      "url": "https://huggingface.co/scrollprize/hecate/resolve/24a28567c71ef9dd954a3367779c5f8a3481ad78/hecate_shared_output.py",
+      "bytes": 9369,
+      "sha256": "b01468876bf3c528a6c633dc358379130bb8a9686a1044084339a2a6c4d2f4ad",
+      "matches_local": true
+    },
+    {
+      "url": "https://huggingface.co/scrollprize/hecate/resolve/24a28567c71ef9dd954a3367779c5f8a3481ad78/test_hecate_shared_output.py",
+      "bytes": 8897,
+      "sha256": "4e51f3c26a7d1d76a84b28157aeff9781dc41adb7ae7b512022d223b8d4ef041",
+      "matches_local": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Cinder-Covenant/ARGUS/18cbbd3e079cf6cfb6278c8c9afdc7a5b773d37a/docs/september_2026/ARGUS_SEPTEMBER_2026_EVIDENCE.zip",
+      "bytes": 236119,
+      "sha256": "2eca22761b77701e6be27e6267065519ab4fb98c9cc1eb65e20f2e3685b61949",
+      "matches_local": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Cinder-Covenant/ARGUS/18cbbd3e079cf6cfb6278c8c9afdc7a5b773d37a/docs/september_2026/hecate/HECATE_SEPTEMBER_2026_CONTRIBUTION.zip",
+      "bytes": 125193,
+      "sha256": "95f6cb418d6cfc79a1b4e15c0fa256ab84596f27775e0a8b57bb75e33570e8db",
+      "matches_local": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Cinder-Covenant/ARGUS/18cbbd3e079cf6cfb6278c8c9afdc7a5b773d37a/docs/september_2026/README.md",
+      "bytes": 3578,
+      "sha256": "c90ef80f0408c91bde905c2b69514b7a4b6390d323d4dfbfcb50c3c449c9cca3",
+      "matches_local": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Cinder-Covenant/ARGUS/18cbbd3e079cf6cfb6278c8c9afdc7a5b773d37a/argus/core/scroll_shelf.py",
+      "bytes": 16603,
+      "sha256": "c33a3633f03b4fab30eebff3895bf20efae3f1ab07365c975933578926313b24",
+      "matches_local": true
+    }
+  ]
+}

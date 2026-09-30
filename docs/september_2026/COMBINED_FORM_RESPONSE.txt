@@ -1,0 +1,33 @@
+ARGUS: a reproducible scroll-processing workbench, with demonstrated improvements to inference reliability, rendering and paired-output efficiency.
+
+We are Ryan Gurganious and Daine Ball, Team Cinder Covenant. Our September contribution is ARGUS and practical upstream improvements found while operating it on real scroll workflows. ARGUS connects community tools into an inspectable workflow; we credit the original detector, renderer and dataset authors. The linked evidence index contains the source, reproducible checks, measured results, exact revisions and limitations.
+
+1. Which scroll data we used
+
+The completed public control workflow uses PHerc0139 w016, a 640-by-896 crop, published ink/supervision/validation masks and a pinned ink_9um checkpoint. We investigated numerical inference failures on PHerc1667 w029, used PHerc0009B geometry for renderer metadata checks and retained PHercParis4 CT for renderer output comparisons. The Hecate efficiency experiment uses a retained PHerc0139 exposed control with 16-by-256-by-256 input. Exploratory PHerc1203 work has not established a reading and is not submitted as a discovery.
+
+2. How this helps researchers read scrolls
+
+ARGUS provides an executable known-data control route: identify the scroll and volume, acquire the specified crop and labels, verify the checkpoint, prepare input, execute inference, evaluate the declared region and retain the evidence. The public release includes the interface, installation diagnostics, input/identity checks, exposure accounting and regression tests. This gives researchers a working reference and helps distinguish specific processing failures from scientifically meaningful results. The public route starts from an existing surface volume; it is not a demonstrated autonomous whole-scroll reader.
+
+A concrete failure motivated Villa PR #1897: on our GTX 1660 Ti, FP16 inference produced non-finite predictions that became a 99.8%-zero TIFF while the process reported success. The PR makes non-finite output fail explicitly and adds checkpoint-aware input-form warnings with optional strict refusal. Guarded full-precision output matched the corresponding unmodified full-precision output exactly. We credit the separate upstream precision-selection work in #1890; we do not claim that work as ours or that finite predictions prove a region has no ink.
+
+3. What our changes enable
+
+Villa PR #1901 records effective surface geometry and rendering settings with the output. It also fixes a demonstrated writer defect: disabling pyramids still advertised five nonexistent pyramid levels. The corrected metadata contains only the level actually written, with unchanged tested image pixels and physical scale. The regression covers pyramid on/off, with and without --pre. This complements existing reader-side handling of malformed stores.
+
+Hecate upstream PR #1 reuses shared model features when both 2D and 3D outputs are requested. The previous CLI evaluated the same features twice. Our implementation produces both outputs in one tiled feature pass, retaining disk-backed accumulation and unchanged model weights. It reduces the time required to obtain both outputs on the measured control without changing any output value. This is a separate, reusable provider contribution, developed through the ARGUS workflow.
+
+ARGUS's released runtime-isolation correction prevents one runtime from borrowing another runtime's local holdings and presenting them as its own available data or progress. Before/after interface evidence and three regression fixtures accompany the correction.
+
+4. Evidence and status
+
+Independent rescoring of the PHerc0139 control reproduces ROC AUC 0.772238 and average precision 0.578875 on 90,367 validation pixels, including 22,765 ink-positive pixels. Validation and supervision masks are disjoint. This is a known-domain control, not a new detector accuracy result or proof of cross-scroll generalization.
+
+The renderer correction passed nine renderer integration tests and three focused C++ targets locally. All 12,288 retained Paris4 control pixels are exactly unchanged. The real failure, fix, output hashes and commands are included in the public evidence package.
+
+For Hecate, three alternating baseline/candidate pairs execute the actual provider CLIs in fresh processes. Median launch-to-exit time falls from 17.8357 to 11.5913 seconds, a 35.01% reduction. Every pair is bitwise equal across all 65,536 2D pixels and 1,048,576 3D voxels. Feature evaluations fall from 98 to 49. Hardware/configuration: GTX 1660 Ti 6 GiB, FP32, batch one, two CPU threads. No thermal pause occurred; maximum temperature was 68 C, minimum available RAM 13.93 GiB, and minimum free VRAM 4003 MiB. The measurement covers one small exposed control field, includes process startup and output writing, and excludes raw-data preparation and UI transport. Fresh processes do not imply cold OS caches. We do not extrapolate this result to whole-scroll throughput, 2D-only inference, the 2.4-micrometer model, or improved accuracy.
+
+ARGUS's September source/evidence release is public, and all four portable CI jobs passed on that source release. Villa #1896 (ARGUS listing) and #1902 (fiber-parser assertion/documentation) are merged. Villa #1897 and #1901 and Hecate PR #1 are open contributions awaiting upstream acceptance. The smaller supporting changes are not presented as equal in impact to the demonstrated reliability and efficiency work. LLM tools assisted implementation, analysis and packaging under operator direction.
+
+Our claim is a usable, reproducible control workflow with specific measured engineering improvements. We do not claim confirmed unread-scroll letters, an increase in reading accuracy, or a measured percentage increase in discovery probability.

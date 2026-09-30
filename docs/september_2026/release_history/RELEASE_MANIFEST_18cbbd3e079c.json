@@ -3,8 +3,8 @@
   "note": "sha256 of every file in this release except this manifest itself. Verify with: python tools/verify_manifest.py (run from this directory, wherever it sits)",
   "layout": "standalone",
   "tree_sha256_recipe": "sha256 of the UTF-8 text made of one line per row of `files`, rows ordered by path string: <path> NUL <sha256> newline. tools/verify_manifest.py recomputes it.",
-  "file_count": 693,
-  "tree_sha256": "a9680b6b73131205ec8678c62f8e786830528c008dab978fca31ea5aa7d3137e",
+  "file_count": 688,
+  "tree_sha256": "089e3aef1c5acae3e49ed303507d308019f437f09a07e3050bbde7c6539169a0",
   "files": [
     {
       "path": ".dockerignore",
@@ -3002,34 +3002,14 @@
       "sha256": "264d94c17605d18886c2de5209c404622eef04da5b3eabfd3188163f1da65a3a"
     },
     {
-      "path": "docs/september_2026/ANONYMOUS_PUBLICATION_VERIFICATION_20260930.json",
-      "bytes": 2207,
-      "sha256": "18e2ba5884861c25330d82ee346f96ed1bdd848679fcba15874ac51a54a948e6"
-    },
-    {
       "path": "docs/september_2026/ARGUS_SEPTEMBER_2026_EVIDENCE.zip",
       "bytes": 236119,
       "sha256": "2eca22761b77701e6be27e6267065519ab4fb98c9cc1eb65e20f2e3685b61949"
     },
     {
-      "path": "docs/september_2026/COMBINED_FORM_RESPONSE.txt",
-      "bytes": 5786,
-      "sha256": "5d710ad05af7a0c124a062b164cf632e48027c3681f52ef54f457c5cae8df21e"
-    },
-    {
-      "path": "docs/september_2026/CONTRIBUTION_URLS.txt",
-      "bytes": 462,
-      "sha256": "c598128b5f7919570e57645195537784022c3f88dfce824eff40b585eccfd722"
-    },
-    {
-      "path": "docs/september_2026/PUBLICATION_STATUS_20260930.md",
-      "bytes": 2747,
-      "sha256": "39b6fd438fb1bca17a3c9fb421af4e6c0375b443b8334ab9454106680dd5b84f"
-    },
-    {
       "path": "docs/september_2026/README.md",
-      "bytes": 4201,
-      "sha256": "225d8b3d37d2ac69fb53f56070e0960b13c2b28c24a88a7d8a65dbe1ecade17b"
+      "bytes": 3578,
+      "sha256": "c90ef80f0408c91bde905c2b69514b7a4b6390d323d4dfbfcb50c3c449c9cca3"
     },
     {
       "path": "docs/september_2026/evidence/CONTRIBUTION_SELECTION.md",
@@ -3205,11 +3185,6 @@
       "path": "docs/september_2026/hecate/PUBLIC_REVIEW_DRAFT.md",
       "bytes": 6419,
       "sha256": "90af9731bceff54cf41427f58ccc227d01ad030a8608cde806c55f59d665eee1"
-    },
-    {
-      "path": "docs/september_2026/release_history/RELEASE_MANIFEST_18cbbd3e079c.json",
-      "bytes": 117054,
-      "sha256": "f89bcd84b63b28a2c45f5f1e44d4e75cfcff197f261353de53362cffd7286c4d"
     },
     {
       "path": "docs/september_2026/release_history/RELEASE_MANIFEST_44886642107b.json",
@@ -3472,10 +3447,10 @@
       "sha256": "a5845ad0cc495925e79784b21a08764025d76b96f48a21d93ce1f686eb16e927"
     }
   ],
-  "created_utc": "2026-09-30T20:52:04.164135+00:00",
+  "created_utc": "2026-09-30T20:40:29.025117+00:00",
   "supersedes": {
-    "public_commit": "18cbbd3e079cf6cfb6278c8c9afdc7a5b773d37a",
-    "sha256": "f89bcd84b63b28a2c45f5f1e44d4e75cfcff197f261353de53362cffd7286c4d",
-    "preserved_copy": "docs/september_2026/release_history/RELEASE_MANIFEST_18cbbd3e079c.json"
+    "public_commit": "44886642107bf82506126595551e96d4fb44efa9",
+    "sha256": "f7c90f2931137760111ca568cfa908edfc258d0f36df3a43943f8c55f61d288f",
+    "preserved_copy": "docs/september_2026/release_history/RELEASE_MANIFEST_44886642107b.json"
   }
 }
