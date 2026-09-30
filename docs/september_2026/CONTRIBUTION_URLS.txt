@@ -1,5 +1,8 @@
 https://github.com/Cinder-Covenant/ARGUS/tree/main/docs/september_2026
 https://github.com/Cinder-Covenant/ARGUS
+https://github.com/Cinder-Covenant/ARGUS/blob/main/docs/september_2026/HECATE_CONTROL_ROUTE_20260930.md
+https://github.com/Cinder-Covenant/ARGUS/blob/main/docs/september_2026/SUPPORTING_CONTROLS_20260930.md
+https://github.com/Cinder-Covenant/ARGUS/blob/main/docs/september_2026/hecate/ACTUAL_CLI_512_RESULT_20260930.json
 https://github.com/Cinder-Covenant/ARGUS/blob/18cbbd3e079cf6cfb6278c8c9afdc7a5b773d37a/docs/PUBLIC_RUN.md
 https://github.com/ScrollPrize/villa/pull/1896
 https://github.com/ScrollPrize/villa/pull/1897

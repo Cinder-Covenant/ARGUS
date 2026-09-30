@@ -3,8 +3,8 @@
   "note": "sha256 of every file in this release except this manifest itself. Verify with: python tools/verify_manifest.py (run from this directory, wherever it sits)",
   "layout": "standalone",
   "tree_sha256_recipe": "sha256 of the UTF-8 text made of one line per row of `files`, rows ordered by path string: <path> NUL <sha256> newline. tools/verify_manifest.py recomputes it.",
-  "file_count": 705,
-  "tree_sha256": "7f11a0bea81f42f59dbc9dd8eb51aa6ba3d77cb194b385d78044b9501fc30a41",
+  "file_count": 693,
+  "tree_sha256": "a9680b6b73131205ec8678c62f8e786830528c008dab978fca31ea5aa7d3137e",
   "files": [
     {
       "path": ".dockerignore",
@@ -243,8 +243,8 @@
     },
     {
       "path": "argus/core/action_registry.py",
-      "bytes": 80558,
-      "sha256": "8645a26f423d4802bbc4951566b67511e1372b0be84b14527821e0565b5c48a0"
+      "bytes": 77021,
+      "sha256": "1a66d3899c838e68df9e9c6e3d1b1749e8e13f62a4909832701092fe0c253c8b"
     },
     {
       "path": "argus/core/actions.py",
@@ -518,23 +518,13 @@
     },
     {
       "path": "argus/core/hecate_candidate.py",
-      "bytes": 21551,
-      "sha256": "b034a2f231adc894967dbabf98f1fb1bb36612407e34d344a692d438c1d92b10"
+      "bytes": 6328,
+      "sha256": "88b612bdbee6c695f20f2e52050d283d3d49542b414c9235c3ba43bcc4398ee7"
     },
     {
       "path": "argus/core/hecate_layer.py",
-      "bytes": 13360,
-      "sha256": "56570fafb2300eec89da743944b958d6b35d18364dfeeb96c6724989ef6d4d18"
-    },
-    {
-      "path": "argus/core/hecate_shared_output.py",
-      "bytes": 9369,
-      "sha256": "b01468876bf3c528a6c633dc358379130bb8a9686a1044084339a2a6c4d2f4ad"
-    },
-    {
-      "path": "argus/core/hecate_thermal.py",
-      "bytes": 24641,
-      "sha256": "3e20b08771a92eeb4b4a3e2133a50242554f3fd272fc666903e8db6e85122c3b"
+      "bytes": 12889,
+      "sha256": "bc8b05c04b6e07574d221fa39eafedc6e1b31ff737ca86a63c3b68cdd0d34b1f"
     },
     {
       "path": "argus/core/human_input_budget.py",
@@ -818,8 +808,8 @@
     },
     {
       "path": "argus/core/provider_actions.py",
-      "bytes": 13759,
-      "sha256": "08089726134c9ff2bbfba152972cd592bcb633d7be1264a7c399d16c77d1ab71"
+      "bytes": 11254,
+      "sha256": "18cc604e87334e1707d86b73ebdcd114dd74edcbd6c4c883d1ada9d207261679"
     },
     {
       "path": "argus/core/provider_registry.py",
@@ -1288,13 +1278,13 @@
     },
     {
       "path": "argus/service/app.py",
-      "bytes": 132470,
-      "sha256": "cc84ae24b5614312e71873c4ef9648e47e7095d8340b443718faa4fd512f3b84"
+      "bytes": 132187,
+      "sha256": "d7cc24cb10014e0ea297488689b7af3d783cff1a2d74d0e87ced83dcf7957bf5"
     },
     {
       "path": "argus/service/bff.py",
-      "bytes": 59291,
-      "sha256": "5f50e537e0e3e901e1d36e920425e2705401b684fd243e79914a85ddbe2b37f8"
+      "bytes": 58298,
+      "sha256": "82ede9f589439850bbce08e02719277b309f9f758546d5ea7074da69e420efea"
     },
     {
       "path": "argus/service/command.py",
@@ -1373,8 +1363,8 @@
     },
     {
       "path": "argus/tests/test_bff_transport.py",
-      "bytes": 22436,
-      "sha256": "ea3f6f2d0acdbcde9a03cef43fb063ad1c7cb78bd2c79411d9a4c7098c2f7ceb"
+      "bytes": 21369,
+      "sha256": "bcff2def92a78ae44057d4b0da911262e1ec9b3eed5588fd0a22f62a201aa6d9"
     },
     {
       "path": "argus/tests/test_blender_roundtrip.py",
@@ -1415,11 +1405,6 @@
       "path": "argus/tests/test_exposure_accounting.py",
       "bytes": 13089,
       "sha256": "e4e6c243257ec85490d23d88aec0a007ba3b235428630ab92915ded643007392"
-    },
-    {
-      "path": "argus/tests/test_hecate_control_scope.py",
-      "bytes": 2459,
-      "sha256": "c95484b3a6d3c4b275f001ebb53b8515b6bd47117ec8f12fb8237f57b6e50d56"
     },
     {
       "path": "argus/tests/test_input_boundaries.py",
@@ -1645,11 +1630,6 @@
       "path": "argus/tests/test_ui_scroll_status.py",
       "bytes": 4101,
       "sha256": "a95d004eb20d3bc16b1189337576dd896ae8f415c0540a4e5a7fd9adf3cab005"
-    },
-    {
-      "path": "argus/tests/test_villa_refine_labels_cli.py",
-      "bytes": 609,
-      "sha256": "9c9d8c0da1be6f35ff6a83f2545278df709867a4ef291893de9ae1491961ad85"
     },
     {
       "path": "argus/tests/test_wb_responsive_contract.py",
@@ -1878,8 +1858,8 @@
     },
     {
       "path": "argus/ui/src/components/HecateLayerViewer.tsx",
-      "bytes": 14852,
-      "sha256": "b50bcc2208d161030a6e890ff1421383b8f024006b9f4a8682a202aa8d259e9b"
+      "bytes": 339,
+      "sha256": "77438633597ce4262d4247078393193105b20802ef39ab4e53c6baf6910d5448"
     },
     {
       "path": "argus/ui/src/components/InstallTiersPanel.tsx",
@@ -1973,8 +1953,8 @@
     },
     {
       "path": "argus/ui/src/components/PlanApprove.tsx",
-      "bytes": 6985,
-      "sha256": "ca325b1cad3c17289516145fd4b29550bae543215664aae0b526319624d27ea3"
+      "bytes": 6003,
+      "sha256": "bc18429881008e8438f7524c1193313c7c5a4730c3a10416afb67fe22b66a960"
     },
     {
       "path": "argus/ui/src/components/PlaneViewer.tsx",
@@ -2403,8 +2383,8 @@
     },
     {
       "path": "argus/ui/src/lib/governed.ts",
-      "bytes": 18342,
-      "sha256": "6689076893081335595156752edb5f5c2881fd2f455489c5b4627258b5f5f4a3"
+      "bytes": 17086,
+      "sha256": "ac6aa5a7ae77f27fd1944fb2b76ea3e61b6b6d0495eae4d6040fef773fe36cc4"
     },
     {
       "path": "argus/ui/src/lib/governedOutcome.test.ts",
@@ -2708,8 +2688,8 @@
     },
     {
       "path": "argus/ui/src/screens/Workbench.tsx",
-      "bytes": 72412,
-      "sha256": "16a7dfdb8159787a9e3be9788399ddda4f38d02eb96dee4cba6fc05d599c1526"
+      "bytes": 72030,
+      "sha256": "41af50726a793aee866560168974255995af5f4df994a3c792fcd4067bd5ff18"
     },
     {
       "path": "argus/ui/src/theme/about.css",
@@ -3033,18 +3013,13 @@
     },
     {
       "path": "docs/september_2026/COMBINED_FORM_RESPONSE.txt",
-      "bytes": 7299,
-      "sha256": "6c2981507939f40463fc33ad1825f0dff08b9bf9107f2aaa9fbb7e2f53551361"
+      "bytes": 5786,
+      "sha256": "5d710ad05af7a0c124a062b164cf632e48027c3681f52ef54f457c5cae8df21e"
     },
     {
       "path": "docs/september_2026/CONTRIBUTION_URLS.txt",
-      "bytes": 783,
-      "sha256": "594ed8e98838785e676ffb98a3cb864094aff8613d75882232cd8e52c15328a9"
-    },
-    {
-      "path": "docs/september_2026/HECATE_CONTROL_ROUTE_20260930.md",
-      "bytes": 4322,
-      "sha256": "7db734995ba157ed4b4f997ad2f00ffcebe4985ddb169d035bccfaf97934491d"
+      "bytes": 462,
+      "sha256": "c598128b5f7919570e57645195537784022c3f88dfce824eff40b585eccfd722"
     },
     {
       "path": "docs/september_2026/PUBLICATION_STATUS_20260930.md",
@@ -3053,13 +3028,8 @@
     },
     {
       "path": "docs/september_2026/README.md",
-      "bytes": 4789,
-      "sha256": "ae5b3d68f6c8971cfd29eda3d3f7a1cceb494346c05d3a7b855adcad1f6891b1"
-    },
-    {
-      "path": "docs/september_2026/SUPPORTING_CONTROLS_20260930.md",
-      "bytes": 5296,
-      "sha256": "e703c6691a35698aab2b4025af65dc39e2dfc3c13186be75f27ea54e41ce0934"
+      "bytes": 4201,
+      "sha256": "225d8b3d37d2ac69fb53f56070e0960b13c2b28c24a88a7d8a65dbe1ecade17b"
     },
     {
       "path": "docs/september_2026/evidence/CONTRIBUTION_SELECTION.md",
@@ -3212,19 +3182,9 @@
       "sha256": "61081f486e65ebee13fd0a653057f054432ed520bd92744fac5f2ef749381ebe"
     },
     {
-      "path": "docs/september_2026/hecate/ACTUAL_CLI_512_RESULT_20260930.json",
-      "bytes": 2318,
-      "sha256": "5d09e0ec36ecb530c3b2dd94acc6913c15b8568360f6cb3bb38909d7f6041275"
-    },
-    {
       "path": "docs/september_2026/hecate/ACTUAL_CLI_COMPARISON_20260930.png",
       "bytes": 107919,
       "sha256": "c2f0d552b5af4eafe418e4b767a4c04d28930aa28237afa57226b5e9c2899750"
-    },
-    {
-      "path": "docs/september_2026/hecate/ARGUS_CONTROL_EXECUTION_20260930.json",
-      "bytes": 1463,
-      "sha256": "2edd9dd3433ff2e774d641ea8bb29abd49716f7e71de45b50c370db3c777022c"
     },
     {
       "path": "docs/september_2026/hecate/HECATE_LICENSE.txt",
@@ -3243,13 +3203,8 @@
     },
     {
       "path": "docs/september_2026/hecate/PUBLIC_REVIEW_DRAFT.md",
-      "bytes": 7757,
-      "sha256": "6d6690971cde56592b0394faeda1c1a067fd9ca813b743dd3e5c138e6526ff7c"
-    },
-    {
-      "path": "docs/september_2026/release_history/RELEASE_MANIFEST_04dbe8297218.json",
-      "bytes": 118005,
-      "sha256": "c28e82191b36d488c47c1c28d0e3c53e9ea5a5c90d478bf5226d24f8f130ecf7"
+      "bytes": 6419,
+      "sha256": "90af9731bceff54cf41427f58ccc227d01ad030a8608cde806c55f59d665eee1"
     },
     {
       "path": "docs/september_2026/release_history/RELEASE_MANIFEST_18cbbd3e079c.json",
@@ -3392,19 +3347,9 @@
       "sha256": "41b59f11b83bd368012e7cfc8e9bc01f9b927c6e6821246a6e6a7fc1cd78751d"
     },
     {
-      "path": "scripts/hecate_control_runner.py",
-      "bytes": 13411,
-      "sha256": "65b4da36a8d9dc7bb276002277bbb8324e5b566c5ce46a4da9c7c5aa7fc5990d"
-    },
-    {
       "path": "scripts/refresh_official_survey.py",
       "bytes": 17093,
       "sha256": "77891e7fbf9f4adda2d4440261b7298f5a02cb94514f0aee2c5d6206c254e853"
-    },
-    {
-      "path": "scripts/resource_guard.py",
-      "bytes": 61791,
-      "sha256": "632d0900e9341e3ed7dc1639066263f276ef1beadc3a4f993796770c7c640692"
     },
     {
       "path": "scripts/resource_sampler.py",
@@ -3415,11 +3360,6 @@
       "path": "scripts/run_portable_ci.py",
       "bytes": 8122,
       "sha256": "6a657e6f364151009201c6275faf023a56adc3cf4f01f25cde96d32c1de3a8ad"
-    },
-    {
-      "path": "scripts/status.py",
-      "bytes": 6431,
-      "sha256": "29e502d7fddd48f2e820c4fde2e0252fed5497001c7c368d621358cbedc9f7bf"
     },
     {
       "path": "src/argus_vesuvius/__init__.py",
@@ -3532,10 +3472,10 @@
       "sha256": "a5845ad0cc495925e79784b21a08764025d76b96f48a21d93ce1f686eb16e927"
     }
   ],
-  "created_utc": "2026-09-30T23:03:16.562793+00:00",
+  "created_utc": "2026-09-30T20:52:04.164135+00:00",
   "supersedes": {
-    "public_commit": "04dbe8297218993a5dbadd87e024455a1d944090",
-    "sha256": "c28e82191b36d488c47c1c28d0e3c53e9ea5a5c90d478bf5226d24f8f130ecf7",
-    "preserved_copy": "docs/september_2026/release_history/RELEASE_MANIFEST_04dbe8297218.json"
+    "public_commit": "18cbbd3e079cf6cfb6278c8c9afdc7a5b773d37a",
+    "sha256": "f89bcd84b63b28a2c45f5f1e44d4e75cfcff197f261353de53362cffd7286c4d",
+    "preserved_copy": "docs/september_2026/release_history/RELEASE_MANIFEST_18cbbd3e079c.json"
   }
 }
