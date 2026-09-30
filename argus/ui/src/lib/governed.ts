@@ -25,6 +25,14 @@ export interface GovernedPlan {
   read_only: true;
 }
 
+export interface GovernedJob {
+  job_id: string;
+  state: string;
+  progress?: Record<string, unknown>;
+  result?: Record<string, unknown>;
+  [key: string]: unknown;
+}
+
 let CSRF: string | null = null;
 let EXPIRES_AT = 0;
 const SESSION_LISTENERS = new Set<() => void>();
@@ -46,8 +54,8 @@ export function sessionSecondsLeft(): number {
   return sessionIsOpen() ? Math.max(0, Math.round((EXPIRES_AT - Date.now()) / 1000)) : 0;
 }
 
-export async function openSession(): Promise<void> {
-  const accessKey = window.prompt(
+export async function openSession(operatorEnteredKey?: string): Promise<void> {
+  const accessKey = typeof operatorEnteredKey === "string" ? operatorEnteredKey.trim() : window.prompt(
     "Paste the local ARGUS operator access key from ARGUS_HOME/state/ui_access_key. " +
     "This authorizes governed changes in this browser tab for 15 minutes.",
   )?.trim() ?? "";
@@ -121,6 +129,23 @@ export async function runGoverned(
   return body as GovernedResult;
 }
 
+export async function readGovernedJob(jobId: string): Promise<GovernedJob | GovernedRefusal> {
+  if (!sessionIsOpen()) {
+    return { refused: true, status: 401, reason: "the governed session expired while this job was running", detail: null };
+  }
+  const r = await fetch(`/ui/job/${encodeURIComponent(jobId)}`, {
+    credentials: "same-origin", headers: { "X-Argus-Csrf": CSRF as string },
+  });
+  const body = await r.json().catch(() => null);
+  if (!r.ok) {
+    const d = (body as { detail?: { error?: string; why?: string } } | null)?.detail;
+    return { refused: true, status: r.status,
+      reason: d?.error ? `${d.error}${d.why ? ` — ${d.why}` : ""}` : `HTTP ${r.status}`, detail: body };
+  }
+  const payload = body as { job?: GovernedJob } | GovernedJob;
+  return (payload as { job?: GovernedJob }).job ?? (payload as GovernedJob);
+}
+
 export function approvedHash(p: GovernedPlan): string {
   const inner = (p.plan as { plan_sha256?: unknown }).plan_sha256;
   return typeof inner === "string" && inner ? inner : p.plan_hash;
@@ -131,7 +156,7 @@ export function isRefusal<T>(x: T | GovernedRefusal): x is GovernedRefusal {
 }
 
 export interface RunOutcome {
-  kind: "done" | "refused";
+  kind: "done" | "running" | "refused";
   text: string;
 }
 
@@ -148,6 +173,7 @@ export function runOutcome(out: GovernedResult): RunOutcome {
       text: `${status === "FAILED" ? "Failed" : "Refused"} by the action itself${inner.code ? ` (${inner.code})` : ""}: ${why}.${blocker}${job}`,
     };
   }
+  if (status === "RUNNING") return { kind: "running", text: `Running under governed job ${r.job_id ?? "(job id unavailable)"}.` };
   return { kind: "done", text: `Done — ${status}.${job || " Recorded as job (no job id)."}` };
 }
 

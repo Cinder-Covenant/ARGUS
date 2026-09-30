@@ -11,6 +11,7 @@ import sys
 import time
 import urllib.error
 import urllib.request
+from urllib.parse import urlsplit
 
 from fastapi import Body, Cookie, FastAPI, Header, HTTPException, Request, Response
 
@@ -133,6 +134,25 @@ def require_origin(origin: str | None) -> str:
           "why": "the allowlist is matched exactly -- not by prefix, suffix or substring, "
                  "because a URL can contain an allowed origin without being it."})
     return origin
+
+
+def require_read_origin(request: Request, origin: str | None) -> str:
+    """Accept same-origin browser GETs without Origin, preserving the exact allowlist."""
+    if origin is not None:
+        return require_origin(origin)
+    if request.headers.get("sec-fetch-site") != "same-origin":
+        raise HTTPException(status_code=403, detail={"error": "same-origin read required"})
+    referer = request.headers.get("referer")
+    if not referer:
+        raise HTTPException(status_code=403, detail={"error": "same-origin Referer required"})
+    try:
+        parsed = urlsplit(referer)
+    except ValueError:
+        parsed = None
+    if (parsed is None or not parsed.scheme or not parsed.netloc or
+            parsed.username is not None or parsed.password is not None):
+        raise HTTPException(status_code=403, detail={"error": "malformed Referer origin"})
+    return require_origin(f"{parsed.scheme}://{parsed.netloc}")
 
 
 
@@ -1156,10 +1176,10 @@ async def structured_intent_confirm(
 
 
 @app.get("/ui/job/{job_id}")
-def job(job_id: str, argus_sid: str | None = Cookie(default=None),
+def job(job_id: str, request: Request, argus_sid: str | None = Cookie(default=None),
         x_argus_csrf: str | None = Header(default=None),
         origin: str | None = Header(default=None)):
-    o = require_origin(origin)
+    o = require_read_origin(request, origin)
     require_session(argus_sid, x_argus_csrf, o)
     if not job_id.replace("-", "").replace("_", "").isalnum():
         raise HTTPException(status_code=400, detail={"error": "malformed job id"})

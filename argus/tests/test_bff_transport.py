@@ -418,6 +418,29 @@ def test_a_malformed_job_id_refuses(client):
     assert r.status_code in (400, 404)
 
 
+def test_same_origin_browser_job_poll_without_origin_is_allowed(client, monkeypatch):
+    csrf = _session(client)
+    monkeypatch.setattr(bff, "_call_command", lambda path, method="GET":
+                        {"job": {"job_id": "job_control", "state": "RUNNING"}})
+    r = client.get("/ui/job/job_control", headers={
+        "Sec-Fetch-Site": "same-origin", "Referer": ALLOWED + "/workbench?scroll=PHerc0139",
+        "X-Argus-Csrf": csrf})
+    assert r.status_code == 200
+    assert r.json()["job"]["state"] == "RUNNING"
+
+
+@pytest.mark.parametrize("headers", [
+    {"Referer": ALLOWED + "/workbench"},
+    {"Sec-Fetch-Site": "cross-site", "Referer": ALLOWED + "/workbench"},
+    {"Sec-Fetch-Site": "same-origin", "Referer": HOSTILE + "/workbench"},
+    {"Sec-Fetch-Site": "same-origin", "Referer": ALLOWED + ".evil.example/workbench"},
+])
+def test_job_poll_without_origin_requires_exact_same_origin(client, headers):
+    csrf = _session(client)
+    r = client.get("/ui/job/job_control", headers={**headers, "X-Argus-Csrf": csrf})
+    assert r.status_code == 403
+
+
 
 def test_an_idempotency_key_is_required(client):
     csrf = _session(client)

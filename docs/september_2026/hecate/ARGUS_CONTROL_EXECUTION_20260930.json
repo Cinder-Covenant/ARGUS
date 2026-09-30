@@ -1,0 +1,39 @@
+{
+  "schema": "argus-hecate-public-control-verification-v1",
+  "recorded_utc": "2026-09-30T22:48:12.0711387Z",
+  "scope": "retained exposed PHerc0139 apparatus control; no target inference or ink claim",
+  "job_id": "job_cd87c2d28995",
+  "physical_scroll": "PHerc0139",
+  "acquisition_id": "local-control-0139-title-native9362",
+  "input_shape_zyx": [
+    16,
+    256,
+    256
+  ],
+  "spacing_um": [
+    9.6,
+    9.6,
+    9.6
+  ],
+  "source_revision": "9cb86e500e944b11a06a7020403cde5dffb5bcb2",
+  "checkpoint_sha256": "809f4f10f7cb7afa19b4bee0f7d2ab31edd7e11b664f9f210cc9c17f22fcfe5d",
+  "input_sha256": "3bdfab85fed733757ed3a0021f6240e02afb9bda9af9a12a7ef67c5ae156eb86",
+  "output_2d_sha256": "c226a2f1b31ca5dec9ee7b5a5627716fc7e71561719813520993a1de7dbf426d",
+  "output_3d_manifest_sha256": "53a9ec97ce5e4c65a4cd4cd81643edc45a30067849631e494d4f2a94954633b1",
+  "prior_private_receipt_output_hashes_equal": true,
+  "inference_seconds": 6.522596599999815,
+  "resource_samples": 17,
+  "minimum_ram_available_gib": 13.733604431152344,
+  "minimum_whole_gpu_free_gib": 3.890625,
+  "maximum_gpu_temperature_c": 63.0,
+  "browser_observed": [
+    "governed plan",
+    "approval",
+    "tile progress",
+    "completed 2D image",
+    "3D depth-slice control"
+  ],
+  "owned_hecate_worker_absent": true,
+  "local_full_receipt_sha256": "d9498cbb049e371f8aa41b00c85fc2907d748ffedbc5caecb3cfb8dbb389f5d6",
+  "claim_ceiling": "software/output parity on an exposed field only"
+}

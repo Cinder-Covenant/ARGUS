@@ -22,19 +22,23 @@ interface Props {
   label: string;
   why?: string;
   onDone?: () => void;
+  onSubmitted?: (result: GovernedResult | GovernedRefusal) => void;
   disabledReason?: string | null;
+  inlineOperatorKeyEntry?: boolean;
 }
 
 function asList(v: unknown): string[] {
   return Array.isArray(v) ? v.map((x) => String(x)) : [];
 }
 
-export function PlanApprove({ action, controlId, params, label, why, onDone, disabledReason }: Props) {
+export function PlanApprove({ action, controlId, params, label, why, onDone, onSubmitted,
+  disabledReason, inlineOperatorKeyEntry = false }: Props) {
   const [session, setSession] = useState(sessionIsOpen());
   const [plan, setPlan] = useState<GovernedPlan | GovernedRefusal | null>(null);
   const [out, setOut] = useState<GovernedResult | GovernedRefusal | null>(null);
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
+  const [operatorAccessKey, setOperatorAccessKey] = useState("");
   const intentKey = idempotencyKey(action, params);
 
   useEffect(
@@ -51,12 +55,14 @@ export function PlanApprove({ action, controlId, params, label, why, onDone, dis
   const open = useCallback(async () => {
     setErr(null);
     try {
-      await openSession();
+      const enteredKey = inlineOperatorKeyEntry ? operatorAccessKey : undefined;
+      if (inlineOperatorKeyEntry) setOperatorAccessKey("");
+      await openSession(enteredKey);
       setSession(true);
     } catch (e) {
       setErr(e instanceof Error ? e.message : String(e));
     }
-  }, []);
+  }, [inlineOperatorKeyEntry, operatorAccessKey]);
 
   const review = useCallback(async () => {
     setBusy(true);
@@ -80,16 +86,17 @@ export function PlanApprove({ action, controlId, params, label, why, onDone, dis
       const res = await runGoverned(action, { ...params, approved_plan_sha256: approvedHash(plan) });
       setOut(res);
       setSession(sessionIsOpen());
+      onSubmitted?.(res);
       if (!isRefusal(res)) {
         setPlan(null);
-        onDone?.();
+        if (res.result.status !== "RUNNING") onDone?.();
       }
     } catch (e) {
       setErr(e instanceof Error ? e.message : String(e));
     } finally {
       setBusy(false);
     }
-  }, [action, params, plan, onDone]);
+  }, [action, params, plan, onDone, onSubmitted]);
 
   const p = plan && !isRefusal(plan) ? plan.plan : null;
   const changes = asList(p?.changes);
@@ -103,9 +110,19 @@ export function PlanApprove({ action, controlId, params, label, why, onDone, dis
     <div data-control={`plan-approve.${control}`} style={{ display: "grid", gap: 6, marginTop: 6 }}>
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
         {!session ? (
+          <>
+          {inlineOperatorKeyEntry ? (
+            <label style={{ display: "grid", gap: 4, minWidth: 240 }}>
+              <span className="meta">Local ARGUS operator access key</span>
+              <input type="password" value={operatorAccessKey}
+                onChange={(event) => setOperatorAccessKey(event.target.value)}
+                autoComplete="off" spellCheck={false} aria-label="Local ARGUS operator access key" />
+            </label>
+          ) : null}
           <button type="button" className="interactive" onClick={open} data-control={`plan-approve.${control}.session`}>
             Open a governed session
           </button>
+          </>
         ) : null}
         <button
           type="button"

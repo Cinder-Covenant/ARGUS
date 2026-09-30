@@ -1,7 +1,9 @@
-"""One governed plan/invoke pair for the providers that have a plan function but no execution door."""
+"""Governed provider planning, with one bounded PHerc0139 Hecate control executor."""
 from __future__ import annotations
 
+import hashlib
 import inspect
+import json
 from dataclasses import dataclass
 from typing import Any, Callable
 
@@ -17,7 +19,8 @@ FIELDS = frozenset({"provider_id", "request", "approved_plan_sha256"})
 NOT_CLAIMED = ("qualified detector", "unseen-scroll generalization", "independent physical ground truth")
 
 _PLAN_MAY_REFUSE = ["UNKNOWN_PROVIDER", "NO_PLAN_ROUTE", "WRONG_ACTION", "UNKNOWN_REQUEST_FIELD", "PLAN_REFUSED"]
-_INVOKE_MAY_REFUSE = _PLAN_MAY_REFUSE + ["PLAN_NOT_APPROVED", "EXECUTION_NOT_ADAPTED", "NOT_AUTHORIZED"]
+_INVOKE_MAY_REFUSE = _PLAN_MAY_REFUSE + ["PLAN_NOT_APPROVED", "EXECUTION_NOT_ADAPTED", "NOT_AUTHORIZED",
+                                        "RESOURCE_STOP", "HECATE_CONTROL_FAILED", "CANCELLED"]
 
 
 @dataclass(frozen=True)
@@ -28,6 +31,7 @@ class Route:
     identity_of: Callable[[dict], Any] | None = None
     expected_identity: Callable[[str], Any] | None = None
     run_fn: Callable[..., dict] | None = None
+    execution_allowed: Callable[[dict], bool] | None = None
 
 
 def _native_route() -> Route:
@@ -42,7 +46,8 @@ def _surface_route(checkpoint: str) -> Route:
 
 
 _HECATE = Route(hecate_candidate.plan, (hecate_candidate.HecatePlanRefusal,), {},
-                identity_of=lambda plan: plan.get("provider"))
+                identity_of=lambda plan: plan.get("provider"), run_fn=hecate_candidate.run_control,
+                execution_allowed=hecate_candidate.is_retained_control_plan)
 
 ROUTES: dict[str, Route] = {
     "hecate_24um": _HECATE,
@@ -77,8 +82,8 @@ def _row_view(row: dict) -> dict:
 def _base(invoking: bool) -> dict:
     return {
         "schema": SCHEMA, "ready": False, "leases": [], "reversible": True, "executes": False,
-        "changes": (["records approval of one plan hash, then refuses: no candidate provider has an execution adapter "
-                     "ARGUS may run from here (EXECUTION_NOT_ADAPTED) or it is not authorized (NOT_AUTHORIZED)"]
+        "changes": (["runs only the fixed hash-bound PHerc0139 Hecate control when its plan is approved; "
+                     "other candidate requests refuse unless their own execution route is authorized"]
                     if invoking else
                     ["builds one hash-bound plan for one provider; starts no process, fetches nothing, writes no file"]),
         "cost": {"gpu": "none", "seconds": "reads and hashes only the checkpoint and input files the plan names",
@@ -143,9 +148,31 @@ def build_plan(params: dict, *, invoking: bool = False) -> dict:
         if route.identity_of(plan) != expected:
             return _not_ready(base, code="PLAN_REFUSED", provider_id=provider_id, row=row,
                               why="the request planned %r, not %s" % (route.identity_of(plan), expected))
-    execution = ("provider.candidate.invoke will refuse: %s"
-                 % ("NOT_AUTHORIZED (an adapter exists but no governed action authorizes it)"
-                    if route.run_fn else "EXECUTION_NOT_ADAPTED (no execution adapter exists)"))
+    can_execute = bool(route.run_fn and route.execution_allowed and route.execution_allowed(plan))
+    if can_execute:
+        binding = hecate_candidate.retained_control_binding(plan)
+        if not binding:
+            return _not_ready(base, code="PLAN_REFUSED", provider_id=provider_id, row=row,
+                              why="the fixed retained-control binding changed during planning")
+        plan.pop("plan_sha256", None)
+        plan["argus_control_binding"] = binding
+        plan["plan_sha256"] = hashlib.sha256(json.dumps(
+            plan, sort_keys=True, separators=(",", ":")).encode("utf-8")).hexdigest()
+        base.update(leases=["gpu"],
+                    changes=["runs one hash-bound retained PHerc0139 exposed-control field",
+                             "writes the declared paired 2-D/3-D outputs and identity-bound receipt"],
+                    cost={"gpu": "one Hecate 9.6 um control run; batch 1, two CPU threads, 3 GiB allocator cap",
+                          "bytes": "bounded local control output; no download",
+                          "resource_floors": {"ram_admit_gib": 10, "ram_hard_gib": 8,
+                                              "vram_free_gib": 1.25, "temperature_pause_c": 70,
+                                              "temperature_stop_c": 80, "t_free_admit_gib": 85,
+                                              "t_free_hard_gib": 80}},
+                    async_execution=True)
+        execution = "only this hash-bound retained PHerc0139 apparatus-control plan may execute"
+    else:
+        execution = ("provider.candidate.invoke will refuse: %s"
+                     % ("NOT_AUTHORIZED (request outside the fixed control scope)"
+                        if route.run_fn else "EXECUTION_NOT_ADAPTED (no execution adapter exists)"))
     return dict(base, ready=True, provider_id=provider_id, registry=_row_view(row), candidate_plan=plan,
                 plan_sha256=plan["plan_sha256"], would_be_refused=False, execution=execution, note=execution)
 
@@ -191,8 +218,8 @@ def _refuse_no_route(plan: dict) -> None:
                     receipt=_receipt(provider_id, row, None))
 
 
-def invoke(params: dict) -> dict:
-    """Always refuses."""
+def invoke(params: dict, *, job_id: str | None = None, progress=None, cancelled=None) -> dict:
+    """Run only the approved, hash-bound PHerc0139 control; refuse all other candidates."""
     plan = build_plan(params, invoking=True)
     if not plan["ready"]:
         if plan.get("refusal_code") == "NO_PLAN_ROUTE":
@@ -202,11 +229,20 @@ def invoke(params: dict) -> dict:
         raise A.Refused("PLAN_NOT_APPROVED",
                         "approved_plan_sha256 must equal the plan_sha256 returned by /plan for this provider",
                         expected=plan["plan_sha256"], provider_id=plan["provider_id"], executed=False)
+    route = ROUTES[plan["provider_id"]]
+    if route.run_fn is not None and route.execution_allowed and route.execution_allowed(plan["candidate_plan"]):
+        if not job_id:
+            raise A.Refused("JOB_CONTEXT_REQUIRED", "the retained-control adapter requires a governed job id",
+                            executed=False)
+        with A.held_lease("gpu", "provider.candidate.invoke:" + job_id, job_id=job_id):
+            return route.run_fn(plan["candidate_plan"], job_id=job_id,
+                                progress=progress, cancelled=cancelled)
     receipt = _receipt(plan["provider_id"], plan["registry"], plan["plan_sha256"])
-    if ROUTES[plan["provider_id"]].run_fn is not None:
+    if route.run_fn is not None:
         raise A.Refused("NOT_AUTHORIZED",
-                        "an execution adapter exists for %s but no governed action authorizes running it from ARGUS; "
-                        "nothing was run" % plan["provider_id"], blocker_kind="NOT_AUTHORIZED", receipt=receipt)
+                        "an adapter exists for %s but this request is outside its fixed approved execution scope; "
+                        "nothing was run" % plan["provider_id"], blocker_kind="NOT_AUTHORIZED", receipt=receipt,
+                        executed=False)
     raise A.Refused("EXECUTION_NOT_ADAPTED",
                     "ARGUS has no execution adapter for %s; the plan is valid and approved, and nothing was run"
                     % plan["provider_id"], blocker_kind="CODE_MISSING", receipt=receipt)

@@ -1,6 +1,6 @@
 # Hecate: reuse shared features for paired 2D and 3D output
 
-Prepared for upstream review; not yet published. Based on [scrollprize/hecate revision 9cb86e500e944b11a06a7020403cde5dffb5bcb2](https://huggingface.co/scrollprize/hecate/tree/9cb86e500e944b11a06a7020403cde5dffb5bcb2), still the provider's current revision when checked on September 30.
+The source/test contribution is [published for upstream review as PR #1](https://huggingface.co/scrollprize/hecate/discussions/1), based on [scrollprize/hecate revision 9cb86e500e944b11a06a7020403cde5dffb5bcb2](https://huggingface.co/scrollprize/hecate/tree/9cb86e500e944b11a06a7020403cde5dffb5bcb2). The measurements below are ARGUS supporting evidence; upstream acceptance remains separate.
 
 ## Change
 
@@ -22,6 +22,12 @@ Three alternating baseline/candidate process pairs used the retained PHerc0139 e
 Each pair matches all65,536 2D pixels and1,048,576 3D voxels. Feature calls fall from98 to49. The common resource guard checks before feature evaluation; both sides include these hooks, identity checks, imports, model loading, tile preparation, inference, blending, writes and process exit. Raw-source resampling and UI transport are excluded. Fresh processes do not imply a cold OS cache.
 
 Starting temperatures52–54C; maximum68C; no cooling pause. Minimum available system RAM13.926GiB, minimum whole-GPU free memory4003MiB, peak process-tree RSS1.541GiB. All six processes exited0 and were checked absent. This is one control field and one GPU, not a whole-scroll or2D-only throughput claim. PHerc0139 is development-exposed, not an independent accuracy holdout.
+
+### Larger retained-input comparison
+
+A second actual-CLI experiment used one exposed 16x512x512 PHerc0139 input with the same checkpoint, FP32, batch one, stride 32 and two CPU threads. Three alternating fresh-process pairs produced identical decoded output in every run: 262,144 2D pixels and 4,194,304 3D voxels per pair. An independent post-run decode confirmed the result. Feature-network calls were 450 baseline and 225 candidate per run. Median complete-process times were 163.010 and 57.328 seconds, an observed 64.83% difference **under the resource guard**.
+
+The larger timing has a material thermal confound. Baseline runs paused for 55.2, 99.1 and 99.2 seconds, and candidate runs paused for about 22 seconds each. We therefore use the pause-free 256 result for the cleaner time comparison and the larger run for output parity, feature-call scaling and guarded resource evidence. The [512 result receipt](ACTUAL_CLI_512_RESULT_20260930.json) includes every process time, decoded array hash and resource extreme. Peak GPU temperature was 70C; minimum available RAM was 13.198GiB and minimum whole-GPU free memory was 3786MiB. All six workers stopped. Neither experiment measures ink accuracy or whole-scroll throughput.
 
 ## Files to review
 

@@ -8,6 +8,8 @@ Team Cinder Covenant — Ryan Gurganious and Daine Ball.
 - **Villa input checks:** [PR #1897](https://github.com/ScrollPrize/villa/pull/1897), [recorded real-data failure](evidence/evidence/INFERENCE_FAILURE.json).
 - **Villa renderer:** [PR #1901](https://github.com/ScrollPrize/villa/pull/1901), [tested metadata correction and unchanged pixels](evidence/evidence/RENDERER_CORRECTION.json). The artifact names the tested candidate; consult the PR for its current publication/review status.
 - **Hecate:** [upstream PR #1](https://huggingface.co/scrollprize/hecate/discussions/1), [proposal and reproduction](hecate/PUBLIC_REVIEW_DRAFT.md), [numeric measurement](hecate/PUBLIC_MEASURED_RESULT_20260930.json), [source/test package](hecate/HECATE_SEPTEMBER_2026_CONTRIBUTION.zip). The PR is open for review; publication is not upstream acceptance.
+- **Public Hecate control route:** [configuration, physical preparation and browser receipt](HECATE_CONTROL_ROUTE_20260930.md). This is an exposed PHerc0139 software control with paired 2D/3D output, not an unread-scroll reading.
+- **Supporting controls:** [larger known-title mask preservation, real label-refinement invocation and measured hardware](SUPPORTING_CONTROLS_20260930.md), including the [512-square actual-CLI result and thermal limits](hecate/ACTUAL_CLI_512_RESULT_20260930.json).
 - Supporting Villa work: [ARGUS listing #1896](https://github.com/ScrollPrize/villa/pull/1896), [fiber-parser assertion/documentation #1902](https://github.com/ScrollPrize/villa/pull/1902), both merged. ARGUS [exposure-accounting PR #1](https://github.com/Cinder-Covenant/ARGUS/pull/1) is part of the ARGUS contribution.
 
 ## Measured outcomes
@@ -22,7 +24,7 @@ Hecate's shared-feature candidate matches all **65,536 2D pixels and 1,048,576 3
 
 ## Evidence status and attribution
 
-The September source release is public at commit `18cbbd3e079cf6cfb6278c8c9afdc7a5b773d37a`, with [all four portable CI jobs passing](https://github.com/Cinder-Covenant/ARGUS/actions/runs/36774438341). The renderer update is published in #1901 at `d7524301f7efe0fbf5a7e761b75fab498f68d5d3`. Hecate PR #1 contains `24a28567c71ef9dd954a3367779c5f8a3481ad78`. See the [publication receipt](PUBLICATION_STATUS_20260930.md), [combined contribution description](COMBINED_FORM_RESPONSE.txt), and [contribution URLs](CONTRIBUTION_URLS.txt). This documentation does not record a submitted prize form.
+The original September source/evidence release was published at commit `18cbbd3e079cf6cfb6278c8c9afdc7a5b773d37a`, with [all four portable CI jobs passing](https://github.com/Cinder-Covenant/ARGUS/actions/runs/36774438341). Later supplements are identified by their own Git revision and checks. The renderer update is published in #1901 at `d7524301f7efe0fbf5a7e761b75fab498f68d5d3`. Hecate PR #1 contains `24a28567c71ef9dd954a3367779c5f8a3481ad78`. See the [publication receipt](PUBLICATION_STATUS_20260930.md), [combined contribution description](COMBINED_FORM_RESPONSE.txt), and [contribution URLs](CONTRIBUTION_URLS.txt). This documentation does not record a submitted prize form.
 
 The sealed evidence folder is an immutable **prepublication snapshot**, so its files truthfully say they were local when assembled. This index is the publication wrapper. Original receipts and historical release manifests are preserved; no CT arrays, label arrays, checkpoints or unread-target images are included. The current release-manifest successor links the previous manifest, archived in `release_history/`.
 

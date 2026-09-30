@@ -153,7 +153,17 @@ def _volume_ref(outputs: dict[str, Any], key: str, receipt_dir: Path | None = No
     if not ref or not ref.get("path"):
         return None
     resolved = _resolve_output_path(ref["path"])
-    if not (resolved / ".zarray").is_file():
+    # Current Hecate writes Zarr v3 arrays; retained outputs may use v2.
+    v2_array = (resolved / ".zarray").is_file()
+    v3_array = False
+    v3_metadata = resolved / "zarr.json"
+    if v3_metadata.is_file():
+        try:
+            metadata = json.loads(v3_metadata.read_text(encoding="utf-8"))
+            v3_array = metadata.get("zarr_format") == 3 and metadata.get("node_type") == "array"
+        except (OSError, ValueError, AttributeError):
+            v3_array = False
+    if not (v2_array or v3_array):
         err = ERRATUM.declared_output_not_committed(receipt_dir, ref["path"], ref.get("manifest_sha256")) if receipt_dir else None
         if err:
             if disclosures is not None:

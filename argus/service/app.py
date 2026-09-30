@@ -1577,6 +1577,14 @@ async def hecate_layer_inventory(scroll: str | None = None):
     return await asyncio.to_thread(HL.inventory, scroll)
 
 
+@app.get("/api/providers/hecate/control_request")
+async def hecate_control_request():
+    """Describe one fresh, locally configured exposed control; never start inference."""
+    from argus.core import hecate_candidate as HC
+
+    return await asyncio.to_thread(HC.control_request)
+
+
 @app.get("/api/providers/hecate/layer")
 async def hecate_layer(scroll: str, acquisition_id: str):
     """Serve one identity-matched Hecate run's already-produced output references."""

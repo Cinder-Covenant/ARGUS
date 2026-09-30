@@ -178,7 +178,7 @@ const VIEWS: { key: ViewKey; plain: string; hint: string }[] = [
   {
     key: "hecate",
     plain: "Hecate output",
-    hint: "an already-recorded Hecate run receipt -- not a reading",
+    hint: "a bounded exposed-control plan or an identity-matched receipt -- not a reading",
   },
   {
     key: "windings",
@@ -507,6 +507,12 @@ function WorkbenchInner({
           };
     }
     if (k === "hecate") {
+      // The exposed PHerc0139 control is launched from this viewer.  An absent
+      // receipt must not hide the one route that can create its first receipt.
+      if (ctx.scroll === "PHerc0139") {
+        return { available: true, path: null,
+          why: "Open the pinned exposed-control plan or inspect an existing identity-matched output." };
+      }
       const inv = hecateInventory.data;
       if (!inv || inv.selected_scroll !== ctx.scroll) {
         return { available: true, path: null, why: "Checking the identity-matched Hecate output…" };

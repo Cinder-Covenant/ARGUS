@@ -5,6 +5,7 @@ from argus.public_paths import public_path as _argus_public_path
 import json
 import hashlib
 import os
+import threading
 import time
 import uuid
 from pathlib import Path
@@ -715,8 +716,12 @@ def plan_job_cancel(p: dict) -> dict:
             "may_refuse": ["NO_JOB", "NOT_CANCELLABLE"], "reversible": False}
 
 
+_JOB_STATE_LOCK = threading.RLock()
+
+
 def do_job_cancel(spec: A.ActionSpec) -> dict:
-    job = A.read_job(spec.params.get("job_id", ""))
+    with _JOB_STATE_LOCK:
+        job = A.read_job(spec.params.get("job_id", ""))
     if not job:
         raise A.Refused("NO_JOB", "no job %r" % spec.params.get("job_id"))
     if not job.get("cancellable"):
@@ -724,9 +729,14 @@ def do_job_cancel(spec: A.ActionSpec) -> dict:
                         "job %s declares itself not cancellable. A science run stopped "
                         "mid-write leaves a partial artefact that looks complete"
                         % job["job_id"])
-    job["state"] = "CANCELLED"
-    job["cancelled_by"] = spec.actor
-    A.write_job(job)
+    with _JOB_STATE_LOCK:
+        job = A.read_job(spec.params.get("job_id", ""))
+        if not job or job.get("state") != "RUNNING" or not job.get("cancellable"):
+            raise A.Refused("JOB_NOT_RUNNING", "job is no longer cancellable")
+        job["state"] = "CANCELLED"
+        job["cancelled_by"] = spec.actor
+        job["cancel_requested_utc"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+        A.write_job(job)
     return {"status": "OK", "job": job}
 
 
@@ -1536,6 +1546,65 @@ def _freeze_run_pin(job: dict) -> None:
     job["run_pin"] = {"pin_set_sha256": pin["pin_set_sha256"], "frozen_utc": pin["frozen_utc"]}
 
 
+def _run_async_control_job(spec: A.ActionSpec, job_id: str) -> None:
+    """Persist progress and terminal state for the one approved control route."""
+    def progress(update: dict) -> None:
+        with _JOB_STATE_LOCK:
+            job = A.read_job(job_id)
+            if not job or job.get("state") != "RUNNING":
+                return
+            job["progress"] = update
+            job["updated_utc"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+            if update.get("phase") == "complete":
+                job["cancellable"] = False
+            A.write_job(job)
+
+    def cancelled() -> bool:
+        with _JOB_STATE_LOCK:
+            job = A.read_job(job_id)
+            return not job or job.get("state") == "CANCELLED"
+
+    try:
+        result = PCA.invoke(spec.params, job_id=job_id, progress=progress, cancelled=cancelled)
+        terminal, code = "SUCCEEDED", None
+    except A.Refused as exc:
+        result = exc.as_dict()
+        terminal, code = ("CANCELLED", exc.code) if exc.code == "CANCELLED" else ("REFUSED", exc.code)
+    except Exception as exc:
+        result = {"status": "FAILED", "code": "UNHANDLED_PROVIDER_ERROR",
+                  "why": "%s: %s" % (type(exc).__name__, str(exc)[:500]), "executed": True}
+        terminal, code = "FAILED", "UNHANDLED_PROVIDER_ERROR"
+
+    with _JOB_STATE_LOCK:
+        job = A.read_job(job_id)
+        if not job:
+            return
+        if job.get("state") == "CANCELLED":
+            terminal = "CANCELLED"
+            result = {"status": "CANCELLED", "code": "CANCELLED",
+                      "why": "operator cancellation was recorded; partial output is not a completed result",
+                      "executed": True}
+        job.update(state=terminal, result=result, cancellable=False,
+                   finished_utc=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()))
+        A.write_job(job)
+        A.audit({"event": "action.finish", "job_id": job_id, "action": spec.action,
+                 "actor": spec.actor, "state": terminal, "code": code})
+
+
+def _start_async_control_job(spec: A.ActionSpec, job: dict) -> dict:
+    worker_spec = A.ActionSpec(action=spec.action, actor=spec.actor, request_id=spec.request_id,
+                               idempotency_key=spec.idempotency_key, params=spec.params, dry_run=False)
+    thread = threading.Thread(target=_run_async_control_job, args=(worker_spec, job["job_id"]),
+                              name="argus-hecate-control-" + job["job_id"], daemon=True)
+    try:
+        thread.start()
+    except RuntimeError as exc:
+        raise A.Refused("WORKER_START_FAILED", "could not start the owned provider worker: %s" % str(exc)[:180],
+                        executed=False) from exc
+    return {"status": "RUNNING", "job_id": job["job_id"],
+            "note": "the hash-approved fixed PHerc0139 control is running under its owned job"}
+
+
 def submit(spec_obj: dict) -> dict:
     """The one door."""
     spec = A.ActionSpec.parse(spec_obj)
@@ -1593,6 +1662,9 @@ def submit(spec_obj: dict) -> dict:
         if spec.action in RUN_STARTING_ACTIONS:
             _freeze_run_pin(job)
             A.write_job(job)
+        if spec.action == "provider.candidate.invoke" and planned.get("async_execution") is True:
+            result = _start_async_control_job(spec, job)
+            return {"status": "RUNNING", "job_id": job_id, "result": result}
         result = REGISTRY[spec.action][1](spec)
         job.update(state="SUCCEEDED", result=result,
                    finished_utc=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()))

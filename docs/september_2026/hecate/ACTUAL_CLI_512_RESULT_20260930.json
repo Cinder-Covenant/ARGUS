@@ -1,0 +1,41 @@
+{
+  "state": "PASS_ACTUAL_CLI_BITWISE_EQUAL",
+  "scope": "One retained exposed PHerc0139 16x512x512 input; three fresh-process baseline/candidate pairs; both 2D and 3D outputs; FP32, batch 1, stride 32, two CPU threads",
+  "input_sha256": "d180e818dc4a3693752f7cfe6b74d7eabb759600ae5c004e70e119fd076b2b92",
+  "checkpoint_sha256": "809f4f10f7cb7afa19b4bee0f7d2ab31edd7e11b664f9f210cc9c17f22fcfe5d",
+  "launch_source_sha256": "e58fd15e9d2d1fc4d553e15a35e4055c3742f1712a08e358406e31d22f407e97",
+  "full_local_receipt_sha256": "9da762c7df2e5715335d0ae6cd6757de2f4327f1f01748bb0d848bf90a821978",
+  "schedule": ["baseline_1", "candidate_1", "candidate_2", "baseline_2", "baseline_3", "candidate_3"],
+  "process_seconds": {
+    "baseline": [118.3733033, 163.0301807, 163.0103376],
+    "candidate": [57.0016427, 57.4530546, 57.3278653],
+    "median_baseline": 163.0103376,
+    "median_candidate": 57.3278653,
+    "observed_median_reduction_percent": 64.83176089
+  },
+  "thermal_pause_seconds_inside_cli": {
+    "baseline": [55.2055815, 99.0848334, 99.1833191],
+    "candidate": [22.0822957, 21.9832917, 21.9854907]
+  },
+  "feature_network_calls_per_run": {"baseline": 450, "candidate": 225},
+  "decoded_output_equality": {
+    "pairs": 3,
+    "equal_2d_pixels_per_pair": 262144,
+    "equal_3d_voxels_per_pair": 4194304,
+    "array_2d_sha256_all_runs": "27b44767703d30d57129ec82b2d1f94eaf04665f205d5e68ef2239782e61f23c",
+    "array_3d_sha256_all_runs": "c5f08f62171555f4d30de8ab2bb47adf445856f42ed4d7b48ecb285ebc65f501",
+    "independent_decode_comparison": "passed for all three pairs after the harness completed"
+  },
+  "observed_resources": {
+    "sample_count": 1861,
+    "min_ram_available_gib": 13.1983223,
+    "min_whole_gpu_free_mib": 3786,
+    "max_gpu_temperature_c": 70,
+    "peak_owned_process_tree_rss_gib": 1.578083,
+    "max_scratch_bytes": 25650685,
+    "peak_pytorch_allocator_mib_approx": 720.5
+  },
+  "resource_monitor_errors": [],
+  "owned_workers_stopped": true,
+  "interpretation_limit": "Thermal pauses differed materially between runs. The 64.83% is an observed process-time difference under this guard, not an isolated throughput gain or whole-scroll forecast. The directly attributable mechanism is 450 versus 225 feature-network calls with exact outputs. No ink-accuracy or unread-scroll finding."
+}
