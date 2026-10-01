@@ -4,6 +4,8 @@ from __future__ import annotations
 import hashlib
 import json
 
+import numpy as np
+
 from argus.core import hecate_candidate as H
 
 
@@ -13,9 +15,26 @@ def _sha(path):
 
 def test_retained_control_binding_refuses_substitution(tmp_path, monkeypatch):
     input_path = tmp_path / "control.npy"
-    input_path.write_bytes(b"fixed exposed control")
+    volume = np.arange(16 * 256 * 256, dtype=np.uint32).reshape(16, 256, 256).astype(np.uint8)
+    np.save(input_path, volume, allow_pickle=False)
+    input_sha256 = _sha(input_path)
+    array_sha256 = hashlib.sha256(volume.tobytes(order="C")).hexdigest()
+    monkeypatch.setattr(H, "CONTROL_INPUT_SHA256", input_sha256)
+    monkeypatch.setattr(H, "CONTROL_ARRAY_SHA256", array_sha256)
+    monkeypatch.setattr(H, "CONTROL_ARRAY_SHAPE", volume.shape)
     preparation = tmp_path / "PREPARATION.json"
-    preparation.write_text(json.dumps({"input": {"sha256": _sha(input_path)}}), encoding="utf-8")
+    preparation.write_text(json.dumps({
+        "state": "PREPARED_RETAINED_EXPOSED_CONTROL",
+        "physical_scroll": "PHerc0139",
+        "acquisition_id": H.CONTROL_ID,
+        "input": {
+            "sha256": input_sha256,
+            "array_sha256": array_sha256,
+            "shape_zyx": list(volume.shape),
+            "dtype": "uint8",
+            "spacing_um": [9.6, 9.6, 9.6],
+        },
+    }), encoding="utf-8")
     runtime = tmp_path / "python.exe"
     runtime.write_bytes(b"runtime")
     provider = tmp_path / "hecate.py"
@@ -47,6 +66,18 @@ def test_retained_control_binding_refuses_substitution(tmp_path, monkeypatch):
 
     wrong_scroll = H.plan(**{**control["request"], "scroll": "PHerc1203"})
     assert H.retained_control_binding(wrong_scroll) is None
+
+    # A changed input plus a freshly edited preparation receipt must still fail
+    # the published immutable control binding.
+    altered = np.zeros_like(volume)
+    np.save(input_path, altered, allow_pickle=False)
+    altered_receipt = json.loads(preparation.read_text(encoding="utf-8"))
+    altered_receipt["input"]["sha256"] = _sha(input_path)
+    altered_receipt["input"]["array_sha256"] = hashlib.sha256(
+        altered.tobytes(order="C")).hexdigest()
+    preparation.write_text(json.dumps(altered_receipt), encoding="utf-8")
+    assert H.retained_control_binding(plan) is None
+
     preparation.write_text(json.dumps({"input": {"sha256": "0" * 64}}), encoding="utf-8")
     assert H.retained_control_binding(plan) is None
 

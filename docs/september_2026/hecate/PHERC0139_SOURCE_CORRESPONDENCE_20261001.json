@@ -1,0 +1,32 @@
+{
+  "schema": "argus-hecate-public-source-correspondence-v1",
+  "state": "EXACT_REQUIRED_SOURCE_PIXELS_MATCHED",
+  "recorded_utc": "2026-10-01T00:33:48Z",
+  "physical_scroll": "PHerc0139",
+  "source_url": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/PHerc0139/segments/20260422000000-title_2026042222_zmid_flatboi/surface-volumes/9.362um-1.2m-113keV-volume-20250728140407.zarr/",
+  "source_zattrs_sha256": "dffc62c435f2782cc6f40e0325f33f31de71e1a70609d97994509f4ddfbc40bf",
+  "source_zarray_sha256": "e9bc19dcbeb7a11cff1748c242d4c7a79a77d0538a8e09cd552f2a1ba6f73440",
+  "source_shape_zyx": [28, 1780, 5360],
+  "global_z_selection": [3, 24],
+  "source_yx_crop": [880, 1168, 2608, 2896],
+  "matched_pixels": 1741824,
+  "matched_array_sha256": "766b893513c6fb777a8adead1f1a2f4a6f6089b824dea8bb1de90bd3e7585771",
+  "required_chunk_count": 12,
+  "required_chunk_bytes": 5505024,
+  "maximum_bytes_admitted": 16777216,
+  "required_chunk_sha256": {
+    "0/0/6/20": "8245fa9fdab7311037ef0b1b4ce606b17d4f3a079b43513bb72979f232912c03",
+    "0/0/6/21": "299e882a3fef7edd6e8d2940beeb84437353face3e11a6aec5d761cd876fbc72",
+    "0/0/6/22": "7fd1c70533b88bf8ddc2587da9ad516c8012ce9fffdfff8bbb9bf85b4f8297d5",
+    "0/0/7/20": "7051bb6b3a17ddf54c7bf54eee6e5b3e8b1ede53514d74488bf47c698b56e432",
+    "0/0/7/21": "51d0401bb1b73fd4029b2f4b76af6f4d7d33eb8807c64f5181a812732d47e0ce",
+    "0/0/7/22": "a771d379658eb5cf2c0c93cbaa17c38f89c035f0c46739781eca579187f75523",
+    "0/0/8/20": "f1b15cbc516b27347318cff47a9bb93f73a91a173f8222f44c77717b081956e4",
+    "0/0/8/21": "9b3a8652dbf91a800216bfe8dcf4310e154aaed6b3c44d7e6d0ebe7e2bf41849",
+    "0/0/8/22": "cf8b85ca875f67cc66a1ceb6525837b1c86442aec3806af46d5807bd2204b5fa",
+    "0/0/9/20": "5dc9b749879f5588ad6bdb786f8592e7adc10b8557ec3c0f7ba81f7640212ebc",
+    "0/0/9/21": "fc7a15a9d28e28a8f322b4b87b8c234b88365c2b9f5eda4239e06c0999446118",
+    "0/0/9/22": "2760c555713ede89a4d1bfd688185a1e012349c9eab513c077001f53fb318670"
+  },
+  "claim_ceiling": "exact equality for the selected 21x288x288 source crop; not whole-volume validation"
+}

@@ -72,6 +72,9 @@ human.
 
 ## Data terms
 
-The CT data and the labels are Vesuvius Challenge open data, CC BY-NC 4.0 (non-commercial, attribution).
-Cite the dataset: Vesuvius Challenge, open data, PHerc0139 (https://scrollprize.org/data). The checkpoint is
-MIT per its Hugging Face card and Villa is MIT. This release ships none of them.
+The PHerc0139 CT data are Vesuvius Challenge open data; the cited dataset terms identify them as CC BY-NC 4.0
+(non-commercial, attribution). The label bucket used in the recorded control does not declare a separate
+licence in the metadata we inspected. Do not assume the CT-data licence also grants rights to redistribute
+the labels; check the source's current terms before acquiring or using them. Cite the dataset: Vesuvius
+Challenge, open data, PHerc0139 (https://scrollprize.org/data). The checkpoint is MIT per its Hugging Face
+card and Villa is MIT. This release ships none of these inputs.

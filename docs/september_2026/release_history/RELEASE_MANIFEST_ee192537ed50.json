@@ -3,8 +3,8 @@
   "note": "sha256 of every file in this release except this manifest itself. Verify with: python tools/verify_manifest.py (run from this directory, wherever it sits)",
   "layout": "standalone",
   "tree_sha256_recipe": "sha256 of the UTF-8 text made of one line per row of `files`, rows ordered by path string: <path> NUL <sha256> newline. tools/verify_manifest.py recomputes it.",
-  "file_count": 724,
-  "tree_sha256": "bb7536b08196828df059bda53e569cc51084add36379ec66dae87f7bae78cbd5",
+  "file_count": 712,
+  "tree_sha256": "98dbd215709fac2ec940c402cbbb871a7e7e9f841d215b2f76e384a1b36927a6",
   "files": [
     {
       "path": ".dockerignore",
@@ -518,8 +518,8 @@
     },
     {
       "path": "argus/core/hecate_candidate.py",
-      "bytes": 22739,
-      "sha256": "441d75acf3da09060ed1704a1b8521fbdff7103a65425e415e214a65d6abdb89"
+      "bytes": 21551,
+      "sha256": "b034a2f231adc894967dbabf98f1fb1bb36612407e34d344a692d438c1d92b10"
     },
     {
       "path": "argus/core/hecate_layer.py",
@@ -1418,13 +1418,8 @@
     },
     {
       "path": "argus/tests/test_hecate_control_scope.py",
-      "bytes": 3791,
-      "sha256": "d1e73fc2c8d673c72da581f5792558b72a3f03238ddd86fb8277493397e8cf55"
-    },
-    {
-      "path": "argus/tests/test_hecate_runner_paths.py",
-      "bytes": 1516,
-      "sha256": "826ec7bbb71a391856280f843d7ceca9ec00838290575ed8a588f5785b828c96"
+      "bytes": 2459,
+      "sha256": "c95484b3a6d3c4b275f001ebb53b8515b6bd47117ec8f12fb8237f57b6e50d56"
     },
     {
       "path": "argus/tests/test_input_boundaries.py",
@@ -2943,8 +2938,8 @@
     },
     {
       "path": "docs/PUBLIC_RUN.md",
-      "bytes": 4740,
-      "sha256": "3f28e22a71f52d0fa4b733e0609b0828ba4ee662b76234e7b487117a0683e0df"
+      "bytes": 4438,
+      "sha256": "e08dc14f7ef0c30c0e1c922e42b5fd3e984470401cba468b54f1b87f64daf0b0"
     },
     {
       "path": "docs/REPRODUCTION.md",
@@ -3038,18 +3033,18 @@
     },
     {
       "path": "docs/september_2026/COMBINED_FORM_RESPONSE.txt",
-      "bytes": 4629,
-      "sha256": "d6a8a408e574b3a3f1183cd5f43e04e81ee73577e8230c28a1063a0e80db0362"
+      "bytes": 7902,
+      "sha256": "065a98f03a2247ed091da939293dec877793bab68cdb5916dad6be12484d9ad1"
     },
     {
       "path": "docs/september_2026/CONTRIBUTION_URLS.txt",
-      "bytes": 1609,
-      "sha256": "14c5838420531813d80a93dcd48d1a023306acd42218033be51bf5c5449ecf1a"
+      "bytes": 873,
+      "sha256": "3be77f88226c4f79bf9331c95bdce24bff831e5ff86ec998eeccd20b9c5f4cee"
     },
     {
       "path": "docs/september_2026/HECATE_CONTROL_ROUTE_20260930.md",
-      "bytes": 7949,
-      "sha256": "f5aa46b2c72628a5cf5f4b8436e406e7a45141b6ddaf674d519abd5aa00d837e"
+      "bytes": 4322,
+      "sha256": "7db734995ba157ed4b4f997ad2f00ffcebe4985ddb169d035bccfaf97934491d"
     },
     {
       "path": "docs/september_2026/PUBLICATION_STATUS_20260930.md",
@@ -3058,13 +3053,8 @@
     },
     {
       "path": "docs/september_2026/README.md",
-      "bytes": 5959,
-      "sha256": "36ec5ee295e8601951220aa1ab9c175f377d14689f03a4b70a2be4058048ba10"
-    },
-    {
-      "path": "docs/september_2026/RETAINED_RESEARCH_LIMITATIONS_20260930.md",
-      "bytes": 10226,
-      "sha256": "48a4efc6460f0dec70afeb2bc3d8132d9b39c167e9d22978b7fe89c3d31cde7e"
+      "bytes": 5066,
+      "sha256": "1232c4b113ca674c1bfc1ece9a3e726fc1ab2194cc8cdfff63822b20e30c2d6b"
     },
     {
       "path": "docs/september_2026/SUPPORTING_CONTROLS_20260930.md",
@@ -3233,18 +3223,13 @@
     },
     {
       "path": "docs/september_2026/geometry/README.md",
-      "bytes": 5729,
-      "sha256": "2697239eaf13c54b7064ebec76f64514cf97561c280cc291a66daa6b131517ad"
+      "bytes": 3590,
+      "sha256": "723fd903fc67b44b01dc5f0ebbf456750dbd46430657d0c26350dd94deafc05a"
     },
     {
       "path": "docs/september_2026/geometry/REFERENCE_INPUTS.json",
       "bytes": 11324,
       "sha256": "0f1b4c90e58fe7a123b01b3c629bbf5251f5fe2d44b2d3f1183de44b874c6ce1"
-    },
-    {
-      "path": "docs/september_2026/geometry/REFERENCE_INPUTS_V2.json",
-      "bytes": 13105,
-      "sha256": "5cef2a7f1a308e44f602dd6204aae47981ea448255ca2be78112ee412638e7e1"
     },
     {
       "path": "docs/september_2026/geometry/RESULT.json",
@@ -3255,16 +3240,6 @@
       "path": "docs/september_2026/geometry/pherc0139_geometry_diagnostic.py",
       "bytes": 11633,
       "sha256": "b2e41dfbb9dc1e948a6b077d32e55f6fbeecfbba2e873354e1d6a9b12f0defb0"
-    },
-    {
-      "path": "docs/september_2026/geometry/pherc0139_geometry_diagnostic_v2.py",
-      "bytes": 16634,
-      "sha256": "65f4828d14dd1934df77f96c4cbc4ecd8006f34dc7c0d6da32f460b86975c8c1"
-    },
-    {
-      "path": "docs/september_2026/geometry/verify_pherc0139_geometry_diagnostic_v2.py",
-      "bytes": 9357,
-      "sha256": "b50848a5ab004250a668554abd049f4db960ba7c648c7bafcecf35128214900b"
     },
     {
       "path": "docs/september_2026/hecate/ACTUAL_CLI_512_RESULT_20260930.json",
@@ -3290,21 +3265,6 @@
       "path": "docs/september_2026/hecate/HECATE_SEPTEMBER_2026_CONTRIBUTION.zip",
       "bytes": 125193,
       "sha256": "95f6cb418d6cfc79a1b4e15c0fa256ab84596f27775e0a8b57bb75e33570e8db"
-    },
-    {
-      "path": "docs/september_2026/hecate/HECATE_STRICT_LOAD_20261001.json",
-      "bytes": 1292,
-      "sha256": "0a4b269e29b1095ab1c5eaeebb675e919bbbc49092c16897a2c682f9e09f71a5"
-    },
-    {
-      "path": "docs/september_2026/hecate/PHERC0139_CONTROL_PREPARATION_20261001.json",
-      "bytes": 1345,
-      "sha256": "29077f24a5e96ccf651a583bd91dd747d8a640497ad1910b73905a14c5c59552"
-    },
-    {
-      "path": "docs/september_2026/hecate/PHERC0139_SOURCE_CORRESPONDENCE_20261001.json",
-      "bytes": 2080,
-      "sha256": "812d72af58548332649b2959f5498c6626ebed293ef5a71f610e153a6aa5506b"
     },
     {
       "path": "docs/september_2026/hecate/PUBLIC_MEASURED_RESULT_20260930.json",
@@ -3335,11 +3295,6 @@
       "path": "docs/september_2026/release_history/RELEASE_MANIFEST_d0eb41bdef13.json",
       "bytes": 120150,
       "sha256": "12b9d5d9c393461242412e925ce651b8f74f0804e034c7a6d4a1f83c2fb8163d"
-    },
-    {
-      "path": "docs/september_2026/release_history/RELEASE_MANIFEST_ee192537ed50.json",
-      "bytes": 121460,
-      "sha256": "e1b06abec56c6b41464187ac8dbfc1dd492470638faebfc0baac918abf2fd326"
     },
     {
       "path": "docs/villa/CODEOWNERS.snippet",
@@ -3473,13 +3428,8 @@
     },
     {
       "path": "scripts/hecate_control_runner.py",
-      "bytes": 14764,
-      "sha256": "1785e0e0e7e87100f69c926fd332c47f3491c4d909e5d710f442ec680402c230"
-    },
-    {
-      "path": "scripts/prepare_hecate_pherc0139_control.py",
-      "bytes": 6156,
-      "sha256": "8e9a8579bca8ce6038c5b0775c66d3c0b7683d780ab86618483ec2fac2b921a4"
+      "bytes": 13411,
+      "sha256": "65b4da36a8d9dc7bb276002277bbb8324e5b566c5ce46a4da9c7c5aa7fc5990d"
     },
     {
       "path": "scripts/refresh_official_survey.py",
@@ -3505,16 +3455,6 @@
       "path": "scripts/status.py",
       "bytes": 6431,
       "sha256": "29e502d7fddd48f2e820c4fde2e0252fed5497001c7c368d621358cbedc9f7bf"
-    },
-    {
-      "path": "scripts/verify_hecate_control_source.py",
-      "bytes": 6968,
-      "sha256": "034eefab8542c20f30286f3f6fdfc335546b282d8937573dd24eb7f3b5d4c71e"
-    },
-    {
-      "path": "scripts/verify_hecate_strict_load.py",
-      "bytes": 7862,
-      "sha256": "5e6cc3cb8e4990eceb0621fe04c79d53b6b391e92af1e0421d8064cc82fb5022"
     },
     {
       "path": "src/argus_vesuvius/__init__.py",
@@ -3627,10 +3567,10 @@
       "sha256": "a5845ad0cc495925e79784b21a08764025d76b96f48a21d93ce1f686eb16e927"
     }
   ],
-  "created_utc": "2026-10-01T00:42:27.918786+00:00",
+  "created_utc": "2026-09-30T23:14:02.763873+00:00",
   "supersedes": {
-    "public_commit": "ee192537ed50cded1f2c4161bc575f7238e560f3",
-    "sha256": "e1b06abec56c6b41464187ac8dbfc1dd492470638faebfc0baac918abf2fd326",
-    "preserved_copy": "docs/september_2026/release_history/RELEASE_MANIFEST_ee192537ed50.json"
+    "public_commit": "d0eb41bdef13ffb02081f84abde34bf9ac09a88f",
+    "sha256": "12b9d5d9c393461242412e925ce651b8f74f0804e034c7a6d4a1f83c2fb8163d",
+    "preserved_copy": "docs/september_2026/release_history/RELEASE_MANIFEST_d0eb41bdef13.json"
   }
 }

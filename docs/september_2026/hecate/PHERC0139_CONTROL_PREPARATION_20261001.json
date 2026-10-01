@@ -1,0 +1,27 @@
+{
+  "schema": "argus-hecate-retained-control-preparation-v2",
+  "state": "PREPARED_RETAINED_EXPOSED_CONTROL",
+  "recorded_utc": "2026-10-01T00:17:00Z",
+  "physical_scroll": "PHerc0139",
+  "acquisition_id": "local-control-0139-title-native9362",
+  "acquisition_id_kind": "local exposed-control alias; source metadata has no official acquisition identifier",
+  "source": {
+    "source_array": "0",
+    "source_plane_selection_global_z": [3, 24],
+    "source_crop_yx": [880, 1168, 2608, 2896],
+    "source_shape_zyx": [21, 1780, 5360],
+    "source_spacing_um": [9.362, 9.362, 9.362],
+    "recipe": "float32 SciPy map_coordinates order=1, mode=nearest, prefilter=false; np.rint, clip uint8",
+    "source_zarr_attrs_sha256": "784b5a8a2dc253140b199aee0110be386c89f25eff01eb466dc02965e2211d7e",
+    "source_array_metadata_sha256": "4ac7c3e96766881c6627763d795623d9dff8df40df82f6c3fab0881ae9ac2d9d"
+  },
+  "input": {
+    "sha256": "3bdfab85fed733757ed3a0021f6240e02afb9bda9af9a12a7ef67c5ae156eb86",
+    "array_sha256": "b7d2f762e67031302eb55420851c4236e5d11696ff26639d1915bcdc94208ca6",
+    "shape_zyx": [16, 256, 256],
+    "dtype": "uint8",
+    "spacing_um": [9.6, 9.6, 9.6]
+  },
+  "limits": {"inference": false, "training": false, "target_search": false},
+  "claim_ceiling": "retained exposed-control preparation only; no accuracy or reading claim"
+}

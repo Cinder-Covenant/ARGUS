@@ -21,6 +21,9 @@ SCHEMA = "argus-hecate-plan-v1"
 SOURCE_REVISION = "9cb86e500e944b11a06a7020403cde5dffb5bcb2"
 SOURCE_BLOB_SHA1 = "a2d3494361d81107d4bd9268cfe377d80f22cd0a"
 CONTROL_ID = "local-control-0139-title-native9362"
+CONTROL_INPUT_SHA256 = "3bdfab85fed733757ed3a0021f6240e02afb9bda9af9a12a7ef67c5ae156eb86"
+CONTROL_ARRAY_SHA256 = "b7d2f762e67031302eb55420851c4236e5d11696ff26639d1915bcdc94208ca6"
+CONTROL_ARRAY_SHAPE = (16, 256, 256)
 _ROOT = Path(__file__).resolve().parents[2]
 _CONTROL_INPUT = Path(os.environ.get(
     "ARGUS_HECATE_CONTROL_INPUT", paths.science_data("controls", "pherc0139", "control_field_input.npy")))
@@ -124,8 +127,23 @@ def retained_control_binding(plan: dict) -> dict | None:
                 plan.get("argv") != expected_argv or
                 plan.get("source_blob_sha1") != SOURCE_BLOB_SHA1):
             return None
+        if _sha256(_CONTROL_INPUT) != CONTROL_INPUT_SHA256:
+            return None
+        import numpy as np
+        volume = np.load(_CONTROL_INPUT, mmap_mode="r", allow_pickle=False)
+        if volume.shape != CONTROL_ARRAY_SHAPE or volume.dtype != np.dtype("uint8"):
+            return None
+        if hashlib.sha256(volume.tobytes(order="C")).hexdigest() != CONTROL_ARRAY_SHA256:
+            return None
         preparation = json.loads(_CONTROL_PREPARATION.read_text(encoding="utf-8"))
-        if preparation.get("input", {}).get("sha256") != _sha256(_CONTROL_INPUT):
+        if (preparation.get("state") != "PREPARED_RETAINED_EXPOSED_CONTROL" or
+                preparation.get("physical_scroll") != "PHerc0139" or
+                preparation.get("acquisition_id") != CONTROL_ID or
+                preparation.get("input", {}).get("sha256") != CONTROL_INPUT_SHA256 or
+                preparation.get("input", {}).get("array_sha256") != CONTROL_ARRAY_SHA256 or
+                preparation.get("input", {}).get("shape_zyx") != list(CONTROL_ARRAY_SHAPE) or
+                preparation.get("input", {}).get("dtype") != "uint8" or
+                preparation.get("input", {}).get("spacing_um") != [9.6, 9.6, 9.6]):
             return None
         if _sha256(_CONTROL_CHECKPOINT) != inputs.get("checkpoint_sha256"):
             return None

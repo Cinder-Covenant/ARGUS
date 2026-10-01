@@ -41,6 +41,15 @@ def files_manifest(root: Path) -> list[dict]:
              "sha256": sha(p)} for p in sorted(root.rglob("*")) if p.is_file()]
 
 
+def repo_artifact_path(path: Path, artifact_root: Path) -> str:
+    """Encode an output using the configured repo artifact convention."""
+    try:
+        relative = path.resolve().relative_to(artifact_root.resolve())
+    except ValueError as exc:
+        raise ValueError("Hecate output is outside the configured artifact root") from exc
+    return "artifacts/" + relative.as_posix()
+
+
 def _replace_progress_file(temp: Path, destination: Path, *, attempts: int = 20,
                           retry_delay_s: float = 0.05) -> None:
     """Retry atomic progress replacement while the Windows monitor releases a read handle."""
@@ -74,6 +83,7 @@ def main() -> int:
     ns = ap.parse_args()
 
     from argus.core import hecate_candidate as candidate
+    artifact_root = candidate.paths.artifact_write_root().resolve()
     input_path = candidate._CONTROL_INPUT.resolve()
     preparation_path = candidate._CONTROL_PREPARATION.resolve()
     provider_path = candidate._CONTROL_PROVIDER.resolve()
@@ -88,7 +98,7 @@ def main() -> int:
     png = Path(ns.output_png).resolve()
     zarr_path = Path(ns.output_zarr).resolve()
     run_dir = png.parent
-    if (not run_dir.is_dir() or run_dir.parent != (ROOT / "artifacts").resolve() or
+    if (not run_dir.is_dir() or run_dir.parent != artifact_root or
             not run_dir.name.startswith("hecate_control_pherc0139_") or
             png.name != "prediction.png" or zarr_path != run_dir / "prediction_3d.zarr"):
         raise RuntimeError("output paths are outside the fresh canonical control run")
@@ -107,7 +117,12 @@ def main() -> int:
     if preparation.get("state") != "PREPARED_RETAINED_EXPOSED_CONTROL" or \
             preparation.get("physical_scroll") != "PHerc0139" or \
             preparation.get("acquisition_id") != LOCAL_CONTROL_ID or \
-            preparation.get("input", {}).get("sha256") != sha(input_path):
+            preparation.get("input", {}).get("sha256") != candidate.CONTROL_INPUT_SHA256 or \
+            preparation.get("input", {}).get("array_sha256") != candidate.CONTROL_ARRAY_SHA256 or \
+            preparation.get("input", {}).get("shape_zyx") != list(candidate.CONTROL_ARRAY_SHAPE) or \
+            preparation.get("input", {}).get("dtype") != "uint8" or \
+            preparation.get("input", {}).get("spacing_um") != [9.6, 9.6, 9.6] or \
+            sha(input_path) != candidate.CONTROL_INPUT_SHA256:
         raise RuntimeError("the prepared input no longer matches its retained-control receipt")
     if blob_sha1(provider_path) != PROVIDER_BLOB or sha(checkpoint_path) != CHECKPOINT_SHA:
         raise RuntimeError("pinned Hecate provider or checkpoint changed")
@@ -124,8 +139,8 @@ def main() -> int:
 
     if psutil.virtual_memory().available / 1024**3 < 10:
         raise RuntimeError("RAM admission floor is below 10 GiB")
-    if (shutil_free_gib(Path(ROOT.anchor or "/")) < 85 or
-            shutil_free_gib(Path(Path.home().anchor or "/")) < 50):
+    if (shutil_free_gib(Path(Path.home().anchor or "/")) < 50 or
+            shutil_free_gib(Path(artifact_root.anchor or "/")) < 85):
         raise RuntimeError("output/system run-start disk reserve was not met")
     free, _ = torch.cuda.mem_get_info(0)
     if free / 1024**3 < 1.25:
@@ -176,6 +191,9 @@ def main() -> int:
             _replace_progress_file(temp, progress_path)
 
         volume = np.load(input_path, mmap_mode="r", allow_pickle=False)
+        if volume.shape != candidate.CONTROL_ARRAY_SHAPE or volume.dtype != np.dtype("uint8") or \
+                hashlib.sha256(volume.tobytes(order="C")).hexdigest() != candidate.CONTROL_ARRAY_SHA256:
+            raise RuntimeError("prepared pixels differ from the fixed exposed-control array")
         output2 = np.lib.format.open_memmap(run_dir / "prediction_2d.npy", mode="w+",
                                             dtype=np.uint8, shape=(256, 256))
         output3 = np.lib.format.open_memmap(run_dir / "prediction_3d.npy", mode="w+",
@@ -200,8 +218,10 @@ def main() -> int:
             temp.unlink(missing_ok=True)
 
         outputs_manifest = files_manifest(zarr_path)
-        output_rel_png = png.relative_to(ROOT).as_posix()
-        output_rel_zarr = zarr_path.relative_to(ROOT).as_posix()
+        # Viewer receipts use the project artifact convention even when the
+        # installed source tree and configured ARGUS_REPO live in different roots.
+        output_rel_png = repo_artifact_path(png, artifact_root)
+        output_rel_zarr = repo_artifact_path(zarr_path, artifact_root)
         decoded = np.asarray(Image.open(png).convert("L"))
         source = preparation["source"]
         receipt = {

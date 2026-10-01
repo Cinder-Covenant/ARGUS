@@ -1,0 +1,43 @@
+{
+  "schema": "argus-hecate-runtime-load-verification-v1",
+  "state": "STRICT_LOAD_PASSED",
+  "recorded_utc": "2026-10-01T00:29:56Z",
+  "provider": {
+    "revision": "9cb86e500e944b11a06a7020403cde5dffb5bcb2",
+    "git_blob_sha1": "a2d3494361d81107d4bd9268cfe377d80f22cd0a",
+    "sha256": "c232c18a1a86cfb91257a00db13288202bb8ae33732ba26f7291a9b8adb8da59"
+  },
+  "checkpoint": {
+    "variant": "9.6um",
+    "sha256": "809f4f10f7cb7afa19b4bee0f7d2ab31edd7e11b664f9f210cc9c17f22fcfe5d"
+  },
+  "runtime": {
+    "python": "3.14.3",
+    "torch": "2.14.0+cu126",
+    "device": "cuda",
+    "sampling_um": 9.6,
+    "patch_size": [16, 64, 64],
+    "parameters": 130413270,
+    "strict_load_seconds": 3.981,
+    "gpu": "NVIDIA GeForce GTX 1660 Ti"
+  },
+  "resources": {
+    "ram_before_gib": 15.245,
+    "ram_after_gib": 14.485,
+    "whole_gpu_free_before_mib": 4806,
+    "whole_gpu_free_after_mib": 4101,
+    "temperature_before_c": 50,
+    "temperature_after_c": 50,
+    "c_free_gib": 98.865,
+    "t_free_gib": 89.670,
+    "cuda_allocator_fraction": 0.5,
+    "torch_cpu_threads": 2
+  },
+  "execution": {
+    "model_load_only": true,
+    "inference": false,
+    "training": false,
+    "target_search": false
+  },
+  "claim_ceiling": "strict model load only; no inference, accuracy or reading result"
+}
