@@ -1,5 +1,7 @@
 # September publication receipt
 
+**Latest availability:** the [public resource index](PUBLIC_RESOURCES.md) now links released checkpoint files and derived research assets, alongside original-host CT and mesh pointers. The dated snapshots below preserve the earlier publication sequence; their private-payload statements describe those earlier releases.
+
 Publication status checked September 30, 2026, at 20:49 UTC. This is a publication wrapper around the preserved prepublication evidence, not a change to its original receipts.
 
 | Contribution | Published identity | Status at this check |
@@ -46,3 +48,15 @@ The [five-minute reader guide](research_tour/README.md) connects the previously 
 [Villa #1940](https://github.com/ScrollPrize/villa/pull/1940), at `3aa4d7281194141ba58f6b4962f8b66a62864e51`, corrects the community entry's control description and links the September evidence and research collection. The author supplied the motivation text. At this check, #1897, #1901 and #1940 were the author's three open Villa PRs. #1940's applicable GitHub checks passed; the Vercel preview reported that maintainer authorization was required. This is an open contribution, not an accepted merge.
 
 The preceding `1699f9c` manifest, form text and URL list are preserved in `release_history/`. The updated form text and 27-link list remain for the operator to submit; this closeout does not submit the Google Form.
+
+## Public research files and source pointers — 2026-10-01 02:49 UTC
+
+The [model release](https://huggingface.co/darthceltic85/argus-research-baselines/commit/5b4e750bf1174185bd1d301d0f12df75689a1b7a) contains four original retained checkpoints totaling 4,125,955,140 bytes, plus model cards, configurations, source pins, notices and a metadata inspection helper (23 files). The [resource dataset](https://huggingface.co/datasets/darthceltic85/argus-research-resources/commit/b0b09fe4311e833b3ca530a1449c7195643362dc) contains 254 files totaling 46,032,414 bytes: CT selection/source records, the 1,505-point atlas, 63 geometry arrays over 21 surfaces, 13 generated mesh examples, calibration/diagnostic records and archived research source. Original ARGUS and Villa notices accompany the source snapshots.
+
+All 277 expected public file identities matched the explicit local release inventories using anonymous Git blob or LFS SHA-256/size metadata. Eleven representative immutable download URLs returned anonymous HTTP 200, including all four checkpoints. [Model verification](public_payloads/MODEL_PUBLIC_VERIFICATION.json) and [resource verification](public_payloads/RESOURCE_PUBLIC_VERIFICATION.json) record these checks. This verifies published bytes and access; no checkpoint was deserialized, no new training/inference was run, and historical code was not promoted to a verified fresh-machine replay.
+
+The original CT scans already have public hosts. The six exact catalog entries declare CC BY-NC 4.0, and their Zarr metadata was accessible anonymously. The dataset links those original volumes rather than mirroring CT pixels. It identifies 3,566 recoverable crop origins, 832 PHerc1203 origins that remain unresolved, 30 repeated exact source boxes and 43 edge containers. Those counts prevent the 4,398 container records from being misrepresented as independent or unique coverage. Original mesh inputs and already-public survey/system-tag resources are likewise linked rather than copied.
+
+The starter's source-terms page and metadata bindings now cite the exact PHerc0268 license evidence; its 12 synthetic tests passed after this documentation/metadata update. The preceding `ba6d396` manifest, form, URL list and starter evidence are preserved in `release_history/`. The updated copy-ready form remains for the author to submit. This publication does not submit it.
+
+All 92 original mesh-file links for 23 upstream input meshes returned anonymous HEAD 200 with matching historical byte lengths and ETags. The [mesh-link receipt](public_payloads/UPSTREAM_MESH_LINK_VERIFICATION.json) records this access check; no remote mesh payload was downloaded or rehashed.

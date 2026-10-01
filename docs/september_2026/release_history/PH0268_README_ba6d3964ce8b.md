@@ -33,7 +33,7 @@ Review applicable [source terms](source_terms.md) first. A future researcher can
 python -B reconstruct.py --allow-source-fetch --acknowledge-source-terms --output ./NEW_PH0268_DATA
 ```
 
-`NEW_PH0268_DATA` must not exist; its parent must already exist. Overwrite/resume, traversal and parent link/junction indirection are refused. Both opt-in flags are required. Remote shape, chunks and dtype must match before writing. Only the declared crop slices are requested. Socket timeouts are set. Failures can leave partial output; it is not a complete dataset until `local_manifest.json` is written and validated. The exact original volume now has verified CC BY-NC 4.0 metadata; follow its attribution, noncommercial and change-notice terms. This starter links the original pixels and does not mirror them.
+`NEW_PH0268_DATA` must not exist; its parent must already exist. Overwrite/resume, traversal and parent link/junction indirection are refused. Both opt-in flags are required. Remote shape, chunks and dtype must match before writing. Only the declared crop slices are requested. Socket timeouts are set. Failures can leave partial output; it is not a complete dataset until `local_manifest.json` is written and validated. Never publish reconstructed pixels merely because fetching succeeded: exact redistribution applicability is unresolved.
 
 **The command above was not run against real data by this addition.** The remote layout is supported by the retained original fetch/helper source, while reconstruction was tested against an independent synthetic mock source. This distinction remains part of the release evidence.
 

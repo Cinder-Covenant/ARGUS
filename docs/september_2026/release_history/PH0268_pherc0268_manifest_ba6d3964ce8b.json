@@ -58,7 +58,7 @@
     "head_is_not_proof_of_training_time_revision": true
   },
   "payload_status": "archived byte hashes and JSON only; no pixels bundled or decoded in this audit",
-  "terms_status": "Exact official PHerc0268 volume metadata declares CC BY-NC 4.0; original-host recipe only; see source_terms.md",
+  "terms_status": "exact PH0268 S3 redistribution applicability unresolved; see source_terms.md",
   "entries": [
     {
       "name": "g16_000000_z10171_y2503_x6301.zarr",

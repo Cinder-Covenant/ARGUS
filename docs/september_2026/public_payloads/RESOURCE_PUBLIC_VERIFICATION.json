@@ -1,0 +1,1562 @@
+{
+  "verified_utc": "2026-10-01T02:49:06.745193+00:00",
+  "repository": "darthceltic85/argus-research-resources",
+  "commit": "b0b09fe4311e833b3ca530a1449c7195643362dc",
+  "anonymous": true,
+  "private": false,
+  "file_count": 254,
+  "files": [
+    {
+      "path": "geometry/atlas/full_survey_result.json",
+      "size": 279691,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/atlas/full_survey_classification.json",
+      "size": 934309,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/atlas/archival_source/classify_full_survey.py",
+      "size": 4873,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/atlas/archival_source/surface_resolvability_audit.py",
+      "size": 10704,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/atlas/archival_source/dig_site_patch_construction.py",
+      "size": 21181,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/COHORT_MANIFEST.json",
+      "size": 13757,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/COHORT_MANIFEST.sha256.txt",
+      "size": 133,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/INPUT_HASHES.json",
+      "size": 40523,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/REPLAY_HASHES.txt",
+      "size": 3109,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/RESULTS.json",
+      "size": 126022,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/RESULTS.csv",
+      "size": 8315,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/GO_NO_GO.md",
+      "size": 5852,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/HEADLINE.json",
+      "size": 1660,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/RUN_LOG.md",
+      "size": 1923,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/freeze.py",
+      "size": 5294,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/driver.py",
+      "size": 8081,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/cohort_driver.py",
+      "size": 18196,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/flatten_from_labels_AMEND1.py",
+      "size": 16836,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/aggregate.py",
+      "size": 4994,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/fetch.py",
+      "size": 1798,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0009B/20250510172639/angle_defect.npy",
+      "size": 210868,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0009B/20250510172639/cell_class.npy",
+      "size": 52352,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0009B/20250510172639/chart_labels.npy",
+      "size": 104576,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0009B/20250510172639/report.json",
+      "size": 6870,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0009B/20250510172639/flatten_charts.json",
+      "size": 1150,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0009B/20250510172804/angle_defect.npy",
+      "size": 240848,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0009B/20250510172804/cell_class.npy",
+      "size": 59810,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0009B/20250510172804/chart_labels.npy",
+      "size": 119492,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0009B/20250510172804/report.json",
+      "size": 13547,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0009B/20250510172804/flatten_charts.json",
+      "size": 1118,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0009B/20250511200236/angle_defect.npy",
+      "size": 167360,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0009B/20250511200236/cell_class.npy",
+      "size": 41528,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0009B/20250511200236/chart_labels.npy",
+      "size": 82928,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0009B/20250511200236/report.json",
+      "size": 12439,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0009B/20250511200236/flatten_charts.json",
+      "size": 1120,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0139/20250108000000-w025_2025010863/angle_defect.npy",
+      "size": 495168,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0139/20250108000000-w025_2025010863/cell_class.npy",
+      "size": 123185,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0139/20250108000000-w025_2025010863/chart_labels.npy",
+      "size": 246242,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0139/20250108000000-w025_2025010863/report.json",
+      "size": 14125,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0139/20250108000000-w025_2025010863/flatten_charts.json",
+      "size": 1172,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0139/20250108000001-w026_2025010854/angle_defect.npy",
+      "size": 544736,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0139/20250108000001-w026_2025010854/cell_class.npy",
+      "size": 135543,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0139/20250108000001-w026_2025010854/chart_labels.npy",
+      "size": 270958,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0139/20250108000001-w026_2025010854/report.json",
+      "size": 11744,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0139/20250108000001-w026_2025010854/flatten_charts.json",
+      "size": 1170,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0139/20250108000002-w027_2025010845/angle_defect.npy",
+      "size": 534488,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0139/20250108000002-w027_2025010845/cell_class.npy",
+      "size": 132988,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0139/20250108000002-w027_2025010845/chart_labels.npy",
+      "size": 265848,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0139/20250108000002-w027_2025010845/report.json",
+      "size": 11513,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0139/20250108000002-w027_2025010845/flatten_charts.json",
+      "size": 1169,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0172/20250917143559-w062_20250917143559205_flatboi/angle_defect.npy",
+      "size": 1731368,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0172/20250917143559-w062_20250917143559205_flatboi/cell_class.npy",
+      "size": 431622,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0172/20250917143559-w062_20250917143559205_flatboi/chart_labels.npy",
+      "size": 863116,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0172/20250917143559-w062_20250917143559205_flatboi/report.json",
+      "size": 14009,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0172/20250917143559-w062_20250917143559205_flatboi/flatten_charts.json",
+      "size": 944,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0172/20250926112011-w078_20250926112011918_flatboi/angle_defect.npy",
+      "size": 1712628,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0172/20250926112011-w078_20250926112011918_flatboi/cell_class.npy",
+      "size": 426944,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0172/20250926112011-w078_20250926112011918_flatboi/chart_labels.npy",
+      "size": 853760,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0172/20250926112011-w078_20250926112011918_flatboi/report.json",
+      "size": 13899,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0172/20250926112011-w078_20250926112011918_flatboi/flatten_charts.json",
+      "size": 944,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0172/20250926113336-w079_20250926113336891_flatboi/angle_defect.npy",
+      "size": 2378504,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0172/20250926113336-w079_20250926113336891_flatboi/cell_class.npy",
+      "size": 593178,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0172/20250926113336-w079_20250926113336891_flatboi/chart_labels.npy",
+      "size": 1186228,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0172/20250926113336-w079_20250926113336891_flatboi/report.json",
+      "size": 13723,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0172/20250926113336-w079_20250926113336891_flatboi/flatten_charts.json",
+      "size": 944,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0343P/20250511003658-tifxyz/angle_defect.npy",
+      "size": 70992,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0343P/20250511003658-tifxyz/cell_class.npy",
+      "size": 17570,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0343P/20250511003658-tifxyz/chart_labels.npy",
+      "size": 35012,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0343P/20250511003658-tifxyz/report.json",
+      "size": 12390,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0343P/20250511003658-tifxyz/flatten_charts.json",
+      "size": 1158,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0343P/20250902170435--5_b2/angle_defect.npy",
+      "size": 79504,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0343P/20250902170435--5_b2/cell_class.npy",
+      "size": 19688,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0343P/20250902170435--5_b2/chart_labels.npy",
+      "size": 39248,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0343P/20250902170435--5_b2/report.json",
+      "size": 8979,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0343P/20250902170435--5_b2/flatten_charts.json",
+      "size": 1157,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0343P/20250902170441--4_b2/angle_defect.npy",
+      "size": 83288,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0343P/20250902170441--4_b2/cell_class.npy",
+      "size": 20628,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0343P/20250902170441--4_b2/chart_labels.npy",
+      "size": 41128,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0343P/20250902170441--4_b2/report.json",
+      "size": 12400,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0343P/20250902170441--4_b2/flatten_charts.json",
+      "size": 1212,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0814/20250925161630-auto_grown_20250925161630635/angle_defect.npy",
+      "size": 980528,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0814/20250925161630-auto_grown_20250925161630635/cell_class.npy",
+      "size": 244021,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0814/20250925161630-auto_grown_20250925161630635/chart_labels.npy",
+      "size": 487914,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0814/20250925161630-auto_grown_20250925161630635/report.json",
+      "size": 16658,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0814/20250925161630-auto_grown_20250925161630635/flatten_charts.json",
+      "size": 1236,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0814/20250925182632-auto_grown_20250925182632715/angle_defect.npy",
+      "size": 1036432,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0814/20250925182632-auto_grown_20250925182632715/cell_class.npy",
+      "size": 257882,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0814/20250925182632-auto_grown_20250925182632715/chart_labels.npy",
+      "size": 515636,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0814/20250925182632-auto_grown_20250925182632715/report.json",
+      "size": 18052,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0814/20250925182632-auto_grown_20250925182632715/flatten_charts.json",
+      "size": 1235,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0814/20250925204843-auto_grown_20250925204843950/angle_defect.npy",
+      "size": 1478432,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0814/20250925204843-auto_grown_20250925204843950/cell_class.npy",
+      "size": 367880,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0814/20250925204843-auto_grown_20250925204843950/chart_labels.npy",
+      "size": 735632,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0814/20250925204843-auto_grown_20250925204843950/report.json",
+      "size": 22093,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0814/20250925204843-auto_grown_20250925204843950/flatten_charts.json",
+      "size": 1183,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0841/20260220213127-w00/angle_defect.npy",
+      "size": 201000,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0841/20260220213127-w00/cell_class.npy",
+      "size": 49898,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0841/20260220213127-w00/chart_labels.npy",
+      "size": 99668,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0841/20260220213127-w00/report.json",
+      "size": 13706,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0841/20260220213127-w00/flatten_charts.json",
+      "size": 1156,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0841/20260220214732-auto_grown_20260220144552896/angle_defect.npy",
+      "size": 219136,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0841/20260220214732-auto_grown_20260220144552896/cell_class.npy",
+      "size": 54413,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0841/20260220214732-auto_grown_20260220144552896/chart_labels.npy",
+      "size": 108698,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0841/20260220214732-auto_grown_20260220144552896/report.json",
+      "size": 14142,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0841/20260220214732-auto_grown_20260220144552896/flatten_charts.json",
+      "size": 1680,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0841/20260221022814-auto_grown_20260220174252405/angle_defect.npy",
+      "size": 184368,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0841/20260221022814-auto_grown_20260220174252405/cell_class.npy",
+      "size": 45756,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0841/20260221022814-auto_grown_20260220174252405/chart_labels.npy",
+      "size": 91384,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0841/20260221022814-auto_grown_20260220174252405/report.json",
+      "size": 14094,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0841/20260221022814-auto_grown_20260220174252405/flatten_charts.json",
+      "size": 1649,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc1667/20240304141531-w013_20240304141531_flatboi/angle_defect.npy",
+      "size": 3086440,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc1667/20240304141531-w013_20240304141531_flatboi/cell_class.npy",
+      "size": 769856,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc1667/20240304141531-w013_20240304141531_flatboi/chart_labels.npy",
+      "size": 1539584,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc1667/20240304141531-w013_20240304141531_flatboi/report.json",
+      "size": 14316,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc1667/20240304141531-w013_20240304141531_flatboi/flatten_charts.json",
+      "size": 942,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0343P/20250904233748-0_b2/angle_defect.npy",
+      "size": 90628,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0343P/20250904233748-0_b2/cell_class.npy",
+      "size": 22448,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0343P/20250904233748-0_b2/chart_labels.npy",
+      "size": 44768,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0343P/20250904233748-0_b2/report.json",
+      "size": 10696,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0343P/20250904233748-0_b2/flatten_charts.json",
+      "size": 1156,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0009B/20250919130642-auto_grown_20250919060642061/angle_defect.npy",
+      "size": 377796,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0009B/20250919130642-auto_grown_20250919060642061/cell_class.npy",
+      "size": 93924,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0009B/20250919130642-auto_grown_20250919060642061/chart_labels.npy",
+      "size": 187720,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0009B/20250919130642-auto_grown_20250919060642061/report.json",
+      "size": 12780,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/derived_maps/PHerc0009B/20250919130642-auto_grown_20250919060642061/flatten_charts.json",
+      "size": 1150,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/surface_qualify/pyproject_entry.patch.txt",
+      "size": 909,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/surface_qualify/vesuvius/docs/surface_qualify.md",
+      "size": 4132,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/surface_qualify/vesuvius/src/vesuvius/surface_qualify/__init__.py",
+      "size": 363,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/surface_qualify/vesuvius/src/vesuvius/surface_qualify/__main__.py",
+      "size": 48,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/surface_qualify/vesuvius/src/vesuvius/surface_qualify/cli.py",
+      "size": 4761,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/surface_qualify/vesuvius/src/vesuvius/surface_qualify/core.py",
+      "size": 22963,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/surface_qualify/vesuvius/src/vesuvius/surface_qualify/report.py",
+      "size": 3279,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/surface_qualify/vesuvius/tests/test_surface_qualify.py",
+      "size": 14118,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/exp7/CONSTRUCTION_DEFECTS_LOG.json",
+      "size": 915,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/exp7/gate7.py",
+      "size": 26863,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/exp7/GATE7_FROZEN.json",
+      "size": 644,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/exp7/PROTOCOL.json",
+      "size": 8880,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/exp7/results/CALIBRATION_RECEIPT.json",
+      "size": 5398,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/exp7/results/EVAL7_20250929222256117.json",
+      "size": 6410,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/exp7/results/EVAL7_20251005221856743.json",
+      "size": 7384,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/exp7/results/EVAL7_20251005230118636.json",
+      "size": 7340,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/exp7/results/EVAL7_20251005230830030.json",
+      "size": 7333,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/exp7/results/EVAL7_20251005230830031.json",
+      "size": 7614,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/exp7/results/EXP7_REPORT.md",
+      "size": 6667,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/exp7/results/REFERENCE_VALIDATION_ROWS.json",
+      "size": 20065,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/exp7/dependency_source/exp6_resolvability/gate6.py",
+      "size": 33269,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/exp7/dependency_source/exp5_calibration/gate5.py",
+      "size": 41013,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/exp7/dependency_source/exp4_diagnostic/diagnose.py",
+      "size": 59457,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/exp7/dependency_source/exp3_reflattening/reflatten.py",
+      "size": 43613,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/exp7/dependency_source/exp2_flattening_distortion/distortion_audit.py",
+      "size": 10840,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/exp7/dependency_source/exp1_renderer_parity/renderer_parity.py",
+      "size": 24405,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/exp7/dependency_source/mesh_to_surface.py",
+      "size": 48507,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/exp7/dependency_source/exp6_resolvability/CALIBRATION_RECEIPT.json",
+      "size": 73899,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc1203_auto_grown_20260917121919592/x.tif",
+      "size": 27082,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc1203_auto_grown_20260917121919592/y.tif",
+      "size": 27082,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc1203_auto_grown_20260917121919592/z.tif",
+      "size": 27082,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc1203_auto_grown_20260917121919592/generations.tif",
+      "size": 13634,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc1203_auto_grown_20260917121919592/meta.json",
+      "size": 982,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/receipts/growth_receipt.json",
+      "size": 6402,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/receipts/geometry_receipt.json",
+      "size": 2436,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/receipts/params.json",
+      "size": 98,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/receipts/plan.json",
+      "size": 4618,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/receipts/candidates.json",
+      "size": 4365,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/receipts/u03_closeout_bundle_20260917.json",
+      "size": 402,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/receipts/u03_closeout_gate_result_20260917.json",
+      "size": 1099,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/receipts/u03_closeout_gate_result_20260917_after_promotion.json",
+      "size": 1690,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/receipts/ui_receipt.json",
+      "size": 2336,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/receipts/N1950_FINDING.json",
+      "size": 5452,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/receipts/N1951_RUN_RECEIPT.json",
+      "size": 2456,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/receipts/N1951_EVIDENCE_PACKAGE.json",
+      "size": 10254,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/receipts/N1951_VC3D_TIFXYZ_WINDING_REAL_INVOCATION_20260917.json",
+      "size": 6075,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/patch_coordinate_diagnostics/inventory.json",
+      "size": 1688721,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/patch_coordinate_diagnostics/sweep_results.jsonl",
+      "size": 1348397,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/patch_coordinate_diagnostics/backfill_results.jsonl",
+      "size": 17409,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/system_tags/model_exposure_REGISTRY.json",
+      "size": 26740,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820091027589/x.tif",
+      "size": 59722,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820091027589/y.tif",
+      "size": 59722,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820091027589/z.tif",
+      "size": 59722,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820091027589/generations.tif",
+      "size": 29954,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820091027589/meta.json",
+      "size": 1030,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820091727939/x.tif",
+      "size": 59722,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820091727939/y.tif",
+      "size": 59722,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820091727939/z.tif",
+      "size": 59722,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820091727939/generations.tif",
+      "size": 29954,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820091727939/meta.json",
+      "size": 1027,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820012510755/x.tif",
+      "size": 1482,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820012510755/y.tif",
+      "size": 1482,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820012510755/z.tif",
+      "size": 1482,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820012510755/generations.tif",
+      "size": 834,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820012510755/meta.json",
+      "size": 1026,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820145423058/x.tif",
+      "size": 365002,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820145423058/y.tif",
+      "size": 365002,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820145423058/z.tif",
+      "size": 365002,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820145423058/generations.tif",
+      "size": 182594,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820145423058/meta.json",
+      "size": 994,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820145227349/x.tif",
+      "size": 7242,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820145227349/y.tif",
+      "size": 7242,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820145227349/z.tif",
+      "size": 7242,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820145227349/generations.tif",
+      "size": 3714,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820145227349/meta.json",
+      "size": 995,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820071157085/x.tif",
+      "size": 59722,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820071157085/y.tif",
+      "size": 59722,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820071157085/z.tif",
+      "size": 59722,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820071157085/generations.tif",
+      "size": 29954,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820071157085/meta.json",
+      "size": 1024,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820071533006/x.tif",
+      "size": 1482,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820071533006/y.tif",
+      "size": 1482,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820071533006/z.tif",
+      "size": 1482,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820071533006/generations.tif",
+      "size": 834,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820071533006/meta.json",
+      "size": 1034,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820084549983/x.tif",
+      "size": 59722,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820084549983/y.tif",
+      "size": 59722,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820084549983/z.tif",
+      "size": 59722,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820084549983/generations.tif",
+      "size": 29954,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820084549983/meta.json",
+      "size": 1027,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820083621424/x.tif",
+      "size": 1482,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820083621424/y.tif",
+      "size": 1482,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820083621424/z.tif",
+      "size": 1482,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820083621424/generations.tif",
+      "size": 834,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/PHerc0268_historical_fixtures/auto_grown_20260820083621424/meta.json",
+      "size": 1033,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/suspect_growth_fixtures/PHerc0125/auto_grown_20260904185829064/x.tif",
+      "size": 10954,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/suspect_growth_fixtures/PHerc0125/auto_grown_20260904185829064/y.tif",
+      "size": 10954,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/suspect_growth_fixtures/PHerc0125/auto_grown_20260904185829064/z.tif",
+      "size": 10954,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/suspect_growth_fixtures/PHerc0125/auto_grown_20260904185829064/meta.json",
+      "size": 7222,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/suspect_growth_fixtures/PHerc0125/auto_grown_20260904185829064/n1332_verify.json",
+      "size": 1180,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/suspect_growth_fixtures/PHerc0125/auto_grown_20260904185829064/n1331_staging.json",
+      "size": 1427,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/suspect_growth_fixtures/PHerc0125/auto_grown_20260904201447601/x.tif",
+      "size": 35872,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/suspect_growth_fixtures/PHerc0125/auto_grown_20260904201447601/y.tif",
+      "size": 35872,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/suspect_growth_fixtures/PHerc0125/auto_grown_20260904201447601/z.tif",
+      "size": 35872,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/suspect_growth_fixtures/PHerc0125/auto_grown_20260904201447601/meta.json",
+      "size": 30652,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/suspect_growth_fixtures/PHerc0125/auto_grown_20260904201447601/n1332_verify.json",
+      "size": 2505,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/suspect_growth_fixtures/PHerc0125/auto_grown_20260904201447601/n1331_staging.json",
+      "size": 951,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/suspect_growth_fixtures/PHerc1451/auto_grown_20260904230858194/x.tif",
+      "size": 293036,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/suspect_growth_fixtures/PHerc1451/auto_grown_20260904230858194/y.tif",
+      "size": 293036,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/suspect_growth_fixtures/PHerc1451/auto_grown_20260904230858194/z.tif",
+      "size": 293036,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/suspect_growth_fixtures/PHerc1451/auto_grown_20260904230858194/meta.json",
+      "size": 30834,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/suspect_growth_fixtures/PHerc1451/auto_grown_20260904230858194/n1332_verify.json",
+      "size": 871,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/suspect_growth_fixtures/PHerc1451/auto_grown_20260904230858194/n1331_staging.json",
+      "size": 1463,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/LICENSES/VESUVIUS-MIT.txt",
+      "size": 1735,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/LICENSES/ARGUS-LICENSE.txt",
+      "size": 11345,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/README.md",
+      "size": 7461,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/atlas/SITE_INDEX.csv",
+      "size": 117763,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/ARRAY_HEADERS.json",
+      "size": 15662,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/cohort/UPSTREAM_MESH_LINKS.json",
+      "size": 48415,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/grown_meshes/MESH_INDEX.json",
+      "size": 9502,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "ct/README.md",
+      "size": 8335,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "ct/source_catalog.json",
+      "size": 11447,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "ct/ct_selection_manifest.json",
+      "size": 9029717,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "ct/source_metadata_access.json",
+      "size": 23049,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "README.md",
+      "size": 4785,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/LICENSES/ARGUS-NOTICE.txt",
+      "size": 6413,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/LICENSES/VILLA-MIT.txt",
+      "size": 1075,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "geometry/PUBLIC_MANIFEST.json",
+      "size": 103869,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "RESOURCE_MANIFEST.json",
+      "size": 55462,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    }
+  ],
+  "download_head_checks": [
+    {
+      "path": "README.md",
+      "status": 200
+    },
+    {
+      "path": "ct/README.md",
+      "status": 200
+    },
+    {
+      "path": "ct/ct_selection_manifest.json",
+      "status": 200
+    },
+    {
+      "path": "geometry/README.md",
+      "status": 200
+    },
+    {
+      "path": "geometry/PUBLIC_MANIFEST.json",
+      "status": 200
+    },
+    {
+      "path": "RESOURCE_MANIFEST.json",
+      "status": 200
+    }
+  ],
+  "payload_deserialized": false,
+  "new_inference": false
+}

@@ -1,0 +1,172 @@
+{
+  "verified_utc": "2026-10-01T02:47:11.362136+00:00",
+  "repository": "darthceltic85/argus-research-baselines",
+  "commit": "5b4e750bf1174185bd1d301d0f12df75689a1b7a",
+  "anonymous": true,
+  "private": false,
+  "file_count": 23,
+  "files": [
+    {
+      "path": "pherc1203-mae-v4b/pherc1203_mae_v4b_final.pth",
+      "size": 502669047,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "pherc0268-mae-epoch29/phc0268_mae_v1_epoch29.pth",
+      "size": 502668637,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "pherc0268-dino-proof-step3000/checkpoint_step_003000_v2.pt",
+      "size": 1560125368,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "multiscroll-coarse-dino-step3750/checkpoint_step_003750.pt",
+      "size": 1560492088,
+      "method": "anonymous LFS SHA-256 and size",
+      "passed": true
+    },
+    {
+      "path": "inspect_checkpoint.py",
+      "size": 3506,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "LICENSE_WEIGHTS.md",
+      "size": 578,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "LICENSES/dinovol-Apache-2.0.txt",
+      "size": 11359,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "LICENSES/dinovol-MIT.txt",
+      "size": 1075,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "LICENSES/helper-MIT.txt",
+      "size": 1077,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "LICENSES/villa-MIT.txt",
+      "size": 1075,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "METADATA_INSPECTION_RECEIPT.json",
+      "size": 1780,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "MODEL_MANIFEST.json",
+      "size": 5426,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "multiscroll-coarse-dino-step3750/README.md",
+      "size": 4675,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "multiscroll-coarse-dino-step3750/training_config.sanitized.json",
+      "size": 396438,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "pherc0268-dino-proof-step3000/README.md",
+      "size": 4657,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "pherc0268-dino-proof-step3000/training_config.sanitized.json",
+      "size": 43734,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "pherc0268-mae-epoch29/README.md",
+      "size": 4356,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "pherc0268-mae-epoch29/training_config.yaml",
+      "size": 1535,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "pherc1203-mae-v4b/README.md",
+      "size": 4263,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "pherc1203-mae-v4b/training_config.yaml",
+      "size": 615,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "README.md",
+      "size": 4431,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "SOURCE_PINS.json",
+      "size": 844,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    },
+    {
+      "path": "UPSTREAM_NOTICES.md",
+      "size": 1234,
+      "method": "anonymous Git blob SHA-1 and size against SHA-256-bound local source",
+      "passed": true
+    }
+  ],
+  "download_head_checks": [
+    {
+      "path": "README.md",
+      "status": 200
+    },
+    {
+      "path": "pherc1203-mae-v4b/pherc1203_mae_v4b_final.pth",
+      "status": 200
+    },
+    {
+      "path": "pherc0268-mae-epoch29/phc0268_mae_v1_epoch29.pth",
+      "status": 200
+    },
+    {
+      "path": "pherc0268-dino-proof-step3000/checkpoint_step_003000_v2.pt",
+      "status": 200
+    },
+    {
+      "path": "multiscroll-coarse-dino-step3750/checkpoint_step_003750.pt",
+      "status": 200
+    }
+  ],
+  "payload_deserialized": false,
+  "new_inference": false
+}

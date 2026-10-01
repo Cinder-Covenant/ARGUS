@@ -41,7 +41,7 @@ def main():
                                "local_repository_head_at_audit": "07bd96a1a465511c778af9107ec396323e5ed222",
                                "head_is_not_proof_of_training_time_revision": True},
                 "payload_status": "archived byte hashes and JSON only; no pixels bundled or decoded in this audit",
-                "terms_status": "exact PH0268 S3 redistribution applicability unresolved; see source_terms.md",
+                "terms_status": "Exact official PHerc0268 volume metadata declares CC BY-NC 4.0; original-host recipe only; see source_terms.md",
                 "entries": entries}
     path = destination / "pherc0268_manifest.json"
     path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8", newline="\n")

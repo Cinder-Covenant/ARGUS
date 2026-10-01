@@ -2,7 +2,7 @@
   "schema": "pherc0268-selection-v1",
   "count": 24,
   "rule": "per anchor: lexicographically sorted retained basenames; indices floor(j*(N-1)/7), j=0..7",
-  "manifest_sha256": "cbf586efda2d93b2204ff229ee879d956f3ad089002d1358108fb64957d95854",
+  "manifest_sha256": "0a64c89c6f94564d51fe0d5ce81e9e70e279cc2241a116aadba8d0db45a885b6",
   "names": [
     "g16_000000_z10171_y2503_x6301.zarr",
     "g16_000301_z10171_y3103_x6501.zarr",

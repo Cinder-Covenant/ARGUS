@@ -2,7 +2,7 @@
   "schema": "pherc0268-metadata-box-review-v1",
   "reviewed_at": "2026-09-30T22:05:35.767350-04:00",
   "manifest_file": "pherc0268_manifest.json",
-  "manifest_sha256": "cbf586efda2d93b2204ff229ee879d956f3ad089002d1358108fb64957d95854",
+  "manifest_sha256": "0a64c89c6f94564d51fe0d5ce81e9e70e279cc2241a116aadba8d0db45a885b6",
   "validator_source_sha256_at_review": "696cc6fee3fb3451389cef2d7538967c3da14285dcfd060144e4058186f847b0",
   "source_uri": "s3://vesuvius-challenge-open-data/PHerc0268/volumes/20251110183117-8.640um-1.2m-116keV-masked.zarr",
   "axes": "ZYX",
@@ -33,11 +33,5 @@
     "No decoded-content, scientific-content or current remote-source identity validation was performed.",
     "This receipt concerns the 342 PHerc0268 boxes only; overlap of the broader 4398-field portfolio remains unresolved."
   ],
-  "integration_note": "Manifest content unchanged; its file SHA256 reflects LF newline normalization for publication.",
-  "license_metadata_followup": {
-    "updated_utc": "2026-10-01T02:52:26.136532+00:00",
-    "prior_manifest_sha256": "0a64c89c6f94564d51fe0d5ce81e9e70e279cc2241a116aadba8d0db45a885b6",
-    "comparison": "All parsed manifest keys and values except terms_status are exactly equal to the archived prior manifest. No coordinates, field hashes or recorded coverage results changed.",
-    "original_receipt": "../../docs/september_2026/release_history/PH0268_pherc0268_box_coverage_ba6d3964ce8b.json"
-  }
+  "integration_note": "Manifest content unchanged; its file SHA256 reflects LF newline normalization for publication."
 }

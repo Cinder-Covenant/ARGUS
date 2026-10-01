@@ -25,15 +25,3 @@ https://huggingface.co/scrollprize/hecate/discussions/1#6abdafab39f70bb1d81f0322
 https://github.com/ScrollPrize/villa/pull/1940
 https://github.com/Cinder-Covenant/ARGUS/blob/main/artifacts/pherc0268_starter/README.md
 https://github.com/Cinder-Covenant/ARGUS/blob/main/docs/september_2026/research_tour/README.md
-https://github.com/Cinder-Covenant/ARGUS/blob/main/docs/september_2026/PUBLIC_RESOURCES.md
-https://huggingface.co/darthceltic85/argus-research-baselines
-https://huggingface.co/darthceltic85/argus-research-baselines/tree/5b4e750bf1174185bd1d301d0f12df75689a1b7a
-https://huggingface.co/datasets/darthceltic85/argus-research-resources
-https://huggingface.co/datasets/darthceltic85/argus-research-resources/blob/b0b09fe4311e833b3ca530a1449c7195643362dc/ct/README.md
-https://huggingface.co/datasets/darthceltic85/argus-research-resources/blob/b0b09fe4311e833b3ca530a1449c7195643362dc/ct/source_catalog.json
-https://huggingface.co/datasets/darthceltic85/argus-research-resources/blob/b0b09fe4311e833b3ca530a1449c7195643362dc/ct/ct_selection_manifest.json
-https://huggingface.co/datasets/darthceltic85/argus-research-resources/blob/b0b09fe4311e833b3ca530a1449c7195643362dc/geometry/README.md
-https://github.com/DarthCeltic/herculaneum-scroll-tools
-https://github.com/Cinder-Covenant/ARGUS/blob/main/docs/exposure_example/EXAMPLE_RECORD.json
-https://github.com/Cinder-Covenant/ARGUS/blob/main/docs/exposure_example/EXAMPLE_REPORT.md
-https://github.com/Cinder-Covenant/ARGUS/blob/main/docs/exposure_example/evidence_graph.svg

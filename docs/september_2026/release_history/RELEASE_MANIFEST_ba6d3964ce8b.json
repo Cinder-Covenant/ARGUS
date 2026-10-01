@@ -3,8 +3,8 @@
   "note": "sha256 of every file in this release except this manifest itself. Verify with: python tools/verify_manifest.py (run from this directory, wherever it sits)",
   "layout": "standalone",
   "tree_sha256_recipe": "sha256 of the UTF-8 text made of one line per row of `files`, rows ordered by path string: <path> NUL <sha256> newline. tools/verify_manifest.py recomputes it.",
-  "file_count": 762,
-  "tree_sha256": "685cbb12f6bda1f27a2c9786daee12bbe2145aa6f1c3258ae20f71d463a62751",
+  "file_count": 749,
+  "tree_sha256": "63c9713c2ffd1100ee23d80948a27e3b1f31d8080e641b92610bb786c4f284ab",
   "files": [
     {
       "path": ".dockerignore",
@@ -68,8 +68,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 8332,
-      "sha256": "2463020c5159d23e29a615234aae24c76973e146e1970ed6ed7b377a3b5c3bab"
+      "bytes": 7980,
+      "sha256": "543d85db00d144fee5e52ce07944850d763a30bbb482c3ef0a04f5c3edf9e4ab"
     },
     {
       "path": "SBOM.cyclonedx.json",
@@ -2853,13 +2853,13 @@
     },
     {
       "path": "artifacts/pherc0268_starter/README.md",
-      "bytes": 7023,
-      "sha256": "ac8d531e228505d7ced857b18c5c787738c4d606ffaeee525c7a51b53592ced0"
+      "bytes": 6949,
+      "sha256": "41c89ff96978936f11396ecebe20c536d4965758171a7f0531907c684c9033d4"
     },
     {
       "path": "artifacts/pherc0268_starter/build_manifest.py",
-      "bytes": 4211,
-      "sha256": "96582ec0fb512d4c40d046dc9ac10ffc13d9bcd4e60e371b3fdaf3526d06f6e8"
+      "bytes": 4177,
+      "sha256": "2c63783965fe9983f8c0337797bd8a8d7720e36805c8c1e9d3a29691bd861497"
     },
     {
       "path": "artifacts/pherc0268_starter/common.py",
@@ -2873,13 +2873,13 @@
     },
     {
       "path": "artifacts/pherc0268_starter/pherc0268_box_coverage.json",
-      "bytes": 2551,
-      "sha256": "0d96ca842c213e97a2900b17f221490214bfbc244633a08cf32f0ade87fbafbb"
+      "bytes": 2051,
+      "sha256": "4cbe905de6f01fe0122ef21303954d758a1ad8753343674cfa756792f8c68f34"
     },
     {
       "path": "artifacts/pherc0268_starter/pherc0268_manifest.json",
-      "bytes": 692779,
-      "sha256": "cbf586efda2d93b2204ff229ee879d956f3ad089002d1358108fb64957d95854"
+      "bytes": 692745,
+      "sha256": "0a64c89c6f94564d51fe0d5ce81e9e70e279cc2241a116aadba8d0db45a885b6"
     },
     {
       "path": "artifacts/pherc0268_starter/reconstruct.py",
@@ -2899,12 +2899,12 @@
     {
       "path": "artifacts/pherc0268_starter/sampler_24.json",
       "bytes": 1289,
-      "sha256": "bb6a9c1f2a8f61314ffcbf06e60a433e71fe6b46a91b33a15289bbc4bd9eff18"
+      "sha256": "3d2f14357b41441eb25394f1e2e7da5bc00514f885944ae2170a32372f2a4497"
     },
     {
       "path": "artifacts/pherc0268_starter/source_terms.md",
-      "bytes": 3372,
-      "sha256": "c7d64e08425db119401afeb53ee6be94b9a3ce6bfa10ab93706267f929c0b57b"
+      "bytes": 2597,
+      "sha256": "5f1c68917f56df7a0875c790f38d773f66567e6e094aefaf8ab0e07024e15fb5"
     },
     {
       "path": "artifacts/pherc0268_starter/test_starter.py",
@@ -2913,8 +2913,8 @@
     },
     {
       "path": "artifacts/pherc0268_starter/verification_receipt.json",
-      "bytes": 5255,
-      "sha256": "b507ec671cb6d14bb6b6089be960248ff6d35ff0e927b26572f862dc162b121a"
+      "bytes": 4528,
+      "sha256": "526c5fffc72f1f35f3c25b1b70b59dfab72aba6d1c8fed369abd48dc1617773c"
     },
     {
       "path": "config/argus.example.env",
@@ -3108,13 +3108,13 @@
     },
     {
       "path": "docs/september_2026/COMBINED_FORM_RESPONSE.txt",
-      "bytes": 9980,
-      "sha256": "803bff98145aecde6ca9c61fa01fb6bb5164f4d7ad76b472fb038a11a4ab69f7"
+      "bytes": 8864,
+      "sha256": "95c40bf69f1ed8b5ece33964f6bc25d4a0f1f7674237a14a34d6602fa216af38"
     },
     {
       "path": "docs/september_2026/CONTRIBUTION_URLS.txt",
-      "bytes": 3480,
-      "sha256": "692dccdc7b863deb9d8a7f79a1f46902514215895658a3872e28ee8ec6833295"
+      "bytes": 2263,
+      "sha256": "f7ac47f6bb14ce6bcda972f85ab1f611dc5d90665f6bf8bb7526df3b5b2ec688"
     },
     {
       "path": "docs/september_2026/HECATE_CONTROL_ROUTE_20260930.md",
@@ -3123,23 +3123,18 @@
     },
     {
       "path": "docs/september_2026/PUBLICATION_STATUS_20260930.md",
-      "bytes": 9682,
-      "sha256": "f0e2322516f2f33e8011d579a44228dbecb63515be17922e5bb9a029d438bd68"
-    },
-    {
-      "path": "docs/september_2026/PUBLIC_RESOURCES.md",
-      "bytes": 10757,
-      "sha256": "53f4245ee4a41eb2f162eef3bc423817b33fa1d5d282f2a3472cfe5c454c5c55"
+      "bytes": 6683,
+      "sha256": "9ba84d9acb2e7440ad5e162b5904f908c8c7481afbab80fb58eb6b355e40fc3b"
     },
     {
       "path": "docs/september_2026/README.md",
-      "bytes": 7715,
-      "sha256": "e8b69e41f807b37e4905d3df30b573981ed1b10414fa96a63feae1090b4680df"
+      "bytes": 6910,
+      "sha256": "a39e4caa085a829da8fa13fa1efdba81d039bbc35b44b646f7ab523253dfcc28"
     },
     {
       "path": "docs/september_2026/RESEARCH_COLLECTION_20260930.md",
-      "bytes": 11299,
-      "sha256": "eaeb194c061ea50242085b5992f8bff28fc7b81d8200a3cc5af000d791f313cf"
+      "bytes": 7374,
+      "sha256": "0f6fff51c40903cad4fd106f5ffc4ae08c1d3818f23f2ec76765aec6b2b9fba9"
     },
     {
       "path": "docs/september_2026/RETAINED_RESEARCH_LIMITATIONS_20260930.md",
@@ -3397,21 +3392,6 @@
       "sha256": "6d6690971cde56592b0394faeda1c1a067fd9ca813b743dd3e5c138e6526ff7c"
     },
     {
-      "path": "docs/september_2026/public_payloads/MODEL_PUBLIC_VERIFICATION.json",
-      "bytes": 5149,
-      "sha256": "ed2f2770d991d8cfbb07051c7ea444cfc472dfc0acf0d2ffc8a2fb712cc38b17"
-    },
-    {
-      "path": "docs/september_2026/public_payloads/RESOURCE_PUBLIC_VERIFICATION.json",
-      "bytes": 57821,
-      "sha256": "e561962d90f62756c6a0d73ac6913cca484eed5db86164b465c674f9b96d069c"
-    },
-    {
-      "path": "docs/september_2026/public_payloads/UPSTREAM_MESH_LINK_VERIFICATION.json",
-      "bytes": 97778,
-      "sha256": "77c90b1c707c9e7fd901d20c1b12aa18326763c1286a544c7b31ee7f719c2d64"
-    },
-    {
       "path": "docs/september_2026/release_history/COMBINED_FORM_RESPONSE_1699f9c_before_starter.txt",
       "bytes": 8171,
       "sha256": "b7c794a010fce7e110e410ccd27f126aa429e15f7793933e4232d935d93ea8f4"
@@ -3427,11 +3407,6 @@
       "sha256": "065a98f03a2247ed091da939293dec877793bab68cdb5916dad6be12484d9ad1"
     },
     {
-      "path": "docs/september_2026/release_history/COMBINED_FORM_RESPONSE_ba6d3964ce8b.txt",
-      "bytes": 8864,
-      "sha256": "95c40bf69f1ed8b5ece33964f6bc25d4a0f1f7674237a14a34d6602fa216af38"
-    },
-    {
       "path": "docs/september_2026/release_history/CONTRIBUTION_URLS_1699f9c_before_starter.txt",
       "bytes": 2009,
       "sha256": "4a6660fcd1751a82f2b5d6b105008f185d05692e626c9e5b613f30ad7c9c7391"
@@ -3445,41 +3420,6 @@
       "path": "docs/september_2026/release_history/CONTRIBUTION_URLS_20261001_before_research_expansion.txt",
       "bytes": 1609,
       "sha256": "14c5838420531813d80a93dcd48d1a023306acd42218033be51bf5c5449ecf1a"
-    },
-    {
-      "path": "docs/september_2026/release_history/CONTRIBUTION_URLS_ba6d3964ce8b.txt",
-      "bytes": 2263,
-      "sha256": "f7ac47f6bb14ce6bcda972f85ab1f611dc5d90665f6bf8bb7526df3b5b2ec688"
-    },
-    {
-      "path": "docs/september_2026/release_history/PH0268_README_ba6d3964ce8b.md",
-      "bytes": 6949,
-      "sha256": "41c89ff96978936f11396ecebe20c536d4965758171a7f0531907c684c9033d4"
-    },
-    {
-      "path": "docs/september_2026/release_history/PH0268_pherc0268_box_coverage_ba6d3964ce8b.json",
-      "bytes": 2051,
-      "sha256": "4cbe905de6f01fe0122ef21303954d758a1ad8753343674cfa756792f8c68f34"
-    },
-    {
-      "path": "docs/september_2026/release_history/PH0268_pherc0268_manifest_ba6d3964ce8b.json",
-      "bytes": 692745,
-      "sha256": "0a64c89c6f94564d51fe0d5ce81e9e70e279cc2241a116aadba8d0db45a885b6"
-    },
-    {
-      "path": "docs/september_2026/release_history/PH0268_sampler_24_ba6d3964ce8b.json",
-      "bytes": 1289,
-      "sha256": "3d2f14357b41441eb25394f1e2e7da5bc00514f885944ae2170a32372f2a4497"
-    },
-    {
-      "path": "docs/september_2026/release_history/PH0268_source_terms_ba6d3964ce8b.md",
-      "bytes": 2597,
-      "sha256": "5f1c68917f56df7a0875c790f38d773f66567e6e094aefaf8ab0e07024e15fb5"
-    },
-    {
-      "path": "docs/september_2026/release_history/PH0268_verification_receipt_ba6d3964ce8b.json",
-      "bytes": 4528,
-      "sha256": "526c5fffc72f1f35f3c25b1b70b59dfab72aba6d1c8fed369abd48dc1617773c"
     },
     {
       "path": "docs/september_2026/release_history/RELEASE_MANIFEST_04dbe8297218.json",
@@ -3507,11 +3447,6 @@
       "sha256": "f7c90f2931137760111ca568cfa908edfc258d0f36df3a43943f8c55f61d288f"
     },
     {
-      "path": "docs/september_2026/release_history/RELEASE_MANIFEST_ba6d3964ce8b.json",
-      "bytes": 128606,
-      "sha256": "37511d20c552afb5e2991e0a68d60f85418abca354cec5a9974c52b115801743"
-    },
-    {
       "path": "docs/september_2026/release_history/RELEASE_MANIFEST_d0eb41bdef13.json",
       "bytes": 120150,
       "sha256": "12b9d5d9c393461242412e925ce651b8f74f0804e034c7a6d4a1f83c2fb8163d"
@@ -3528,8 +3463,8 @@
     },
     {
       "path": "docs/september_2026/research_tour/README.md",
-      "bytes": 11969,
-      "sha256": "e48c17a280d279aa419764e0e2152c0f5a63c39145aed1bd62dacccea64ab895"
+      "bytes": 10819,
+      "sha256": "43f5b7f827cf019f87727394201f98035d27b6f4dd25ba23d54150ce744472d3"
     },
     {
       "path": "docs/villa/CODEOWNERS.snippet",
@@ -3817,10 +3752,10 @@
       "sha256": "a5845ad0cc495925e79784b21a08764025d76b96f48a21d93ce1f686eb16e927"
     }
   ],
-  "created_utc": "2026-10-01T02:58:39.671497+00:00",
+  "created_utc": "2026-10-01T02:12:37.156628+00:00",
   "supersedes": {
-    "public_commit": "ba6d3964ce8b2e5ccd38f0a7a46cd3f8e98b5622",
-    "sha256": "37511d20c552afb5e2991e0a68d60f85418abca354cec5a9974c52b115801743",
-    "preserved_copy": "docs/september_2026/release_history/RELEASE_MANIFEST_ba6d3964ce8b.json"
+    "public_commit": "1699f9c99c907cd678e92bb8994ec26db6809bcd",
+    "sha256": "280d6f28a2222778e734c9a265c45dbc63bb4780c0909ce699f3710ee5c6980e",
+    "preserved_copy": "docs/september_2026/release_history/RELEASE_MANIFEST_1699f9c99c90.json"
   }
 }

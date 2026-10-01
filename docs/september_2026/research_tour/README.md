@@ -2,7 +2,7 @@
 
 ARGUS helps an operator answer three practical questions: **which physical scroll is this, what evidence can this model legitimately provide, and did the tool produce the intended result?** It connects those answers to a bounded workflow, inspectable outputs and records of real failures and repairs.
 
-Sections 1-5 use public source and retained September evidence at **[`1699f9c99c907cd678e92bb8994ec26db6809bcd`](https://github.com/Cinder-Covenant/ARGUS/tree/1699f9c99c907cd678e92bb8994ec26db6809bcd)**, with [successful portable CI](https://github.com/Cinder-Covenant/ARGUS/actions/runs/36801062911). Those four lightweight commands were rechecked from that revision. Section 6 adds the subsequently published PHerc0268 starter in this release. They read metadata or plan a run; they do not download CT, acquire weights or perform inference. The numerical and browser results are retained executions, not new runs performed for this tour.
+Sections 1-5 use public source and retained September evidence at **[`1699f9c99c907cd678e92bb8994ec26db6809bcd`](https://github.com/Cinder-Covenant/ARGUS/tree/1699f9c99c907cd678e92bb8994ec26db6809bcd)**, with [successful portable CI](https://github.com/Cinder-Covenant/ARGUS/actions/runs/36801062911). Those four lightweight commands were rechecked from that revision. Section 6 links the subsequently published PHerc0268 starter, original CT sources and our downloadable trained/derived resources. The tour commands read metadata or plan a run; they do not download CT, acquire weights or perform inference. Numerical and browser results are retained executions, not new runs performed for this tour.
 
 ## 1. Establish identity and exposure — 60 seconds
 
@@ -53,14 +53,15 @@ The larger Hecate timing comparison is thermally confounded; it does not replace
 
 ## 6. Find the research resources — 40 seconds
 
-The [research collection](https://github.com/Cinder-Covenant/ARGUS/blob/1699f9c99c907cd678e92bb8994ec26db6809bcd/docs/september_2026/RESEARCH_COLLECTION_20260930.md) describes selected multi-scroll CT fields, four retained representation-learning baselines, a **1,505-point PHerc1203 profile atlas**, geometry comparisons and controlled failure checks. The [geometry diagnostic](https://github.com/Cinder-Covenant/ARGUS/blob/1699f9c99c907cd678e92bb8994ec26db6809bcd/docs/september_2026/geometry/README.md) and [corrected research supplement](https://github.com/Cinder-Covenant/ARGUS/blob/1699f9c99c907cd678e92bb8994ec26db6809bcd/docs/september_2026/RETAINED_RESEARCH_LIMITATIONS_20260930.md) expose mixed results and unresolved confounds rather than promoting them as an accuracy breakthrough.
+Use the [public resource index](../PUBLIC_RESOURCES.md) for exact downloads, all six original CT acquisition links and reproduction status. The [collection guide](../RESEARCH_COLLECTION_20260930.md) explains the training/selection work and retained results. The [geometry diagnostic](../geometry/README.md) and [corrected supplement](../RETAINED_RESEARCH_LIMITATIONS_20260930.md) preserve mixed results and unresolved confounds.
 
 | Resource | Availability |
 |---|---|
 | ARGUS software, exposure example, recipes and sanitized control/engineering records | Public at the linked revision. |
 | PHerc0268 native-coarse starter: 342-entry manifest, deterministic 24-entry selection, reconstruction and local-loading scripts | [Public source-access kit](../../../artifacts/pherc0268_starter/README.md), with metadata/hash receipts and synthetic tests. No pixels or model weights are bundled. |
-| Full selected CT and four model-weight payloads | Retained locally; roughly **22.43 GB** combined. No public download is claimed. |
-| Selected 151-item source/result/card review packet | Prepared privately, roughly **1.25 MB**; must be supplied separately if wanted. It contains no raw CT, weights or target imagery. Its identity is recorded in the research collection. |
+| Six original CT acquisitions and 4,398 retained selections | Original CT is already public upstream. The [selection index](https://huggingface.co/datasets/darthceltic85/argus-research-resources/blob/b0b09fe4311e833b3ca530a1449c7195643362dc/ct/README.md) adds known coordinates/provenance without duplicating pixels: 3,566 known origins, 832 unresolved PHerc1203 origins, 30 duplicate boxes, 43 edge containers. |
+| Four own trained checkpoints | [Public model release](https://huggingface.co/darthceltic85/argus-research-baselines/tree/5b4e750bf1174185bd1d301d0f12df75689a1b7a), **4,125,955,140 bytes**, with cards/configurations and a metadata-only verifier. File identity checked; no fresh model load or inference. |
+| Computed research fields, atlas and generated meshes | [Public derived collection](https://huggingface.co/datasets/darthceltic85/argus-research-resources/blob/b0b09fe4311e833b3ca530a1449c7195643362dc/geometry/README.md): 1,505-site atlas, 63 arrays/21 surfaces, 13 XYZ meshes/generation tags, EXP7/source and exposure records. Original computed payloads plus historical receipts; no fresh archived-job replay. |
 
 The PHerc0268 starter is separate from both PHerc0139 controls. From the ARGUS source root, inspect its default 24-field plan without fetching or decoding CT:
 
@@ -68,7 +69,9 @@ The PHerc0268 starter is separate from both PHerc0139 controls. From the ARGUS s
 python -B artifacts/pherc0268_starter/reconstruct.py
 ```
 
-The plan lists 192 source chunks, 50,331,648 uncompressed output bytes and 402,653,184 uncompressed source-chunk bytes. Actual compressed transfer bytes remain unknown. The [starter README](../../../artifacts/pherc0268_starter/README.md) explains source terms, explicit opt-in, local loading and the synthetic verification. Real-source reconstruction was not executed for this release. The kit does not validate the decoded original chunk collection or turn representation models into qualified ink detectors.
+The plan lists 192 source chunks, 50,331,648 uncompressed output bytes and 402,653,184 uncompressed source-chunk bytes. Actual compressed transfer bytes remain unknown. The [starter README](../../../artifacts/pherc0268_starter/README.md) explains exact source terms, explicit opt-in, local loading and synthetic verification. Real-source reconstruction was not executed for this release. The kit does not validate decoded original chunks or turn representation models into qualified ink detectors.
+
+The new dataset release is **254 files / 46,032,414 bytes**, at `b0b09fe4311e833b3ca530a1449c7195643362dc`; all expected file identities and anonymous access were checked. Four checkpoint identities were likewise checked at the model revision above. Availability is newly public; training and computed results retain their original dates, including August work. Automatic profile/material classes and generation tags are not human ink/fiber labels. The 13 meshes comprise one corrected local geometry PASS, nine PHerc0268 diagnostic fixtures and three explicitly suspect fixtures; those labels remain attached. See the resource guides before running archived source or loading training-state artifacts.
 
 
 Team Cinder Covenant: Ryan Gurganious and Daine Ball. Credit Vesuvius Challenge data, Villa, released ink_9um, Hecate and the upstream representation architectures. Public CT reuse follows its original [Vesuvius open-data terms](https://scrollprize.org/data). ARGUS source is Apache-2.0; upstream patch and dataset licenses retain their own terms. For the complete submission, use the [September index](https://github.com/Cinder-Covenant/ARGUS/blob/main/docs/september_2026/README.md).

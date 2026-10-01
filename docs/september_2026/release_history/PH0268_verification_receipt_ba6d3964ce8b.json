@@ -50,7 +50,7 @@
     "network_transfer_not_measured": true
   },
   "access_limits": "Explicit source-fetch/terms flags required. Byte cap uses conservative no-cache planned chunk bytes; transport retries and metadata are outside estimate. Output must be fresh; no overwrite/resume.",
-  "source_terms_status": "Exact official PHerc0268 volume metadata declares CC BY-NC 4.0; original-host recipe only; see source_terms.md",
+  "source_terms_status": "Exact PH0268 S3 redistribution applicability unresolved; original-host recipe only; no CT or weights bundled.",
   "remaining_limits": [
     "No original-host source fetching or real retained data decoding was performed.",
     "Synthetic tests prove loader and slice behavior, not real CT scientific validity.",
@@ -60,8 +60,8 @@
   "files": [
     {
       "path": "build_manifest.py",
-      "bytes": 4211,
-      "sha256": "96582ec0fb512d4c40d046dc9ac10ffc13d9bcd4e60e371b3fdaf3526d06f6e8"
+      "bytes": 4177,
+      "sha256": "2c63783965fe9983f8c0337797bd8a8d7720e36805c8c1e9d3a29691bd861497"
     },
     {
       "path": "common.py",
@@ -80,18 +80,18 @@
     },
     {
       "path": "pherc0268_box_coverage.json",
-      "bytes": 2551,
-      "sha256": "0d96ca842c213e97a2900b17f221490214bfbc244633a08cf32f0ade87fbafbb"
+      "bytes": 2051,
+      "sha256": "4cbe905de6f01fe0122ef21303954d758a1ad8753343674cfa756792f8c68f34"
     },
     {
       "path": "pherc0268_manifest.json",
-      "bytes": 692779,
-      "sha256": "cbf586efda2d93b2204ff229ee879d956f3ad089002d1358108fb64957d95854"
+      "bytes": 692745,
+      "sha256": "0a64c89c6f94564d51fe0d5ce81e9e70e279cc2241a116aadba8d0db45a885b6"
     },
     {
       "path": "README.md",
-      "bytes": 7023,
-      "sha256": "ac8d531e228505d7ced857b18c5c787738c4d606ffaeee525c7a51b53592ced0"
+      "bytes": 6949,
+      "sha256": "41c89ff96978936f11396ecebe20c536d4965758171a7f0531907c684c9033d4"
     },
     {
       "path": "reconstruct.py",
@@ -111,12 +111,12 @@
     {
       "path": "sampler_24.json",
       "bytes": 1289,
-      "sha256": "bb6a9c1f2a8f61314ffcbf06e60a433e71fe6b46a91b33a15289bbc4bd9eff18"
+      "sha256": "3d2f14357b41441eb25394f1e2e7da5bc00514f885944ae2170a32372f2a4497"
     },
     {
       "path": "source_terms.md",
-      "bytes": 3372,
-      "sha256": "c7d64e08425db119401afeb53ee6be94b9a3ce6bfa10ab93706267f929c0b57b"
+      "bytes": 2597,
+      "sha256": "5f1c68917f56df7a0875c790f38d773f66567e6e094aefaf8ab0e07024e15fb5"
     },
     {
       "path": "test_starter.py",
@@ -124,19 +124,5 @@
       "sha256": "edbdf850fc11ac3e4c8bbab5deeaecb6fa77c9e20391792f719934e207a058de"
     }
   ],
-  "integration_note": "Corrected README full-plan byte transcription to 5,737,807,872, matching the dry-run output; code and test results unchanged. Normalized public text to LF, updated manifest bindings and made the inventory generator write LF. Archived field hashes are unchanged; integrated tests are run again before publication.",
-  "metadata_access_followup": {
-    "updated_utc": "2026-10-01T02:45:53.531459+00:00",
-    "source_metadata_http_status": 200,
-    "real_ct_chunks_fetched": false,
-    "catalog_sha256": "15848845907fe640e63c16d0de200715fe74ed4f256623c94ef603cc84831b22",
-    "original_preparation_receipt": "../../docs/september_2026/release_history/PH0268_verification_receipt_ba6d3964ce8b.json",
-    "scope": "License/access metadata followup and file bindings only; initial synthetic test records retain their original scope and time.",
-    "post_update_synthetic_tests": {
-      "command": "python -B -m pytest -q -p no:cacheprovider test_starter.py",
-      "tests_passed": 12,
-      "exit_code": 0,
-      "real_ct_read": false
-    }
-  }
+  "integration_note": "Corrected README full-plan byte transcription to 5,737,807,872, matching the dry-run output; code and test results unchanged. Normalized public text to LF, updated manifest bindings and made the inventory generator write LF. Archived field hashes are unchanged; integrated tests are run again before publication."
 }

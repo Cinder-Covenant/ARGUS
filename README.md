@@ -22,6 +22,8 @@ Built by **DarthCeltic** and **clexious**, under the
 
 [Contribution evidence and reproduction](docs/september_2026/README.md) includes the completed PHerc0139 control, actual inference-failure evidence, renderer parity/metadata results, and the runtime-isolation correction. It also links the separately measured Hecate paired-output optimization. Source hashes, scope limits and before/after evidence are included.
 
+The [public research resource index](docs/september_2026/PUBLIC_RESOURCES.md) links the six-scroll CT selections and original scans, four downloadable trained representation checkpoints, the PHerc1203 atlas, generated meshes, geometry fields and system-tag records. Each entry explains what is available and which reproduction steps have been tested.
+
 The [public run instructions](docs/PUBLIC_RUN.md) describe the executable control route. It starts from a published surface volume; the private research driver and a whole-scroll reading system are not part of this public release.
 
 ## Start ARGUS
