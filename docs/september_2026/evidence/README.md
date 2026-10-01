@@ -36,8 +36,10 @@ ARGUS connects existing Vesuvius tools into a reproducible control workflow and 
 
 ## Form choices
 
-- [Public-now answer](FORM_RESPONSE_PUBLIC_NOW.txt): existing released code and PRs, with local evidence accurately identified.
-- [Answer with this evidence package](FORM_RESPONSE_WITH_PACKAGE.txt): includes the two local tested follow-up corrections. Use when judges have an accessible copy of this package; add the actual package link. It does not claim the candidate is merged.
+The two response files below are preserved as earlier drafts. Use the current canonical [combined contribution description](../COMBINED_FORM_RESPONSE.txt) and [contribution URL list](../CONTRIBUTION_URLS.txt) for the September form; this package does not submit it.
+
+- [Earlier public-now draft](FORM_RESPONSE_PUBLIC_NOW.txt).
+- [Earlier package-aware draft](FORM_RESPONSE_WITH_PACKAGE.txt).
 - [Team field](TEAM_FIELD.txt).
 
 ## Attribution and scope

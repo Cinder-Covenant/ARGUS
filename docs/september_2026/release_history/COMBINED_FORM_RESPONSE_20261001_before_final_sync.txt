@@ -1,0 +1,27 @@
+Team Cinder Covenant (Ryan Gurganious and Daine Ball) submits ARGUS, a reproducible scroll-processing workbench, together with measured reliability and throughput improvements found while operating community tools on real Vesuvius data. We credit the original detector, rendering, and dataset authors.
+
+1. Scroll data used
+
+The known-data evaluation uses PHerc0139 w016 (a 640-by-896 crop with published ink, supervision, and validation masks). Additional investigations include PHerc1667 w029, PHerc0009B geometry/material, and PHercParis4 renderer controls. The Hecate execution and throughput controls use one already-exposed PHerc0139 title field, including a 16-by-256-by-256 input. Exploratory PHerc1203 work did not establish a reading and is not submitted as a discovery.
+
+2. Contribution and practical value
+
+ARGUS connects scroll identity, retained inputs, model execution, evaluation, and evidence into an inspectable workflow. It distinguishes a detector or renderer failure from a meaningful scientific result and preserves exact input/output provenance. Villa PR #1897 reports a real GTX 1660 Ti failure: FP16 produced non-finite values that became an almost-all-zero TIFF while the command reported success. The proposed correction fails explicitly on non-finite output and adds checkpoint-aware input-form diagnostics; guarded full-precision output matched the corresponding unmodified full-precision output. The PR remains open. We credit Villa's separate precision-selection work in #1890.
+
+Villa PR #1901 records effective surface geometry/render settings and fixes metadata that advertised five pyramid levels when only one was written. Tested image pixels and physical scale remain unchanged; the PR remains open. Villa #1896 (ARGUS listing) and #1902 (fiber-parser assertion/documentation) are merged. Hecate PR #1 reuses shared model features when paired 2D and 3D outputs are requested, avoiding a second feature pass; it remains under upstream review.
+
+These changes enable researchers to avoid false successful outputs, trust the written renderer metadata, and obtain the tested paired output faster. They do not demonstrate improved ink-reading accuracy or a whole-scroll reader.
+
+3. What is newly enabled
+
+On one 16-by-256-by-256 exposed PHerc0139 field, three alternating fresh-process CLI pairs are bitwise equal across all 65,536 2D pixels and 1,048,576 3D voxels. Median complete-process time fell from 17.8357 to 11.5913 seconds (35.01%); feature evaluations fell from 98 to 49. This is paired-output process efficiency on one small exposed control, not whole-scroll throughput or better accuracy. The larger 512-square comparison was also exactly equal, but resource-guard cooling pauses differed between arms, so its observed 64.83% time difference is not an isolated speed estimate.
+
+The public ARGUS Workbench also completed a guarded Hecate control with hash-bound preparation, model, runtime and outputs. A fresh strict-load check passed without inference. The public-source check matched all 1,741,824 pixels in the selected 21-by-288-by-288 PHerc0139 source crop after bounded reads totaling 5,505,024 bytes. These establish setup and source correspondence for this exposed control only.
+
+4. Evidence and limitations
+
+Independent rescoring of the PHerc0139 w016 known-domain control reproduces ROC AUC 0.772238 and average precision 0.578875 over 90,367 validation pixels, including 22,765 positive pixels; validation and supervision masks are disjoint. This is not a new accuracy result or cross-scroll qualification. Villa's renderer correction preserves all 12,288 retained Paris4 pixels in the comparison. The public package includes the failure evidence, source, checks, run receipts, measured results, limitations and setup commands.
+
+A corrected archival supplement reports that 0 of 14 evaluated checkpoint-family members reached the recorded 0.80 transfer gate on two out-of-manifest preparations. This is a summary of historical metrics, not a tie-correct rescoring or causal claim: the scorer mishandles tied ranks, preparation resolutions differ, and retained per-patch predictions were not found for corrected rescoring. The topology cohort is likewise mixed and sensitive to one surface. The supplement identifies these limitations instead of claiming general model failure or a general area gain.
+
+Our claim is a practical, reproducible workflow with specific engineering reliability and paired-output efficiency results. We do not claim confirmed letters on an unread scroll, increased discovery probability, independent community adoption, or a particular award outcome.
