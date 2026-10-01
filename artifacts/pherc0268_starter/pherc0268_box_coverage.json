@@ -1,0 +1,37 @@
+{
+  "schema": "pherc0268-metadata-box-review-v1",
+  "reviewed_at": "2026-09-30T22:05:35.767350-04:00",
+  "manifest_file": "pherc0268_manifest.json",
+  "manifest_sha256": "0a64c89c6f94564d51fe0d5ce81e9e70e279cc2241a116aadba8d0db45a885b6",
+  "validator_source_sha256_at_review": "696cc6fee3fb3451389cef2d7538967c3da14285dcfd060144e4058186f847b0",
+  "source_uri": "s3://vesuvius-challenge-open-data/PHerc0268/volumes/20251110183117-8.640um-1.2m-116keV-masked.zarr",
+  "axes": "ZYX",
+  "box_convention": "integer voxel origins inclusive; stop_zyx_exclusive exclusive; touching faces are not overlapping volume",
+  "box_count": 342,
+  "pairs_checked": 58311,
+  "overlapping_pairs": 0,
+  "overlap_examples": [],
+  "shape_zyx_each": [
+    128,
+    128,
+    128
+  ],
+  "spacing_um_zyx": [
+    8.64,
+    8.64,
+    8.64
+  ],
+  "side_mm_each_axis": 1.10592,
+  "total_box_voxels": 717225984,
+  "geometric_crop_box_volume_mm3": 462.5910675233833,
+  "geometric_crop_box_volume_cm3": 0.4625910675233833,
+  "method": "Read and validate the JSON manifest with common.read_manifest; enumerate itertools.combinations(entries,2); overlap iff max(origins)<min(stops) on every Z/Y/X axis; volume=count*(128*8.640/1000)^3 mm^3.",
+  "predicate_source": "all(max(oa,ob)<min(sa,sb) for oa,ob,sa,sb in zip(a[\"origin_zyx\"], b[\"origin_zyx\"], a[\"stop_zyx_exclusive\"], b[\"stop_zyx_exclusive\"]))",
+  "limitations": [
+    "Metadata-only review; no real source CT fetch, decode, imagery, inference or training.",
+    "Coverage is disjoint axis-aligned crop-box volume conditional on declared native coordinates and isotropic 8.640 um spacing, not papyrus material volume, continuous sheet coverage or new CT acquisition.",
+    "No decoded-content, scientific-content or current remote-source identity validation was performed.",
+    "This receipt concerns the 342 PHerc0268 boxes only; overlap of the broader 4398-field portfolio remains unresolved."
+  ],
+  "integration_note": "Manifest content unchanged; its file SHA256 reflects LF newline normalization for publication."
+}

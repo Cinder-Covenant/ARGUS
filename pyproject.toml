@@ -57,7 +57,7 @@ namespaces = true
 
 [tool.pytest.ini_options]
 # argus/tests is the public test kit; tests/ holds the release tests and the evidence-gate tests.
-testpaths = ["argus/tests", "tests"]
+testpaths = ["argus/tests", "tests", "artifacts/pherc0268_starter"]
 # Nothing here may reach the network by default. Opt in with `pytest -m network`.
 addopts = "-q -m 'not network'"
 markers = [

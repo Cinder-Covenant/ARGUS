@@ -1,0 +1,128 @@
+{
+  "schema": "pherc0268-starter-preparation-verification-v1",
+  "verified_at_utc": "2026-10-01T02:10:15.632047+00:00",
+  "retained_fields": 342,
+  "sampler_fields": 24,
+  "sampler_per_anchor": 8,
+  "validation_scope": {
+    "retained_json_read": true,
+    "retained_compressed_bytes_hashed": true,
+    "real_ct_decoded": false,
+    "original_host_fetch": false,
+    "model_inference_or_training": false,
+    "checkpoint_loaded": false,
+    "real_target_visualization": false,
+    "google_form_submitted": false
+  },
+  "runtimes": [
+    {
+      "python": "3.11.9",
+      "numpy": "2.4.6",
+      "zarr": "2.18.7",
+      "numcodecs": "0.15.1",
+      "command": "python -B test_starter.py",
+      "exit_code": 0,
+      "tests_passed": 12
+    },
+    {
+      "python": "3.11.9",
+      "numpy": "2.4.6",
+      "zarr": "3.1.6",
+      "numcodecs": "0.16.5",
+      "fsspec": "2026.7.0",
+      "s3fs": "2026.7.0",
+      "pytest": "9.1.1",
+      "command": "python -B -m pytest -q -p no:cacheprovider test_starter.py",
+      "exit_code": 0,
+      "tests_passed": 12,
+      "warnings": 0
+    }
+  ],
+  "dry_run": {
+    "starter_fields": 24,
+    "unique_source_chunks": 192,
+    "output_uncompressed_bytes": 50331648,
+    "no_cache_planned_chunk_bytes": 402653184,
+    "full_fields": 342,
+    "full_unique_source_chunks": 1532,
+    "full_no_cache_planned_chunk_requests": 2736,
+    "full_no_cache_planned_chunk_bytes": 5737807872,
+    "network_transfer_not_measured": true
+  },
+  "access_limits": "Explicit source-fetch/terms flags required. Byte cap uses conservative no-cache planned chunk bytes; transport retries and metadata are outside estimate. Output must be fresh; no overwrite/resume.",
+  "source_terms_status": "Exact PH0268 S3 redistribution applicability unresolved; original-host recipe only; no CT or weights bundled.",
+  "remaining_limits": [
+    "No original-host source fetching or real retained data decoding was performed.",
+    "Synthetic tests prove loader and slice behavior, not real CT scientific validity.",
+    "Remote Zarr2 and Zarr3 access paths are source-supported but not live-source tested.",
+    "Legacy recorded reconstruction loss/ink AUC is not a new result of this package."
+  ],
+  "files": [
+    {
+      "path": "build_manifest.py",
+      "bytes": 4177,
+      "sha256": "2c63783965fe9983f8c0337797bd8a8d7720e36805c8c1e9d3a29691bd861497"
+    },
+    {
+      "path": "common.py",
+      "bytes": 5975,
+      "sha256": "696cc6fee3fb3451389cef2d7538967c3da14285dcfd060144e4058186f847b0"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1215,
+      "sha256": "3e5159d2c5752c1cfe818fc44bfd1322946fe909bd8eb68e0fcdbbcdd067f84c"
+    },
+    {
+      "path": "load_local.py",
+      "bytes": 3514,
+      "sha256": "409b5c483129831341d352e543c8f2ace0a8ea678ccae6d2d25d0ef9e018b3b6"
+    },
+    {
+      "path": "pherc0268_box_coverage.json",
+      "bytes": 2051,
+      "sha256": "4cbe905de6f01fe0122ef21303954d758a1ad8753343674cfa756792f8c68f34"
+    },
+    {
+      "path": "pherc0268_manifest.json",
+      "bytes": 692745,
+      "sha256": "0a64c89c6f94564d51fe0d5ce81e9e70e279cc2241a116aadba8d0db45a885b6"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6949,
+      "sha256": "41c89ff96978936f11396ecebe20c536d4965758171a7f0531907c684c9033d4"
+    },
+    {
+      "path": "reconstruct.py",
+      "bytes": 5121,
+      "sha256": "556dc721d07fa0278c308a251ada265d5b71e5ffb51980c0f3b4614b67b46a8a"
+    },
+    {
+      "path": "requirements-local.txt",
+      "bytes": 53,
+      "sha256": "5f34d01c23fb6335f22540546f17f81cd5fc0d7d7bad7e09ab1c2e6e63eedd4b"
+    },
+    {
+      "path": "requirements-source-fetch.txt",
+      "bytes": 58,
+      "sha256": "246a634c277d5efd6bbe3c8c90ffd3f3d4fcc9c08ed4faa48f9a09d057cc345e"
+    },
+    {
+      "path": "sampler_24.json",
+      "bytes": 1289,
+      "sha256": "3d2f14357b41441eb25394f1e2e7da5bc00514f885944ae2170a32372f2a4497"
+    },
+    {
+      "path": "source_terms.md",
+      "bytes": 2597,
+      "sha256": "5f1c68917f56df7a0875c790f38d773f66567e6e094aefaf8ab0e07024e15fb5"
+    },
+    {
+      "path": "test_starter.py",
+      "bytes": 8415,
+      "sha256": "edbdf850fc11ac3e4c8bbab5deeaecb6fa77c9e20391792f719934e207a058de"
+    }
+  ],
+  "integration_note": "Corrected README full-plan byte transcription to 5,737,807,872, matching the dry-run output; code and test results unchanged. Normalized public text to LF, updated manifest bindings and made the inventory generator write LF. Archived field hashes are unchanged; integrated tests are run again before publication."
+}

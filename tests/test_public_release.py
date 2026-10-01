@@ -185,7 +185,9 @@ def test_the_package_declares_what_the_dockerfile_installs_and_what_the_tests_ne
     assert '".[service,volume-local]"' in dockerfile
     assert {"service", "volume-local", "test", "evidence-gate"} <= set(extras)
     assert any(d.startswith("zarr") for d in extras["test"])
-    assert meta["tool"]["pytest"]["ini_options"]["testpaths"] == ["argus/tests", "tests"]
+    assert meta["tool"]["pytest"]["ini_options"]["testpaths"] == [
+        "argus/tests", "tests", "artifacts/pherc0268_starter"
+    ]
     assert "readme" not in meta["project"]           # the image copies no README.md, so the build must not need one
     for entry in meta["project"]["scripts"].values():
         module = entry.split(":")[0]

@@ -6,7 +6,7 @@ Thank you for looking. ARGUS is maintained by DarthCeltic and clexious at
 ## Before you open a pull request
 
 1. Install with `pip install -e ".[service,test]"` and run the test kit: `python scripts/run_portable_ci.py`
-   (or `python -m pytest`, which collects `argus/tests` and `tests`). Both are offline and need no
+   (or `python -m pytest`, which collects `argus/tests`, `tests` and the PHerc0268 starter tests). Both are offline and need no
    private data. `docs/TEST_KIT.md` says what each group checks.
 2. For UI changes: `cd argus/ui && npm ci && npm run build && npm run test:unit`. The Docker image builds
    the interface with Node 20 and continuous integration with Node 22; either works.

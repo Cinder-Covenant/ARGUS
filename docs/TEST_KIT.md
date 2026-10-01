@@ -9,7 +9,7 @@ python scripts/run_portable_ci.py                        # every group; exits no
 python scripts/run_portable_ci.py --list                 # the groups and their files
 python scripts/run_portable_ci.py --group null-and-sabotage --group renderer-parity
 python scripts/run_portable_ci.py --json kit-result.json # also write a machine-readable result
-python -m pytest argus/tests tests                       # the same tests through pytest
+python -m pytest argus/tests tests artifacts/pherc0268_starter/test_starter.py
 ```
 
 Install with `pip install -e ".[service,test]"` first. Every test runs with `ARGUS_HOME` (and every other
@@ -29,6 +29,7 @@ kit itself has none.
 | `geometry` | Are boundary, topology and surface-geometry confounds measured instead of assumed away? | `test_surface_metric.py`, `test_topology_metric.py`, `test_surface_consistency.py`, `test_surface_contract.py`, `test_blender_roundtrip.py` |
 | `lineage-and-independence` | Is the evidence independent of what the model trained on, and is that declared? | `test_lineage.py`, `test_stage_lineage.py`, `test_arm_isolation.py`, `test_science_arbiter.py`, `test_exposure.py`, `test_scroll_generalization.py` |
 | `renderer-parity` | Do two independent implementations of sampling, tiling and resampling agree? | `tests/test_public_renderer_parity.py` |
+| `research-starter` | Do PHerc0268 coordinates, local loading and the opt-in source recipe obey their declared bounds? | `artifacts/pherc0268_starter/test_starter.py` (synthetic arrays and mocked source only) |
 | `orientation` | Is the sheet-normal sign decided, gated and reported? | `test_orientation_semantics.py`, `test_normal_orientation.py` |
 | `memory-and-limits` | Does a run know its memory, VRAM, disk and process limits before it starts? | `test_long_run_preflight.py`, `test_availability_bounds.py`, `test_owned_process_tree.py`, `test_resource_sampler.py`, `test_job_preflight.py`, `test_install_tiers.py` |
 | `deterministic-replay` | Does the same seed replay to the same bytes, and does an interrupted tiled run resume? | `test_tiled_run_resume.py`, `tests/test_public_release.py`, and the replay tests in `tests/test_public_null_controls.py` |

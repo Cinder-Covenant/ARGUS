@@ -1,0 +1,32 @@
+{
+  "schema": "pherc0268-selection-v1",
+  "count": 24,
+  "rule": "per anchor: lexicographically sorted retained basenames; indices floor(j*(N-1)/7), j=0..7",
+  "manifest_sha256": "0a64c89c6f94564d51fe0d5ce81e9e70e279cc2241a116aadba8d0db45a885b6",
+  "names": [
+    "g16_000000_z10171_y2503_x6301.zarr",
+    "g16_000301_z10171_y3103_x6501.zarr",
+    "g16_010104_z10371_y2703_x7101.zarr",
+    "g16_020002_z10571_y2503_x6701.zarr",
+    "g16_020304_z10571_y3103_x7101.zarr",
+    "g16_030201_z10771_y2903_x6501.zarr",
+    "g16_040101_z10971_y2703_x6501.zarr",
+    "g16_040404_z10971_y3303_x7101.zarr",
+    "seed1_000000_z7013_y6373_x4166.zarr",
+    "seed1_000301_z7013_y6973_x4366.zarr",
+    "seed1_010103_z7213_y6573_x4766.zarr",
+    "seed1_020003_z7413_y6373_x4766.zarr",
+    "seed1_020401_z7413_y7173_x4366.zarr",
+    "seed1_030202_z7613_y6773_x4566.zarr",
+    "seed1_040004_z7813_y6373_x4966.zarr",
+    "seed1_040404_z7813_y7173_x4966.zarr",
+    "seed2_000000_z3302_y7452_x1871.zarr",
+    "seed2_000301_z3302_y8052_x2071.zarr",
+    "seed2_010102_z3502_y7652_x2271.zarr",
+    "seed2_020003_z3702_y7452_x2471.zarr",
+    "seed2_020400_z3702_y8252_x1871.zarr",
+    "seed2_030202_z3902_y7852_x2271.zarr",
+    "seed2_040100_z4102_y7652_x1871.zarr",
+    "seed2_040404_z4102_y8252_x2671.zarr"
+  ]
+}

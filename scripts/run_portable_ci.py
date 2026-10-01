@@ -66,6 +66,10 @@ GROUPS = {
         "Do two independent implementations of sampling, tiling and resampling agree on a synthetic volume?",
         ("tests/test_public_renderer_parity.py",),
     ),
+    "research-starter": (
+        "Do the PHerc0268 coordinates, local loader and opt-in source recipe obey their declared bounds?",
+        ("artifacts/pherc0268_starter/test_starter.py",),
+    ),
     "orientation": (
         "Is the sheet-normal sign decided, gated and reported, and are both orientations shown until it is?",
         ("argus/tests/test_orientation_semantics.py", "argus/tests/test_normal_orientation.py"),

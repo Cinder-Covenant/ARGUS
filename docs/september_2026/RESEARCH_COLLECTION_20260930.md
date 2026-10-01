@@ -16,6 +16,12 @@ The retained chunk inventory totals **18,301,672,008 compressed bytes**, includi
 
 The source CT and registration resources retain their original authorship. The contribution claimed here is the selection, curation, extraction, training work, and analysis, with provenance and unresolved overlap disclosed.
 
+## Public PHerc0268 source-access starter
+
+The [PHerc0268 starter](../../artifacts/pherc0268_starter/README.md) publishes exact source coordinates and stored-file hashes for the 342 retained native-coarse fields, plus a deterministic 24-field selection, a local Zarr loader and a bounded reconstruction recipe that defaults to a no-network dry run. It lets a researcher inspect the selection and explicitly acquire a small subset from the original host under the source data terms. It does not redistribute CT pixels, publish model weights, or establish ink labels.
+
+Verification uses filename/metadata consistency, hashes of retained stored bytes and synthetic fixtures. Source reconstruction and decoding of these retained target fields were not performed for this release, so the recipe is not described as a completed live-source replay. See its receipt and README for the exact checks and limitations.
+
 ## Selected trained baselines
 
 Four locally retained training outputs total **4,125,955,140 bytes** (about 4.13 GB): a PHerc1203 MAE baseline, a PHerc0268 MAE baseline, a small PHerc0268 DINO/iBOT model, and a multiscroll coarse DINO prototype. Their upstream architectures and source data are credited. Configurations, training logs, evaluation records, and streamed checkpoint SHA-256 identities are cataloged in the prepared review packet.

@@ -14,7 +14,7 @@ https://github.com/Cinder-Covenant/ARGUS/blob/main/docs/EXPOSURE_ACCOUNTING.md
 https://github.com/Cinder-Covenant/ARGUS/blob/main/scripts/prepare_hecate_pherc0139_control.py
 https://github.com/Cinder-Covenant/ARGUS/blob/main/scripts/verify_hecate_control_source.py
 https://github.com/Cinder-Covenant/ARGUS/blob/main/scripts/verify_hecate_strict_load.py
-https://github.com/Cinder-Covenant/ARGUS/actions/workflows/argus-portable-validation.yml
+https://github.com/Cinder-Covenant/ARGUS/actions/runs/36800637265
 https://github.com/ScrollPrize/villa/pull/1896
 https://github.com/ScrollPrize/villa/pull/1897
 https://github.com/ScrollPrize/villa/pull/1897#issuecomment-5922534816
@@ -22,6 +22,3 @@ https://github.com/ScrollPrize/villa/pull/1901
 https://github.com/ScrollPrize/villa/pull/1902
 https://huggingface.co/scrollprize/hecate/discussions/1
 https://huggingface.co/scrollprize/hecate/discussions/1#6abdafab39f70bb1d81f0322
-https://github.com/ScrollPrize/villa/pull/1940
-https://github.com/Cinder-Covenant/ARGUS/blob/main/artifacts/pherc0268_starter/README.md
-https://github.com/Cinder-Covenant/ARGUS/blob/main/docs/september_2026/research_tour/README.md

@@ -4,6 +4,9 @@ Team Cinder Covenant — Ryan Gurganious and Daine Ball.
 
 ## Review the contributions
 
+- **Start here:** [five-minute operator and research tour](research_tour/README.md), connecting scroll identity, model exposure, known-data controls and measured engineering outcomes.
+- **Reusable PHerc0268 starter:** [coordinate index and source-access kit](../../artifacts/pherc0268_starter/README.md), with 342 retained-field records, a deterministic 24-field sampler, a local loader and an opt-in reconstruction recipe. No CT arrays or weights are bundled; verification used metadata, stored-byte hashes and synthetic arrays.
+
 - **ARGUS:** [evidence package](evidence/README.md), [downloadable ZIP](ARGUS_SEPTEMBER_2026_EVIDENCE.zip), [public control instructions](../PUBLIC_RUN.md). The current source includes the runtime-isolation correction and its three fixtures in the portable CI runner.
 - **Villa input checks:** [PR #1897](https://github.com/ScrollPrize/villa/pull/1897), [recorded real-data failure](evidence/evidence/INFERENCE_FAILURE.json).
 - **Villa renderer:** [PR #1901](https://github.com/ScrollPrize/villa/pull/1901), [tested metadata correction and unchanged pixels](evidence/evidence/RENDERER_CORRECTION.json). The artifact names the tested candidate; consult the PR for its current publication/review status.
@@ -13,7 +16,7 @@ Team Cinder Covenant — Ryan Gurganious and Daine Ball.
 - **Evaluation geometry diagnostic:** [PHerc0139 w016 frozen mask-distance and spatial-null analysis](geometry/README.md). The known-domain model association is not explained solely by the tested mask-distance score, but other spatial confounds and transfer remain unresolved.
 - **Retained research supplement:** [corrected archival transfer and topology summary](RETAINED_RESEARCH_LIMITATIONS_20260930.md).
 - **Research collection:** [metadata-only portfolio summary](RESEARCH_COLLECTION_20260930.md) describes retained multi-scroll CT-field selections, four local representation baselines, derived geometry/profile resources and private-versus-public availability. It includes no raw CT chunks or model weights. It records the checkpoint-family transfer-gate results and material scoring, preparation, source-binding and cohort limits. It is not a tie-correct rescoring, a causal generalization result or a public full-prediction replay.
-- Supporting Villa work: [ARGUS listing #1896](https://github.com/ScrollPrize/villa/pull/1896), [fiber-parser assertion/documentation #1902](https://github.com/ScrollPrize/villa/pull/1902), both merged. ARGUS [exposure-accounting PR #1](https://github.com/Cinder-Covenant/ARGUS/pull/1) is part of the ARGUS contribution.
+- Supporting Villa work: [ARGUS listing #1896](https://github.com/ScrollPrize/villa/pull/1896), [fiber-parser assertion/documentation #1902](https://github.com/ScrollPrize/villa/pull/1902), both merged. [Community-entry clarification and evidence links #1940](https://github.com/ScrollPrize/villa/pull/1940) is open. ARGUS [exposure-accounting PR #1](https://github.com/Cinder-Covenant/ARGUS/pull/1) is part of the ARGUS contribution.
 
 ## Measured outcomes
 
