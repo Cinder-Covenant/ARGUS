@@ -29,3 +29,10 @@ The accompanying combined description and URL list are prepared for one operator
 ARGUS main advanced through commits eb34e4692e7bb9a5c09d2f89bf7e52b70c8433b1 and 3bc1f68494a6c1709ffc02a6ccd5a47d859109de. The final delivery CI run [36798529700](https://github.com/Cinder-Covenant/ARGUS/actions/runs/36798529700) passed its Node 22 UI build/unit tests and Python 3.11, 3.12 and 3.14 public test kits. The public research collection page adds a qualified catalog of the retained local CT/model resources; it does not publish the underlying 18.30 GB of CT chunks, 4.13 GB of checkpoints, target imagery or the private review packet.
 
 One evidence follow-up was added to [Villa #1897](https://github.com/ScrollPrize/villa/pull/1897#issuecomment-5922534816), and a setup/reproducibility follow-up to [Hecate discussion #1](https://huggingface.co/scrollprize/hecate/discussions/1#6abdafab39f70bb1d81f0322). At this update, #1897 and #1901 remained open. Their current hosted checks included 8/18 passing respectively, 10/8 skipped, and a Vercel authorization failure on each; the code-related checks passed. #1896 and #1902 remained merged. The prize form had not been submitted.
+
+
+## Expanded research-collection supplement — 2026-10-01 01:25 UTC
+
+The metadata-only research collection, expanded copy-ready form, and release-history snapshots were published at [ARGUS commit c5dd784](https://github.com/Cinder-Covenant/ARGUS/commit/c5dd7847857aaaca3d0de3fa2ea018fe40ae26d9). Its [four-job portable CI run](https://github.com/Cinder-Covenant/ARGUS/actions/runs/36800637265) passed: Node 22 UI build/unit tests and Python 3.11, 3.12 and 3.14 public test kits. The release manifest verifies 731 files with zero problems, and all 24 URLs in the combined index returned anonymous HTTP 200.
+
+The public page reports retained-corpus and model counts with overlap, provenance, training-exposure and evaluation caveats. It does not publish CT chunks, checkpoint payloads, the private review packet or target imagery. The form was updated locally and publicly but was not submitted. Villa #1897 and #1901 were open at the live check; #1896 and #1902 were merged.

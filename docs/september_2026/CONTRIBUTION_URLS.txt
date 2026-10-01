@@ -14,7 +14,7 @@ https://github.com/Cinder-Covenant/ARGUS/blob/main/docs/EXPOSURE_ACCOUNTING.md
 https://github.com/Cinder-Covenant/ARGUS/blob/main/scripts/prepare_hecate_pherc0139_control.py
 https://github.com/Cinder-Covenant/ARGUS/blob/main/scripts/verify_hecate_control_source.py
 https://github.com/Cinder-Covenant/ARGUS/blob/main/scripts/verify_hecate_strict_load.py
-https://github.com/Cinder-Covenant/ARGUS/actions/runs/36798529700
+https://github.com/Cinder-Covenant/ARGUS/actions/runs/36800637265
 https://github.com/ScrollPrize/villa/pull/1896
 https://github.com/ScrollPrize/villa/pull/1897
 https://github.com/ScrollPrize/villa/pull/1897#issuecomment-5922534816

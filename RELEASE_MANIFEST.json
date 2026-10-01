@@ -4,7 +4,7 @@
   "layout": "standalone",
   "tree_sha256_recipe": "sha256 of the UTF-8 text made of one line per row of `files`, rows ordered by path string: <path> NUL <sha256> newline. tools/verify_manifest.py recomputes it.",
   "file_count": 731,
-  "tree_sha256": "2750e1fed279b90dcfe5f99bda7487e97052eccd51da83b5ca697c05c75db077",
+  "tree_sha256": "571503ab343be05e5cea27bae2fe7c00694c5cf176dcb6aff55145513959dce2",
   "files": [
     {
       "path": ".dockerignore",
@@ -3038,13 +3038,13 @@
     },
     {
       "path": "docs/september_2026/COMBINED_FORM_RESPONSE.txt",
-      "bytes": 8174,
-      "sha256": "0a26b00ea17edaa8080bfe14eeb632353211182ec25745d3859121090ab57bd0"
+      "bytes": 8171,
+      "sha256": "b7c794a010fce7e110e410ccd27f126aa429e15f7793933e4232d935d93ea8f4"
     },
     {
       "path": "docs/september_2026/CONTRIBUTION_URLS.txt",
       "bytes": 2009,
-      "sha256": "b58d15ac37e51677f91d3edc9f661d36e3751beca1e31ef720a153405a80d7a6"
+      "sha256": "4a6660fcd1751a82f2b5d6b105008f185d05692e626c9e5b613f30ad7c9c7391"
     },
     {
       "path": "docs/september_2026/HECATE_CONTROL_ROUTE_20260930.md",
@@ -3053,8 +3053,8 @@
     },
     {
       "path": "docs/september_2026/PUBLICATION_STATUS_20260930.md",
-      "bytes": 3899,
-      "sha256": "954ec234fa6d97462a904ef9e235a7aab28ff9709f8b2ab99858c2286bd19818"
+      "bytes": 4875,
+      "sha256": "7c19e7bd97626038a1a203a8b477ea282e9517f2969ff819db90ebaf58288ff7"
     },
     {
       "path": "docs/september_2026/README.md",
