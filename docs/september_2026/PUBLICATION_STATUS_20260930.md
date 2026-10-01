@@ -22,3 +22,10 @@ Archive hashes:
 The public evidence directory retains its original 29 payload files and manifest. The separate Hecate archive preserves its original source/test manifest and adds the upstream license. Earlier local-only statements are historical, not indications that the present links are inaccessible.
 
 The accompanying combined description and URL list are prepared for one operator-submitted Progress Prize form. Publishing these files does not submit that form. No discovery claim or unread-target imagery is published.
+
+
+## Status snapshot after 3bc1f68 -- 2026-10-01 01:13 UTC
+
+ARGUS main advanced through commits eb34e4692e7bb9a5c09d2f89bf7e52b70c8433b1 and 3bc1f68494a6c1709ffc02a6ccd5a47d859109de. The final delivery CI run [36798529700](https://github.com/Cinder-Covenant/ARGUS/actions/runs/36798529700) passed its Node 22 UI build/unit tests and Python 3.11, 3.12 and 3.14 public test kits. The public research collection page adds a qualified catalog of the retained local CT/model resources; it does not publish the underlying 18.30 GB of CT chunks, 4.13 GB of checkpoints, target imagery or the private review packet.
+
+One evidence follow-up was added to [Villa #1897](https://github.com/ScrollPrize/villa/pull/1897#issuecomment-5922534816), and a setup/reproducibility follow-up to [Hecate discussion #1](https://huggingface.co/scrollprize/hecate/discussions/1#6abdafab39f70bb1d81f0322). At this update, #1897 and #1901 remained open. Their current hosted checks included 8/18 passing respectively, 10/8 skipped, and a Vercel authorization failure on each; the code-related checks passed. #1896 and #1902 remained merged. The prize form had not been submitted.
